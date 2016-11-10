@@ -12,9 +12,10 @@ import java.sql.Date;
  * @author 2095498
  */
 public class Request {
-    private int user_id; 
+    
     private int id;
-    private String comentary;
+    private int user_id;
+    private String commentary;
     private String state;
     private Date date;
     
@@ -53,17 +54,17 @@ public class Request {
     }
 
     /**
-     * @return the comentary
+     * @return the commentary
      */
-    public String getComentary() {
-        return comentary;
+    public String getCommentary() {
+        return commentary;
     }
 
     /**
-     * @param comentary the comentary to set
+     * @param commentary the commentary to set
      */
-    public void setComentary(String comentary) {
-        this.comentary = comentary;
+    public void setCommentary(String commentary) {
+        this.commentary = commentary;
     }
 
     /**

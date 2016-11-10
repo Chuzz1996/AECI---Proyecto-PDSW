@@ -5,13 +5,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.RequestMapper">
     <resultMap type='Request' id='RequestResult'>
-        <id property='Solicitud' column='id'/>
-        <result property='Cedula' column='User_Id'/> 
-           
-        <association property="Cedula" javaType="User" columnPrefix="us" resultMap='UserResult'></association>      
-        <collection property='respuestas' ofType='Comentario' columnPrefix="cm_" resultMap='ComentarioResult'></collection>
+        <id property='id' column='Id'/>
+        <result property='user_id' column='User_Id'/>
+        <result property='date' column='Date'/>
+        <result property='commentary' column='Commentary'/>
+        <result property='state' column='State'/>
     </resultMap>
-    
     
     <select id="getRequests" resultMap="RequestResult">
         select rq.id, rq.User_Id, rq.Date, rq.Commentary,rq.State 
