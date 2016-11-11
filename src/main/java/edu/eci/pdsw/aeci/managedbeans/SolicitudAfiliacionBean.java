@@ -14,9 +14,10 @@ import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeciDAO;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -54,7 +55,7 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String AnoGraducacion;
     private int Periodo;
     private Date fechaNacimiento;
-    private static ServiciosAeciDAO  Rp = ServiciosAeciDAO.getInstance();
+    //public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
     
     private String semestre;
     private String NombreEmpresa;
@@ -73,11 +74,11 @@ public class SolicitudAfiliacionBean implements Serializable{
             try{
                 Calendar fecha = new GregorianCalendar();
                 java.util.Date fechaDeEnvio  = fecha.getTime();
-                Program programa = Rp.consultarPrograma(Carrera);
+                Program programa = Rp.getProgram(Carrera);
                 User newUser = new User(CC, Nombre, Apellido, correo, tel, Celular, programa, yearGraduate, Periodo, fechaNacimiento);
-                Rp.registrarNuevoUsuario(newUser);
+                Rp.addUser(newUser);
                 Request request = new Request(newUser.getId(), newUser.getFechaDeNacimiento());
-                Rp.registrarNuevaSolicitud(request);
+                Rp.addRequest(request);
             }catch(ExcepcionServiciosAeci ex){
 
 

@@ -47,6 +47,8 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract void addRequest(Request request) throws ExcepcionServiciosAeci;
     
     public abstract void updateRequest(Request request) throws ExcepcionServiciosAeci;
+    
+    public abstract Program getProgram(int id)throws ExcepcionServiciosAeci;
 
     public abstract List<Request> getActiveRequests() throws ExcepcionServiciosAeci;
        

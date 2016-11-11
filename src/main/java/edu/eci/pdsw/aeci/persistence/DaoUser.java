@@ -13,8 +13,8 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoUser {
     
-    public void addUser(User user);
+    public void addUser(User user)throws PersistenceException;
     
-    public void updateUSer(User user);
+    public void updateUSer(User user)throws PersistenceException;
     
 }

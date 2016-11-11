@@ -13,4 +13,6 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoProgram {
     
+    public Program getProgram(int id) throws PersistenceException;
+    
 }

@@ -7,6 +7,7 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 
 import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoUser;
+import org.apache.ibatis.session.SqlSession;
 
 /**
  *
@@ -14,6 +15,12 @@ import edu.eci.pdsw.aeci.persistence.DaoUser;
  */
 public class MyBatisDAOUser implements DaoUser {
 
+    private SqlSession currentSession=null;
+    
+    public MyBatisDAOUser(SqlSession session){
+        this.currentSession=session;
+    }
+    
     @Override
     public void addUser(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

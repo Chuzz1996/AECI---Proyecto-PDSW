@@ -14,10 +14,10 @@ import java.util.List;
  */
 public interface DaoRequest {
     
-    public void updateRequest();
+    public void updateRequest()throws PersistenceException;
     
-    public void addRequest();
+    public void addRequest()throws PersistenceException;
     
-    public List<Request> getActiveRequests();
+    public List<Request> getActiveRequests()throws PersistenceException;
     
 }

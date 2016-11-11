@@ -15,7 +15,9 @@ import java.util.List;
 public interface RequestMapper {
     
     public List<Request> getActiveRequests();
+    
     public void addRequest(Request r);
+    
     public void updateRequest(Request r,String commentary,String state);
     
 }

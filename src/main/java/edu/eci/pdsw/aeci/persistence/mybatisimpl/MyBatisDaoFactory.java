@@ -21,6 +21,7 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 import edu.eci.pdsw.aeci.persistence.Dao;
 **/
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
+import edu.eci.pdsw.aeci.persistence.DaoProgram;
 import edu.eci.pdsw.aeci.persistence.DaoRequest;
 import edu.eci.pdsw.aeci.persistence.DaoUser;
 
@@ -109,4 +110,11 @@ public class MyBatisDaoFactory extends DaoFactory {
     public DaoRequest getDaoRequest() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public DaoProgram getDaoProgram() {
+        return new MyBatisDAOProgram(currentSession);
+    }
+    
+    
 }

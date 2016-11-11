@@ -13,7 +13,7 @@
     </resultMap>
     
     <select id="getRequests" resultMap="RequestResult">
-        select rq.id, rq.User_Id, rq.Date, rq.Commentary,rq.State 
+        select rq.Id, rq.User_Id, rq.Date, rq.Commentary,rq.State 
         us.id, us.FirstName, us.LastName, us.Email,us.Phone,us.Cellphone,us.Program_Id,us.YearGraduate,us.BirthDate,us.Period
         from Request as rq
         LEFT JOIN User as us ON rq.User_Id=us.id

@@ -11,6 +11,7 @@ import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
+import edu.eci.pdsw.aeci.persistence.DaoProgram;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +29,14 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     private DaoFactory daof;
     
     public ServiciosAeciDAO() {
-
+        try{
+            InputStream input = getClass().getClassLoader().getResource("applicationconfig.properties").openStream();
+            Properties properties=new Properties();
+            properties.load(input);
+            daof = DaoFactory.getInstance(properties);
+        }catch(IOException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -63,6 +71,27 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     @Override
     public void updateUser(User user) throws ExcepcionServiciosAeci {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Program getProgram(int id) throws ExcepcionServiciosAeci {
+        Program program = null;
+        try{
+            daof.beginSession();
+            DaoProgram pr = daof.getDaoProgram();
+            program = pr.getProgram(id);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }
+        return program;
     }
 
 }

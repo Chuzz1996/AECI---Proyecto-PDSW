@@ -1,24 +1,24 @@
 /* Poblar Programs*/
 
-insert into Program values (1,'Ingenieria Civil',10)
+insert into Program values (1,'Ingenieria Civil',10);
 
-insert into Program values (2,'Ingenieria Electronica',10)
+insert into Program values (2,'Ingenieria Electronica',10);
 
-insert into Program values (3,'Ingenieria Electrica',10)
+insert into Program values (3,'Ingenieria Electrica',10);
 
-insert into Program values (4,'Ingenieria De Sistemas',10)
+insert into Program values (4,'Ingenieria De Sistemas',10);
 
-insert into Program values (5,'Ingenieria Industrial',10)
+insert into Program values (5,'Ingenieria Industrial',10);
 
-insert into Program values (6,'Matematicas',10)
+insert into Program values (6,'Matematicas',10);
 
-insert into Program values (7,'Economia',10)
+insert into Program values (7,'Economia',10);
 
-insert into Program values (8,'Administracion de Empresas',10)
+insert into Program values (8,'Administracion de Empresas',10);
 
-insert into Program values (9,'Ingenieria Mecanica',10)
+insert into Program values (9,'Ingenieria Mecanica',10);
 
-insert into Program values (10,'Ingenieria Biomedica',10)
+insert into Program values (10,'Ingenieria Biomedica',10);
 
 /*Insertar usuarios*/
 

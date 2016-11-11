@@ -6,7 +6,7 @@
 package edu.eci.pdsw.aeci.entities;
 
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
