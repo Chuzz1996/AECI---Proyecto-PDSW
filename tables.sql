@@ -72,6 +72,12 @@ CREATE TABLE Request (
     State char(1) NOT NULL
 ) ENGINE=InnoDB ;
 
+-- Table: Rol
+CREATE TABLE Rol (
+  Id int NOT NULL,
+  Name varchar(50) NOT NULL
+) ENGINE=InnoDB ;
+
 -- Table: Student
 CREATE TABLE Student (
     Id int NOT NULL,
@@ -90,7 +96,8 @@ CREATE TABLE User (
     Progam_Id int NOT NULL,
     YearGraduate int NOT NULL,
     BirthDate timestamp NOT NULL,
-    Period int NOT NULL
+    Period int NOT NULL,
+    Rol_Id int NOT NULL
 ) ENGINE=InnoDB ;
 
 -- Table: Uses
@@ -102,6 +109,10 @@ CREATE TABLE Uses (
 --- Primary keys ---
 --- Table: Program ---
 ALTER TABLE Program ADD CONSTRAINT PK_PROGRAM
+  PRIMARY KEY (Id);
+  
+--- Table: Rol ---
+ALTER TABLE Rol ADD CONSTRAINT PK_ROL
   PRIMARY KEY (Id);
   
 --- Table: Person ---
@@ -194,3 +205,7 @@ ALTER TABLE Graduate ADD CONSTRAINT FK_User_Graduate FOREIGN KEY(User_id)
 -- Reference: User_Student (table: Student)
 ALTER TABLE Student ADD CONSTRAINT FK_User_Student FOREIGN KEY(User_id) 
     REFERENCES User(Id) ON DELETE CASCADE;
+    
+-- Reference: User_Rol (table: User)
+ALTER TABLE User ADD CONSTRAINT FK_Rol_User FOREIGN KEY(Rol_Id)
+  REFERENCES Rol(Id);
