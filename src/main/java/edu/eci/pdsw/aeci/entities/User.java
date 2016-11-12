@@ -13,6 +13,8 @@ import java.util.Date;
  * @author 2095498
  */
 public class User {
+
+
     
     private int id;
     private String firstName;
@@ -24,8 +26,9 @@ public class User {
     private int yearGraduate;
     private int periodo;
     private Date fechaDeNacimiento;
+    private Rol role;
     
-    public User( int Id,String FirstName,String LastName,String Email,int Phone,String Celphone,Program programa, int YearGraduate, int periodo, Date fechaDeNacimiento) throws ExcepcionServiciosAeci{
+    public User( int Id,String FirstName,String LastName,String Email,int Phone,String Celphone,Program programa, int YearGraduate, int periodo, Date fechaDeNacimiento, Rol role) throws ExcepcionServiciosAeci{
         this.id=Id;
         this.firstName=FirstName;
         this.lastName=LastName;
@@ -37,6 +40,7 @@ public class User {
         this.yearGraduate=YearGraduate;
         this.periodo = periodo;
         this.fechaDeNacimiento = fechaDeNacimiento;
+        this.role = role;
     }
 
     public void revisarCorreo(String Email) throws ExcepcionServiciosAeci{
@@ -65,6 +69,20 @@ public class User {
         this.id = id;
     }
 
+        /**
+     * @return the role
+     */
+    public Rol getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(Rol role) {
+        this.role = role;
+    }
+    
     /**
      * @return the firstName
      */

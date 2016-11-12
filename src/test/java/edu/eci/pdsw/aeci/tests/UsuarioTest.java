@@ -56,6 +56,7 @@ public class UsuarioTest {
     }
     
     
+    /*No es necesario hacer la prueba de correo
     @Test
     public void EnvioDeAprobado() {
        String NombrePersona = "Felipe Losada";
@@ -63,7 +64,7 @@ public class UsuarioTest {
        String comentarioPersona = "Probando el envio de correos";
        ServicioEnvioCorreos EnviarCorreo = new ServicioEnvioCorreos();
        assertTrue("No se ha enviado el correo exitosamente",EnviarCorreo.EnviarCorreo(NombrePersona, CorreoPersona, comentarioPersona));
-    }
+    }*/
     
    
     

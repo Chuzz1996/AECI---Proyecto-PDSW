@@ -7,6 +7,11 @@ package edu.eci.pdsw.aeci.services;
 
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.javamail.core.Email;
+import edu.eci.pdsw.aeci.javamail.core.EmailConfiguration;
+import edu.eci.pdsw.aeci.javamail.core.EmailSender;
+import edu.eci.pdsw.aeci.javamail.core.SimpleEmail;
+import edu.eci.pdsw.aeci.javamail.core.SimpleEmailSender;
 
 import java.util.*;
 import javax.mail.*;
@@ -19,40 +24,12 @@ import javax.activation.*;
  */
 public class ServicioEnvioCorreos {
     
-    /**
-     * @return the passwordCorreoFuente
-     */
-    public String getPasswordCorreoFuente() {
-        return passwordCorreoFuente;
-    }
-
-    /**
-     * @param passwordCorreoFuente the passwordCorreoFuente to set
-     */
-    public void setPasswordCorreoFuente(String passwordCorreoFuente) {
-        this.passwordCorreoFuente = passwordCorreoFuente;
-    }
-
-    /**
-     * @return the CorreoFuente
-     */
-    public String getCorreoFuente() {
-        return CorreoFuente;
-    }
-
-    /**
-     * @param CorreoFuente the CorreoFuente to set
-     */
-    public void setCorreoFuente(String CorreoFuente) {
-        this.CorreoFuente = CorreoFuente;
-    }
     
     /*
     Correo y contrase;a actualmente de pruebas
+    Correo = pruebapdsw@gmail.com 
+    passwordCorreo = holamundo;
     */
-    private String CorreoFuente = "pruebapdsw@gmail.com"; 
-    private String passwordCorreoFuente = "holamundo";
-    
     public void aprobado(User destinatario, Request solicitud){
         
     }
@@ -62,8 +39,8 @@ public class ServicioEnvioCorreos {
     }
     
     
-    public boolean EnviarCorreo(String nombre,String correo, String comentario){
-        boolean envio = false;
+    public void EnviarCorreo(String nombre,String correo, String comentario){
+        /*boolean envio = false;
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -88,6 +65,18 @@ public class ServicioEnvioCorreos {
             envio = true;
         } catch (MessagingException e) {
             throw new RuntimeException(e);
-        }return envio;
+        }return envio;*/
+        final String from = "aeci@gmail.com";
+        final String to = correo;
+        final String subject = nombre;
+        final String message = comentario;
+
+        Email email = new SimpleEmail(from, to, subject, message);
+        EmailSender sender = new SimpleEmailSender(new EmailConfiguration());
+        try {
+            sender.send(email);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 }
