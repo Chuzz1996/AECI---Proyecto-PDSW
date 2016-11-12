@@ -8,6 +8,7 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoRequest;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
+import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.RequestMapper;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
@@ -24,18 +25,18 @@ public class MyBatisDAORequest implements DaoRequest {
     }
 
     @Override
-    public void updateRequest() throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateRequest(Request r, String commentary, String state) throws PersistenceException {
+        currentSession.getMapper(RequestMapper.class).updateRequest(r, commentary, state);
     }
 
     @Override
-    public void addRequest() throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addRequest(Request r) throws PersistenceException {
+        currentSession.getMapper(RequestMapper.class).addRequest(r);
     }
 
     @Override
     public List<Request> getActiveRequests() throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return currentSession.getMapper(RequestMapper.class).getActiveRequests();
     }
     
 }

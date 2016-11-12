@@ -103,12 +103,12 @@ public class MyBatisDaoFactory extends DaoFactory {
 
     @Override
     public DaoUser getDaoUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new MyBatisDAOUser(currentSession);
     }
 
     @Override
     public DaoRequest getDaoRequest() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new MyBatisDAORequest(currentSession);
     }
 
     @Override
