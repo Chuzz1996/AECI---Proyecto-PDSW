@@ -92,15 +92,7 @@ public abstract class DaoFactory {
     }
 
     public abstract void beginSession() throws PersistenceException;
-/**
-    public abstract DaoEntradaForo getDaoEntradaForo();
-    
-**/
 
-    /**
-     * public abstract DaoEntradaForo getDaoEntradaForo();
-     * @throws edu.eci.pdsw.aeci.persistence.PersistenceException
-     */
     public abstract DaoUser getDaoUser();
     
     public abstract DaoRequest getDaoRequest();
