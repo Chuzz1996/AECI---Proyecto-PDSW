@@ -28,7 +28,7 @@ public class User {
     private Date fechaDeNacimiento;
     private Rol role;
     
-    public User( int Id,String FirstName,String LastName,String Email,int Phone,String Celphone,Program programa, int YearGraduate, int periodo, Date fechaDeNacimiento, Rol role) throws ExcepcionServiciosAeci{
+    public User( int Id,String FirstName,String LastName,String Email,int Phone,String Celphone,Program programa, int YearGraduate, int periodo, Date fechaDeNacimiento) throws ExcepcionServiciosAeci{
         this.id=Id;
         this.firstName=FirstName;
         this.lastName=LastName;
@@ -40,7 +40,6 @@ public class User {
         this.yearGraduate=YearGraduate;
         this.periodo = periodo;
         this.fechaDeNacimiento = fechaDeNacimiento;
-        this.role = role;
     }
 
     public void revisarCorreo(String Email) throws ExcepcionServiciosAeci{
