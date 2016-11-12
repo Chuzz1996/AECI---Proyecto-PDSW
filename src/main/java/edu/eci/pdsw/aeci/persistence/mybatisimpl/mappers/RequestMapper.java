@@ -18,6 +18,8 @@ public interface RequestMapper {
     
     public void addRequest(Request r);
     
-    public void updateRequest(Request r,String commentary,String state);
+    public void updateRequestCommentary(Request r,String commentary);
+    
+    public void updateRequestState(Request r,String state);
     
 }
