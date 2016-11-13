@@ -19,6 +19,8 @@ public interface RequestMapper {
     
     public void addRequest(@Param("request") Request r);
     
-    public void updateRequest(@Param("request") Request r,@Param("commentary") String commentary,@Param("state") String state);
+    public void updateRequestCommentary(Request r,String commentary);
+    
+    public void updateRequestState(Request r,String state);
     
 }
