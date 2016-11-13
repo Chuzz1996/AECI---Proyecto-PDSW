@@ -13,31 +13,21 @@
     </resultMap>
     
     <select id="getRequests" resultMap="RequestResult">
-        select rq.Id, rq.User_Id, rq.Date, rq.Commentary,rq.State 
-        us.id, us.FirstName, us.LastName, us.Email,us.Phone,us.Cellphone,us.Program_Id,us.YearGraduate,us.BirthDate,us.Period
-        from Request as rq
-        LEFT JOIN User as us ON rq.User_Id=us.id
-        WHERE rq.State='E' 
-    </select>
-    
-    <select id="getRequest" resultMap="RequestResult" parameterType="map">
-        select rq.id, rq.User_Id, rq.Date, rq.Commentary,rq.State 
-        us.id, us.FirstName, us.LastName, us.Email,us.Phone,us.Cellphone,us.Program_Id,us.YearGraduate,us.BirthDate,us.Period
-        from Request as rq
-        LEFT JOIN User as us ON rq.User_Id=us.id
-        WHERE rq.State='E' AND rq.User_Id=#{idUser}
+        SELECT Request.Date, Rol.Name
+        FROM Request, User, Rol
+        WHERE Request.User_Id = User.Id AND User.Rol_Id = Rol.Id AND Request.State = "E"
+        Order By Request.Date Desc;
     </select>
 
-    <insert id="saveRequest" parameterType="map">
-        INSERT INTO Request  (id, User_Id, Date, Commentary,State ) 
-        VALUES ( #{Request.id},#{Request.User_Id},#{Request.Date},#{Request.Commentary},#{Request.State};   
+    <insert id="addRequest" parameterType="map">
+        INSERT INTO Request (id, User_Id, Date, Commentary,State ) 
+        VALUES ( #{request.id},#{request.user_Id},#{request.date},#{request.commentary},#{request.state};   
     </insert>
     
-    
-    <insert id="saveUser" parameterType="map">
-        INSERT INTO User (id, FirstName, LastName, Email,Phone,Cellphone,Program_Id,YearGraduate,BirthDate,Period ) 
-        VALUES ( #{User.id},#{User.FirstName},#{User.LastName},#{User.Email},#{User.Phone},#{User.Cellphone},
-                #{User.Program_Id},#{User.YearGraduate},#{User.BirthDate},#{User.Period});   
-    </insert>
+    <update id="updateRequest" parameterType="map">
+        UPDATE Request
+        SET State = state, Commentary = commentary
+        WHERE Id = request.id;
+    </update>
   	
 </mapper>
