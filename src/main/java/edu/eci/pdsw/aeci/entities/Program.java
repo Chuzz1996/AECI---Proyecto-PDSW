@@ -13,8 +13,16 @@ import java.sql.Date;
  */
 public class Program {
     
-    private int duration;
+    private int id,duration;
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

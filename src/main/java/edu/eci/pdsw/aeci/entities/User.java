@@ -7,6 +7,7 @@ package edu.eci.pdsw.aeci.entities;
 
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import java.util.Date;
+import java.util.Set;
 
 /**
  *
@@ -14,32 +15,25 @@ import java.util.Date;
  */
 public class User {
 
-
-    
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private int phone;
-    private String celphone;
+    private int id,yearGraduate,period;
+    private String firstName,lastName,email,cellphone,phone;
     private Program program;
-    private int yearGraduate;
-    private int periodo;
-    private Date fechaDeNacimiento;
+    private Date birthDate;
     private Rol role;
+    private Set<Request> requests;
     
-    public User( int Id,String FirstName,String LastName,String Email,int Phone,String Celphone,Program programa, int YearGraduate, int periodo, Date fechaDeNacimiento) throws ExcepcionServiciosAeci{
-        this.id=Id;
-        this.firstName=FirstName;
-        this.lastName=LastName;
-        revisarCorreo(Email);
-        this.email=Email;
-        this.phone=Phone;
-        this.celphone=Celphone;
-        this.program=programa;
-        this.yearGraduate=YearGraduate;
-        this.periodo = periodo;
-        this.fechaDeNacimiento = fechaDeNacimiento;
+    public User( int id,String firstName,String lastName,String email,String phone,String cellphone,Program program, int yearGraduate, int period, Date birthDate) throws ExcepcionServiciosAeci{
+        this.id=id;
+        this.firstName=firstName;
+        this.lastName=lastName;
+        revisarCorreo(email);
+        this.email=email;
+        this.phone=phone;
+        this.cellphone=cellphone;
+        this.program=program;
+        this.yearGraduate=yearGraduate;
+        this.period = period;
+        this.birthDate = birthDate;
     }
 
     public void revisarCorreo(String Email) throws ExcepcionServiciosAeci{
@@ -52,6 +46,20 @@ public class User {
         if(segundaRevisionCorreo.length < 2){
             throw new ExcepcionServiciosAeci("No es un correo");
         }
+    }
+    
+    /**
+     * @return the requests of a user
+     */
+    public Set<Request> getRequests(){
+        return requests;
+    }
+    
+    /**
+     * @param requests the requests to set
+     */
+    public void setRequests(Set<Request> requests){
+        this.requests = requests;
     }
     
     /**
@@ -128,29 +136,29 @@ public class User {
     /**
      * @return the phone
      */
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
     /**
      * @param phone the phone to set
      */
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
     /**
      * @return the celphone
      */
-    public String getCelphone() {
-        return celphone;
+    public String getCellphone() {
+        return cellphone;
     }
 
     /**
-     * @param celphone the celphone to set
+     * @param cellphone the celphone to set
      */
-    public void setCelphone(String celphone) {
-        this.celphone = celphone;
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
     }
 
     /**
@@ -184,29 +192,29 @@ public class User {
     /**
      * @return the periodo
      */
-    public int getPeriodo() {
-        return periodo;
+    public int getPeriod() {
+        return period;
     }
 
     /**
-     * @param periodo the periodo to set
+     * @param period the periodo to set
      */
-    public void setPeriodo(int periodo) {
-        this.periodo = periodo;
+    public void setPeriod(int period) {
+        this.period = period;
     }
 
     /**
-     * @return the fechaDeNacimiento
+     * @return the birthDate
      */
-    public Date getFechaDeNacimiento() {
-        return fechaDeNacimiento;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
     /**
-     * @param fechaDeNacimiento the fechaDeNacimiento to set
+     * @param birthDate the birthDate to set
      */
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
+    public void setFechaDeNacimiento(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     

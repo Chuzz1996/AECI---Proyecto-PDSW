@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.UserMapper">
+    <resultMap type='User' id='UserResult'>
+        <id property='id' column='Id'/>
+        <result property='phone' column='Phone'/>
+        <result property='yearGraduate' column='YearGraduate'/>
+        <result property='period' column='Period'/>
+        <result property='firstName' column='FirstName'/>
+        <result property='lastName' column='LastName'/>
+        <result property='email' column='Email'/>
+        <result property='cellPhone' column='CellPhone'/>
+        <result property='birthDate' column='BirthDate'/>
+        <association property = 'program' javaType ='Program' columnPrefix='pr_' resultMap='ProgramResult'></association>
+        <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
+        <collection property='requests' ofType='Request' columnPrefix='rq_' resultMap='RequestResult'></collection>
+    </resultMap>
+    
+    <resultMap type='Request' id='RequestResult'>
+        <id property='id' column='Id'/>
+        <result property='user_id' column='User_Id'/>
+        <result property='date' column='Date'/>
+        <result property='commentary' column='Commentary'/>
+        <result property='state' column='State'/>
+    </resultMap>
+    
+    <resultMap type='Rol' id='RolResult'>
+        <id property='id' column='Id'/>
+        <result property='name' column='Name'/>
+    </resultMap>
+    
+    <resultMap type='Program' id='ProgramResult'>
+        <id property='id' column='Id'/>
+        <result property='duration' column='Duration'/>
+        <result property='name' column='Name'/>
+    </resultMap>
+    
+    <select id="getPendingUsers" resultMap="UserResult">
+        Select User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
+               Request.Id as rq_Id, Resquest.User_Id as rq_User_Id, Request.Date as rq_Date, Request.Commentary as rq_Commentary, Request.State as rq_State,
+               Rol.Id as rl_Id, Rol.Name as rl_Name, Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
+        From User, Request, Rol, Program
+        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And Request.State = "E"
+        Order By Request.Date Desc;
+    </select>
+    
+    <select id="getUsers" resultMap="UserResult">
+        Select User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
+               Request.Id as rq_Id, Resquest.User_Id as rq_User_Id, Request.Date as rq_Date, Request.Commentary as rq_Commentary, Request.State as rq_State,
+               Rol.Id as rl_Id, Rol.Name as rl_Name, Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
+        From User, Request, Rol, Program
+        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id
+    </select>
+    
+    <insert id="addUser" parameterType="map">
+        INSERT INTO (Id, FirstName, LastName, Email, Phone, CellPhone, Program_Id, YearGraduate, BirthDate, Period, Rol_Id) 
+        VALUES (#{user.id}, #{user.firstName}, #{user.lastName}, #{user.email},#{user.phone},#{user.cellPhone}, #{user.program.id},#{user.yearGraduate},#{user.birthDate},#{user.period},#{user.role.id})
+    </insert>
+    
+    <update id="updateUserFirstName" parameterType="map">
+        UPDATE User
+        SET  FirstName= #{fname}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserLastName" parameterType="map">
+        UPDATE User
+        SET  LastName = #{lname}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserEmail" parameterType="map">
+        UPDATE User
+        SET  Email = #{email}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserPhone" parameterType="map">
+        UPDATE User
+        SET  Phone = #{phone}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserCellphone" parameterType="map">
+        UPDATE User
+        SET  CellPhone = #{cphone}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserProgram_Id" parameterType="map">
+        UPDATE User
+        SET  Program_Id = #{pid}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserYearGraduate" parameterType="map">
+        UPDATE User
+        SET  YearGraduate = #{ygraduate}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserBirthDate" parameterType="map">
+        UPDATE User
+        SET BirthDate = #{bdate}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserPeriod" parameterType="map">
+        UPDATE User
+        SET Period = #{period}
+        WHERE Id = #{id};
+    </update>
+    
+    <update id="updateUserPeriod" parameterType="map">
+        UPDATE User
+        SET  Rol_Id = #{rid}
+        WHERE Id = #{id};
+    </update>
+    
+</mapper>

@@ -13,10 +13,8 @@
     </resultMap>
     
     <select id="getRequests" resultMap="RequestResult">
-        SELECT Request.Date, Rol.Name
-        FROM Request, User, Rol
-        WHERE Request.User_Id = User.Id AND User.Rol_Id = Rol.Id AND Request.State = "E"
-        Order By Request.Date Desc;
+        SELECT Request.Id, Request.User_Id, Request.Commentary, Request.State,Request.Date
+        FROM Request;
     </select>
 
     <insert id="addRequest" parameterType="map">
@@ -24,10 +22,16 @@
         VALUES ( #{request.id},#{request.user_Id},#{request.date},#{request.commentary},#{request.state};   
     </insert>
     
-    <update id="updateRequest" parameterType="map">
+    <update id="updateRequestCommentary" parameterType="map">
         UPDATE Request
-        SET State = state, Commentary = commentary
-        WHERE Id = request.id;
+        SET Commentary = #{commentary}
+        WHERE Id = #{request.id};
+    </update>
+    
+    <update id="updateRequestState" parameterType="map">
+        UPDATE Request
+        SET State = #{state}
+        WHERE Id = #{request.id};
     </update>
   	
 </mapper>

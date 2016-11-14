@@ -19,10 +19,12 @@ public class Request {
     private String state;
     private Date date;
     
-    public Request (int user_id, Date date, String state){
+    public Request (int id, int user_id, String commentary, String state, Date date){
+        this.id = id;
         this.user_id = user_id;
-        this.date=date;
+        this.commentary = commentary;
         this.state = state;
+        this.date=date;
     }
 
     /**
