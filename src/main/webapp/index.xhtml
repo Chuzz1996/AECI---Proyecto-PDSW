@@ -4,146 +4,132 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-      <title>AECI</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
-      <body>
-          
-          <!-- Distribución general -->
-          
-          <div class = "w3-top">
-              <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
-                  <li>
-                      <a href="#home" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
-                  </li>
-                  <li class="w3-right w3-hide-small">
-                    <a href="#Nosotros" class="w3-left w3-btn w3-black">Nosotros</a>
-                    <a href="#Juanta" class="w3-left w3-btn w3-black">Junta Directiva</a>
-                    <a href="#Convenios" class="w3-left w3-btn w3-black">Convenios</a>
-                    <a href="#ComoAfiliarse" class="w3-left w3-btn w3-black">Como Afiliarse</a>
-                    <a href="#Datos" class="w3-left w3-btn w3-black">Politicas de Datos</a>
-                    <a href="#Contacto" class="w3-left w3-btn w3-black">Contáctanos</a>
-                    <a href="#Ingresar" class="w3-left w3-margin-right w3-btn w3-black">Ingresar</a>
-                  </li>
-              </ul>
-          </div>
-          
-          <!-- Parte superior -->
-          
-          <header class="w3-display-container w3-content w3-wide" style="max-width:1500px" id="home">              
-              <div class="w3-image"> <p:graphicImage name="prueba.jpg" alt="FotoEscuela" width="1500" height="600"/>
+    <title>AECI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
+    <h:head>
+
+    </h:head>
+    <h:body>
+
+        <!-- Distribución general -->
+        <h:form class="w3-top">        
+            <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
+                <li>
+                    <a href="EnvioSolicitud.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <h:link value="Nosotros" class="w3-left w3-btn w3-black" fragment="Nosotros"/>       
+                    <h:link value="Junta" class="w3-left w3-btn w3-black" fragment="Junta"/>         
+                    <h:link value="Convenios" class="w3-left w3-btn w3-black" fragment="Convenios"/>         
+                    <h:link value="Como Afiliarse" class="w3-left w3-btn w3-black" fragment="ComoAfiliarse"/>         
+                    <h:link value="Datos" class="w3-left w3-btn w3-black" fragment="Datos"/>         
+                    <h:link value="Contactanos" class="w3-left w3-btn w3-black" fragment="Contacto"/>         
+                    <h:outputLink  value="javascript:void(0)" class="w3-left w3-btn w3-black" onclick="PF('dlg').show()">Ingresar</h:outputLink>                     
+                </li>
+            </ul>
+        </h:form>
+        
+
+        <!-- Parte superior -->         
+
+        <header class="w3-display-container w3-content w3-wide" style="max-width:1500px" id="home">              
+              <div class="w3-image"> <p:graphicImage url="images/prueba.jpg" alt="FotoEscuela" width="1500" height="600"/>
+
                 <div class="w3-display-middle w3-padding-xlarge">
                     <h6><a href="EnvioSolicitud.xhtml" class="w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off">Enviar solicitud</a></h6>
                 </div>
               </div>
-          </header>
-          
-          <!--  Contenido de la pagina -->
-          
-          <div class="w3-content w3-padding" style="max-width:1564px">
-              
-              <!-- Quienes somos -->
-              
-              <div class="w3-container w3-padding-32" id="Nosotros">
-                <div class="w3-col m6 w3-padding-large">
-                    <h1 class="w3-Left">Quienés somos</h1>
-                </div>
-              </div>
-              
-              <!-- Junta directiva -->
-              
-              <div class="w3-container w3-padding-32 w3-light-grey" id="Nuestra juanta directiva">
-                <div class="w3-col m6 w3-padding-large">
-                    <h1 class="w3-Left">Nuestra junta directiva</h1>
-                    <br>
-                        <h5 class="w3-center">Presidente</h5>
-                    </br>
-                    <p class="w3-large">
-                        ING. MARIA MARGARITA SERRANO LÓPEZ
-                    </p>
-                    <br>
-                        <h5 class="w3-center">VicePresidente</h5>
-                    </br>
-                    <p class="w3-large">
-                        ING. CLAUDIA PATRICIA JAIME MORALES
-                    </p>
-                    <br>
-                        <h5 class="w3-center">Vocales/Invitados Permanentes</h5>
-                    </br>
-                    <p class="w3-large">
-                        ING. LUIS ALEJANDRO PARRA DELGADO
-                    </p>                   
-                </div>
-              </div>
-              
-              <!-- Convenios -->
-              
-              <div class="w3-container w3-padding-32" id="Convenios">
-                <div class="w3-col m6 w3-padding-large">
-                    <h1 class="w3-Left">Convenios</h1>
-                </div>
-              </div>
-              
-              <!-- Como afiliarse -->
-              
-              <div class="w3-row w3-padding-64 w3-light-grey" id="ComoAfiliarse">
-                  <div class="w3-col m6 w3-padding-large">
-                      <h1 class="w3-Left">Como afiliarse</h1>
-                      <br>
-                          <h5 class="w3-center">Egresados</h5>
-                      </br>
-                      <p class="w3-large">Cuota anual de $155.000  puede hacer su aporte al la cuenta de ahorros  Davivienda N°00 3800067922 </p>
-                      <br>
-                          <h5 class="w3-center">Estudiantes</h5>
-                      </br>
-                      <p class="w3-large">Afiliacion Gratuita  Durante los tres (3) ultimos semestres. 
-                                          y los seis (6) meses inicales de su carrera 
-                      </p>
-                      <br>
-                          <h5 class="w3-center">Funcionario Escuela</h5>
-                      </br>
-                      <p class="w3-large">Solicite su descuento por  nómina, diligenciando el formulario de autorización de descuento suministrado por la AECI.</p>
-                      <br>
-                          <h5 class="w3-center">Medios de Pago</h5>
-                      </br>
-                      <p class="w3-large">EFECTIVO Y TARJETA DE CREDITO
-                                            Oficina AECI- Sede Escuela Colombiana de Ingeneiria
-                                            CONSIGNACIÓN Y TRANSFERENCIA 
-                                            Banco Davivienda Ahororos :055 000 3800067922 
-                                            NIT: 80030031137- 4     
-                      </p>
-                  </div>
-              </div>
-              
-              <!-- Politicas de tratamientos de datos -->
-              
-              <div class="w3-container w3-padding-32" id="Datos">
-                <div class="w3-col m6 w3-padding-large">
-                    <h1 class="w3-Left">Politicas de tratamientos de datos</h1>
-                </div>
-              </div>
-              
-              
-              <!-- Contactenos -->
-              
-              <div class="w3-container w3-padding-32 w3-black" id="Contacto">
-                <div class="w3-col m6 w3-padding-large">
-                    <h1 class="w3-Left">Contactenos</h1>
-                    <div class="w3-section">
-                        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin"></i>Dirección: AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso</p>
-                        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> PBX: +57(1) 668 3600 Ext.1232</p>
-                        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> Móvil: +57 312 457 0612</p>
-                        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin"> </i> Correo Electronico: aeci@escuelaing.edu.co </p>
-                        <footer class="w3-content w3-padding-64 w3-text-white w3-xlarge">
-                            <a href="https://www.facebook.com/AECIescuelaing/?fref=ts" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
-                        </footer>
-                    </div>
-                </div>
-              </div>          
-              
-            
-          </div>
-      </body>
+        </header>
+
+        <!--  Contenido de la pagina -->          
+
+        <p:outputPanel id="Nosotros" style="margin: 0 auto; text-align: center">               
+            <h1>Quienés somos</h1>
+            <h:panelGrid columns="2" cellpadding ="20" style="margin: 0 auto;">   
+                <h:outputText
+                    value="Somos una asociación sin ánimo de lucro, conformada por Egresados de Programas de Pregrado y Posgrado de la Escuela Colombiana de Ingeniería Julio Garavito,con el fin de mejorar la calidad de vida generando  
+                    múltiples beneficios para nuestros egresados  en aspectos  académicos ,comerciales y del sector salud . Trabajamos por ofrecer una amplia oferta de opciones  laborales con empresas que confían en  la calidad  de nuestro 
+                    Capital Humano. Los miembros elegidos  de la Junta Directiva de  la AECI,  trabajan en favor de los intereses gremiales, sirviendo como un canal de comunicación entre el sector real y la Academia,  potenciando  un 
+                    profesional íntegro y ético comprometido  con el desarrollo social, económico y humano de Nuestro País. "/>                                           
+            </h:panelGrid>                                      
+        </p:outputPanel>  
+        <p:outputPanel id="Junta" style="margin: 0 auto; text-align: center">     
+            <!-- Junta directiva -->       
+            <h1>Junta Directiva</h1>
+            <h:panelGrid columns="2" cellpadding ="20" bgcolor="#f1f1f1" style="margin: 0 auto;">   
+                <h:outputText value = "Presidente"/>                                             
+                <h:outputText value = "ING. MARIA MARGARITA SERRANO LÓPEZ"/>
+                <h:outputText value = "VicePresidente"/>               
+                <h:outputText value = "ING. CLAUDIA PATRICIA JAIME MORALES"/>
+                <h:outputText value = "Vocales/Invitados Permanentes"/>
+                <h:outputText value = "ING. LUIS ALEJANDRO PARRA DELGADO"/>                   
+            </h:panelGrid>
+        </p:outputPanel>                                    
+        <p:outputPanel id="Convenios" style="margin: 0 auto; text-align: center">  
+            <!-- Convenios -->                    
+            <h1>Convenios</h1>
+            <h:panelGrid columns="2" cellpadding ="20" style="margin: 0 auto;">   
+                <h:outputText value = "Convenios en proceso"/> 
+            </h:panelGrid>
+        </p:outputPanel> 
+        <p:outputPanel id="ComoAfiliarse" style="margin: 0 auto; text-align: center">  
+            <!-- Como afiliarse -->   
+            <h1>Cómo afiliarse</h1>
+            <h:panelGrid columns="2" cellpadding ="20" bgcolor="#f1f1f1" style="margin: 0 auto;"> 
+                <h:outputText value = "Egresados"/>
+                <h:outputText value = "Cuota anual de $155.000  puede hacer su aporte al la cuenta de ahorros  Davivienda N°00 3800067922"/>
+                <h:outputText value = "Estudiantes"/>               
+                <h:outputText value = "Afiliacion Gratuita  Durante los tres (3) ultimos semestres. Y los seis (6) meses inicales de su carrera"/> 
+                <h:outputText value = "Funcionario Escuela"/>
+                <h:outputText value = "Solicite su descuento por nómina, diligenciando el formulario de autorización de descuento suministrado por la AECI."/>
+                <h:outputText value = "Medios de Pago"/>
+                <h:outputText value = "EFECTIVO Y TARJETA DE CREDITO
+                              Oficina AECI- Sede Escuela Colombiana de Ingeneiria
+                              CONSIGNACIÓN Y TRANSFERENCIA
+                              Banco Davivienda Ahororos :055 000 3800067922 
+                              NIT: 80030031137-4"/>     
+            </h:panelGrid>
+        </p:outputPanel> 
+        <p:outputPanel id="Datos" style="margin: 0 auto; text-align: center"> 
+            <!-- Politicas de tratamientos de datos -->             
+            <h1>Politicas de tratamientos de datos</h1>                
+            <h:panelGrid columns="2" cellpadding ="20" style="margin: 0 auto;">   
+                <h:outputText value = "Politicas de tratamientos de datos" />
+            </h:panelGrid>
+        </p:outputPanel>               
+
+
+        <!-- Contactenos -->
+
+        <h:form>   
+            <p:outputPanel id="Contacto" style="color: black; background-color: black" >                  
+                    <h1 style="color: white">  Contactenos</h1>                 
+                <h:panelGrid columns="4" cellpadding ="20" style="margin: 0 auto;" bgcolor="#000000">                     
+                    <h:outputText class="fa-map-marker" style="color: white" value=" AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso  "/>
+                    <h:outputText class="fa-phone" style="color: white" value="  PBX: +57(1) 668 3600 Ext.1232"/>   
+                    <h:outputText class="fa-phone" style="color: white" value="  Móvil: +57 312 457 0612"/>      
+                    <h:outputText class="fa-envelope" style="color: white" value=" aeci@escuelaing.edu.co"/>   
+                    <h:outputLink class="fa-facebook-official" style="color: white"  value="https://www.facebook.com/AECIescuelaing/?fref=ts"/>                     
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:form>   
+
+        <h:form>
+            <p:dialog id="login" widgetVar="dlg" header="Ingresar" resizable="false">
+                    <h:panelGrid columns="2" cellpadding="20">
+                    <h:outputText value="Usuario"/>
+                    <h:inputText id="userId" value="" required="true"/>
+                    <h:outputText value="Contraseña"/>
+                    <p:password id="userPs" value="" required="true"/>
+                    
+                    <f:facet name="footer">
+                        <p:commandButton value="Submit" oncomplete="PF('dlg').hide()"/>
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
 </html>
