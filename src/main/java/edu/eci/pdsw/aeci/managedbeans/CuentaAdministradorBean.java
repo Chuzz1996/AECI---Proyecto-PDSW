@@ -21,6 +21,7 @@ importar aca las clases que necesiten
 import edu.eci.pdsw.samples.aeci.;
 
 ***/
+import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
@@ -39,8 +40,71 @@ import org.primefaces.event.UnselectEvent;
  *
  * @author hcadavid
  */
-@ManagedBean(name = "solicitudCuenta")
+@ManagedBean(name = "cuentaAdministrador")
 @SessionScoped
-public class SolicitudCuentaBean implements Serializable{
+public class CuentaAdministradorBean implements Serializable{
    
+    //public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
+    private String nombre;
+    private String apellido;
+    private String rol;
+    
+    public CuentaAdministradorBean(){
+        
+    }
+     /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the rol
+     */
+    public String getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
+    /**
+     * @return the apellido
+     */
+    public String getApellido() {
+        return apellido;
+    }
+
+    /**
+     * @param apellido the apellido to set
+     */
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    /**
+     * 
+     */
+    public void procesarAfiliacion(){
+        
+    }
+    
+    /**
+     * 
+     */
+    public void GenerarReportes(){
+    
+    }
 }

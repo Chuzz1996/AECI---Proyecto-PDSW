@@ -33,13 +33,18 @@
 
                 <div class="w3-white w3-text-grey w3-card-4">
                     <div class="w3-display-container">
-                        <div class="w3-display-bottomleft w3-container w3-text-black">
-                            <h2>Nombre</h2>
-                        </div>
+                        <h:outputText class=" w3-large w3-text-black" value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
                     </div>
+                    <br/>
                     <div class="w3-container">
-                        <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-black"></i>Rol</p>
-                        <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-black"></i>Opciones</b></p>
+                        <h:outputText class="fa fa-briefcase w3-large w3-text-black" value="#{cuentaAdministrador.rol}"/>
+                        <br/><br/>
+                        <h:outputText class="w3-large fa fa-asterisk fa-fw w3-margin-right w3-text-black" value="Opciones"/>
+                        <br/><br/>
+                        <p:commandButton class="w3-btn-block" value ="Procesar solicitudes de afiliacion"/>
+                        <br/><br/>
+                        <p:commandButton class="w3-btn-block" value ="Generacion de reportes"/>
+                        <br/><br/>
                     </div>
                 </div>
             </div>
@@ -47,7 +52,7 @@
             <!--Columna de tablas -->   
             <div class="w3-twothird">
                 <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-male fa-fw w3-margin-right w3-xxlarge w3-text-black"></i>Opcion puesta</h2>
+                    <h:outputText class=" w3-text-black w3-padding-16 fa fa-male fa-fw w3-margin-right w3-xxlarge w3-text-black" value="Opcion"/>
                 </div>
 
             </div>
@@ -69,6 +74,8 @@
         </div> 
     </h:body>
 </html>
+
+    
 
     
     
