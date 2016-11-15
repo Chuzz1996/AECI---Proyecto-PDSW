@@ -6,10 +6,10 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.RequestMapper">
     <resultMap type='Request' id='RequestResult'>
         <id property='id' column='Id'/>
-        <association property = 'user' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
         <result property='date' column='Date'/>
         <result property='commentary' column='Commentary'/>
         <result property='state' column='State'/>
+        <association property = 'user' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
     </resultMap>
     
     <resultMap type='User' id='UserResult'>
@@ -38,13 +38,8 @@
         <result property='name' column='Name'/>
     </resultMap>
     
-    <select id="getRequests" resultMap="RequestResult">
-        SELECT Request.Id, Request.User_Id, Request.Commentary, Request.State,Request.Date
-        FROM Request;
-    </select>
-    
     <select id="getPendingRequests" resultMap="RequestResult">
-        Select User.Id as u_Id, User.Phone u_phone, User.YearGraduate u_YearGraduate, User.Period as u_Period, User.FirstName as u_FirstName, User.LastName as u_LastName, User.Email as u_Email, User.CellPhone as u_CellPhone, User.BirthDate u_BirthDate,
+        Select User.Id as u_Id, User.Phone as u_phone, User.YearGraduate as u_YearGraduate, User.Period as u_Period, User.FirstName as u_FirstName, User.LastName as u_LastName, User.Email as u_Email, User.CellPhone as u_CellPhone, User.BirthDate as u_BirthDate,
                Request.Id , Request.Date , Request.Commentary, Request.State,
                Rol.Id as rl_Id, Rol.Name as rl_Name,
                Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name

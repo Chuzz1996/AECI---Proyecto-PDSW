@@ -50,6 +50,6 @@ public abstract class ServiciosAeci implements Serializable{
     
     public abstract Program getProgram(int id)throws ExcepcionServiciosAeci;
 
-    public abstract List<Request> getActiveRequests() throws ExcepcionServiciosAeci;
+    public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
        
 }

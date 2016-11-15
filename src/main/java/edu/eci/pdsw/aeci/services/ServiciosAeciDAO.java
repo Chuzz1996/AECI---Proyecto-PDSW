@@ -77,7 +77,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     }
 
     @Override
-    public List<Request> getActiveRequests() throws ExcepcionServiciosAeci {
+    public List<Request> getPendingRequests() throws ExcepcionServiciosAeci {
         List<Request> activeRequest = null;
         try {
             daof.beginSession();
