@@ -6,12 +6,20 @@
 package edu.eci.pdsw.aeci.persistence;
 
 import edu.eci.pdsw.aeci.entities.*;
+import java.util.List;
 
 /**
  *
  * @author 2095498
  */
 public interface DaoUser {
+    
+    /**
+     * Get the users
+     * @return a list with all the users.
+     * @throws PersistenceException 
+     */
+    public List<User> getUsers() throws PersistenceException;
     
     /**
      * Add new user to Data Base

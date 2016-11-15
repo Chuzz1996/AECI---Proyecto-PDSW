@@ -10,6 +10,7 @@ import edu.eci.pdsw.aeci.persistence.DaoUser;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
 import java.sql.Date;
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -77,6 +78,11 @@ public class MyBatisDAOUser implements DaoUser {
     @Override
     public void updateUserRol_Id(int idUser, int rol_Id) throws PersistenceException {
         currentSession.getMapper(UserMapper.class).updateUserRol_Id(idUser, rol_Id);
+    }
+
+    @Override
+    public List<User> getUsers() throws PersistenceException {
+        return currentSession.getMapper(UserMapper.class).getUsers();
     }
     
 }

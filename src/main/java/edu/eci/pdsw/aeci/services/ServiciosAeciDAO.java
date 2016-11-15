@@ -59,7 +59,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         List<Request> activeRequest = null;
         try {
             daof.beginSession();
-            activeRequest = daof.getDaoRequest().getActiveRequests();
+            activeRequest = daof.getDaoRequest().getPendingRequests();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -35,8 +35,8 @@ public class MyBatisDAORequest implements DaoRequest {
     }
 
     @Override
-    public List<Request> getActiveRequests() throws PersistenceException {
-        return currentSession.getMapper(RequestMapper.class).getActiveRequests();
+    public List<Request> getPendingRequests() throws PersistenceException {
+        return currentSession.getMapper(RequestMapper.class).getPendingRequests();
     }
 
     @Override

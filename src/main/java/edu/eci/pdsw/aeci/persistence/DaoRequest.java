@@ -39,9 +39,9 @@ public interface DaoRequest {
     
     /**
      * Get Active requests (pending review)
-     * @return activeRequests with the requests
+     * @return activeRequests with the pending requests
      * @throws PersistenceException 
      */
-    public List<Request> getActiveRequests()throws PersistenceException;
+    public List<Request> getPendingRequests()throws PersistenceException;
     
 }

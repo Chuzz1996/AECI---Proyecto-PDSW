@@ -14,31 +14,30 @@ import java.util.Date;
 public class Request {
     
     private int id;
-    private int user_id;
-    private String commentary;
-    private String state;
+    private String commentary, state;
     private Date date;
+    private User user;
     
-    public Request (int id, int user_id, String commentary, String state, Date date){
+    public Request (int id, int user_id, String commentary, String state, Date date, User user){
         this.id = id;
-        this.user_id = user_id;
         this.commentary = commentary;
         this.state = state;
         this.date=date;
+        this.user= user;
+    }
+    
+    /**
+     * @return the user that mades the request
+     */
+    public User getUser() {
+        return user;
     }
 
     /**
-     * @return the user_id
+     * @param user the user to set
      */
-    public int getUser_id() {
-        return user_id;
-    }
-
-    /**
-     * @param user_id the user_id to set
-     */
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**
@@ -96,6 +95,5 @@ public class Request {
     public void setDate(Date date) {
         this.date = date;
     }
-
- 
+    
 }

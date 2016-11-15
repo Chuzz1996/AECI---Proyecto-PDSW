@@ -17,8 +17,6 @@ public interface UserMapper {
     
     public List<User> getUsers();
     
-    public List<User> getPendingUsers();
-    
     public void addUser(@Param("user") User user);
     
     public void updateUserFirstName(@Param("id") int idUser, @Param("fname") String firstName);

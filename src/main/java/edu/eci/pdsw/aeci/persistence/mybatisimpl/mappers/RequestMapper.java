@@ -15,7 +15,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface RequestMapper {
     
-    public List<Request> getActiveRequests();
+    public List<Request> getPendingRequests();
     
     public void addRequest(@Param("request") Request r);
     
