@@ -41,17 +41,39 @@ public class ServiciosAeciDAO extends ServiciosAeci{
 
     @Override
     public void addUser(User user) throws ExcepcionServiciosAeci {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            daof.beginSession();
+            daof.getDaoUser().addUser(user);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
     }
 
     @Override
     public void addRequest(Request request) throws ExcepcionServiciosAeci {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            daof.beginSession();
+            daof.getDaoRequest().addRequest(request);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
     }
 
     @Override
-    public void updateRequest(Request request) throws ExcepcionServiciosAeci {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void updateRequest(Request request, String commentary, String state) throws ExcepcionServiciosAeci {
+        try {
+            daof.beginSession();
+            if (commentary != null) daof.getDaoRequest().updateRequestCommentary(request, commentary);
+            if (state != null) daof.getDaoRequest().updateRequestState(request, state);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
     }
 
     @Override
@@ -66,11 +88,6 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             throw new ExcepcionServiciosAeci(ex.getMessage());
         }
         return activeRequest;
-    }
-
-    @Override
-    public void updateUser(User user) throws ExcepcionServiciosAeci {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -92,6 +109,26 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             }
         }
         return program;
+    }
+
+    @Override
+    public void updateUser(int idUser, User user) throws ExcepcionServiciosAeci {
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserBirthDate(idUser, (java.sql.Date) user.getBirthDate());
+            daof.getDaoUser().updateUserCellphone(idUser, user.getCellphone());
+            daof.getDaoUser().updateUserEmail(idUser, user.getEmail());
+            daof.getDaoUser().updateUserFirstName(idUser, user.getFirstName());
+            daof.getDaoUser().updateUserLastName(idUser, user.getLastName());
+            daof.getDaoUser().updateUserPeriod(idUser, user.getPeriod());
+            daof.getDaoUser().updateUserYearGraduate(idUser, user.getYearGraduate());
+            daof.getDaoUser().updateUserRol_Id(idUser, user.getRole().getId());
+            daof.getDaoUser().updateUserProgram_Id(idUser, user.getProgram().getId());
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
     }
 
 }

@@ -42,11 +42,11 @@ public abstract class ServiciosAeci implements Serializable{
     
     public abstract void addUser(User user) throws ExcepcionServiciosAeci;
     
-    public abstract void updateUser(User user) throws ExcepcionServiciosAeci;
+    public abstract void updateUser(int idUser, User user) throws ExcepcionServiciosAeci;
 
     public abstract void addRequest(Request request) throws ExcepcionServiciosAeci;
     
-    public abstract void updateRequest(Request request) throws ExcepcionServiciosAeci;
+    public abstract void updateRequest(Request request, String commentary, String state) throws ExcepcionServiciosAeci;
     
     public abstract Program getProgram(int id)throws ExcepcionServiciosAeci;
 
