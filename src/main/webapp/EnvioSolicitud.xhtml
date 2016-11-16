@@ -4,112 +4,88 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-      <title>Envio solicitud AECI</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
-      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-black.css"></link>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
-      <h:head>
-          <style>
-                .center {
-                    margin: auto;
-                    width: 60%;
-                    padding: 10px;
-                }
-            </style>
-      </h:head>
-      
-      <h:body>
-          
-          <div class = "w3-top">
-              <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
-                  <li>
-                      <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
-                  </li>
-                  <li class="w3-right w3-hide-small">
-                      <h:link value="Contacto" class="w3-left w3-btn w3-black" fragment="Contáctanos"/>
-                      <h:link value="Enviar Solicitud" class="w3-left w3-btn w3-black" fragment="Enviar Solicitud"/>
-                      <h:link value="Ingresar" class="w3-left w3-margin-right w3-btn w3-black" fragment="Ingresar"/>
-                  </li>
-              </ul>
-          </div>
-          <br/><br/><br/>
-          <div class = "center" id = "Enviar Solicitud">
-            <h:form class="w3-container w3-card-4 w3-padding-large w3-white">
-                <h:outputText class="w3-center" value="Ingreso de Datos"/>
-            <div class="w3-group">   
-                <h:outputLabel value = "Nombre"/>
-                <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.nombre}"/>
-            </div>
-            <div class="w3-group">   
-                <h:outputLabel value = "Apellido"/>
-              <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.apellido}"/>
-            </div>
-            <div class="w3-row-padding" style="margin:0 -16px;">
-                <div class="w3-group w3-half">      
-                    <h:outputLabel value = "Cedula"/>
-                  <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.cedula}"/>
-                </div>
-                <div class="w3-group w3-half">      
-                    <h:outputLabel value = "Celular"/>
-                  <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.celular}"/>
-                </div>
-            </div>
-            <div class="w3-row-padding" style="margin:0 -16px;">
-                <div class="w3-group w3-half">      
-                    <h:outputLabel value = "Telefono Fijo"/>
-                    <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoFijo}"/>
-                </div>
-                <div class="w3-group w3-half">
-                    <p:outputLabel value="Fecha de Nacimiento" />
-                    <p:calendar class="w3-input w3-border" value="#{solicitudAfiliacion.fechaNacimiento}" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" />
-                </div>      
-            </div>
-            <div class="w3-row-padding" style="margin:0 -16px;">
-                <div class="w3-group w3-half">   
-                    <h:outputLabel value = "Correo"/>
-                    <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.correo}"/>
-                </div>
-                <h:selectOneMenu class="w3-select w3-half w3-group w3-white" value="#{solicitudAfiliacion.carrera}">
-                    <f:selectItem itemLabel="Carrera" itemValue="" />
-                    <f:selectItem itemLabel="Ingeniería Civil" itemValue="1"/>
-                    <f:selectItem itemLabel="Ingeniería Electrónica" itemValue="2"/>
-                    <f:selectItem itemLabel="Ingeniería Eléctrica" itemValue="3"/>
-                    <f:selectItem itemLabel="Ingeniería De Sistemas" itemValue="4"/>
-                    <f:selectItem itemLabel="Ingeniería Industrial" itemValue="5"/>
-                    <f:selectItem itemLabel="Matemáticas" itemValue="6"/>
-                    <f:selectItem itemLabel="Economía" itemValue="7"/>
-                    <f:selectItem itemLabel="Administración De Empresas" itemValue="8"/>
-                    <f:selectItem itemLabel="Ingeniería Mecánica" itemValue="9"/>
-                    <f:selectItem itemLabel="Ingeniería Biomédica" itemValue="10"/>
+    <title>Envio solicitud AECI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-black.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
+    <h:head>
+        <style>
+            .center {
+                margin: auto;
+                width: 60%;
+                padding: 10px;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <h:form class="w3-top">        
+            <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
+                <li>
+                    <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
+                </li>
+                <li class="w3-right w3-hide-small">                           
+                    <h:link value="Contacto" class="w3-left w3-btn w3-black" fragment="contacto"/>         
+                    <h:outputLink  value="javascript:void(0)" class="w3-left w3-btn w3-black" onclick="PF('dlg').show()">Ingresar</h:outputLink>                     
+                </li>
+            </ul>
+        </h:form>
+        <p:spacer height="80" />
+        
+        <h:form id="information" class="w3-container w3-card-4 w3-padding-large w3-white" style="margin: auto; width: 60%; padding: 10px">  
+            <h:outputText value="Ingreso de Datos"/>
+            
+            <h:panelGrid columns="4" cellpadding="10" cellspacing="12">
+                <h:outputLabel value = "Nombre*:"/>
+                <h:inputText id="name" value="#{solicitudAfiliacion.nombre}" required="true"/>
+                <h:outputLabel value = "Apellido*:"/>
+                <h:inputText  id="name2" value="#{solicitudAfiliacion.apellido}" required="true"/>
+                <h:outputLabel value = "Cedula*:"/>
+                <h:inputText id="id" value="#{solicitudAfiliacion.cedula}" required="true"/>
+                <h:outputLabel value = "Celular*:"/>
+                <h:inputText id="celular" value="#{solicitudAfiliacion.celular}" required="true"/>
+                <h:outputLabel value = "Telefono Fijo:"/>
+                <h:inputText id="phone" value="#{solicitudAfiliacion.telefonoFijo}"/>
+                <p:outputLabel value="Fecha de Nacimiento*:" />
+                <p:calendar  id="birthdate" value="#{solicitudAfiliacion.fechaNacimiento}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" required="true" />
+                <h:outputLabel value = "Correo*:"/>
+                <h:inputText id="email" value="#{solicitudAfiliacion.correo}" required="true"/>                   
+                <h:outputLabel value = "Carrera*:"/>                         
+                <h:selectOneMenu id="career" value="#{solicitudAfiliacion.carrera}" required="true">                        
+                        <f:selectItem itemLabel="Ingeniería Civil" itemValue="1"/>
+                        <f:selectItem itemLabel="Ingeniería Electrónica" itemValue="2"/>
+                        <f:selectItem itemLabel="Ingeniería Eléctrica" itemValue="3"/>
+                        <f:selectItem itemLabel="Ingeniería De Sistemas" itemValue="4"/>
+                        <f:selectItem itemLabel="Ingeniería Industrial" itemValue="5"/>
+                        <f:selectItem itemLabel="Matemáticas" itemValue="6"/>
+                        <f:selectItem itemLabel="Economía" itemValue="7"/>
+                        <f:selectItem itemLabel="Administración De Empresas" itemValue="8"/>
+                        <f:selectItem itemLabel="Ingeniería Mecánica" itemValue="9"/>
+                        <f:selectItem itemLabel="Ingeniería Biomédica" itemValue="10"/>                        
                 </h:selectOneMenu>
-            </div>
-            <div class="w3-row-padding" style="margin:0 -16px;">
-                <div class="w3-group w3-half">   
-                    <h:outputLabel value = "Año de graduación"/>
-                    <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.anoGraducacion}"/>
-                </div>
-                <h:selectOneMenu class="w3-select w3-group w3-half w3-white" value="#{solicitudAfiliacion.periodo}">
-                    <f:selectItem itemLabel="Periodo" itemValue=""/>
+                <h:outputLabel value = "Año de graduación:" />
+                <h:inputText id="graduation" value="#{solicitudAfiliacion.anoGraducacion}"/>
+                <h:outputLabel value = "Periodo:" />
+                <h:selectOneMenu id="period" value="#{solicitudAfiliacion.periodo}">                    
                     <f:selectItem itemLabel="1" itemValue="1"/>
                     <f:selectItem itemLabel="2" itemValue="2"/>
-                </h:selectOneMenu>
-            </div>
-                
+                </h:selectOneMenu>     
+            </h:panelGrid>   
             <div class="w3-container w3-padding-32" id="projects">
-                <h:outputText value = "Para estudiantes" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
-            </div>
+                    <h:outputText value = "Para estudiantes" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
+                </div>
                 <div class="w3-row-padding">
                     <div class="w3-group w3-half">   
                         <h:outputLabel value = "Semestre"/>
                         <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.semestre}"/>
                     </div>
                 </div>
-            <div class="w3-container w3-padding-32" id="projects">
-                <h:outputText value = "Para egresados" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
-            </div>
+                <div class="w3-container w3-padding-32" id="projects">
+                    <h:outputText value = "Para egresados" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
+                </div>
                 <div class="w3-row-padding">
                     <div class="w3-group w3-half">   
                         <h:outputLabel value = "Empresa donde trabaja"/>
@@ -120,7 +96,7 @@
                         <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.cargo}"/>
                     </div>
                 </div>
-                                <div class="w3-row-padding">
+                <div class="w3-row-padding">
                     <div class="w3-group w3-half">   
                         <h:outputLabel value = "Direccion Empresa"/>
                         <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.direccionEmpresa}"/>
@@ -130,25 +106,39 @@
                         <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoEmpresa}"/>
                     </div>
                 </div>
-            <p></p>
-                <p:commandButton value = "Enviar solicitud" actionListener="#{solicitudAfiliacion.enviarSolicitud()}" class="w3-btn w3-black" onclick="PF('dlg1').show();"/>
-                
-                <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40">
+                <p></p>
+                <p:commandButton value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" class="w3-btn w3-black" onclick="PF('dlg1').show(); "/>
+           
+                <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false">
                     <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
                 </p:dialog>
             </h:form>
-          </div>
-          
-          <div class="w3-container w3-padding-32 w3-black" id="Contacto">
-                <div class="w3-col m6 w3-padding-large">
-                    <h1 class="w3-Left">Contactenos</h1>
-                    <div class="w3-section">
-                        <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin"></i>Dirección: AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso</p>
-                        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> PBX: +57(1) 668 3600 Ext.1232</p>
-                        <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> Móvil: +57 312 457 0612</p>
-                        <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin"> </i> Correo Electronico: aeci@escuelaing.edu.co </p>
-                    </div>
-                </div>
-              </div> 
-      </h:body>
+        
+        <h:form id="contacto">   
+            <p:outputPanel id="Contacto" style="color: black; background-color: black" >                  
+                <h1 style="color: white">  Contacto</h1>                 
+                <h:panelGrid columns="4" cellpadding ="20" style="margin: 0 auto;" bgcolor="#000000">                     
+                    <h:outputText class="fa fa-map-marker" style="color: white" value=" AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso  "/>
+                    <h:outputText class="fa fa-phone" style="color: white" value="  PBX: +57(1) 668 3600 Ext.1232"/>   
+                    <h:outputText class="fa fa-phone" style="color: white" value="  Móvil: +57 312 457 0612"/>      
+                    <h:outputText class="fa fa-envelope" style="color: white" value=" aeci@escuelaing.edu.co"/>   
+                    <h:outputLink class="fa fa-facebook-official" style="color: white"  value="https://www.facebook.com/AECIescuelaing/?fref=ts"/>                     
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:form>
+        <h:form>
+            <p:dialog id="login" widgetVar="dlg" header="Ingresar" resizable="false">
+                <h:panelGrid columns="2" cellpadding="20">
+                    <h:outputText value="Usuario"/>
+                    <h:inputText id="userId" value="" required="true"/>
+                    <h:outputText value="Contraseña"/>
+                    <p:password id="userPs" value="" required="true"/>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" oncomplete="PF('dlg').hide()"/>
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
 </html>

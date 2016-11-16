@@ -9,69 +9,53 @@
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
-    
-    <h:form class="w3-top">        
-        <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
-            <li>
-                <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
-            </li>
-            <li class="w3-right w3-hide-small">
-                <h:link value="Contactanos" class="w3-left w3-btn w3-black" fragment="Contacto"/>         
-                <h:link value="Editar Informacion" class="w3-left w3-btn w3-black" fragment="Editar"/>   
-                <h:link value="Desconectarse" class="w3-left w3-btn w3-black" fragment="Desconectarse"/>         
-                <!--<h:outputLink  value="javascript:void(0)" class="w3-left w3-btn w3-black" onclick="PF('dlg').show()">Ingresar</h:outputLink>-->
-            </li>
-        </ul>
-    </h:form>
-    <br/><br/><br/><br/><br/>
+    <h:head>
+
+    </h:head>    
     <h:body>
-        <div class="w3-content w3-margin-top" style="max-width:1400px;" id="Editar">
-        <div class="w3-row-padding">
+        <h:form class="w3-top">        
+            <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
+                <li>
+                    <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <h:link value="Solicitudes" class="w3-left w3-btn w3-black"/>       
+                    <h:link value="Convenios" class="w3-left w3-btn w3-black"/>         
+                    <h:link value="Afiliaciones" class="w3-left w3-btn w3-black"/>    
+                    <h:link value="Reportes" class="w3-left w3-btn w3-black"/> 
+                    <h:link value="Salir" class="w3-left w3-btn w3-black"/>    
+                                                          
+                </li>
+            </ul>
+        </h:form>
+    <p:spacer height="80" />
 
-            <!-- Columna de usuario -->
-            <div class="w3-third">
+        <p:layout style="min-width:400px;min-height:200px; margin-left: 8%; margin-right: 8%">
+            <p:layoutUnit position="west" size="300" minSize="40" maxSize="500" class="w3-container w3-card-4 w3-padding-large w3-white">                
+                <h:outputText value="Pepito perez"/>
+                <h:outputText value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
+                <h:outputText value=""/>
+            </p:layoutUnit>
 
-                <div class="w3-white w3-text-grey w3-card-4">
-                    <div class="w3-display-container">
-                        <h:outputText class=" w3-large w3-text-black" value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
-                    </div>
-                    <br/>
-                    <div class="w3-container">
-                        <h:outputText class="fa fa-briefcase w3-large w3-text-black" value="#{cuentaAdministrador.rol}"/>
-                        <br/><br/>
-                        <h:outputText class="w3-large fa fa-asterisk fa-fw w3-margin-right w3-text-black" value="Opciones"/>
-                        <br/><br/>
-                        <p:commandButton class="w3-btn-block" value ="Procesar solicitudes de afiliacion"/>
-                        <br/><br/>
-                        <p:commandButton class="w3-btn-block" value ="Generacion de reportes"/>
-                        <br/><br/>
-                    </div>
-                </div>
-            </div>
-
-            <!--Columna de tablas -->   
-            <div class="w3-twothird">
-                <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
-                    <h:outputText class=" w3-text-black w3-padding-16 fa fa-male fa-fw w3-margin-right w3-xxlarge w3-text-black" value="Opcion"/>
-                </div>
-
-            </div>
-            <!-- Acaba columna de tablas -->
-        </div>
+            <p:layoutUnit position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
+                Center
+            </p:layoutUnit>
+        </p:layout>        
+        
 
         <!-- Contactarnos -->
-        </div>
-        <div class="w3-container w3-padding-32 w3-black" id="Contacto">
-            <div class="w3-col m6 w3-padding-large">
-                <h1 class="w3-Left">Contactenos</h1>
-                <div class="w3-section">
-                    <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin"></i>Dirección: AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso</p>
-                    <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> PBX: +57(1) 668 3600 Ext.1232</p>
-                    <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin"></i> Móvil: +57 312 457 0612</p>
-                    <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin"> </i> Correo Electronico: aeci@escuelaing.edu.co </p>
-                </div>
-            </div>
-        </div> 
+       <h:form id="contacto">   
+            <p:outputPanel id="Contacto" style="color: black; background-color: black" >                  
+                <h1 style="color: white">  Contacto</h1>                 
+                <h:panelGrid columns="4" cellpadding ="20" style="margin: 0 auto;" bgcolor="#000000">                     
+                    <h:outputText class="fa fa-map-marker" style="color: white" value=" AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso  "/>
+                    <h:outputText class="fa fa-phone" style="color: white" value="  PBX: +57(1) 668 3600 Ext.1232"/>   
+                    <h:outputText class="fa fa-phone" style="color: white" value="  Móvil: +57 312 457 0612"/>      
+                    <h:outputText class="fa fa-envelope" style="color: white" value=" aeci@escuelaing.edu.co"/>   
+                    <h:outputLink class="fa fa-facebook-official" style="color: white"  value="https://www.facebook.com/AECIescuelaing/?fref=ts"/>                     
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:form>
     </h:body>
 </html>
 
