@@ -98,7 +98,7 @@ public interface DaoUser {
      * @param birthDate the user's birth date
      * @throws PersistenceException if userId is null
      */
-    public void updateUserBirthDate(int idUser, java.sql.Date birthDate) throws PersistenceException;
+    public void updateUserBirthDate(int idUser, java.util.Date birthDate) throws PersistenceException;
     
     /**
      * Update the period of graduation of User

@@ -35,7 +35,7 @@ public interface UserMapper {
     
     public void updateUserYearGraduate(@Param("id") int idUser, @Param("ygraduate") int yearGraduate);
     
-    public void updateUserBirthDate(@Param("id") int idUser, @Param("bdate") java.sql.Date birthDate);
+    public void updateUserBirthDate(@Param("id") int idUser, @Param("bdate") java.util.Date birthDate);
     
     public void updateUserPeriod(@Param("id") int idUser, @Param("period") int period);
     

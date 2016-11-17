@@ -17,6 +17,12 @@
 package edu.eci.pdsw.aeci.tests;
 
 
+import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.persistence.DaoFactory;
+import edu.eci.pdsw.aeci.persistence.DaoUser;
+import edu.eci.pdsw.aeci.persistence.PersistenceException;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.sql.Connection;
@@ -71,7 +77,7 @@ public class UsuarioTest {
     }*/
     
    /**
-     * 
+     * Actualizar Datos de usuario
      */
     /*@Test
     public void ActualizarDatosUsuario(){
@@ -82,9 +88,32 @@ public class UsuarioTest {
             Program carrera = Rp.getProgram(1);
             User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.util.Date(1990, 7, 20));
             usuarioAgregar.addUser(Solicitante);
+            String firstName = "Negro";
+            String lastName = "Confundido";
+            String email = "loca@hotmail.com";
+            String phone = "9632584";
+            String cellphone = "+123569764821";
+            int yearGraduate = 2000;
+            int period = 1;
+            java.util.Date birthDate = new java.util.Date(1989, 7, 20);
+            usuarioAgregar.updateUserFirstName(Solicitante.getId(), firstName);
+            usuarioAgregar.updateUserLastName(Solicitante.getId(), lastName);
+            usuarioAgregar.updateUserEmail(Solicitante.getId(), email);
+            usuarioAgregar.updateUserPhone(Solicitante.getId(), phone);
+            usuarioAgregar.updateUserCellphone(Solicitante.getId(), cellphone);
+            usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
+            usuarioAgregar.updateUserPeriod(Solicitante.getId(), period);
+            usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
             List<User> revision = usuarioAgregar.getUsers();
             for(User x:revision){
-                assertEquals("iguales",x.getBirthDate(),Solicitante.getBirthDate());
+                assertTrue("Cambio de nombre",x.getFirstName().equals(firstName));
+                assertTrue("Cambio de apellido",x.getLastName().equals(lastName));
+                assertTrue("Cambio de correo",x.getEmail().equals(email));
+                assertTrue("Cambio de telefono fijo",x.getPhone().equals(phone));
+                assertTrue("Cambio de celular",x.getCellphone().equals(cellphone));
+                assertEquals("Cambio de año de graduacion",x.getYearGraduate(),yearGraduate);
+                assertEquals("Cambio de periodo de graduacion",period, x.getPeriod());
+                assertTrue("Cambio de cumpleaños",x.getBirthDate().equals(birthDate));
             }
         }catch(PersistenceException e){
             fail("Fallo inicio dao");
@@ -99,5 +128,58 @@ public class UsuarioTest {
         }
     }*/
     
+    /**
+     * No es posible agregar un programa no valido 
+     */
+    /*@Test
+    public void programaNoExistente(){
+        DaoFactory dao = DaoFactory.getInstance(properties);
+        try{
+            dao.beginSession();
+            DaoUser usuarioAgregar = dao.getDaoUser();
+            Program carrera = new Program("Contaduria publica", 10);
+            User Solicitante = new User(3604978, "Richar", "Nixon", "niidea@mail.escuelaing.edu.co", "3659748", "065876894", carrera, 1991, 2, new java.util.Date(1970, 7, 20));
+            try{
+                usuarioAgregar.updateUserProgram_Id(Solicitante.getId(),87);
+                fail("Fallo con las llaves foraneas, programa no valido");
+            }catch(PersistenceException xx){
+                assertTrue("Programa valido",true);
+            }
+        }catch(PersistenceException e){
+            fail("Fallo inicio dao");
+        }catch(ExcepcionServiciosAeci ex){
+            fail("Lanzo exception ServiciosAeci, revision en base de datos");
+        }finally{
+            try{
+                dao.endSession();
+            }catch(PersistenceException ww){
+                fail("Fallo cerrar dao ");
+            }
+        }
+    }*/
     
+    /**
+     * No es un correo el indicado
+     */
+    /*@Test
+    public void NoEsUnCorreo(){
+        DaoFactory dao = DaoFactory.getInstance(properties);
+        try{
+            dao.beginSession();
+            DaoUser usuarioAgregar = dao.getDaoUser();
+            Program carrera = new Program("Contaduria publica", 10);
+            User Solicitante = new User(3604978, "Richar", "Nixon", "niideamail.escuelaing.edu.co", "3659748", "065876894", carrera, 1991, 2, new java.util.Date(1970, 7, 20));
+            fail("No es un correo valido");
+        }catch(PersistenceException ex){
+            fail("Fallo inicio dao");
+        }catch(ExcepcionServiciosAeci ff){
+            assertTrue("No es un correo valido",true);
+        }finally{
+            try{
+                dao.endSession();
+            }catch(PersistenceException ww){
+                fail("Fallo cerrar dao ");
+            }
+        }
+    }*/
 }

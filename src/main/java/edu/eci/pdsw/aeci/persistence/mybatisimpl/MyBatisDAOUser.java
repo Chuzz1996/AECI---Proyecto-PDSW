@@ -9,7 +9,7 @@ import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoUser;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 

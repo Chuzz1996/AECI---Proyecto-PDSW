@@ -52,10 +52,10 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String telefonoFijo;
     private String correo;
     private int Carrera;
-    private String AnoGraducacion;
+    private String AnoGraduacion;
     private int Periodo;
     private Date fechaNacimiento;
-    //public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
+    public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
     
     private String semestre;
     private String NombreEmpresa;
@@ -64,20 +64,19 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String TelefonoEmpresa;
     
     /**
-     *
+     * Agrega la solicitud de las personas
      */
     public void enviarSolicitud(){
-        /*try{
-            int CC = Integer.parseInt(Cedula);
-            int tel = Integer.getInteger(telefonoFijo);
-            int yearGraduate = Integer.parseInt(AnoGraducacion);
+        try{
+            int yearGraduate = Integer.parseInt(AnoGraduacion);
             try{
                 Calendar fecha = new GregorianCalendar();
                 java.util.Date fechaDeEnvio  = fecha.getTime();
                 Program programa = Rp.getProgram(Carrera);
-                User newUser = new User(CC, Nombre, Apellido, correo, tel, Celular, programa, yearGraduate, Periodo, fechaNacimiento);
+                System.out.println(programa.getName());
+                User newUser = new User(Periodo, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento);
                 Rp.addUser(newUser);
-                Request request = new Request(newUser.getId(), newUser.getFechaDeNacimiento());
+                Request request = new Request(newUser);
                 Rp.addRequest(request);
             }catch(ExcepcionServiciosAeci ex){
 
@@ -85,7 +84,7 @@ public class SolicitudAfiliacionBean implements Serializable{
             }
         }catch(NumberFormatException ex){
             
-        }*/
+        }
         
     }
         
@@ -163,14 +162,14 @@ public class SolicitudAfiliacionBean implements Serializable{
      * @return the AnoGraducacion
      */
     public String getAnoGraducacion() {
-        return AnoGraducacion;
+        return AnoGraduacion;
     }
 
     /**
      * @param AnoGraducacion the AnoGraducacion to set
      */
     public void setAnoGraducacion(String AnoGraducacion) {
-        this.AnoGraducacion = AnoGraducacion;
+        this.AnoGraduacion = AnoGraducacion;
     }
 
     /**

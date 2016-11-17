@@ -5,13 +5,26 @@
  */
 package edu.eci.pdsw.aeci.tests;
 
+import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.persistence.DaoFactory;
+import edu.eci.pdsw.aeci.persistence.DaoRequest;
+import edu.eci.pdsw.aeci.persistence.DaoUser;
+import edu.eci.pdsw.aeci.persistence.PersistenceException;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeciDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
+import org.junit.Test;
 
 /**
  *
@@ -114,5 +127,40 @@ public class RequestTest {
             }
         }
     }*/
+    
+    /**
+     * Rectificar ingreso de base de datos
+     */
+    /*@Test
+    public void insertarSolicitudNoValidad(){
+        DaoFactory dao = DaoFactory.getInstance(properties);
+        try{
+            dao.beginSession();
+            DaoUser usuarioAAgregar = dao.getDaoUser();
+            Program carreraSolicitante = Rp.getProgram(1);
+            User primerSolicitante = new User(2032483872, "Harry", "Potter", "Potter.sinpapas@magia.com", "1348954", "+17868182661", carreraSolicitante, 2001, 1, new java.util.Date(1980, 1, 1));
+            Request solicitudAEnviar = new Request(primerSolicitante);
+            try{
+                Rp.addRequest(solicitudAEnviar);
+               fail("Fallo en llaves foraneas en la base de datos");
+            }catch(ExcepcionServiciosAeci tt){
+                assertTrue("",true);
+            }
+        }catch(PersistenceException e){
+            fail("fallo inicio dao");
+        }catch(ExcepcionServiciosAeci w){
+            fail("Lanzo exception ServiciosAeci, revision en base de datos");
+        }finally{
+            try{
+                dao.endSession();
+            }catch(PersistenceException w){
+                fail("Fallo cerrar dao");
+            }
+        }
+    }*/
+    
+    
+    
+    
     
 }

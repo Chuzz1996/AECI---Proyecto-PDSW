@@ -14,7 +14,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ProgramMapper {
     
-    public Program getProgram(@Param("idProgram")int idProgram);
+    public Program getProgram(@Param("idProgram")int id);
     
     public void saveProgram(@Param("program")String program, @Param("Duration") int duration);
     

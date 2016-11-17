@@ -25,7 +25,7 @@ public class User {
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
-        revisarCorreo(email);
+        //revisarCorreo(email);
         this.email=email;
         this.phone=phone;
         this.cellphone=cellphone;
