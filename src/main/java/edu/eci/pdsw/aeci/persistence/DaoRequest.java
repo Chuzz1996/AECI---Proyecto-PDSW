@@ -16,24 +16,24 @@ public interface DaoRequest {
     
     /**
      * Update a request with a new state and commentary
-     * @param r
-     * @param state
-     * @param commentary
-     * @throws PersistenceException
+     * @param r the request to be changed
+     * @param state The current sate
+     * @param commentary commentary for the change of the sate
+     * @throws PersistenceException if state or commentary are null
      */
     public void updateRequest(Request r, String state, String commentary) throws PersistenceException;
     
     /**
      * Add new request to data base
-     * @param r
-     * @throws PersistenceException
+     * @param r request
+     * @throws PersistenceException if identification of request is null
      */
     public void addRequest(Request r)throws PersistenceException;
     
     /**
      * Get Active requests (pending review)
      * @return activeRequests with the pending requests
-     * @throws PersistenceException 
+     * @throws PersistenceException if there is error with the data base
      */
     public List<Request> getPendingRequests()throws PersistenceException;
     

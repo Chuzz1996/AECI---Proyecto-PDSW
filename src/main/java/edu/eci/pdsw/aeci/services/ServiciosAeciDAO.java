@@ -44,6 +44,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().addUser(user);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);

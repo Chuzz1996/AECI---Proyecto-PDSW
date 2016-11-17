@@ -13,6 +13,12 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoProgram {
     
+    /**
+     * Returns the program given the id
+     * @param id the program's id
+     * @return Returns the program given the id
+     * @throws PersistenceException if id is null
+     */
     public Program getProgram(int id) throws PersistenceException;
     
 }
