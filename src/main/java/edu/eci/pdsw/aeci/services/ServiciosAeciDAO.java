@@ -114,15 +114,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     public void updateUser(int idUser, User user) throws ExcepcionServiciosAeci {
         try {
             daof.beginSession();
-            daof.getDaoUser().updateUserBirthDate(idUser, (java.sql.Date) user.getBirthDate());
-            daof.getDaoUser().updateUserCellphone(idUser, user.getCellphone());
-            daof.getDaoUser().updateUserEmail(idUser, user.getEmail());
-            daof.getDaoUser().updateUserFirstName(idUser, user.getFirstName());
-            daof.getDaoUser().updateUserLastName(idUser, user.getLastName());
-            daof.getDaoUser().updateUserPeriod(idUser, user.getPeriod());
-            daof.getDaoUser().updateUserYearGraduate(idUser, user.getYearGraduate());
-            daof.getDaoUser().updateUserRol_Id(idUser, user.getRole().getId());
-            daof.getDaoUser().updateUserProgram_Id(idUser, user.getProgram().getId());
+            daof.getDaoUser().updateUser(idUser, user);
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);

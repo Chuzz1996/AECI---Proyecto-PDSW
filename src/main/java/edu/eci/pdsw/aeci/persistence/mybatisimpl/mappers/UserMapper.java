@@ -19,6 +19,8 @@ public interface UserMapper {
     
     public void addUser(@Param("user") User user);
     
+    public void updateUser(@Param("id") int userId, @Param("user") User user);
+    
     public void updateUserFirstName(@Param("id") int idUser, @Param("fname") String firstName);
     
     public void updateUserLastName(@Param("id") int idUser, @Param("lname") String lastName);
