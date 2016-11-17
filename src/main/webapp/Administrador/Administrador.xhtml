@@ -15,8 +15,9 @@
     <h:body>
         <h:form class="w3-top">        
             <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
+
                 <li>
-                    <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
+                    <h:commandLink class="w3-margin-left w3-btn w3-black" value='AECI' action="/index.xhtml?faces-redirect=true" />                                                      
                 </li>
                 <li class="w3-right w3-hide-small">
                     <h:link value="Solicitudes" class="w3-left w3-btn w3-black"/>       
@@ -24,27 +25,51 @@
                     <h:link value="Afiliaciones" class="w3-left w3-btn w3-black"/>    
                     <h:link value="Reportes" class="w3-left w3-btn w3-black"/> 
                     <h:link value="Salir" class="w3-left w3-btn w3-black"/>    
-                                                          
+
                 </li>
             </ul>
         </h:form>
-    <p:spacer height="80" />
+        <p:spacer height="80" />
+        <h:form id="form">
+            <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
+                <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
+                    <h:outputText value="(#{cuentaAdministrador.rol})"/>
+                    <h:outputText style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="Pepito perez"/>
+                    <h:outputText value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
+                    
+                    <h:form id="form1" style="padding: 7px ">                        
+                        <p:menu id='menuSolicitudes' widgetVar="menu1" style="border-radius: 0px; padding: 10px; width: 90%;  background: black; color: white; border: none">
+                            <p:submenu label="Solicitudes de afiliacion" style="border-radius: 0px; background-color: white">
+                                <p:menuitem update=":form:opcion3" value="Pendientes" style="color: white; font-family: Segoe UI,Arial,sans-serif" actionListener="#{cuentaAdministrador.estado(1)}" immediate="true"/>
+                                <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif" />
+                                <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
+                            </p:submenu>
+                            <p:submenu label="Solicitudes de renovacion" style="border-radius: 0px; background-color: white">
+                                <p:menuitem update=":form:opcion3" value="Pendientes" style="color: white; font-family: Segoe UI,Arial,sans-serif" actionListener="#{cuentaAdministrador.estado(1)}" immediate="true"/>
+                                <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif" />
+                                <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
+                </p:layoutUnit>
 
-        <p:layout style="min-width:400px;min-height:200px; margin-left: 8%; margin-right: 8%">
-            <p:layoutUnit position="west" size="300" minSize="40" maxSize="500" class="w3-container w3-card-4 w3-padding-large w3-white">                
-                <h:outputText value="Pepito perez"/>
-                <h:outputText value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
-                <h:outputText value=""/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
-                Center
-            </p:layoutUnit>
-        </p:layout>        
-        
+                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
+                    <h:form id="opcion3" >
+                        <h:outputText value="(#{cuentaAdministrador.estado})"/>
+                    </h:form>
+                    <h:form id="opcion1" rendered="#{cuentaAdministrador.estado == 1}">
+                        asduhasidhasod
+                    </h:form>
+                    <h:form id="opcion2" rendered="#{cuentaAdministrador.estado == 2}" >
+                        no se para que
+                    </h:form>
+                    Center
+                </p:layoutUnit>
+            </p:layout>        
+        </h:form>    
 
         <!-- Contactarnos -->
-       <h:form id="contacto">   
+       <h:form id="contacto">              
             <p:outputPanel id="Contacto" style="color: black; background-color: black" >                  
                 <h1 style="color: white">  Contacto</h1>                 
                 <h:panelGrid columns="4" cellpadding ="20" style="margin: 0 auto;" bgcolor="#000000">                     
