@@ -24,7 +24,6 @@
         <result property='birthDate' column='BirthDate'/>
         <association property = 'program' javaType ='Program' columnPrefix='pr_' resultMap='ProgramResult'></association>
         <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
-        <collection property='requests' ofType='Request' columnPrefix='rq_' resultMap='RequestResult'></collection>
     </resultMap>
     
     <resultMap type='Rol' id='RolResult'>

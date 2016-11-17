@@ -16,15 +16,6 @@
         <result property='birthDate' column='BirthDate'/>
         <association property = 'program' javaType ='Program' columnPrefix='pr_' resultMap='ProgramResult'></association>
         <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
-        <collection property='requests' ofType='Request' columnPrefix='rq_' resultMap='RequestResult'></collection>
-    </resultMap>
-    
-    <resultMap type='Request' id='RequestResult'>
-        <id property='id' column='Id'/>
-        <result property='user_id' column='User_Id'/>
-        <result property='date' column='Date'/>
-        <result property='commentary' column='Commentary'/>
-        <result property='state' column='State'/>
     </resultMap>
     
     <resultMap type='Rol' id='RolResult'>
@@ -40,7 +31,6 @@
     
     <select id="getUsers" resultMap="UserResult">
         Select User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
-               Request.Id as rq_Id, Resquest.User_Id as rq_User_Id, Request.Date as rq_Date, Request.Commentary as rq_Commentary, Request.State as rq_State,
                Rol.Id as rl_Id, Rol.Name as rl_Name,
                Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
         From User, Request, Rol, Program
@@ -48,7 +38,7 @@
     </select>
     
     <insert id="addUser" parameterType="map">
-        INSERT INTO (Id, FirstName, LastName, Email, Phone, CellPhone, Program_Id, YearGraduate, BirthDate, Period, Rol_Id) 
+        INSERT INTO User (Id, FirstName, LastName, Email, Phone, CellPhone, Program_Id, YearGraduate, BirthDate, Period, Rol_Id) 
         VALUES (#{user.id}, #{user.firstName}, #{user.lastName}, #{user.email},#{user.phone},#{user.cellPhone}, #{user.program.id},#{user.yearGraduate},#{user.birthDate},#{user.period},#{user.role.id})
     </insert>
     

@@ -20,7 +20,6 @@ public class User {
     private Program program;
     private Date birthDate;
     private Rol role;
-    private Set<Request> requests;
     
     public User( int id,String firstName,String lastName,String email,String phone,String cellphone,Program program, int yearGraduate, int period, Date birthDate) throws ExcepcionServiciosAeci{
         this.id=id;
@@ -46,20 +45,6 @@ public class User {
         if(segundaRevisionCorreo.length < 2){
             throw new ExcepcionServiciosAeci("No es un correo");
         }
-    }
-    
-    /**
-     * @return the requests of a user
-     */
-    public Set<Request> getRequests(){
-        return requests;
-    }
-    
-    /**
-     * @param requests the requests to set
-     */
-    public void setRequests(Set<Request> requests){
-        this.requests = requests;
     }
     
     /**
