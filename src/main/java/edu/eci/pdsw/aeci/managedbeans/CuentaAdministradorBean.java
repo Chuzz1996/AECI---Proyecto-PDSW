@@ -21,6 +21,8 @@ importar aca las clases que necesiten
 import edu.eci.pdsw.samples.aeci.;
 
 ***/
+import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import java.sql.Date;
@@ -38,18 +40,45 @@ import org.primefaces.event.UnselectEvent;
 
 /**
  *
- * @author hcadavid
+ * @author 
  */
 @ManagedBean(name = "cuentaAdministrador")
 @SessionScoped
 public class CuentaAdministradorBean implements Serializable{
    
-    //public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
+    public ServiciosAeci  rp;
     private String nombre;
     private String apellido;
     private String rol;
     private int estado = 0;
+    
+    //Process requests
+    private Request currentRequest;
+    private List<Request> pendingRequests;
+    private String currentCommentary, currentState;
+    
+    public CuentaAdministradorBean() {
+        rp = ServiciosAeci.getInstance();
+    }
+    
+    //Process requests
+    public Request getCurrentRequest() {
+        return currentRequest;
+    }
 
+    public List<Request> getPendingRequests() throws ExcepcionServiciosAeci {
+        return rp.getPendingRequests();
+    }
+
+    public void setCurrentRequest(Request currentRequest) {
+        this.currentRequest = currentRequest;
+    }
+    
+    public void updateRequest() throws ExcepcionServiciosAeci{
+        rp.updateRequest(currentRequest, currentCommentary, currentState);
+    }
+    
+    //    
     public void setEstado(int estado) {
         this.estado = estado;
     }
@@ -62,9 +91,7 @@ public class CuentaAdministradorBean implements Serializable{
         return true;
     }
     
-    public CuentaAdministradorBean(){
-        
-    }
+    
      /**
      * @return the nombre
      */
