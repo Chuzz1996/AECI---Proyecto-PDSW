@@ -48,6 +48,19 @@ public class CuentaAdministradorBean implements Serializable{
     private String nombre;
     private String apellido;
     private String rol;
+    private int estado = 0;
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public boolean puedeMostrar(){
+        return true;
+    }
     
     public CuentaAdministradorBean(){
         
@@ -107,4 +120,6 @@ public class CuentaAdministradorBean implements Serializable{
     public void GenerarReportes(){
     
     }
+    
+    
 }

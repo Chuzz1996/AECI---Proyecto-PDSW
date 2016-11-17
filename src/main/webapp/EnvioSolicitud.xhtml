@@ -11,18 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
-    <h:head>
-        <style>
-            .center {
-                margin: auto;
-                width: 60%;
-                padding: 10px;
-            }
-        </style>
+    <h:head>        
     </h:head>
-
     <h:body>
-        <h:form class="w3-top">        
+        <h:form class="w3-top">      
+            
             <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
                 <li>
                     <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
@@ -39,12 +32,12 @@
             <h:outputText value="Ingreso de Datos"/>
             
             <h:panelGrid columns="4" cellpadding="10" cellspacing="12">
+                <h:outputLabel value = "Cedula*:"/>
+                <h:inputText id="id" value="#{solicitudAfiliacion.cedula}" required="true"/>
                 <h:outputLabel value = "Nombre*:"/>
                 <h:inputText id="name" value="#{solicitudAfiliacion.nombre}" required="true"/>
                 <h:outputLabel value = "Apellido*:"/>
-                <h:inputText  id="name2" value="#{solicitudAfiliacion.apellido}" required="true"/>
-                <h:outputLabel value = "Cedula*:"/>
-                <h:inputText id="id" value="#{solicitudAfiliacion.cedula}" required="true"/>
+                <h:inputText  id="name2" value="#{solicitudAfiliacion.apellido}" required="true"/>                
                 <h:outputLabel value = "Celular*:"/>
                 <h:inputText id="celular" value="#{solicitudAfiliacion.celular}" required="true"/>
                 <h:outputLabel value = "Telefono Fijo:"/>
@@ -74,7 +67,8 @@
                     <f:selectItem itemLabel="2" itemValue="2"/>
                 </h:selectOneMenu>     
             </h:panelGrid>   
-            <div class="w3-container w3-padding-32" id="projects">
+            <h:panelGrid rendered="false">
+                <div class="w3-container w3-padding-32" id="projects">
                     <h:outputText value = "Para estudiantes" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
                 </div>
                 <div class="w3-row-padding">
@@ -106,10 +100,11 @@
                         <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoEmpresa}"/>
                     </div>
                 </div>
-                <p></p>
-                <p:commandButton value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" class="w3-btn w3-black" onclick="PF('dlg1').show(); "/>
+            </h:panelGrid>           
+                
+                <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% " value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show(); "/>
            
-                <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false">
+                <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
                     <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
                 </p:dialog>
             </h:form>
