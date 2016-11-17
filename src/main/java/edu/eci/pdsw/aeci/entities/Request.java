@@ -13,16 +13,14 @@ import java.util.Date;
  */
 public class Request {
     
-    private int id;
     private String commentary, state;
     private Date date;
     private User user;
     
-    public Request (int id, int user_id, String commentary, String state, Date date, User user){
-        this.id = id;
-        this.commentary = commentary;
-        this.state = state;
-        this.date=date;
+    public Request (User user){
+        this.commentary = "";
+        this.state = "E";
+        this.date = new Date();
         this.user= user;
     }
     
@@ -38,20 +36,6 @@ public class Request {
      */
     public void setUser(User user) {
         this.user = user;
-    }
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**

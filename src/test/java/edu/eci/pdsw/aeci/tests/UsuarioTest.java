@@ -66,7 +66,34 @@ public class UsuarioTest {
        assertTrue("No se ha enviado el correo exitosamente",EnviarCorreo.EnviarCorreo(NombrePersona, CorreoPersona, comentarioPersona));
     }*/
     
-   
+   /**
+     * 
+     */
+    /*@Test
+    public void ActualizarDatosUsuario(){
+        DaoFactory dao = DaoFactory.getInstance(properties);
+        try{
+            dao.beginSession();
+            DaoUser usuarioAgregar = dao.getDaoUser();
+            Program carrera = Rp.getProgram(1);
+            User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.util.Date(1990, 7, 20));
+            usuarioAgregar.addUser(Solicitante);
+            List<User> revision = usuarioAgregar.getUsers();
+            for(User x:revision){
+                assertEquals("iguales",x.getBirthDate(),Solicitante.getBirthDate());
+            }
+        }catch(PersistenceException e){
+            fail("Fallo inicio dao");
+        }catch(ExcepcionServiciosAeci ex){
+            fail("Lanzo exception ServiciosAeci, revision en base de datos");
+        }finally{
+            try{
+                dao.endSession();
+            }catch(PersistenceException ww){
+                fail("Fallo cerrar dao ");
+            }
+        }
+    }*/
     
     
 }
