@@ -67,8 +67,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     public void updateRequest(Request request, String commentary, String state) throws ExcepcionServiciosAeci {
         try {
             daof.beginSession();
-            if (commentary != null) daof.getDaoRequest().updateRequestCommentary(request, commentary);
-            if (state != null) daof.getDaoRequest().updateRequestState(request, state);
+            daof.getDaoRequest().updateRequest(request, state, commentary);
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -25,8 +25,8 @@ public class MyBatisDAORequest implements DaoRequest {
     }
 
     @Override
-    public void updateRequestCommentary(Request r, String commentary) throws PersistenceException {
-        currentSession.getMapper(RequestMapper.class).updateRequestCommentary(r, commentary);
+    public void updateRequest(Request r, String state, String commentary) throws PersistenceException {
+        currentSession.getMapper(RequestMapper.class).updateRequest(r, state, commentary);
     }
 
     @Override
@@ -37,11 +37,6 @@ public class MyBatisDAORequest implements DaoRequest {
     @Override
     public List<Request> getPendingRequests() throws PersistenceException {
         return currentSession.getMapper(RequestMapper.class).getPendingRequests();
-    }
-
-    @Override
-    public void updateRequestState(Request r, String state) throws PersistenceException {
-        currentSession.getMapper(RequestMapper.class).updateRequestState(r, state);
     }
     
 }

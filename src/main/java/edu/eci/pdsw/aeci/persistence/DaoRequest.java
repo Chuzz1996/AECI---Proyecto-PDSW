@@ -15,20 +15,13 @@ import java.util.List;
 public interface DaoRequest {
     
     /**
-     * Update a request with a new commentary
+     * Update a request with a new state and commentary
      * @param r
+     * @param state
      * @param commentary
      * @throws PersistenceException
      */
-    public void updateRequestCommentary(Request r, String commentary) throws PersistenceException;
-    
-    /**
-     * Update a request with a new state
-     * @param r
-     * @param state
-     * @throws PersistenceException
-     */
-    public void updateRequestState(Request r, String state) throws PersistenceException;
+    public void updateRequest(Request r, String state, String commentary) throws PersistenceException;
     
     /**
      * Add new request to data base

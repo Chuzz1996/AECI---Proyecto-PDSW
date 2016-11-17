@@ -52,15 +52,9 @@
         VALUES ( #{request.id},#{request.user.id},#{request.date},#{request.commentary},#{request.state};   
     </insert>
     
-    <update id="updateRequestCommentary" parameterType="map">
+    <update id="updateRequest" parameterType="map">
         UPDATE Request
-        SET Commentary = #{commentary}
-        WHERE Id = #{request.id};
-    </update>
-    
-    <update id="updateRequestState" parameterType="map">
-        UPDATE Request
-        SET State = #{state}
+        SET Commentary = #{commentary}, State = #{state}
         WHERE Id = #{request.id};
     </update>
   	
