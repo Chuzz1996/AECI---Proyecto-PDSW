@@ -18,6 +18,7 @@ package edu.eci.pdsw.aeci.tests;
 
 
 import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
+import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.sql.Connection;
 import java.util.*;
 import java.sql.Date;
@@ -45,6 +46,9 @@ import static org.junit.Assert.*;
  * 
  */
 public class UsuarioTest {
+    
+    public static Properties properties = new Properties();
+    public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
     
      /**
      * Obtiene una conexion a la base de datos de prueba
