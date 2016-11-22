@@ -25,6 +25,8 @@ import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.util.*;
 import java.sql.Date;
@@ -53,28 +55,20 @@ import static org.junit.Assert.*;
  */
 public class UsuarioTest {
     
-    public static Properties properties = new Properties();
+    public static Properties properties;
     public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
     
-     /**
-     * Obtiene una conexion a la base de datos de prueba
-     * @return
-     * @throws SQLException 
-     */
-    private Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=MYSQL", "anonymous", "");        
+    @Before
+    public void setUp() throws IOException {
+        InputStream input = null;
+        input = ClassLoader.getSystemResourceAsStream("h2-applicationconfig.properties");
+        properties=new Properties();
+        properties.load(input);
     }
     
-    
-    /*No es necesario hacer la prueba de correo
     @Test
     public void EnvioDeAprobado() {
-       String NombrePersona = "Felipe Losada";
-       String CorreoPersona = "pruebapdsw@gmail.com";
-       String comentarioPersona = "Probando el envio de correos";
-       ServicioEnvioCorreos EnviarCorreo = new ServicioEnvioCorreos();
-       assertTrue("No se ha enviado el correo exitosamente",EnviarCorreo.EnviarCorreo(NombrePersona, CorreoPersona, comentarioPersona));
-    }*/
+    }
     
    /**
      * Actualizar Datos de usuario

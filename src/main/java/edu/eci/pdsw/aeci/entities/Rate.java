@@ -16,6 +16,9 @@ public class Rate {
     private Date year;
     private int value;
 
+    public Rate() {
+    }
+
     public Rate(int Id,Date Year,int Value){
         id=Id;
         year=Year;

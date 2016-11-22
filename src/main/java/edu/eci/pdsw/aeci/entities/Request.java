@@ -16,6 +16,9 @@ public class Request {
     private String commentary, state;
     private Date date;
     private User user;
+
+    public Request() {
+    }
     
     public Request (User user){
         this.commentary = "";

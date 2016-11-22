@@ -15,6 +15,9 @@ public class Account {
     private int id;
     private int password;
     private boolean active;
+
+    public Account() {
+    }
     
     public Account(int Id,int password,boolean active){
         

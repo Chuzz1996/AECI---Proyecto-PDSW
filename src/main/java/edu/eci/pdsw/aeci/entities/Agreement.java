@@ -16,6 +16,9 @@ public class Agreement {
     private Date start_Date;
     private Date end_Date;
     private String name;
+
+    public Agreement() {
+    }
     
     public Agreement (int Id,Date Start_Date,Date End_Date,String Name){
         id=Id;

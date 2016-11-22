@@ -16,6 +16,9 @@ public class Program {
     private int id,duration;
     private String name;
 
+    public Program() {
+    }
+    
     public int getId() {
         return id;
     }

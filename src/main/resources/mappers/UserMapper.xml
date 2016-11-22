@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.UserMapper">
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper">
     <resultMap type='User' id='UserResult'>
         <id property='id' column='Id'/>
         <result property='phone' column='Phone'/>
@@ -96,7 +96,7 @@
         WHERE Id = #{id};
     </update>
     
-    <update id="updateUserPeriod" parameterType="map">
+    <update id="updateUserRol_Id" parameterType="map">
         UPDATE User
         SET  Rol_Id = #{rid}
         WHERE Id = #{id};

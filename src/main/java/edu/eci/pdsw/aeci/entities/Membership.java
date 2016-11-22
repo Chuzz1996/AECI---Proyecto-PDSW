@@ -21,6 +21,9 @@ public class Membership {
     private int account_id;
     private int rate_id;
 
+    public Membership() {
+    }
+
     public Membership(int Id,Date Start_Date,Date End_Date,String Receipt,int PlaymentNumber,int Account_id,int Rate_id){        
         id=Id;
         start_Date=Start_Date;

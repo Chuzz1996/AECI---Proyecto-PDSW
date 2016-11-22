@@ -16,6 +16,9 @@ public class Graduate {
     private String office_address;
     private String office_phone;
     private int user_id;
+
+    public Graduate() {
+    }
    
     public Graduate(int Id,String Charge,String Employer,String address,String phone,int User_id){
          id=Id;

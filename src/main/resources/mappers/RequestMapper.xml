@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.RequestMapper">
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.RequestMapper">
     <resultMap type='Request' id='RequestResult'>
         <id property='id' column='Id'/>
         <result property='date' column='Date'/>

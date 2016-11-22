@@ -20,6 +20,9 @@ public class User {
     private Program program;
     private Date birthDate;
     private Rol role;
+
+    public User() {
+    }
     
     public User( int id,String firstName,String lastName,String email,String phone,String cellphone,Program program, int yearGraduate, int period, Date birthDate) throws ExcepcionServiciosAeci{
         this.id=id;

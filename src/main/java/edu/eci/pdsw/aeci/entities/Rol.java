@@ -13,6 +13,9 @@ public class Rol {
     
     private int id;
     private int name;
+
+    public Rol() {
+    }
     
     /**
      * @return the id

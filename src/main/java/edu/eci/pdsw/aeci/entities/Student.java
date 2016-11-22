@@ -16,6 +16,9 @@ public class Student {
     private int id;
     private int user_id;
     private int semester;
+
+    public Student() {
+    }
     
     public Student(int Id,int User_id, int Semester) {
         this.id=Id;

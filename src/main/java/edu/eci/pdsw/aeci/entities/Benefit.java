@@ -13,6 +13,9 @@ public class Benefit {
     
     private int id;
     private String description;
+
+    public Benefit() {
+    }
     
     public Benefit( int Id,String Description){
         id=Id;

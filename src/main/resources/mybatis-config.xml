@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <setting name="logImpl" value="LOG4J"/>                
+        <setting name="logImpl" value="LOG4J"/>        
     </settings>
     <typeAliases>
         <typeAlias type='edu.eci.pdsw.aeci.entities.Account' alias='Account'/>
@@ -17,7 +17,8 @@
         <typeAlias type='edu.eci.pdsw.aeci.entities.Request' alias='Request'/>
         <typeAlias type='edu.eci.pdsw.aeci.entities.Student' alias='Student'/>
         <typeAlias type='edu.eci.pdsw.aeci.entities.User' alias='User'/>
-    </typeAliases>    
+        <typeAlias type='edu.eci.pdsw.aeci.entities.Rol' alias='Rol'/>
+    </typeAliases>  
     
         
     <environments default="development">
@@ -34,6 +35,9 @@
         
     <mappers>
         <mapper resource="mappers/AccountMapper.xml"></mapper>
+        <mapper resource="mappers/ProgramMapper.xml"></mapper>
+        <mapper resource="mappers/RequestMapper.xml"></mapper>
+        <mapper resource="mappers/UserMapper.xml"></mapper>
     </mappers> 
         
         
