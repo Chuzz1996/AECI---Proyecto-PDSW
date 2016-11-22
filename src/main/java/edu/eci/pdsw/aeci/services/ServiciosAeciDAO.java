@@ -9,6 +9,7 @@ package edu.eci.pdsw.aeci.services;
 
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
 import edu.eci.pdsw.aeci.persistence.DaoProgram;
@@ -120,6 +121,25 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());
         }
+    }
+
+    @Override
+    public Rol getRol(int id) throws ExcepcionServiciosAeci{
+        Rol role = null;
+        try{
+            daof.beginSession();
+            role = daof.getDaoRol().getDAORol(id);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+                throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }return role;
     }
 
 }

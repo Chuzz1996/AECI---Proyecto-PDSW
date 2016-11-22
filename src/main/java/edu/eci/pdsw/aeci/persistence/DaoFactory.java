@@ -62,6 +62,7 @@
 package edu.eci.pdsw.aeci.persistence;
 
 
+import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.MyBatisDaoFactory;
 import java.util.Properties;
 
@@ -99,9 +100,12 @@ public abstract class DaoFactory {
     
     public abstract DaoProgram getDaoProgram();
     
+    public abstract DaoRol getDaoRol();
+    
     public abstract void commitTransaction() throws PersistenceException;
 
     public abstract void rollbackTransaction() throws PersistenceException;
 
     public abstract void endSession() throws PersistenceException;
+    
 }

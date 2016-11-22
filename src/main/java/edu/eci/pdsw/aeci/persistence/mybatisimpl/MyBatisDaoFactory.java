@@ -20,9 +20,11 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 /**
 import edu.eci.pdsw.aeci.persistence.Dao;
 **/
+import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
 import edu.eci.pdsw.aeci.persistence.DaoProgram;
 import edu.eci.pdsw.aeci.persistence.DaoRequest;
+import edu.eci.pdsw.aeci.persistence.DaoRol;
 import edu.eci.pdsw.aeci.persistence.DaoUser;
 
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
@@ -115,6 +117,12 @@ public class MyBatisDaoFactory extends DaoFactory {
     public DaoProgram getDaoProgram() {
         return new MyBatisDAOProgram(currentSession);
     }
+
+    @Override
+    public DaoRol getDaoRol() {
+        return new MyBatisDAORol(currentSession);
+    }
     
+
     
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.RolMapper">
+    <resultMap type='Rol' id='RolResult'>
+        <id property='id' column='Id'/>
+        <result property='name' column='Name'/>
+    </resultMap>
+    
+    <select id="getRol" resultMap="RolResult">
+        select Id, Name from Rol
+        where Id=#{id}
+    </select>
+    
+    <!-- Agregar trigger de id rol -->
+    
+    <insert id="saveRol" parameterType="map">
+        insert into Rol(Name) values(#{name})
+    </insert>
+    
+</mapper>

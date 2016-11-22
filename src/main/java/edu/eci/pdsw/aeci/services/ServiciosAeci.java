@@ -22,6 +22,7 @@ import edu.eci.pdsw.aeci.entities.Usuario;
 **/
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import java.io.Serializable;
 import java.util.List;
@@ -51,5 +52,7 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract Program getProgram(int id)throws ExcepcionServiciosAeci;
 
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
+    
+    public abstract Rol getRol(int id)throws ExcepcionServiciosAeci;
        
 }

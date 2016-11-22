@@ -18,6 +18,7 @@ package edu.eci.pdsw.aeci.tests;
 
 
 import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
 import edu.eci.pdsw.aeci.persistence.DaoUser;
@@ -54,29 +55,36 @@ import static org.junit.Assert.*;
  * 
  */
 public class UsuarioTest {
-
-    @Test
-    public void pruebaADescartarDespues() throws IOException{
+    
+    public DaoFactory getDataPru() throws IOException{
         InputStream input = ClassLoader.getSystemResourceAsStream("h2-applicationconfig.properties");
         Properties properties=new Properties();
         properties.load(input);
-        
-        DaoFactory dao = DaoFactory.getInstance(properties);
-        
+        return DaoFactory.getInstance(properties);
+    }
+
+    @Test
+    public void pruebaADescartarDespues(){
         try{
-            dao.beginSession();
-            Program pr = dao.getDaoProgram().getProgram(1);
-            System.out.println(pr.getName());   
-        }catch(Exception x){
-            x.printStackTrace();
-            fail("CO:O PASEEE "+x.getMessage());
-        }
-        finally{
+            DaoFactory dao = getDataPru();
+
             try{
-                dao.endSession();
-            }catch(PersistenceException ww){
-                fail("Fallo cerrar dao ");
+                dao.beginSession();
+                Program pr = dao.getDaoProgram().getProgram(1);
+                assertTrue("Error en daoProgram",pr.getName().equals("Ingenieria Civil"));
+            }catch(Exception x){
+                x.printStackTrace();
+                fail("CO:O PASEEE "+x.getMessage());
             }
+            finally{
+                try{
+                    dao.endSession();
+                }catch(PersistenceException ww){
+                    fail("Fallo cerrar dao ");
+                }
+            }
+        }catch(IOException x){
+            fail("Fallo ingreso base de datos de prueba");
         }
     }
     
@@ -87,107 +95,122 @@ public class UsuarioTest {
    /**
      * Actualizar Datos de usuario
      */
-    /*@Test
+    @Test
     public void ActualizarDatosUsuario(){
-        DaoFactory dao = DaoFactory.getInstance(properties);
         try{
-            dao.beginSession();
-            DaoUser usuarioAgregar = dao.getDaoUser();
-            Program carrera = Rp.getProgram(1);
-            User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.util.Date(1990, 7, 20));
-            usuarioAgregar.addUser(Solicitante);
-            String firstName = "Negro";
-            String lastName = "Confundido";
-            String email = "loca@hotmail.com";
-            String phone = "9632584";
-            String cellphone = "+123569764821";
-            int yearGraduate = 2000;
-            int period = 1;
-            java.util.Date birthDate = new java.util.Date(1989, 7, 20);
-            usuarioAgregar.updateUserFirstName(Solicitante.getId(), firstName);
-            usuarioAgregar.updateUserLastName(Solicitante.getId(), lastName);
-            usuarioAgregar.updateUserEmail(Solicitante.getId(), email);
-            usuarioAgregar.updateUserPhone(Solicitante.getId(), phone);
-            usuarioAgregar.updateUserCellphone(Solicitante.getId(), cellphone);
-            usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
-            usuarioAgregar.updateUserPeriod(Solicitante.getId(), period);
-            usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
-            List<User> revision = usuarioAgregar.getUsers();
-            for(User x:revision){
-                assertTrue("Cambio de nombre",x.getFirstName().equals(firstName));
-                assertTrue("Cambio de apellido",x.getLastName().equals(lastName));
-                assertTrue("Cambio de correo",x.getEmail().equals(email));
-                assertTrue("Cambio de telefono fijo",x.getPhone().equals(phone));
-                assertTrue("Cambio de celular",x.getCellphone().equals(cellphone));
-                assertEquals("Cambio de año de graduacion",x.getYearGraduate(),yearGraduate);
-                assertEquals("Cambio de periodo de graduacion",period, x.getPeriod());
-                assertTrue("Cambio de cumpleaños",x.getBirthDate().equals(birthDate));
-            }
-        }catch(PersistenceException e){
-            fail("Fallo inicio dao");
-        }catch(ExcepcionServiciosAeci ex){
-            fail("Lanzo exception ServiciosAeci, revision en base de datos");
-        }finally{
+            DaoFactory dao = getDataPru();
             try{
-                dao.endSession();
-            }catch(PersistenceException ww){
-                fail("Fallo cerrar dao ");
+                dao.beginSession();
+                DaoUser usuarioAgregar = dao.getDaoUser();
+                Program carrera = dao.getDaoProgram().getProgram(1);
+                Rol rolePersona = dao.getDaoRol().getDAORol(1);
+                User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.util.Date(1990, 7, 20),rolePersona);
+                usuarioAgregar.addUser(Solicitante);
+                String firstName = "Negro";
+                String lastName = "Confundido";
+                String email = "loca@hotmail.com";
+                String phone = "9632584";
+                String cellphone = "+123569764821";
+                int yearGraduate = 2000;
+                int period = 1;
+                java.util.Date birthDate = new java.util.Date(1989, 7, 20);
+                usuarioAgregar.updateUserFirstName(Solicitante.getId(), firstName);
+                usuarioAgregar.updateUserLastName(Solicitante.getId(), lastName);
+                usuarioAgregar.updateUserEmail(Solicitante.getId(), email);
+                usuarioAgregar.updateUserPhone(Solicitante.getId(), phone);
+                usuarioAgregar.updateUserCellphone(Solicitante.getId(), cellphone);
+                usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
+                usuarioAgregar.updateUserPeriod(Solicitante.getId(), period);
+                usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
+                List<User> revision = usuarioAgregar.getUsers();
+                for(User x:revision){
+                    assertTrue("Cambio de nombre",x.getFirstName().equals(firstName));
+                    assertTrue("Cambio de apellido",x.getLastName().equals(lastName));
+                    assertTrue("Cambio de correo",x.getEmail().equals(email));
+                    assertTrue("Cambio de telefono fijo",x.getPhone().equals(phone));
+                    assertTrue("Cambio de celular",x.getCellphone().equals(cellphone));
+                    assertEquals("Cambio de año de graduacion",x.getYearGraduate(),yearGraduate);
+                    assertEquals("Cambio de periodo de graduacion",period, x.getPeriod());
+                    assertTrue("Cambio de cumpleaños",x.getBirthDate().equals(birthDate));
+                }
+            }catch(PersistenceException e){
+                fail("Fallo inicio dao");
+            }catch(ExcepcionServiciosAeci ex){
+                fail("Lanzo exception ServiciosAeci, revision en base de datos");
+            }finally{
+                try{
+                    dao.endSession();
+                }catch(PersistenceException ww){
+                    fail("Fallo cerrar dao ");
+                }
             }
-        }
-    }*/
+        }catch(IOException x){
+            fail("Fallo ingreso base de datos de prueba");
+        }    
+    }
     
     /**
      * No es posible agregar un programa no valido 
      */
-    /*@Test
+    @Test
     public void programaNoExistente(){
-        DaoFactory dao = DaoFactory.getInstance(properties);
         try{
-            dao.beginSession();
-            DaoUser usuarioAgregar = dao.getDaoUser();
-            Program carrera = new Program("Contaduria publica", 10);
-            User Solicitante = new User(3604978, "Richar", "Nixon", "niidea@mail.escuelaing.edu.co", "3659748", "065876894", carrera, 1991, 2, new java.util.Date(1970, 7, 20));
+            DaoFactory dao = getDataPru();
             try{
-                usuarioAgregar.updateUserProgram_Id(Solicitante.getId(),87);
-                fail("Fallo con las llaves foraneas, programa no valido");
-            }catch(PersistenceException xx){
-                assertTrue("Programa valido",true);
+                dao.beginSession();
+                DaoUser usuarioAgregar = dao.getDaoUser();
+                Program carrera = new Program("Contaduria publica", 10);
+                Rol rolePersona = dao.getDaoRol().getDAORol(1);
+                User Solicitante = new User(3604978, "Richar", "Nixon", "niidea@mail.escuelaing.edu.co", "3659748", "065876894", carrera, 1991, 2, new java.util.Date(1970, 7, 20),rolePersona);
+                try{
+                    usuarioAgregar.updateUserProgram_Id(Solicitante.getId(),87);
+                    fail("Fallo con las llaves foraneas, programa no valido");
+                }catch(PersistenceException xx){
+                    assertTrue("Programa valido",true);
+                }
+            }catch(PersistenceException e){
+                fail("Fallo inicio dao");
+            }catch(ExcepcionServiciosAeci ex){
+                fail("Lanzo exception ServiciosAeci, revision en base de datos");
+            }finally{
+                try{
+                    dao.endSession();
+                }catch(PersistenceException ww){
+                    fail("Fallo cerrar dao ");
+                }
             }
-        }catch(PersistenceException e){
-            fail("Fallo inicio dao");
-        }catch(ExcepcionServiciosAeci ex){
-            fail("Lanzo exception ServiciosAeci, revision en base de datos");
-        }finally{
-            try{
-                dao.endSession();
-            }catch(PersistenceException ww){
-                fail("Fallo cerrar dao ");
-            }
-        }
-    }*/
+        }catch(IOException x){
+            fail("Fallo ingreso base de datos de prueba");
+        }   
+    }
     
     /**
      * No es un correo el indicado
      */
-    /*@Test
+    @Test
     public void NoEsUnCorreo(){
-        DaoFactory dao = DaoFactory.getInstance(properties);
         try{
-            dao.beginSession();
-            DaoUser usuarioAgregar = dao.getDaoUser();
-            Program carrera = new Program("Contaduria publica", 10);
-            User Solicitante = new User(3604978, "Richar", "Nixon", "niideamail.escuelaing.edu.co", "3659748", "065876894", carrera, 1991, 2, new java.util.Date(1970, 7, 20));
-            fail("No es un correo valido");
-        }catch(PersistenceException ex){
-            fail("Fallo inicio dao");
-        }catch(ExcepcionServiciosAeci ff){
-            assertTrue("No es un correo valido",true);
-        }finally{
+            DaoFactory dao = getDataPru();
             try{
-                dao.endSession();
-            }catch(PersistenceException ww){
-                fail("Fallo cerrar dao ");
+                dao.beginSession();
+                DaoUser usuarioAgregar = dao.getDaoUser();
+                Program carrera = new Program("Contaduria publica", 10);
+                Rol role = dao.getDaoRol().getDAORol(1);
+                User Solicitante = new User(3604978, "Richar", "Nixon", "niideamail.escuelaing.edu.co", "3659748", "065876894", carrera, 1991, 2, new java.util.Date(1970, 7, 20),role);
+                fail("No es un correo valido");
+            }catch(PersistenceException ex){
+                fail("Fallo inicio dao");
+            }catch(ExcepcionServiciosAeci ff){
+                assertTrue("No es un correo valido",true);
+            }finally{
+                try{
+                    dao.endSession();
+                }catch(PersistenceException ww){
+                    fail("Fallo cerrar dao ");
+                }
             }
+        }catch(IOException x){
+            fail("Fallo ingreso base de datos de prueba");
         }
-    }*/
+    }
 }

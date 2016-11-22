@@ -12,6 +12,7 @@ import edu.eci.pdsw.samples.aeci.;
 ***/
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
@@ -62,6 +63,7 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String Cargo;
     private String DireccionEmpresa;
     private String TelefonoEmpresa;
+    private Rol role;
     
     /**
      * Agrega la solicitud de las personas
@@ -73,8 +75,8 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Calendar fecha = new GregorianCalendar();
                 java.util.Date fechaDeEnvio  = fecha.getTime();
                 Program programa = Rp.getProgram(Carrera);
-                System.out.println("PASO"+programa.getName());
-                User newUser = new User(Periodo, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento);
+                Rol rol = Rp.getRol(1);
+                User newUser = new User(Periodo, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
                 Rp.addUser(newUser);
                 Request request = new Request(newUser);
                 Rp.addRequest(request);
