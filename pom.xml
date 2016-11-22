@@ -212,7 +212,8 @@
                         </goals>
                         <configuration>
                             <srcFiles>                                
-                                <srcFile>tables.sql</srcFile>                                
+                                <srcFile>tables.sql</srcFile>
+                                <srcFile>insert.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>

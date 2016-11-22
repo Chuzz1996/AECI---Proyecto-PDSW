@@ -54,26 +54,23 @@ import static org.junit.Assert.*;
  * 
  */
 public class UsuarioTest {
-    
-    public static Properties properties;
-    public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
-    
-    @Before
-    public void setUp() throws IOException {
-        InputStream input = null;
-        input = ClassLoader.getSystemResourceAsStream("h2-applicationconfig.properties");
-        properties=new Properties();
-        properties.load(input);
-    }
-    
+
     @Test
-    public void pruebaADescartarDespues(){
+    public void pruebaADescartarDespues() throws IOException{
+        InputStream input = ClassLoader.getSystemResourceAsStream("h2-applicationconfig.properties");
+        Properties properties=new Properties();
+        properties.load(input);
+        
         DaoFactory dao = DaoFactory.getInstance(properties);
+        
         try{
             dao.beginSession();
             Program pr = dao.getDaoProgram().getProgram(1);
             System.out.println(pr.getName());   
-        }catch(Exception x){fail("CO:O PASEEE "+x.getMessage());}
+        }catch(Exception x){
+            x.printStackTrace();
+            fail("CO:O PASEEE "+x.getMessage());
+        }
         finally{
             try{
                 dao.endSession();
