@@ -38,6 +38,7 @@
         <mapper resource="mappers/ProgramMapper.xml"></mapper>
         <mapper resource="mappers/RequestMapper.xml"></mapper>
         <mapper resource="mappers/UserMapper.xml"></mapper>
+        <mapper resource="mappers/RolMapper.xml"></mapper>
     </mappers> 
         
 </configuration>
