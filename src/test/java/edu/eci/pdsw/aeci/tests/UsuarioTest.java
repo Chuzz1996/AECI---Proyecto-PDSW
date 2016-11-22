@@ -65,6 +65,22 @@ public class UsuarioTest {
         return DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=MYSQL", "anonymous", "");        
     }
     
+    @Test
+    public void pruebaADescartarDespues(){
+        DaoFactory dao = DaoFactory.getInstance(properties);
+        try{
+            dao.beginSession();
+            Program pr = dao.getDaoProgram().getProgram(1);
+            System.out.println(pr.getName());   
+        }catch(Exception x){fail("CO:O PASEEE "+x.getMessage());}
+        finally{
+            try{
+                dao.endSession();
+            }catch(PersistenceException ww){
+                fail("Fallo cerrar dao ");
+            }
+        }
+    }
     
     /*No es necesario hacer la prueba de correo
     @Test

@@ -73,7 +73,7 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Calendar fecha = new GregorianCalendar();
                 java.util.Date fechaDeEnvio  = fecha.getTime();
                 Program programa = Rp.getProgram(Carrera);
-                System.out.println(programa.getName());
+                System.out.println("PASO"+programa.getName());
                 User newUser = new User(Periodo, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento);
                 Rp.addUser(newUser);
                 Request request = new Request(newUser);

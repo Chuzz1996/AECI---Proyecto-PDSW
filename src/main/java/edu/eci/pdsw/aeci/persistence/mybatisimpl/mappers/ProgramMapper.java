@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers;
 
-import edu.eci.pdsw.aeci.entities.*;
+import edu.eci.pdsw.aeci.entities.Program;
 import org.apache.ibatis.annotations.Param;
 
 /**
