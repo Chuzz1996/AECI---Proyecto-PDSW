@@ -67,6 +67,23 @@ public class UsuarioTest {
     }
     
     @Test
+    public void pruebaADescartarDespues(){
+        DaoFactory dao = DaoFactory.getInstance(properties);
+        try{
+            dao.beginSession();
+            Program pr = dao.getDaoProgram().getProgram(1);
+            System.out.println(pr.getName());   
+        }catch(Exception x){fail("CO:O PASEEE "+x.getMessage());}
+        finally{
+            try{
+                dao.endSession();
+            }catch(PersistenceException ww){
+                fail("Fallo cerrar dao ");
+            }
+        }
+    }
+    
+    @Test
     public void EnvioDeAprobado() {
     }
     

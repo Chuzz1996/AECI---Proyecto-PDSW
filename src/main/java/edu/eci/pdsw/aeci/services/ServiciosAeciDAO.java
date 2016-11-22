@@ -95,8 +95,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         Program program = null;
         try{
             daof.beginSession();
-            DaoProgram pr = daof.getDaoProgram();
-            program = pr.getProgram(id);
+            program = daof.getDaoProgram().getProgram(id);
         }catch(PersistenceException ex){
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());
