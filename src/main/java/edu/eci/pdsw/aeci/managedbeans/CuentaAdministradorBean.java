@@ -51,6 +51,10 @@ public class CuentaAdministradorBean implements Serializable{
     private String apellido;
     private String rol;
     
+    //Process requests
+    private Request request;    
+    private String currentCommentary, currentState;       
+    
     //menus
     private String urlMenuPrincipal;
     private String urlMenuLateral= "Default";
@@ -76,39 +80,29 @@ public class CuentaAdministradorBean implements Serializable{
         
     }
     
-    //Process requests
-    private Request currentRequest;
-    private List<Request> pendingRequests;
-    private String currentCommentary, currentState;
-    
+        
     public CuentaAdministradorBean() {
         rp = ServiciosAeci.getInstance();
     }
     
     //Process requests
-    public Request getCurrentRequest() {
-        return currentRequest;
+    public Request getRequest() {
+        return request;        
     }
+      
 
     public List<Request> getPendingRequests() throws ExcepcionServiciosAeci {
         return rp.getPendingRequests();
-    }
+    }  
 
-    public void setCurrentRequest(Request currentRequest) {
-        this.currentRequest = currentRequest;
+    public void setRequest(Request currentRequest) {
+        this.request = request;
     }
     
     public void updateRequest() throws ExcepcionServiciosAeci{
-        rp.updateRequest(currentRequest, currentCommentary, currentState);
+        rp.updateRequest(request, currentCommentary, currentState);
     }
-    
-        
-
-    public boolean puedeMostrar(){
-        return true;
-    }
-    
-    
+           
      /**
      * @return the nombre
      */

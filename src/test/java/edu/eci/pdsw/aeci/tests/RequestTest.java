@@ -71,11 +71,11 @@ public class RequestTest {
                 Rol rolePersona = dao.getDaoRol().getDAORol(1);
                 User primerSolicitante = new User(2105409, "Pepo", "Gomez", "pepo.gomez@hotmail.com", "2697490", "+573158207964", carreraPrimerSolicitante, 2012, 1, new java.util.Date(1990, 7, 20),rolePersona);
                 usuarioAAgregar.addUser(primerSolicitante);
-                Request PrimeraSolicitudAEnviar = new Request(primerSolicitante);
+                Request PrimeraSolicitudAEnviar = new Request(primerSolicitante,1);
                 Program carreraSegundoSolicitante = dao.getDaoProgram().getProgram(5);
                 User SegundoSolicitante = new User(20698764, "Jaimito", "Chapo", "jaimito.chapo@gmail.com", "987654321", "+573002644743", carreraSegundoSolicitante, 2010, 2, new java.util.Date(1987, 5, 1),rolePersona);
                 usuarioAAgregar.addUser(SegundoSolicitante);
-                Request SegundaSolicitudAEnviar = new Request(SegundoSolicitante);
+                Request SegundaSolicitudAEnviar = new Request(SegundoSolicitante,2);
                 request.addRequest(PrimeraSolicitudAEnviar);
                 request.addRequest(SegundaSolicitudAEnviar);
                 List<Request> result = request.getPendingRequests();
@@ -114,7 +114,7 @@ public class RequestTest {
                 Rol rolePersona = dao.getDaoRol().getDAORol(2);
                 User primerSolicitante = new User(19906578, "Nana", "Ramirez", "Pepita92@gmail.com", "5555555", "+13186209763", carreraSolicitante, 2001, 1, new java.util.Date(1980, 1, 1),rolePersona);
                 usuarioAAgregar.addUser(primerSolicitante);
-                Request PrimeraSolicitudAEnviar = new Request(primerSolicitante);
+                Request PrimeraSolicitudAEnviar = new Request(primerSolicitante,1 );
                 request.addRequest(PrimeraSolicitudAEnviar);
                 try{
                     request.updateRequest(PrimeraSolicitudAEnviar, "R", "Felicitaciones su solicitud fue aprobada");

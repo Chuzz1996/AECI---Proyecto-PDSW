@@ -79,7 +79,7 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Rol rol = Rp.getRol(1);
                 User newUser = new User(id, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
                 Rp.addUser(newUser);
-                Request request = new Request(newUser);
+                Request request = new Request(newUser, 2);
                 Rp.addRequest(request);
             }catch(ExcepcionServiciosAeci ex){
                 System.out.println("SE CAGO "+ex.getMessage());

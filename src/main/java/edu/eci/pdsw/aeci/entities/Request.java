@@ -21,11 +21,12 @@ public class Request {
     public Request() {
     }
     
-    public Request (User user){
+    public Request (User user, int id){
         this.commentary = "";
         this.state = "E";
         this.date = new Date();
         this.user= user;
+        this.id = id;
     }
     
     /**
