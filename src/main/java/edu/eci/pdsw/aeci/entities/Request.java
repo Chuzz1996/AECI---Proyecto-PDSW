@@ -16,6 +16,7 @@ public class Request {
     private String commentary, state;
     private Date date;
     private User user;
+    private int id;
 
     public Request() {
     }
@@ -81,6 +82,20 @@ public class Request {
      */
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
     
 }

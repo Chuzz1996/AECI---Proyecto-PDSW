@@ -71,21 +71,22 @@ public class SolicitudAfiliacionBean implements Serializable{
     public void enviarSolicitud(){
         try{
             int yearGraduate = Integer.parseInt(AnoGraduacion);
+            int id = Integer.parseInt(Cedula);
             try{
                 Calendar fecha = new GregorianCalendar();
                 java.util.Date fechaDeEnvio  = fecha.getTime();
                 Program programa = Rp.getProgram(Carrera);
                 Rol rol = Rp.getRol(1);
-                User newUser = new User(Periodo, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
+                User newUser = new User(id, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
                 Rp.addUser(newUser);
                 Request request = new Request(newUser);
                 Rp.addRequest(request);
             }catch(ExcepcionServiciosAeci ex){
-
+                System.out.println("SE CAGO "+ex.getMessage());
 
             }
         }catch(NumberFormatException ex){
-            
+            System.out.println("Dato Agregado no es numerico");
         }
         
     }

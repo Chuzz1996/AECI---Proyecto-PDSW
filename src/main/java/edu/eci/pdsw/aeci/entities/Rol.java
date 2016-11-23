@@ -12,7 +12,7 @@ package edu.eci.pdsw.aeci.entities;
 public class Rol {
     
     private int id;
-    private int name;
+    private String name;
 
     public Rol() {
     }
@@ -34,14 +34,14 @@ public class Rol {
     /**
      * @return the name
      */
-    public int getName() {
+    public String getName() {
         return name;
     }
 
     /**
      * @param name the name to set
      */
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

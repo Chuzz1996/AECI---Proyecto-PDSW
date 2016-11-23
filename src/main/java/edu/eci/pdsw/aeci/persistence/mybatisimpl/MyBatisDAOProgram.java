@@ -25,7 +25,6 @@ public class MyBatisDAOProgram implements DaoProgram {
     
     @Override
     public Program getProgram(int id)throws PersistenceException {
-        System.out.println("NO SE QUE DEBE SALIR"+currentSession.getMapper(ProgramMapper.class).getProgram(id));
         return currentSession.getMapper(ProgramMapper.class).getProgram(id);
     }
     

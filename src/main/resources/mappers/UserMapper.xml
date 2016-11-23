@@ -12,7 +12,7 @@
         <result property='firstName' column='FirstName'/>
         <result property='lastName' column='LastName'/>
         <result property='email' column='Email'/>
-        <result property='cellPhone' column='CellPhone'/>
+        <result property='cellphone' column='CellPhone'/>
         <result property='birthDate' column='BirthDate'/>
         <association property = 'program' javaType ='Program' columnPrefix='pr_' resultMap='ProgramResult'></association>
         <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
@@ -39,7 +39,7 @@
     
     <insert id="addUser" parameterType="map">
         INSERT INTO User (Id, FirstName, LastName, Email, Phone, CellPhone, Program_Id, YearGraduate, BirthDate, Period, Rol_Id) 
-        VALUES (#{user.id}, #{user.firstName}, #{user.lastName}, #{user.email},#{user.phone},#{user.cellPhone}, #{user.program.id},#{user.yearGraduate},#{user.birthDate},#{user.period},#{user.role.id})
+        VALUES (#{user.id}, #{user.firstName}, #{user.lastName}, #{user.email},#{user.phone},#{user.cellphone}, #{user.program.id},#{user.yearGraduate},#{user.birthDate},#{user.period},#{user.role.id})
     </insert>
     
     <update id="updateUserFirstName" parameterType="map">

@@ -20,7 +20,7 @@
         <result property='firstName' column='FirstName'/>
         <result property='lastName' column='LastName'/>
         <result property='email' column='Email'/>
-        <result property='cellPhone' column='CellPhone'/>
+        <result property='cellphone' column='CellPhone'/>
         <result property='birthDate' column='BirthDate'/>
         <association property = 'program' javaType ='Program' columnPrefix='pr_' resultMap='ProgramResult'></association>
         <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
@@ -49,7 +49,7 @@
 
     <insert id="addRequest" parameterType="map">
         INSERT INTO Request (id, User_Id, Date, Commentary,State ) 
-        VALUES ( #{request.id},#{request.user.id},#{request.date},#{request.commentary},#{request.state};   
+        VALUES ( #{request.id},#{request.user.id},#{request.date},#{request.commentary},#{request.state});   
     </insert>
     
     <update id="updateRequest" parameterType="map">
