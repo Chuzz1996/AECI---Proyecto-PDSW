@@ -90,6 +90,9 @@ public class SolicitudAfiliacionBean implements Serializable{
         }
         
     }
+    
+   
+
         
     /**
      * @return the Cedula

@@ -22,6 +22,7 @@ import edu.eci.pdsw.samples.aeci.;
 
 ***/
 import edu.eci.pdsw.aeci.entities.Request;
+import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
@@ -89,7 +90,22 @@ public class CuentaAdministradorBean implements Serializable{
     public Request getRequest() {
         return request;        
     }
-      
+    
+    /**
+     * Retorna el usuario que hizo la solicitud.
+     * @return user
+     */
+    public User getDetailsRequest() {
+        return request.getUser();        
+    }
+    
+    /***
+     * Procesa la solicitud. 
+     * @throws ExcepcionServiciosAeci 
+     */
+    public void processRequest() throws ExcepcionServiciosAeci{
+        rp.updateRequest(request, currentCommentary, currentState);
+    }
 
     public List<Request> getPendingRequests() throws ExcepcionServiciosAeci {
         return rp.getPendingRequests();
