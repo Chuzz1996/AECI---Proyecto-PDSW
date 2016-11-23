@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <title>ADMIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
+    <h:head>
+
+    </h:head>  
+    <h:body>
+        <ui:composition>            
+            <h:form id="form1" style="padding: 7px ">         
+                
+                <p:menu id='menuSolicitudes' widgetVar="menu1" style="border-radius: 0px; padding: 10px; width: 90%;  background: black; color: white; border: none">
+                    <f:ajax render=":form:panel1">
+                    <p:submenu label="Solicitudes de afiliacion" style="border-radius: 0px; background-color: white">
+                        <p:menuitem update=":form:panel1" value="Pendientes" action="#{cuentaAdministrador.urlMenuLateral('solicitudesAfilAprobadas')}" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
+                            
+                        <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>          
+                        <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
+                    </p:submenu>
+                    <p:submenu label="Solicitudes de renovacion" style="border-radius: 0px; background-color: white">
+                        <p:menuitem value="Pendientes" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
+                        <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif" />
+                        <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
+                    </p:submenu>
+                    </f:ajax>
+                </p:menu>                   
+            </h:form>            
+        
+        </ui:composition>
+    </h:body>
+    
+</html>

@@ -50,7 +50,31 @@ public class CuentaAdministradorBean implements Serializable{
     private String nombre;
     private String apellido;
     private String rol;
-    private int estado = 0;
+    
+    //menus
+    private String urlMenuPrincipal;
+    private String urlMenuLateral= "Default";
+
+    public String getUrlMenuPrincipal() {
+        System.out.println(urlMenuLateral);
+        return urlMenuPrincipal;
+    }
+
+    public String getUrlMenuLateral() {
+        System.out.println(urlMenuLateral);
+        return urlMenuLateral;
+    }
+
+    public void setUrlMenuPrincipal(String urlMenuPrincipal) {
+        this.urlMenuPrincipal = urlMenuPrincipal;  
+        System.out.println("Segunda "+urlMenuLateral);
+    }
+
+    public void setUrlMenuLateral(String urlMenuLateral) {
+        System.out.println("Segunda "+urlMenuLateral);
+        this.urlMenuLateral = urlMenuLateral;    
+        
+    }
     
     //Process requests
     private Request currentRequest;
@@ -78,14 +102,7 @@ public class CuentaAdministradorBean implements Serializable{
         rp.updateRequest(currentRequest, currentCommentary, currentState);
     }
     
-    //    
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public int getEstado() {
-        return estado;
-    }
+        
 
     public boolean puedeMostrar(){
         return true;
