@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <title></title>
+    <title>USUARIO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
@@ -26,10 +26,9 @@ and open the template in the editor.
                     <h:commandLink class="w3-margin-left w3-btn w3-black" value='AECI' action="/index.xhtml?faces-redirect=true" />                                                      
                 </li>
                 <li class="w3-right w3-hide-small">
+                    <h:link value="Afiliación" class="w3-left w3-btn w3-black"/>
                     <h:link value="Solicitudes" class="w3-left w3-btn w3-black"/>       
-                    <h:link value="Convenios" class="w3-left w3-btn w3-black"/>         
-                    <h:link value="Afiliaciones" class="w3-left w3-btn w3-black"/>    
-                    <h:link value="Reportes" class="w3-left w3-btn w3-black"/> 
+                    <h:link value="Convenios" class="w3-left w3-btn w3-black"/>  
                     <h:link value="Salir" class="w3-left w3-btn w3-black"/>    
 
                 </li>
@@ -40,20 +39,21 @@ and open the template in the editor.
         <h:form id="form">
             <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
                 <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
-                    <h:outputText value="(#{cuentaAdministrador.rol})"/>
-                    <h:outputText style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="Pepito perez"/>
-                    <h:outputText value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
-                    
-                     <ui:insert name="menuPrincipal">
-                        <ui:include src="Menu/SolicitudesPrincipal.xhtml"/>
+                    <h:outputLabel value="(#{cuentaUsuario.rol}Estado de la afiliacion)"/>   
+                    <div></div>
+                    <h:outputLabel style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="Nombre del usuario"/>
+                    <h:outputLabel value="#{cuentaUsuario.nombre} #{cuentaUsuario.apellido}"/>
+                    <p:separator/>                    
+                    <ui:insert name="menuPrincipal">
+                        <ui:include src="Menu/Afiliacion.xhtml"/>
                     </ui:insert> 
-                    <h:outputText value="(#{cuentaAdministrador.urlMenuLateral})"/>
+                    <h:outputText value="(#{cuentaUsuario.urlMenuLateral})"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
                     <p:panel id="panel1">  
                         <ui:insert name="opcion1">
-                            <ui:include src="Menu/#{cuentaAdministrador.urlMenuLateral}.xhtml"/>      
+                            <ui:include src="Menu/#{cuentaUsuario.urlMenuLateral}.xhtml"/>      
                         </ui:insert> 
                     </p:panel>
                 </p:layoutUnit>
@@ -62,16 +62,9 @@ and open the template in the editor.
 </f:view>
         <!-- Contactarnos -->
        <h:form id="contacto">              
-            <p:outputPanel id="Contacto" style="color: black; background-color: black" >                  
-                <h1 style="color: white">  Contacto</h1>                 
-                <h:panelGrid columns="4" cellpadding ="20" style="margin: 0 auto;" bgcolor="#000000">                     
-                    <h:outputText class="fa fa-map-marker" style="color: white" value=" AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso  "/>
-                    <h:outputText class="fa fa-phone" style="color: white" value="  PBX: +57(1) 668 3600 Ext.1232"/>   
-                    <h:outputText class="fa fa-phone" style="color: white" value="  Móvil: +57 312 457 0612"/>      
-                    <h:outputText class="fa fa-envelope" style="color: white" value=" aeci@escuelaing.edu.co"/>   
-                    <h:outputLink class="fa fa-facebook-official" style="color: white"  value="https://www.facebook.com/AECIescuelaing/?fref=ts"/>                     
-                </h:panelGrid>
-            </p:outputPanel>
+           <ui:insert name="footer">
+               <ui:include src="/Templates/Footer.xhtml"/>      
+           </ui:insert> 
         </h:form>
     </h:body>
 </html>

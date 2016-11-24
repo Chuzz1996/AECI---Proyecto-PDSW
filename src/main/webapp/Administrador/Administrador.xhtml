@@ -55,19 +55,10 @@
             </p:layout>        
         </h:form>    
 </f:view>
-        <!-- Contactarnos -->
-       <h:form id="contacto">              
-            <p:outputPanel id="Contacto" style="color: black; background-color: black" >                  
-                <h1 style="color: white">  Contacto</h1>                 
-                <h:panelGrid columns="4" cellpadding ="20" style="margin: 0 auto;" bgcolor="#000000">                     
-                    <h:outputText class="fa fa-map-marker" style="color: white" value=" AK.45 No.205-59 (Autopista Norte  K.13)  Bloque A -2° Piso  "/>
-                    <h:outputText class="fa fa-phone" style="color: white" value="  PBX: +57(1) 668 3600 Ext.1232"/>   
-                    <h:outputText class="fa fa-phone" style="color: white" value="  Móvil: +57 312 457 0612"/>      
-                    <h:outputText class="fa fa-envelope" style="color: white" value=" aeci@escuelaing.edu.co"/>   
-                    <h:outputLink class="fa fa-facebook-official" style="color: white"  value="https://www.facebook.com/AECIescuelaing/?fref=ts"/>                     
-                </h:panelGrid>
-            </p:outputPanel>
-        </h:form>
+        <!-- Contactarnos -->        
+        <ui:insert name="footer">
+            <ui:include src="/Templates/Footer.xhtml"/>      
+        </ui:insert> 
     </h:body>
 </html>
 

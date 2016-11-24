@@ -22,7 +22,7 @@ and open the template in the editor.
         <ui:composition>
             <h:form id="form">                
                 <p:panel >
-                    <p:dataTable id="tablePendientes" var ="request" rowKey="#{request.user.id}" value="#{cuentaAdministrador.pendingRequests}" selectionMode="single"
+                    <p:dataTable id="tablePendientes" var ="request" rowKey="#{cuentaAdministrador.request.user.id}" value="#{cuentaAdministrador.pendingRequests}" selectionMode="single"
                                  selection="#{cuentaAdministrador.request}">                        
                         <f:facet name ="header">
                             Solicitudes de Afiliacion Pendientes 
