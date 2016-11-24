@@ -56,30 +56,7 @@ public class CuentaAdministradorBean implements Serializable{
     private Request request;    
     private String currentCommentary, currentState;       
     
-    //menus
-    private String urlMenuPrincipal;
-    private String urlMenuLateral= "Default";
-
-    public String getUrlMenuPrincipal() {
-        System.out.println(urlMenuLateral);
-        return urlMenuPrincipal;
-    }
-
-    public String getUrlMenuLateral() {
-        System.out.println(urlMenuLateral);
-        return urlMenuLateral;
-    }
-
-    public void setUrlMenuPrincipal(String urlMenuPrincipal) {
-        this.urlMenuPrincipal = urlMenuPrincipal;  
-        System.out.println("Segunda "+urlMenuLateral);
-    }
-
-    public void setUrlMenuLateral(String urlMenuLateral) {
-        System.out.println("Segunda "+urlMenuLateral);
-        this.urlMenuLateral = urlMenuLateral;    
-        
-    }
+      
     
         
     public CuentaAdministradorBean() {
