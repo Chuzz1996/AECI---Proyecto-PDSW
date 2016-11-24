@@ -20,13 +20,12 @@ and open the template in the editor.
     </h:head>  
     <h:body>
         <ui:composition>            
-            <h:form id="form1" style="padding: 7px ">         
-                
+            <h:form id="form1" style="padding: 7px ">                         
                 <p:menu id='menuSolicitudes' widgetVar="menu1" style="border-radius: 0px; padding: 10px; width: 90%;  background: black; color: white; border: none">
                     <f:ajax render=":form:panel1">
+                        <p:menuitem value="Principal" url="Administrador.xhtml" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
                     <p:submenu label="Solicitudes de afiliacion" style="border-radius: 0px; background-color: white">
-                        <p:menuitem update=":form:panel1" value="Pendientes" action="#{cuentaAdministrador.urlMenuLateral('solicitudesAfilAprobadas')}" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
-                            
+                        <p:menuitem update=":form:panel1" value="Pendientes" action="#{cuentaAdministrador.urlMenuLateral('solicitudesAfilAprobadas')}" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>                            
                         <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>          
                         <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
                     </p:submenu>
@@ -37,8 +36,7 @@ and open the template in the editor.
                     </p:submenu>
                     </f:ajax>
                 </p:menu>                   
-            </h:form>            
-        
+            </h:form>     
         </ui:composition>
     </h:body>
     
