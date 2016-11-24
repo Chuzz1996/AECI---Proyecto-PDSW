@@ -6,7 +6,7 @@
 package edu.eci.pdsw.aeci.entities;
 
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
 /**
@@ -117,7 +117,7 @@ public class User {
     /**
      * @param email the email to set
      */
-    public void setEmail(String email) throws ExcepcionServiciosAeci {
+    public void setEmail(String email) {
         //revisarCorreo(email);
         this.email = email;
     }
@@ -202,7 +202,7 @@ public class User {
     /**
      * @param birthDate the birthDate to set
      */
-    public void setFechaDeNacimiento(Date birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

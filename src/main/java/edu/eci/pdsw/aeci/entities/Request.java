@@ -5,7 +5,8 @@
  */
 package edu.eci.pdsw.aeci.entities;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Request {
     public Request (User user, int id){
         this.commentary = "";
         this.state = "E";
-        this.date = new Date();
+        this.date =  new java.sql.Date(Calendar.getInstance().getTime().getTime());
         this.user= user;
         this.id = id;
     }

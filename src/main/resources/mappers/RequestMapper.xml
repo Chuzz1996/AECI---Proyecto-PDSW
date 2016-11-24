@@ -43,13 +43,13 @@
                Rol.Id as rl_Id, Rol.Name as rl_Name,
                Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
         From User, Request, Rol, Program
-        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And Request.State = "E"
+        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And Request.State = 'E'
         Order By Request.Date Desc;
     </select>
 
     <insert id="addRequest" parameterType="map">
-        INSERT INTO Request (id, User_Id, Date, Commentary,State ) 
-        VALUES ( #{request.id},#{request.user.id},#{request.date},#{request.commentary},#{request.state});   
+        INSERT INTO Request (User_Id, Date, Commentary,State ) 
+        VALUES ( #{request.user.id},#{request.date},#{request.commentary},#{request.state});   
     </insert>
     
     <update id="updateRequest" parameterType="map">

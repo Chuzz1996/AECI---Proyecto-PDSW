@@ -18,8 +18,7 @@ import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeciDAO;
 import java.io.Serializable;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
@@ -55,7 +54,7 @@ public class SolicitudAfiliacionBean implements Serializable{
     private int Carrera;
     private String AnoGraduacion;
     private int Periodo;
-    private Date fechaNacimiento;
+    private java.sql.Date fechaNacimiento;
     public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
     
     private String semestre;
@@ -223,15 +222,15 @@ public class SolicitudAfiliacionBean implements Serializable{
     /**
      * @return the fechaNacimiento
      */
-    public Date getFechaNacimiento() {
+    public java.util.Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     /**
      * @param fechaNacimiento the fechaNacimiento to set
      */
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaNacimiento(java.util.Date fechaNacimiento) {
+        this.fechaNacimiento = new Date(fechaNacimiento.getTime());
     }
 
     /**

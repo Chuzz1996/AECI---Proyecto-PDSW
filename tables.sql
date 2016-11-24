@@ -41,12 +41,12 @@ CREATE TABLE Graduate (
 -- Table: Membership
 CREATE TABLE Membership (
     Id int NOT NULL,
-    Start_Date timestamp NOT NULL,
+    Start_Date date NOT NULL,
     Receipt blob NOT NULL,
     PaymentNumber int NOT NULL,
     Account_Id int NOT NULL,
     Rate_id int NOT NULL,
-    End_Date timestamp NOT NULL
+    End_Date date NOT NULL
 ) ENGINE=InnoDB ;
 
 -- Table: Program
@@ -65,11 +65,12 @@ CREATE TABLE Rate (
 
 -- Table: Request
 CREATE TABLE Request (
-    Id int NOT NULL,
+    Id int NOT NULL AUTO_INCREMENT,
     User_Id int NOT NULL,
-    Date timestamp NOT NULL,
+    Date date NOT NULL,
     Commentary varchar(1000) NOT NULL,
-    State char(1) NOT NULL
+    State char(1) NOT NULL,
+    CONSTRAINT PK_REQUEST PRIMARY KEY (Id)
 ) ENGINE=InnoDB ;
 
 -- Table: Rol
@@ -95,7 +96,7 @@ CREATE TABLE User (
     Cellphone varchar(20) NULL,
     Program_Id int NOT NULL,
     YearGraduate int NOT NULL,
-    BirthDate timestamp NOT NULL,
+    BirthDate date NOT NULL,
     Period int NOT NULL,
     Rol_Id int NOT NULL
 ) ENGINE=InnoDB ;
@@ -121,10 +122,6 @@ ALTER TABLE User ADD CONSTRAINT PK_PERSON
   
 --- Table: Student ---
 ALTER TABLE Student ADD CONSTRAINT PK_STUDENT
-  PRIMARY KEY (Id);
-  
---- Table: Request ---
-ALTER TABLE Request ADD CONSTRAINT PK_REQUEST
   PRIMARY KEY (Id);
   
 --- Table: Graduate ---

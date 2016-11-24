@@ -49,7 +49,7 @@ public class RequestTest {
     }
     
     public DaoFactory getDataPru() throws IOException{
-        InputStream input = ClassLoader.getSystemResourceAsStream("h2-applicationconfig.properties");
+        InputStream input = getClass().getClassLoader().getResource("applicationconfig.properties").openStream();
         Properties properties=new Properties();
         properties.load(input);
         return DaoFactory.getInstance(properties);
@@ -61,6 +61,7 @@ public class RequestTest {
      */
     @Test
     public void solicitudesPendientes(){
+        System.out.println("lol");
         try{
             DaoFactory dao = getDataPru();
             try{
@@ -69,17 +70,18 @@ public class RequestTest {
                 DaoUser usuarioAAgregar = dao.getDaoUser();
                 Program carreraPrimerSolicitante = dao.getDaoProgram().getProgram(2);
                 Rol rolePersona = dao.getDaoRol().getDAORol(1);
-                User primerSolicitante = new User(2105409, "Pepo", "Gomez", "pepo.gomez@hotmail.com", "2697490", "+573158207964", carreraPrimerSolicitante, 2012, 1, new java.util.Date(1990, 7, 20),rolePersona);
+                User primerSolicitante = new User(210409, "Pepo", "Gomez", "pepo.gomez@hotmail.com", "2697490", "+573158207964", carreraPrimerSolicitante, 2012, 1, new java.sql.Date(1990, 7, 20),rolePersona);
                 usuarioAAgregar.addUser(primerSolicitante);
                 Request PrimeraSolicitudAEnviar = new Request(primerSolicitante,1);
                 Program carreraSegundoSolicitante = dao.getDaoProgram().getProgram(5);
-                User SegundoSolicitante = new User(20698764, "Jaimito", "Chapo", "jaimito.chapo@gmail.com", "987654321", "+573002644743", carreraSegundoSolicitante, 2010, 2, new java.util.Date(1987, 5, 1),rolePersona);
+                User SegundoSolicitante = new User(2068764, "Jaimito", "Chapo", "jaimito.chapo@gmail.com", "987654321", "+573002644743", carreraSegundoSolicitante, 2010, 2, new java.sql.Date(1987, 5, 1),rolePersona);
                 usuarioAAgregar.addUser(SegundoSolicitante);
                 Request SegundaSolicitudAEnviar = new Request(SegundoSolicitante,2);
                 request.addRequest(PrimeraSolicitudAEnviar);
                 request.addRequest(SegundaSolicitudAEnviar);
                 List<Request> result = request.getPendingRequests();
                 for(Request x:result){
+                    System.out.println(x.getUser().getFirstName());
                     assertEquals("Estado pendiente",x.getState(),"E");
                 }
             }catch(PersistenceException ex){
@@ -102,7 +104,7 @@ public class RequestTest {
      * no es posible el cambio de estado en las solicitudes
      * Falla: si
     */
-    @Test
+    /*@Test
     public void CambioDeEstadosDeLaSolicitud(){
         try{
             DaoFactory dao = getDataPru();
@@ -112,7 +114,7 @@ public class RequestTest {
                 DaoUser usuarioAAgregar = dao.getDaoUser();
                 Program carreraSolicitante = dao.getDaoProgram().getProgram(1);
                 Rol rolePersona = dao.getDaoRol().getDAORol(2);
-                User primerSolicitante = new User(19906578, "Nana", "Ramirez", "Pepita92@gmail.com", "5555555", "+13186209763", carreraSolicitante, 2001, 1, new java.util.Date(1980, 1, 1),rolePersona);
+                User primerSolicitante = new User(19906578, "Nana", "Ramirez", "Pepita92@gmail.com", "5555555", "+13186209763", carreraSolicitante, 2001, 1, new java.sql.Date(1980, 1, 1),rolePersona);
                 usuarioAAgregar.addUser(primerSolicitante);
                 Request PrimeraSolicitudAEnviar = new Request(primerSolicitante,1 );
                 request.addRequest(PrimeraSolicitudAEnviar);
@@ -137,7 +139,7 @@ public class RequestTest {
         }catch(IOException x){
             fail("Fallo ingreso base de datos de prueba");
         }
-    }
+    }*/
     
     /**
      * Rectificar ingreso de base de datos
