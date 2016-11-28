@@ -20,39 +20,22 @@ and open the template in the editor.
     </h:head>  
     <h:body>
         <ui:composition>
-            <h:form id="form">                
-                <p:panel >
-                    <p:dataTable id="tablePendientes" var ="request" rowKey="#{cuentaAdministrador.request.user.id}" value="#{cuentaAdministrador.pendingRequests}" selectionMode="single"
-                                 selection="#{cuentaAdministrador.request}">                        
-                        <f:facet name ="header">
-                            Solicitudes de Afiliacion Pendientes 
-                        </f:facet>
-                        <p:column>
-                            <f:facet name="header">
-                                Identificador
-                            </f:facet>
-                            #{request.user.id}
-                        </p:column>                        
-                        <p:column>
-                            <f:facet name="header">
-                                Fecha de solicitud
-                            </f:facet>
-                            #{request.date}
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                Solicitante
-                            </f:facet>
-                            #{request.user.role}
-                        </p:column>   
-                        <f:facet name="footer"> 
-                            <p:commandButton value="Add New Forum" icon="ui-icon-circle-check" oncomplete="PF('detail').show()" actionListener="#{registroForo.clean()}" />
-                            <p:commandButton value="View Forum Selected" action="registrorespuestaforo" immediate="true" />
-                        </f:facet>                        
-                    </p:dataTable>                   
-                </p:panel>
-            </h:form>       
-        
+            <h:form id="form">  
+                <h3 style="margin-top: 0">ID de usuario a revisar</h3>
+                <p:inputText value="#{cuentaAdministrador.solicitudActual}"/>
+                <p:commandButton value="Datos Usuario" action="#{cuentaAdministrador.checkUsuario()}" oncomplete="PF('detail').show()"/>
+                <p:dataTable var ="solicitudesPendientes" value="#{cuentaAdministrador.solicitudesPendientes}">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{solicitudesPendientes.id}"/>
+                    </p:column>
+                    <p:column headerText="Nombre Usuario">
+                        <h:outputText value="#{solicitudesPendientes.user.firstName}  #{solicitudesPendientes.user.lastName}"/>
+                    </p:column>
+                    <p:column headerText="Carrera">
+                        <h:outputText value="#{solicitudesPendientes.user.program.name}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
         </ui:composition>
     </h:body>
     

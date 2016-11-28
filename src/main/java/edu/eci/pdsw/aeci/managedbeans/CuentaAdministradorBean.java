@@ -56,11 +56,14 @@ public class CuentaAdministradorBean implements Serializable{
     private Request request;    
     private String currentCommentary, currentState;       
     
+    //Menu
+    private List<Request> solicitudesPendientes;
       
     
         
     public CuentaAdministradorBean() {
         rp = ServiciosAeci.getInstance();
+        this.setSolicitudesPendientes();
     }
     
     //Process requests
@@ -152,5 +155,57 @@ public class CuentaAdministradorBean implements Serializable{
     
     }
     
+    /**
+     * @return the solicitudesPendientes
+     */
+    public List<Request> getSolicitudesPendientes() {
+        return solicitudesPendientes;
+    }
+
+    /**
+     * @param solicitudesPendientes the solicitudesPendientes to set
+     */
+    public void setSolicitudesPendientes() {
+        try{
+            this.solicitudesPendientes = rp.getPendingRequests();
+        }catch(ExcepcionServiciosAeci ex){
+            System.out.println("EN CUENTA ADMINISTRADOR"+ex.getMessage());
+        }
+    }
+    
+    private int solicitudActual;
+    private User usuarioActual;
+    private Request solicitud;
+    
+    /**
+     * @return the solicitudActual
+     */
+    public int getSolicitudActual() {
+        return solicitudActual;
+    }
+
+    /**
+     * @param solicitudActual the solicitudActual to set
+     */
+    public void setSolicitudActual(int solicitudActual) {
+        this.solicitudActual = solicitudActual;
+    }
+    
+    /**
+     * Consultar usuario
+     */
+    public void checkUsuario(){
+        try{
+            for(Request x:solicitudesPendientes){
+                if(x.getId()==solicitudActual){
+                    usuarioActual = x.getUser();
+                    solicitud = x;
+                    break;
+                }
+            }
+        }catch(Exception ex){
+            System.out.println("No existe un usuario con ese id");
+        }
+    }
     
 }
