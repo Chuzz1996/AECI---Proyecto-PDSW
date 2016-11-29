@@ -163,7 +163,6 @@ public class CuentaAdministradorBean implements Serializable{
      * Consultar usuario
      */
     public String checkUsuario(){    
-        System.out.println("Entro al check");
         try{
             for(Request x:solicitudesPendientes){
                 if(x.getId()==solicitudActual){

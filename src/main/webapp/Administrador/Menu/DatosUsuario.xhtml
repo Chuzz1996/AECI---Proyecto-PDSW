@@ -20,6 +20,9 @@ and open the template in the editor.
     </h:head>  
     <h:body>                           
         <h3 style="margin-top: 0">Datos Usuario</h3>
+        <p:outputLabel value="Cedula del Solicitante: "/>        
+        <p:outputLabel value="#{cuentaAdministrador.request.user.id}"/>
+        
         <p:accordionPanel activeIndex="null">
             <p:tab title="Nombre: #{cuentaAdministrador.request.user.firstName} #{cuentaAdministrador.request.user.lastName}">
                 <h:panelGrid columns="2"> 
@@ -46,13 +49,7 @@ and open the template in the editor.
                     <h:outputLabel value = "Cambio de Telefono Fijo:"/>
                     <h:inputText id="phone" value="#{cuentaAdministrador.request.user.phone}"/>
                 </h:panelGrid>
-            </p:tab>
-            <p:tab title="Fecha de Nacimiento:  #{cuentaAdministrador.request.user.birthDate}">
-                <h:panelGrid columns="2">               
-                    <p:outputLabel value="Cambio de fecha de Nacimiento:" />
-                    <p:calendar  id="birthdate" value="#{cuentaAdministrador.request.user.birthDate}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true"/>
-                </h:panelGrid>
-            </p:tab>
+            </p:tab>            
             <p:tab title="Graduacion:  #{cuentaAdministrador.request.user.yearGraduate}">
                 <h:panelGrid columns="2">
                     <h:outputLabel value = "Cambio de año de graduación:" />
@@ -77,9 +74,8 @@ and open the template in the editor.
         </h:panelGrid>
         <p>Comentario</p>
         <p:inputTextarea rows="10" cols="50" completeMethod="#{cuentaAdministrador.request.commentary}" queryDelay="750" minQueryLength="4" />
-        <br/>
-        <p:commandButton value = "Regresar" ajax="false" action="/index.xhtml?faces-redirect=true" resetValues="true" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
-        <p:commandButton value = "Finalizar revision" resetValues="true" actionListener="#{cuentaAdministrador.changeRequest()}"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
+        <br/>        
+        <p:commandButton value = "Finalizar revision" resetValues="true" actionListener="#{cuentaAdministrador.changeRequest}"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
         
     </h:body>    
 </html>
