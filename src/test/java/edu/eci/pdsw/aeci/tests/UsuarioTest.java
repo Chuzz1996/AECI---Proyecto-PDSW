@@ -18,6 +18,7 @@ package edu.eci.pdsw.aeci.tests;
 
 
 import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
@@ -90,6 +91,16 @@ public class UsuarioTest {
     
     @Test
     public void EnvioDeAprobado() {
+        try{
+            List<Request> solicitudesPendientes =  ServiciosAeci.getInstance().getPendingRequests();
+            for (Request x : solicitudesPendientes){
+                System.out.println(x.getUser());
+                System.out.println(x.getUser().getRole());
+                System.out.println(x.getUser().getProgram());
+            }
+        } catch(ExcepcionServiciosAeci e){
+        
+        }
     }
     
    /**

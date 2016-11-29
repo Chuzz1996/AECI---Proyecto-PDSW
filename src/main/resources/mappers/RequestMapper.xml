@@ -40,8 +40,8 @@
     <select id="getPendingRequests" resultMap="RequestResult">
         Select User.Id as u_Id, User.Phone as u_phone, User.YearGraduate as u_YearGraduate, User.Period as u_Period, User.FirstName as u_FirstName, User.LastName as u_LastName, User.Email as u_Email, User.CellPhone as u_CellPhone, User.BirthDate as u_BirthDate,
                Request.Id , Request.Date , Request.Commentary, Request.State,
-               Rol.Id as rl_Id, Rol.Name as rl_Name,
-               Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
+               Rol.Id as u_rl_Id, Rol.Name as u_rl_Name,
+               Program.Id as u_pr_Id, Program.Duration as u_pr_Duration, Program.Name as u_pr_Name
         From User, Request, Rol, Program
         Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And Request.State = 'E'
         Order By Request.Date Desc;

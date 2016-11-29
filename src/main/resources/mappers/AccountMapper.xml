@@ -5,7 +5,7 @@
   
 <mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper">
     
-    <!-- detalles sin estudiante o usuario -->
+    <!-- detalles sin estudiante o usuario 
     
     <resultMap type='Rol' id='RolResult'>
         <id property='id' column='Id'/>
@@ -76,8 +76,8 @@
                 And {#ActualDay}<=Membership.End_Date And {#ActualDay}>=Membership.Start_Date
         
     </select>
-    
-    <!-- Trae estudiante o usuario -->
+    -->
+    <!-- Trae estudiante o usuario 
     StudentResult
     <resultMap type='Student' id='StudentResult'>
         
@@ -125,12 +125,12 @@
         Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id And Graduate.Id={#Grad}
         
     </select>
-    
-    <!-- Trae estudiante o usuario -->
+    -->
+    <!-- Trae estudiante o usuario 
     
     <insert id="saveAccount" parameterType="map">
         insert into Account(Id,Password,Active,Salt) values(#{IdAccount},#{PasswordAccount},#{ActiveAccount},#{SaltAccount})
     </insert>
-    
+    -->
   
 </mapper>
