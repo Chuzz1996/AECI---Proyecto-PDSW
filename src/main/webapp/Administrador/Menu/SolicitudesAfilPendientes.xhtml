@@ -19,41 +19,42 @@ and open the template in the editor.
 
     </h:head>  
     <h:body>
-        <ui:composition>
-            <h:form id="form">                
-                <p:panel >
-                    <p:dataTable id="tablePendientes" var ="request" rowKey="#{cuentaAdministrador.request.user.id}" value="#{cuentaAdministrador.pendingRequests}" selectionMode="single"
-                                 selection="#{cuentaAdministrador.request}">                        
-                        <f:facet name ="header">
-                            Solicitudes de Afiliacion Pendientes 
-                        </f:facet>
-                        <p:column>
-                            <f:facet name="header">
-                                Identificador
-                            </f:facet>
-                            #{request.user.id}
-                        </p:column>                        
-                        <p:column>
-                            <f:facet name="header">
-                                Fecha de solicitud
-                            </f:facet>
-                            #{request.date}
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                Solicitante
-                            </f:facet>
-                            #{request.user.role}
-                        </p:column>   
-                        <f:facet name="footer"> 
-                            <p:commandButton value="Add New Forum" icon="ui-icon-circle-check" oncomplete="PF('detail').show()" actionListener="#{registroForo.clean()}" />
-                            <p:commandButton value="View Forum Selected" action="registrorespuestaforo" immediate="true" />
-                        </f:facet>                        
-                    </p:dataTable>                   
-                </p:panel>
-            </h:form>       
-        
-        </ui:composition>
+        <ui:insert name="Header">
+        <ui:include src="Header.xhtml"/>
+        </ui:insert>
+        <p:spacer height="80" /> 
+        <h:form id="form">
+            <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">                
+                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
+                        <h3 style="margin-top: 0">Solicitudes Pendientes</h3>
+                        <h:outputText value="Ingresar numero de solicitud a revisar"/>
+                        <br/>
+                        <p:inputText value="#{cuentaAdministrador.solicitudActual}"/>
+                        <br/>
+                        <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Consultar Usuario" actionListener="#{cuentaAdministrador.checkUsuario()}" action="DatosUsuario" resetValues="true"/>
+                        <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Actualizar" actionListener="#{cuentaAdministrador.setSolicitudesPendientes()}" update="layout" resetValues="true" onclick="PF('dlg1').show(); "/>
+                        <p:dataTable var ="solicitudesPendientes" class="w3-table w3-bordered" value="#{cuentaAdministrador.solicitudesPendientes}">
+                            <p:column class="w3-light-grey" headerText="Dia de envio solicitud">
+                                <h:outputText value="#{solicitudesPendientes.id}"/>
+                            </p:column>
+                            <p:column class="w3-light-grey" headerText="Dia de envio solicitud">
+                                <h:outputText value="#{solicitudesPendientes.date}"/>
+                            </p:column>
+                            <p:column class="w3-light-grey" headerText="Rol del solicitante">
+                                <h:outputText value="#{solicitudesPendientes.user.role.name}"/>
+                            </p:column>
+                        </p:dataTable>
+                </p:layoutUnit>
+            </p:layout>        
+        </h:form>    
+        <h:form>
+        <p:dialog header="Informacion" widgetVar="dlg1" minHeight="40">
+            <h:outputText value="Datos Actualizados" />
+        </p:dialog>
+        </h:form>
+        <ui:insert name="footer">
+            <ui:include src="/Templates/Footer.xhtml"/>      
+        </ui:insert> 
     </h:body>
     
 </html>

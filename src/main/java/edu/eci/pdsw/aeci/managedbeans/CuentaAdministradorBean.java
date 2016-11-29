@@ -46,6 +46,7 @@ import org.primefaces.event.UnselectEvent;
 @ManagedBean(name = "cuentaAdministrador")
 @SessionScoped
 public class CuentaAdministradorBean implements Serializable{
+
    
     public ServiciosAeci  rp;
     private String nombre;
@@ -56,16 +57,14 @@ public class CuentaAdministradorBean implements Serializable{
     private Request request;    
     private String currentCommentary, currentState;       
     
+    //Menu
+    private List<Request> solicitudesPendientes;
       
     
         
     public CuentaAdministradorBean() {
         rp = ServiciosAeci.getInstance();
-    }
-    
-    //Process requests
-    public Request getRequest() {
-        return request;        
+        this.setSolicitudesPendientes();
     }
     
     /**
@@ -73,7 +72,7 @@ public class CuentaAdministradorBean implements Serializable{
      * @return user
      */
     public User getDetailsRequest() {
-        return request.getUser();        
+        return getRequest().getUser();        
     }
     
     /***
@@ -81,19 +80,11 @@ public class CuentaAdministradorBean implements Serializable{
      * @throws ExcepcionServiciosAeci 
      */
     public void processRequest() throws ExcepcionServiciosAeci{
-        rp.updateRequest(request, currentCommentary, currentState);
-    }
-
-    public List<Request> getPendingRequests() throws ExcepcionServiciosAeci {
-        return rp.getPendingRequests();
-    }  
-
-    public void setRequest(Request currentRequest) {
-        this.request = request;
+        rp.updateRequest(getRequest(), currentCommentary, currentState);
     }
     
     public void updateRequest() throws ExcepcionServiciosAeci{
-        rp.updateRequest(request, currentCommentary, currentState);
+        rp.updateRequest(getRequest(), currentCommentary, currentState);
     }
            
      /**
@@ -139,18 +130,69 @@ public class CuentaAdministradorBean implements Serializable{
     }
     
     /**
-     * 
+     * @return the solicitudesPendientes
      */
-    public void procesarAfiliacion(){
-        
+    public List<Request> getSolicitudesPendientes() {
+        return solicitudesPendientes;
+    }
+
+    /**
+     * @param solicitudesPendientes the solicitudesPendientes to set
+     */
+    public void setSolicitudesPendientes() {
+        try{
+            this.solicitudesPendientes = rp.getPendingRequests();
+        }catch(ExcepcionServiciosAeci ex){
+            System.out.println("EN CUENTA ADMINISTRADOR"+ex.getMessage());
+        }
+    }
+    
+    
+    private int solicitudActual;
+    
+    
+    /**
+     * @return the solicitudActual
+     */
+    public int getSolicitudActual() {
+        return solicitudActual;
+    }
+
+    /**
+     * @param solicitudActual the solicitudActual to set
+     */
+    public void setSolicitudActual(int solicitudActual) {
+        this.solicitudActual = solicitudActual;
+    }
+    
+    
+    /**
+     * Consultar usuario
+     */
+    public void checkUsuario(){
+        try{
+            for(Request x:solicitudesPendientes){
+                if(x.getId()==solicitudActual){
+                    this.setRequest(x);
+                    break;
+                }
+            }
+        }catch(Exception ex){
+            System.out.println("No existe un usuario con ese id");
+        }
     }
     
     /**
-     * 
+     * @return the request
      */
-    public void GenerarReportes(){
-    
+    public Request getRequest() {
+        return request;
     }
-    
-    
+
+    /**
+     * @param request the request to set
+     */
+    public void setRequest(Request request) {
+        this.request = request;
+    }
 }
