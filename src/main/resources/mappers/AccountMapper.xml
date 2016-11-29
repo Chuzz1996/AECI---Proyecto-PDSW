@@ -4,5 +4,48 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper">
-  	
+    
+    <select id="getDetailsStudent" resultMap="GraduateResult">
+    
+        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
+                User.Email as u_Email,User.Phone as u_Phone,
+                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
+                User.BirthDate as u_BirthDate,User.Period as u_Period,
+                Rol.Id as r_Id,Rol.name as r_name,
+                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
+                Graduate.Id as g_Id,Graduate.Charge as g_Charge,Graduate.Employer as g_Employer,Graduate.Office_Address as g_Office_Address,
+                Graduate.Office_Phone as g_Office_Phone,Graduate.User_id as g_User_id,
+                Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
+                Membership.Id as m_Id,Membership.Start_Date as m_Start_Date ,Membership.Receipt as m_Receipt ,Membership.PaymentNumber as m_PaymentNumber ,
+                Membership.Account_Id as m_Account_Id ,Membership.Rate_id as m_Rate_id ,Membership.End_Date as m_End_Date , 
+                Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
+	
+        From 	User, Rol,Graduate,Account,Program,Membership,Rate
+
+        Where 	User.Id=Rol.Id And Graduate.User_id=User.Id And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id And
+                (NOW()<=Membership.End_Date And NOW()>=Membership.Start_Date) 
+    
+    </select>
+    
+    <select id="getDetailsStudent" resultMap="studentResult">
+        
+        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
+                User.Email as u_Email,User.Phone as u_Phone,
+                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
+                User.BirthDate as u_BirthDate,User.Period as u_Period,
+                Rol.Id as r_Id,Rol.name as r_name,
+                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
+                Student.Id as s_Id,Student.User_id as s_uId,Student.Semester as s_Semester,
+                Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
+                Membership.Id as m_Id,Membership.Start_Date as m_Start_Date ,Membership.Receipt as m_Receipt ,Membership.PaymentNumber as m_PaymentNumber ,
+                Membership.Account_Id as m_Account_Id ,Membership.Rate_id as m_Rate_id ,Membership.End_Date as m_End_Date , 
+                Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
+	
+        From 	User, Rol,Student,Account,Program,Membership,Rate
+
+        Where 	User.Id=Rol.Id And Student.User_id=User.Id And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id And
+                (NOW()<=Membership.End_Date And NOW()>=Membership.Start_Date) 
+                
+    </select>
+    
 </mapper>
