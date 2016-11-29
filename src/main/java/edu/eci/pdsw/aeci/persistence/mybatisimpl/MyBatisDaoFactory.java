@@ -21,6 +21,7 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 import edu.eci.pdsw.aeci.persistence.Dao;
 **/
 import edu.eci.pdsw.aeci.entities.Rol;
+import edu.eci.pdsw.aeci.persistence.DaoAccount;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
 import edu.eci.pdsw.aeci.persistence.DaoProgram;
 import edu.eci.pdsw.aeci.persistence.DaoRequest;
@@ -123,6 +124,10 @@ public class MyBatisDaoFactory extends DaoFactory {
         return new MyBatisDAORol(currentSession);
     }
     
+    @Override
+    public DaoAccount getDaoAccount (){
+       return new MyBatisDAOAccount(currentSession); 
+    }
 
     
 }

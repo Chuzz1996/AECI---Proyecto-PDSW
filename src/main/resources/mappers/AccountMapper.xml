@@ -73,12 +73,12 @@
         From 	User, Rol,Graduate,Account,Program,Membership,Rate
 
         Where 	User.Id=Rol.Id  And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
-               <!-- And (NOW()<=Membership.End_Date And NOW()>=Membership.Start_Date) -->
+                And {#ActualDay}<=Membership.End_Date And {#ActualDay}>=Membership.Start_Date
         
     </select>
     
     <!-- Trae estudiante o usuario -->
-    
+    StudentResult
     <resultMap type='Student' id='StudentResult'>
         
         <id property='id' column='Id'/>
@@ -108,7 +108,7 @@
                 Rol.Id as r_Id,Rol.name as r_name,
                 Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration
         From User,Student,Rol,Program
-        Where Rol.Id=2 And Rol.id=User.Rol_Id And User.Id=Student.User_Id And Program.Id=User.Program_Id    
+        Where Rol.Id=2 And Rol.id=User.Rol_Id And User.Id=Student.User_Id And Program.Id=User.Program_Id And Student.Id={#est}    
         
     </select>
     
@@ -122,9 +122,15 @@
                 Rol.Id as r_Id,Rol.name as r_name,
                 Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration
         From User,Graduate,Rol,Program
-        Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id
+        Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id And Graduate.Id={#Grad}
         
     </select>
+    
+    <!-- Trae estudiante o usuario -->
+    
+    <insert id="saveAccount" parameterType="map">
+        insert into Account(Id,Password,Active,Salt) values(#{IdAccount},#{PasswordAccount},#{ActiveAccount},#{SaltAccount})
+    </insert>
     
   
 </mapper>
