@@ -13,4 +13,6 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoAccount {
     
+    public Account getDAccount()throws PersistenceException;
+    
 }

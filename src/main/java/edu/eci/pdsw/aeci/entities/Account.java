@@ -56,4 +56,8 @@ public class Account {
         this.active = active;
     }
 
+    public Account getDetails() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

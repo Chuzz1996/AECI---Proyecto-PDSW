@@ -102,10 +102,12 @@ public abstract class DaoFactory {
     
     public abstract DaoRol getDaoRol();
     
+    public abstract DaoAccount getDaoAccount();
+    
     public abstract void commitTransaction() throws PersistenceException;
 
     public abstract void rollbackTransaction() throws PersistenceException;
 
-    public abstract void endSession() throws PersistenceException;
-    
+    public abstract void endSession() throws PersistenceException; 
+   
 }

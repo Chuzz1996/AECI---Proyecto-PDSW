@@ -30,7 +30,7 @@ import org.primefaces.model.StreamedContent;
  *
  * @author alfa
  */
-@ManagedBean
+@ManagedBean(name="PDF")
 @RequestScoped
 public class GenerarPDFbean{
 
