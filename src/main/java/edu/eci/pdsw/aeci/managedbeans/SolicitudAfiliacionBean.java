@@ -15,6 +15,7 @@ import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeciDAO;
 import java.io.Serializable;
@@ -81,6 +82,8 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Rp.addUser(newUser);
                 Request request = new Request(newUser, 2);
                 Rp.addRequest(request);
+                ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
+                sp.EnvioDeSolicitud();
             }catch(ExcepcionServiciosAeci ex){
                 ex.printStackTrace();
             }

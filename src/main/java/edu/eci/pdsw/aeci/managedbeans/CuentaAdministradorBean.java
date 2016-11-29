@@ -24,6 +24,7 @@ import edu.eci.pdsw.samples.aeci.;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import java.sql.Date;
@@ -219,5 +220,25 @@ public class CuentaAdministradorBean implements Serializable{
      */
     public void setSolicitud(int solicitud) {
         this.solicitud = solicitud;
+    }
+    
+    /**
+     * Cambia estado de solicitud 
+     */
+    public void changeRequest(){
+        try{
+            ServicioEnvioCorreos sc = new ServicioEnvioCorreos();
+            if(solicitud==0){
+                rp.updateRequest(request,request.getCommentary(), "A");
+                sc.aprobado(request.getUser(), request);
+                
+            }else if(solicitud==1){
+                rp.updateRequest(request,request.getCommentary(), "R");
+                sc.rechazado(request.getUser(), request);
+            }
+        }catch(ExcepcionServiciosAeci ex){
+            
+        }
+        
     }
 }
