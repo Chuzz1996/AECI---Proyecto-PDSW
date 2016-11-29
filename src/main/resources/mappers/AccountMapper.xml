@@ -4,7 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper">
-    <!--
+    
+    <!-- detalles sin estudiante o usuario -->
+    
     <resultMap type='Rol' id='RolResult'>
         <id property='id' column='Id'/>
         <result property='name' column='Name'/>
@@ -15,8 +17,6 @@
         <result property='duration' column='Duration'/>
         <result property='name' column='Name'/>
     </resultMap>
-    
-    
     
     <resultMap type='User' id='UserResult'>
         <id property='id' column='Id'/>
@@ -32,45 +32,99 @@
         <association property = 'role' javaType ='Rol' columnPrefix='r_' resultMap='RolResult'></association>
     </resultMap>
     
+    <resultMap type='Account' id='AccountResult'>
+        <result property='password' column='Password'/>
+        <result property='active' column='Active'/>
+        <result property='salt' column='Salt'/>
+        <association property = 'id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+    </resultMap>
+    
+    <resultMap type='Rate' id='RateResult'>
+        <id property='id' column='Id'/>
+        <result property='year' column='Year'/>
+        <result property='value' column='Value'/>
+        
+    </resultMap>
+    
+    <resultMap type='Membership' id='MembershipResult'>
+        <id property='id' column='Id'/>
+        <result property='start_Date' column='Phone'/>
+        <result property='end_Date' column='Phone'/>
+        <result property='receipt' column='Phone'/>
+        <result property='playmentNumber' column='Phone'/>
+        <association property = 'account' javaType ='Account' columnPrefix='a_' resultMap='AccountResult'></association>
+        <association property = 'rate' javaType ='Rate' columnPrefix='p_' resultMap='RateResult'></association>
+        
+    </resultMap>
+    
     <select id="getDetailsStudent" resultMap="UserResult">
     
-        select 	User.Id ,User.FirstName ,User.LastName , User.Email ,User.Phone ,
-                User.Cellphone ,User.YearGraduate ,
-                User.BirthDate ,User.Period ,
+        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
+                User.Email as u_Email,User.Phone as u_Phone,
+                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
+                User.BirthDate as u_BirthDate,User.Period as u_Period,
                 Rol.Id as r_Id,Rol.name as r_name,
                 Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
-                Graduate.Id as g_Id,Graduate.Charge as g_Charge,Graduate.Employer as g_Employer,Graduate.Office_Address as g_Office_Address,
-                Graduate.Office_Phone as g_Office_Phone,Graduate.User_id as g_User_id,
                 Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
-                Membership.Id as m_Id,Membership.Start_Date as m_Start_Date ,Membership.Receipt as m_Receipt ,Membership.PaymentNumber as m_PaymentNumber ,
-                Membership.Account_Id as m_Account_Id ,Membership.Rate_id as m_Rate_id ,Membership.End_Date as m_End_Date , 
+                Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
+                Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
                 Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
 	
         From 	User, Rol,Graduate,Account,Program,Membership,Rate
 
-        Where 	User.Id=Rol.Id And Graduate.User_id=User.Id And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
-                And (NOW()<=Membership.End_Date And NOW()>=Membership.Start_Date) 
-    
+        Where 	User.Id=Rol.Id  And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
+               <!-- And (NOW()<=Membership.End_Date And NOW()>=Membership.Start_Date) -->
         
     </select>
     
+    <!-- Trae estudiante o usuario -->
     
-    <select id="getDetailsStudent" resultMap="UserResult">
-        select 	User.Id ,User.FirstName ,User.LastName , User.Email ,User.Phone ,
-                User.Cellphone ,User.YearGraduate ,
-                User.BirthDate ,User.Period ,
-                Rol.Id as r_Id,Rol.name as r_name,
-                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
-                Student.Id as s_Id,Student.User_id as s_uId,Student.Semester as s_Semester,
-                Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
-                Membership.Id as m_Id,Membership.Start_Date as m_Start_Date ,Membership.Receipt as m_Receipt ,Membership.PaymentNumber as m_PaymentNumber ,
-                Membership.Account_Id as m_Account_Id ,Membership.Rate_id as m_Rate_id ,Membership.End_Date as m_End_Date , 
-                Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
-	
-        From 	User, Rol,Student,Account,Program,Membership,Rate
+    <resultMap type='Student' id='StudentResult'>
+        
+        <id property='id' column='Id'/>
+        <result property='semester' column='Semester'/>
+        <association property = 'user_id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+        
+    </resultMap>
+    
+    <resultMap type='Graduate' id='GraduateResult'>
+        
+        <id property='id' column='Id'/>
+        <result property='charge' column='Charge'/>
+        <result property='employer' column='Employer'/>
+        <result property='office_address' column='Office_Address'/>
+        <result property='office_phone' column='Office_Phone'/>
+        <association property = 'user_id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+        
+    </resultMap>
 
-        Where 	User.Id=Rol.Id And Student.User_id=User.Id And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id And
-                (NOW()<=Membership.End_Date And NOW()>=Membership.Start_Date) 
+    <select id="getStudent" resultMap="StudentResult">
+        
+        Select 	Student.Id, Student.User_Id,Student.Semester,
+                User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
+                User.Email as u_Email,User.Phone as u_Phone,
+                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
+                User.BirthDate as u_BirthDate,User.Period as u_Period,
+                Rol.Id as r_Id,Rol.name as r_name,
+                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration
+        From User,Student,Rol,Program
+        Where Rol.Id=2 And Rol.id=User.Rol_Id And User.Id=Student.User_Id And Program.Id=User.Program_Id    
+        
     </select>
-    -->
+    
+    <select id="getGraduate" resultMap="GraduateResult">
+        
+        Select 	Graduate.Id, Graduate.User_Id,Graduate.Charge,Graduate.Employer,Graduate.Office_Address,Graduate.Office_Phone,
+                User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
+                User.Email as u_Email,User.Phone as u_Phone,
+                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
+                User.BirthDate as u_BirthDate,User.Period as u_Period,
+                Rol.Id as r_Id,Rol.name as r_name,
+                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration
+        From User,Graduate,Rol,Program
+        Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id
+        
+    </select>
+    
+  
 </mapper>

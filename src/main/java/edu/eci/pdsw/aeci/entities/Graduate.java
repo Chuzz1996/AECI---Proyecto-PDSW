@@ -15,12 +15,12 @@ public class Graduate {
     private String employer;
     private String office_address;
     private String office_phone;
-    private int user_id;
+    private User user_id;
 
     public Graduate() {
     }
    
-    public Graduate(int Id,String Charge,String Employer,String address,String phone,int User_id){
+    public Graduate(int Id,String Charge,String Employer,String address,String phone,User User_id){
          id=Id;
          charge=Charge;
          employer=Employer;
@@ -69,11 +69,11 @@ public class Graduate {
         this.office_phone = office_phone;
     }
 
-    public int getUser_id() {
+    public User getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(User user_id) {
         this.user_id = user_id;
     }
 

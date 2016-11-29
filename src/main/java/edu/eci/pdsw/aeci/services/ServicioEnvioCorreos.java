@@ -24,23 +24,51 @@ import javax.activation.*;
  */
 public class ServicioEnvioCorreos {
     
+    public String CorreoFuente = "pruebapdsw@gmail.com";
+    public String passwordCorreoFuente = "holamundo";
     
     /*
     Correo y contrase;a actualmente de pruebas
     Correo = pruebapdsw@gmail.com 
     passwordCorreo = holamundo;
     */
+    /**
+     * 
+     * @param destinatario
+     * @param solicitud 
+     */
     public void aprobado(User destinatario, Request solicitud){
-        
+        String comentario="Su solicitud ha sido aprobada.\n"+solicitud.getCommentary()+" \nAtentamente AECI.";
+        this.EnviarCorreo(destinatario.getFirstName()+" "+destinatario.getLastName(), destinatario.getEmail(), comentario);
     }
     
+    /**
+     * 
+     * @param destinarario
+     * @param solicitud 
+     */
     public void rechazado(User destinarario, Request solicitud){
-        
+        String comentario="Su solicitud ha sido rechazada por:\n"+solicitud.getCommentary()+"\nEsperamos el envío de su solicitud en una próxima ocasión";
+        comentario+="\nAtentamente AECI";
+        this.EnviarCorreo(destinarario.getFirstName()+" "+destinarario.getLastName(), destinarario.getEmail(), comentario);
     }
     
+    /**
+     * Informa que ha llegado una nueva solicitud
+     */
+    public void EnvioDeSolicitud(){
+        String comentario="Se le informa que una nueva persona ha hecho un envio de solicitud el dia";
+        this.EnviarCorreo("ADMINISTRADOR", CorreoFuente, comentario);
+    }
     
+    /**
+     * 
+     * @param nombre
+     * @param correo
+     * @param comentario 
+     */
     public void EnviarCorreo(String nombre,String correo, String comentario){
-        /*boolean envio = false;
+        
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -62,11 +90,10 @@ public class ServicioEnvioCorreos {
             message.setSubject(nombre);
             message.setText(comentario);
             Transport.send(message);
-            envio = true;
         } catch (MessagingException e) {
             throw new RuntimeException(e);
-        }return envio;*/
-        final String from = "aeci@gmail.com";
+        }
+        /*final String from = "aeci@gmail.com";
         final String to = correo;
         final String subject = nombre;
         final String message = comentario;
@@ -77,6 +104,6 @@ public class ServicioEnvioCorreos {
             sender.send(email);
         } catch (MessagingException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
