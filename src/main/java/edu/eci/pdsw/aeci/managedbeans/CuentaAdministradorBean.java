@@ -27,18 +27,9 @@ import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
 
 /**
  *
