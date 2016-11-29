@@ -23,7 +23,7 @@ public interface DaoUser {
     
     /**
      * Add new user to Data Base
-     * @param user
+     * @param user User to be added
      * @throws PersistenceException if User_id is null
      */
     public void addUser(User user) throws PersistenceException;

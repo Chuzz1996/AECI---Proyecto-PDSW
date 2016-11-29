@@ -41,7 +41,7 @@ import org.primefaces.event.UnselectEvent;
 
 /**
  *
- * @author 
+ * @author Aeci-Team
  */
 @ManagedBean(name = "cuentaAdministrador")
 @SessionScoped
@@ -77,7 +77,7 @@ public class CuentaAdministradorBean implements Serializable{
     
     /***
      * Procesa la solicitud. 
-     * @throws ExcepcionServiciosAeci 
+     * @throws ExcepcionServiciosAeci Si ocurre algun error actualizando el request
      */
     public void processRequest() throws ExcepcionServiciosAeci{
         rp.updateRequest(getRequest(), currentCommentary, currentState);
@@ -137,7 +137,7 @@ public class CuentaAdministradorBean implements Serializable{
     }
 
     /**
-     * @param solicitudesPendientes the solicitudesPendientes to set
+     * 
      */
     public void setSolicitudesPendientes() {
         try{
