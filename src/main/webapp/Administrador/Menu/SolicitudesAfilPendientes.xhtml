@@ -31,7 +31,7 @@ and open the template in the editor.
                         <br/>
                         <p:inputText value="#{cuentaAdministrador.solicitudActual}"/>
                         <br/>
-                        <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Consultar Usuario" actionListener="#{cuentaAdministrador.checkUsuario()}" action="DatosUsuario" resetValues="true"/>
+                        <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Consultar Usuario" actionListener="#{cuentaAdministrador.checkUsuario()}" action="DatosUsuario.xhtml" resetValues="true"/>
                         <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Actualizar" actionListener="#{cuentaAdministrador.setSolicitudesPendientes()}" update="layout" resetValues="true" onclick="PF('dlg1').show(); "/>
                         <p:dataTable var ="solicitudesPendientes" class="w3-table w3-bordered" value="#{cuentaAdministrador.solicitudesPendientes}">
                             <p:column class="w3-light-grey" headerText="Dia de envio solicitud">

@@ -46,7 +46,6 @@ import org.primefaces.event.UnselectEvent;
 @ManagedBean(name = "cuentaAdministrador")
 @SessionScoped
 public class CuentaAdministradorBean implements Serializable{
-
    
     public ServiciosAeci  rp;
     private String nombre;
@@ -56,6 +55,7 @@ public class CuentaAdministradorBean implements Serializable{
     //Process requests
     private Request request;    
     private String currentCommentary, currentState;       
+    private int solicitud;
     
     //Menu
     private List<Request> solicitudesPendientes;
@@ -194,5 +194,19 @@ public class CuentaAdministradorBean implements Serializable{
      */
     public void setRequest(Request request) {
         this.request = request;
+    }
+    
+    /**
+     * @return the solicitud
+     */
+    public int isSolicitud() {
+        return solicitud;
+    }
+
+    /**
+     * @param solicitud the solicitud to set
+     */
+    public void setSolicitud(int solicitud) {
+        this.solicitud = solicitud;
     }
 }

@@ -27,33 +27,78 @@ and open the template in the editor.
                 <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">                
                     <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
                         <h3 style="margin-top: 0">Datos Usuario</h3>
-                        <h:outputText value="#{cuentaAdministrador.request.user.firstName} #{cuentaAdministrador.request.user.lastName}"/>
-                        <h:commandButton value="Cambiar Nombre"/>
+                        <p:accordionPanel>
+                            <p:tab title="Nombre: #{cuentaAdministrador.request.user.firstName} #{cuentaAdministrador.request.user.lastName}">
+                                <h:panelGrid columns="2"> 
+                                    <h:outputLabel value = "Cambio de Nombre:"/>
+                                    <h:inputText id="name" value="#{cuentaAdministrador.request.user.firstName}"/>
+                                    <h:outputLabel value = "Cambio de apellido:"/>
+                                    <h:inputText  id="name2" value="#{cuentaAdministrador.request.user.lastName}"/>    
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>                        
+                        <p:accordionPanel>
+                            <p:tab title="Correo:  #{cuentaAdministrador.request.user.email}">
+                                <h:panelGrid columns="2">    
+                                    <h:outputLabel value = "Cambio de correo:"/>
+                                    <h:inputText id="email" value="#{cuentaAdministrador.request.user.email}"/>    
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>
+                        <p:accordionPanel>
+                            <p:tab title="Celular:  #{cuentaAdministrador.request.user.cellphone}">
+                                <h:panelGrid columns="2">
+                                    <h:outputLabel value = "Cambio de celular:"/>
+                                    <h:inputText id="celular" value="#{cuentaAdministrador.request.user.cellphone}"/>
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>                                                
+                        <p:accordionPanel>
+                            <p:tab title="Telefono:  #{cuentaAdministrador.request.user.phone}">
+                                <h:panelGrid columns="2"> 
+                                    <h:outputLabel value = "Cambio de Telefono Fijo:"/>
+                                    <h:inputText id="phone" value="#{cuentaAdministrador.request.user.phone}"/>
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>                                                                                           
+                        <p:accordionPanel>
+                            <p:tab title="Fecha de Nacimiento:  #{cuentaAdministrador.request.user.birthDate}">
+                                <h:panelGrid columns="2">               
+                                    <p:outputLabel value="Cambio de fecha de Nacimiento:" />
+                                    <p:calendar  id="birthdate" value="#{cuentaAdministrador.request.user.birthDate}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true"/>
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>  
+                        <p:accordionPanel>
+                            <p:tab title="Graduacion:  #{cuentaAdministrador.request.user.yearGraduate}">
+                                <h:panelGrid columns="2">
+                                    <h:outputLabel value = "Cambio de año de graduación:" />
+                                    <h:inputText id="graduation" value="#{cuentaAdministrador.request.user.yearGraduate}"/>
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>  
+                        <p:accordionPanel>
+                            <p:tab title="Periodo:  #{cuentaAdministrador.request.user.period}">
+                                <h:panelGrid columns="2">     
+                                    <h:selectOneMenu id="period" value="#{cuentaAdministrador.request.user.yearGraduate}">                    
+                                        <f:selectItem itemLabel="1" itemValue="1"/>
+                                        <f:selectItem itemLabel="2" itemValue="2"/>
+                                    </h:selectOneMenu> 
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel> 
+                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                            <p:outputLabel value="Solicitud:" />
+                                <p:selectOneRadio id="Solicitud" value="#{cuentaAdministrador.solicitudActual}">
+                                <f:selectItem itemLabel="Aprobada" itemValue="0" />
+                                <f:selectItem itemLabel="Rechazada" itemValue="1" />
+                            </p:selectOneRadio>
+                        </h:panelGrid>
+                        <p>Comentario</p>
+                        <p:inputTextarea rows="10" cols="50" completeMethod="#{cuentaAdministrador.request.commentary}" queryDelay="750" minQueryLength="4" />
                         <br/>
-                        <h:outputText value="Numero de Identificacion:  #{cuentaAdministrador.request.user.id}"/>
-                        <h:commandButton value="Cambiar numero de Identificacion"/>
-                        <br/>
-                        <h:outputText value="Correo:  #{cuentaAdministrador.request.user.email}"/>
-                        <h:commandButton value="Cambiar Correo"/>
-                        <br/>
-                        <h:outputText value="Celular:  #{cuentaAdministrador.request.user.cellphone}"/>
-                        <h:commandButton value="Cambiar Numero de celular"/>
-                        <br/>
-                        <h:outputText value="Telefono:  #{cuentaAdministrador.request.user.phone}"/>
-                        <h:commandButton value = "Cambiar numero de telefono"/>
-                        <br/>
-                        <h:outputText value="Carrera:  #{cuentaAdministrador.request.user.program.name}"/>
-                        <h:commandButton value="Cambiar carrera"/>
-                        <br/>
-                        <h:outputText value="Fecha de Nacimiento:  #{cuentaAdministrador.request.user.birthDate}"/>
-                        <h:commandButton value="Cambiar Fecha de Nacimiento"/>
-                        <br/>
-                        <h:outputText value="Graduacion:  #{cuentaAdministrador.request.user.yearGraduate}"/>
-                        <h:commandButton value="Cambiar Ano de graduacion"/>
-                        <br/>
-                        <h:outputText value="Periodo:  #{cuentaAdministrador.request.user.period}"/>
-                        <h:commandButton value="Cambiar Perio"/>
-                        <br/>
+                        <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Regresar" update="layout" action="SolicitudesAfilPendientes.xhtml" resetValues="true"/>
+                        <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" value = "Finalizar revision" update="layout" resetValues="true"/>
                     </p:layoutUnit>
                 </p:layout>
             </h:form>
