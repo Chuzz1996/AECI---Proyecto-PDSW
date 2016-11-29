@@ -12,10 +12,19 @@ package edu.eci.pdsw.aeci.entities;
 
 
 public class Account {
-    private int id;
+    private User id;
     private int password;
     private boolean active;
+    private int salt;
 
+    public int getSalt() {
+        return salt;
+    }
+
+    public void setSalt(int Salt) {
+        this.salt = Salt;
+    }
+    
     public Account() {
     }
     
@@ -23,11 +32,11 @@ public class Account {
         
     }
     
-    public int getId() {
+    public User getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(User id) {
         this.id = id;
     }
 

@@ -14,13 +14,13 @@ import java.sql.Date;
 public class Student {
     
     private int id;
-    private int user_id;
+    private User user_id;
     private int semester;
 
     public Student() {
     }
     
-    public Student(int Id,int User_id, int Semester) {
+    public Student(int Id,User User_id, int Semester) {
         this.id=Id;
         this.user_id=User_id;
         this.semester=Semester;
@@ -34,11 +34,11 @@ public class Student {
         this.id = id;
     }
 
-    public int getUser_id() {
+    public User getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(User user_id) {
         this.user_id = user_id;
     }
 

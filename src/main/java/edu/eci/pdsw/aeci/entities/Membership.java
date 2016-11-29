@@ -18,20 +18,20 @@ public class Membership {
     private Date end_Date;
     private String receipt;
     private int playmentNumber;
-    private int account_id;
-    private int rate_id;
+    private Account account;
+    private Rate rate;
 
     public Membership() {
     }
 
-    public Membership(int Id,Date Start_Date,Date End_Date,String Receipt,int PlaymentNumber,int Account_id,int Rate_id){        
+    public Membership(int Id,Date Start_Date,Date End_Date,String Receipt,int PlaymentNumber,Account Account_id,Rate Rate_id){        
         id=Id;
         start_Date=Start_Date;
         end_Date=End_Date;
         receipt=Receipt;
         playmentNumber=PlaymentNumber;
-        account_id=Account_id;
-        rate_id=Rate_id;
+        account=Account_id;
+        rate=Rate_id;
     }
     
     public int getId() {
@@ -74,20 +74,20 @@ public class Membership {
         this.playmentNumber = playmentNumber;
     }
 
-    public int getAccount_id() {
-        return account_id;
+    public Account getAccount_id() {
+        return account;
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public void setAccount_id(Account account_id) {
+        this.account = account_id;
     }
 
-    public int getRate_id() {
-        return rate_id;
+    public Rate getRate_id() {
+        return rate;
     }
 
-    public void setRate_id(int rate_id) {
-        this.rate_id = rate_id;
+    public void setRate_id(Rate rate_id) {
+        this.rate = rate_id;
     }
     
 }
