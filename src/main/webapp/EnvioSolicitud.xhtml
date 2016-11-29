@@ -69,7 +69,13 @@
                 <h:selectOneMenu id="period" value="#{solicitudAfiliacion.periodo}">                    
                     <f:selectItem itemLabel="1" itemValue="1"/>
                     <f:selectItem itemLabel="2" itemValue="2"/>
-                </h:selectOneMenu>               
+                </h:selectOneMenu>             
+                <p:selectManyCheckbox id="Terminos" required="true" >
+                    <f:selectItem itemLabel="Acepto Terminos y condiciones"/>
+                </p:selectManyCheckbox>
+                <p:commandButton value="Descargar" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% ">
+                    <!--<p:fileDownload value="#{fileDownloadView.file}" />-->
+                </p:commandButton>
             </h:panelGrid> 
             <h:panelGrid columns="3" cellpadding="10" cellspacing="12">
                 <h:outputLabel value = "Tipo de solicitante:" />
@@ -96,7 +102,6 @@
                     </h:panelGrid>
                 </h:form>
             </p:outputPanel>
-            
             <p:commandButton value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
             <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
                 <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
