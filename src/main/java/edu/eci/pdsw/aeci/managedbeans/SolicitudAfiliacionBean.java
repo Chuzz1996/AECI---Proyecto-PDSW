@@ -62,8 +62,9 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String Cargo;
     private String DireccionEmpresa;
     private String TelefonoEmpresa;
-    private Rol role;
-    
+    private java.lang.Long role;
+
+       
     /**
      * Agrega la solicitud de las personas
      */
@@ -75,7 +76,7 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Calendar fecha = new GregorianCalendar();
                 java.util.Date fechaDeEnvio  = fecha.getTime();
                 Program programa = Rp.getProgram(Carrera);
-                Rol rol = Rp.getRol(1);
+                Rol rol = Rp.getRol((int)(long)role);
                 User newUser = new User(id, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
                 Rp.addUser(newUser);
                 Request request = new Request(newUser, 2);
@@ -89,7 +90,13 @@ public class SolicitudAfiliacionBean implements Serializable{
         
     }
     
-   
+    public void setRole(java.lang.Long idRole) throws ExcepcionServiciosAeci {       
+        this.role = idRole;
+    }
+
+    public Long getRole() {
+        return role;
+    }
 
         
     /**

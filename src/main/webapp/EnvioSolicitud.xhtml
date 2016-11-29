@@ -21,44 +21,47 @@
                 <li>
                     <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
                 </li>
-                <li class="w3-right w3-hide-small">                           
-                    <h:link value="Contacto" class="w3-left w3-btn w3-black" fragment="contacto"/>         
+                <li class="w3-right w3-hide-small"> 
                     <h:outputLink  value="javascript:void(0)" class="w3-left w3-btn w3-black" onclick="PF('dlg').show()">Ingresar</h:outputLink>                     
                 </li>
+                <li class="w3-right w3-hide-small">                           
+                    <h:link value="Contacto" class="w3-left w3-btn w3-black" fragment="contacto"/>   
+                </li>
+                
             </ul>
         </h:form>
         <p:spacer height="80" />
         
         <h:form id="information" class="w3-container w3-card-4 w3-padding-large w3-white" style="margin: auto; width: 60%; padding: 10px">  
             <h:outputText value="Ingreso de Datos"/>
-            
+
             <h:panelGrid columns="4" cellpadding="10" cellspacing="12">
                 <h:outputLabel value = "Cedula*:"/>
                 <h:inputText id="id" value="#{solicitudAfiliacion.cedula}" required="true"/>
-                <h:outputLabel value = "Nombre*:"/>
+                <h:outputLabel value = "Nombre(s)*:"/>
                 <h:inputText id="name" value="#{solicitudAfiliacion.nombre}" required="true"/>
-                <h:outputLabel value = "Apellido*:"/>
+                <h:outputLabel value = "Apellido(s)*:"/>
                 <h:inputText  id="name2" value="#{solicitudAfiliacion.apellido}" required="true"/>                
                 <h:outputLabel value = "Celular*:"/>
                 <h:inputText id="celular" value="#{solicitudAfiliacion.celular}" required="true"/>
                 <h:outputLabel value = "Telefono Fijo:"/>
                 <h:inputText id="phone" value="#{solicitudAfiliacion.telefonoFijo}"/>
                 <p:outputLabel value="Fecha de Nacimiento*:" />
-                <p:calendar  id="birthdate" value="#{solicitudAfiliacion.fechaNacimiento}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" required="true" />
+                <p:calendar  id="birthdate" value="#{solicitudAfiliacion.fechaNacimiento}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" required="true" yearRange="c-90:c+0"/>
                 <h:outputLabel value = "Correo*:"/>
                 <h:inputText id="email" value="#{solicitudAfiliacion.correo}" required="true"/>                   
                 <h:outputLabel value = "Carrera*:"/>                         
                 <h:selectOneMenu id="career" value="#{solicitudAfiliacion.carrera}" required="true">                        
-                        <f:selectItem itemLabel="Ingeniería Civil" itemValue="1"/>
-                        <f:selectItem itemLabel="Ingeniería Electrónica" itemValue="2"/>
-                        <f:selectItem itemLabel="Ingeniería Eléctrica" itemValue="3"/>
-                        <f:selectItem itemLabel="Ingeniería De Sistemas" itemValue="4"/>
-                        <f:selectItem itemLabel="Ingeniería Industrial" itemValue="5"/>
-                        <f:selectItem itemLabel="Matemáticas" itemValue="6"/>
-                        <f:selectItem itemLabel="Economía" itemValue="7"/>
-                        <f:selectItem itemLabel="Administración De Empresas" itemValue="8"/>
-                        <f:selectItem itemLabel="Ingeniería Mecánica" itemValue="9"/>
-                        <f:selectItem itemLabel="Ingeniería Biomédica" itemValue="10"/>                        
+                    <f:selectItem itemLabel="Ingeniería Civil" itemValue="1"/>
+                    <f:selectItem itemLabel="Ingeniería Electrónica" itemValue="2"/>
+                    <f:selectItem itemLabel="Ingeniería Eléctrica" itemValue="3"/>
+                    <f:selectItem itemLabel="Ingeniería De Sistemas" itemValue="4"/>
+                    <f:selectItem itemLabel="Ingeniería Industrial" itemValue="5"/>
+                    <f:selectItem itemLabel="Matemáticas" itemValue="6"/>
+                    <f:selectItem itemLabel="Economía" itemValue="7"/>
+                    <f:selectItem itemLabel="Administración De Empresas" itemValue="8"/>
+                    <f:selectItem itemLabel="Ingeniería Mecánica" itemValue="9"/>
+                    <f:selectItem itemLabel="Ingeniería Biomédica" itemValue="10"/>                        
                 </h:selectOneMenu>
                 <h:outputLabel value = "Año de graduación:" />
                 <h:inputText id="graduation" value="#{solicitudAfiliacion.anoGraducacion}"/>
@@ -66,49 +69,40 @@
                 <h:selectOneMenu id="period" value="#{solicitudAfiliacion.periodo}">                    
                     <f:selectItem itemLabel="1" itemValue="1"/>
                     <f:selectItem itemLabel="2" itemValue="2"/>
-                </h:selectOneMenu>     
-            </h:panelGrid>   
-            <h:panelGrid rendered="false">
-                <div class="w3-container w3-padding-32" id="projects">
-                    <h:outputText value = "Para estudiantes" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
-                </div>
-                <div class="w3-row-padding">
-                    <div class="w3-group w3-half">   
-                        <h:outputLabel value = "Semestre"/>
-                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.semestre}"/>
-                    </div>
-                </div>
-                <div class="w3-container w3-padding-32" id="projects">
-                    <h:outputText value = "Para egresados" class="w3-border-bottom w3-border-light-grey w3-padding-12"/>
-                </div>
-                <div class="w3-row-padding">
-                    <div class="w3-group w3-half">   
-                        <h:outputLabel value = "Empresa donde trabaja"/>
-                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.nombreEmpresa}"/>
-                    </div>
-                    <div class="w3-group w3-half">   
-                        <h:outputLabel value = "Cargo"/>
-                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.cargo}"/>
-                    </div>
-                </div>
-                <div class="w3-row-padding">
-                    <div class="w3-group w3-half">   
-                        <h:outputLabel value = "Direccion Empresa"/>
-                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.direccionEmpresa}"/>
-                    </div>
-                    <div class="w3-group w3-half">   
-                        <h:outputLabel value = "Telefono Empresa"/>
-                        <h:inputText class="w3-input w3-border" value="#{solicitudAfiliacion.telefonoEmpresa}"/>
-                    </div>
-                </div>
-            </h:panelGrid>           
-                
-                <p:commandButton style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% " value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show(); "/>
-           
-                <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
-                    <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
-                </p:dialog>
-            </h:form>
+                </h:selectOneMenu>               
+            </h:panelGrid> 
+            <h:panelGrid columns="3" cellpadding="10" cellspacing="12">
+                <h:outputLabel value = "Tipo de solicitante:" />
+                <p:commandButton value="Estudiante" immediate="true" update=":information:toUpdate" actionListener="#{solicitudAfiliacion.setRole(2)}" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
+                <p:commandButton value="Egresado" immediate="true" update=":information:toUpdate" actionListener="#{solicitudAfiliacion.setRole(1)}" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" />
+            </h:panelGrid>
+            <p:outputPanel id="toUpdate">                 
+                <h:form id="Estudiantes" rendered="#{solicitudAfiliacion.role == 2}">
+                    <h:panelGrid columns="2" cellpadding="10" cellspacing="12">
+                        <h:outputLabel value = "Semestre actual:"/>
+                        <h:inputText  value="#{solicitudAfiliacion.semestre}"/>
+                    </h:panelGrid>
+                </h:form>
+                <h:form rendered="#{solicitudAfiliacion.role == 1}">
+                    <h:panelGrid columns="2" cellpadding="10" cellspacing="12">
+                        <h:outputLabel value = "Empresa donde trabaja:"/>
+                        <h:inputText value="#{solicitudAfiliacion.nombreEmpresa}"/>
+                        <h:outputLabel value = "Cargo:"/>
+                        <h:inputText value="#{solicitudAfiliacion.cargo}"/>
+                        <h:outputLabel value = "Dirección empresa:"/>
+                        <h:inputText value="#{solicitudAfiliacion.direccionEmpresa}"/>
+                        <h:outputLabel value = "Telefono empresa:"/>
+                        <h:inputText value="#{solicitudAfiliacion.telefonoEmpresa}"/>
+                    </h:panelGrid>
+                </h:form>
+            </p:outputPanel>
+            
+            <p:commandButton value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
+            <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
+                <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
+            </p:dialog>            
+        </h:form>
+        
         
         <h:form id="contacto">   
             <ui:insert name="footer">
