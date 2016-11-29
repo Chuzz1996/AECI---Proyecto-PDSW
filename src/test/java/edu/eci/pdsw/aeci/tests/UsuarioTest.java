@@ -56,7 +56,7 @@ import static org.junit.Assert.*;
  */
 public class UsuarioTest {
     
-    /*public DaoFactory getDataPru() throws IOException{
+    public DaoFactory getDataPru() throws IOException{
         InputStream input = getClass().getClassLoader().getResource("applicationconfig.properties").openStream();
         Properties properties=new Properties();
         properties.load(input);
@@ -90,13 +90,13 @@ public class UsuarioTest {
     
     @Test
     public void EnvioDeAprobado() {
-    }*/
+    }
     
    /**
      * Actualizar Datos de usuario
      */
     /*@Test
-    public void ActualizarDatosUsuario(){
+    public void actualizarDatosUsuario(){
         try{
             DaoFactory dao = getDataPru();
             try{

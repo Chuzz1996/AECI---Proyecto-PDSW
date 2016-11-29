@@ -81,8 +81,7 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Request request = new Request(newUser, 2);
                 Rp.addRequest(request);
             }catch(ExcepcionServiciosAeci ex){
-                System.out.println("SE CAGO "+ex.getMessage());
-
+                ex.printStackTrace();
             }
         }catch(NumberFormatException ex){
             System.out.println("Dato Agregado no es numerico");

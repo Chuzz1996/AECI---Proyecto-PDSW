@@ -61,7 +61,6 @@ public class RequestTest {
      */
     @Test
     public void solicitudesPendientes(){
-        System.out.println("lol");
         try{
             DaoFactory dao = getDataPru();
             try{
@@ -81,7 +80,6 @@ public class RequestTest {
                 request.addRequest(SegundaSolicitudAEnviar);
                 List<Request> result = request.getPendingRequests();
                 for(Request x:result){
-                    System.out.println(x.getUser().getFirstName());
                     assertEquals("Estado pendiente",x.getState(),"E");
                 }
             }catch(PersistenceException ex){
@@ -177,9 +175,5 @@ public class RequestTest {
             fail("Fallo ingreso base de datos de prueba");
         }
     }*/
-    
-    
-    
-    
     
 }
