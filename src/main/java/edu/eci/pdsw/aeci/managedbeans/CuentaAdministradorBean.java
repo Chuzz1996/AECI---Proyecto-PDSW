@@ -221,6 +221,7 @@ public class CuentaAdministradorBean implements Serializable{
     public void changeRequest(){
         try{
             ServicioEnvioCorreos sc = new ServicioEnvioCorreos();
+            rp.updateUser(solicitud, request.getUser());
             if(solicitud==0){
                 rp.updateRequest(request,request.getCommentary(), "A");
                 sc.aprobado(request.getUser(), request);
@@ -234,4 +235,6 @@ public class CuentaAdministradorBean implements Serializable{
         }
         
     }
+    
+    
 }

@@ -12,10 +12,10 @@ import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
-import edu.eci.pdsw.aeci.persistence.DaoProgram;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -135,6 +135,126 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());
         } return role;
+    }
+
+    @Override
+    public void updateUserFirstName(int idUser, String firstName) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserFirstName(idUser, firstName);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserLastName(int idUser, String lastName) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserLastName(idUser, lastName);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserEmail(int idUser, String email) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserEmail(idUser, email);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserPhone(int idUser, String phone) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserPhone(idUser, phone);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserCellphone(int idUser, String cellphone) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserCellphone(idUser, cellphone);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserProgram_Id(int idUser, int program_Id) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserProgram_Id(idUser, program_Id);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserYearGraduate(int idUser, int yearGraduate) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserYearGraduate(idUser, yearGraduate);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserBirthDate(int idUser, Date birthDate) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserBirthDate(idUser, birthDate);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserPeriod(int idUser, int period) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserPeriod(idUser, period);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void updateUserRol_Id(int idUser, int rol_Id) throws ExcepcionServiciosAeci{
+        try {
+            daof.beginSession();
+            daof.getDaoUser().updateUserRol_Id(idUser, rol_Id);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
     }
 
 }

@@ -78,8 +78,8 @@ and open the template in the editor.
         <p>Comentario</p>
         <p:inputTextarea rows="10" cols="50" completeMethod="#{cuentaAdministrador.request.commentary}" queryDelay="750" minQueryLength="4" />
         <br/>
-        <p:commandButton value = "Regresar" action="/index.xhtml?faces-redirect=true" resetValues="true" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
-        <p:commandButton value = "Finalizar revision" resetValues="true"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
+        <p:commandButton value = "Regresar" ajax="false" action="/index.xhtml?faces-redirect=true" resetValues="true" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
+        <p:commandButton value = "Finalizar revision" resetValues="true" actionListener="#{cuentaAdministrador.changeRequest()}"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
         
     </h:body>    
 </html>

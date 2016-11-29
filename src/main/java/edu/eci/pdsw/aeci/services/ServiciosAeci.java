@@ -27,6 +27,7 @@ import edu.eci.pdsw.aeci.entities.User;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
+import org.apache.ibatis.annotations.Param;
 
 
 /**
@@ -54,5 +55,25 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
     
     public abstract Rol getRol(int id)throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserFirstName(int idUser, String firstName) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserLastName(int idUser, String lastName) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserEmail(int idUser, String email) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserPhone(int idUser, String phone) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserCellphone(int idUser, String cellphone) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserProgram_Id(int idUser, int program_Id) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserYearGraduate(int idUser, int yearGraduate) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserBirthDate(int idUser, java.util.Date birthDate) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserPeriod(int idUser, int period) throws ExcepcionServiciosAeci;
+    
+    public abstract void updateUserRol_Id(int idUser, int rol_Id) throws ExcepcionServiciosAeci;
        
 }
