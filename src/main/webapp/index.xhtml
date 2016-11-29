@@ -22,26 +22,27 @@
                     <a href="index.xhtml" class="w3-margin-left w3-btn w3-black"><b>AECI</b></a>
                 </li>
                 <li class="w3-right w3-hide-small">
-                    <h:link value="Nosotros" class="w3-left w3-btn w3-black" fragment="centro:Nosotros"/>  
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Junta" class="w3-left w3-btn w3-black" fragment="centro:Junta"/>   
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Convenios" class="w3-left w3-btn w3-black" fragment="centro:Convenios"/> 
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Como Afiliarse" class="w3-left w3-btn w3-black" fragment="centro:ComoAfiliarse"/>
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Datos" class="w3-left w3-btn w3-black" fragment="centro:Datos"/>    
+                    <h:outputLink  value="javascript:void(0)" class="w3-left w3-btn w3-black" onclick="PF('dlg').show()">Ingresar</h:outputLink>                     
                 </li>
                 <li class="w3-right w3-hide-small">
                     <h:link value="Contacto" class="w3-left w3-btn w3-black" fragment="contacto"/>   
                 </li>
                 <li class="w3-right w3-hide-small">
-                    <h:outputLink  value="javascript:void(0)" class="w3-left w3-btn w3-black" onclick="PF('dlg').show()">Ingresar</h:outputLink>                     
+                    <h:link value="Datos" class="w3-left w3-btn w3-black" fragment="centro:Datos"/>    
                 </li>
+                 <li class="w3-right w3-hide-small">
+                    <h:link value="Como Afiliarse" class="w3-left w3-btn w3-black" fragment="centro:ComoAfiliarse"/>
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <h:link value="Convenios" class="w3-left w3-btn w3-black" fragment="centro:Convenios"/> 
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <h:link value="Junta" class="w3-left w3-btn w3-black" fragment="centro:Junta"/>   
+                </li>
+                <li class="w3-right w3-hide-small">
+                    <h:link value="Nosotros" class="w3-left w3-btn w3-black" fragment="centro:Nosotros"/>  
+                </li>
+                               
             </ul>
         </h:form>
         <p:spacer height="50" />

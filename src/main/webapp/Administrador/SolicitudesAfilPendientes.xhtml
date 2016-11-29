@@ -20,7 +20,7 @@
         <p:spacer height="80" />
         <f:view>
         <h:form id="form">
-            <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
+            <p:layout  id="layoutAfilPendientes" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
                 <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
                     <h:outputText value="(#{cuentaAdministrador.rol}ADMIN)" style="font-family: Segoe UI,Arial,sans-serif"/>
                     <div></div>
@@ -29,18 +29,15 @@
                     <p:separator/>                    
                     <ui:insert name="menuPrincipal">
                         <ui:include src="Menu/SolicitudesPrincipal.xhtml"/>
-                    </ui:insert> 
+                    </ui:insert>                     
                 </p:layoutUnit>
 
-                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">                    
-                        <h:form id="panel1">                              
-                            <ui:insert name="opcion1">
-                                <ui:include src="Menu/#{cuentaAdministrador.url}.xhtml"/>      
-                            </ui:insert> 
-
-                        </h:form>
-                    
+                <p:layoutUnit id='centroAfilPendientes' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">                        
+                    <ui:insert name="opcion1">
+                        <ui:include src="Menu/SolicitudesAfilPendientes.xhtml"/>      
+                    </ui:insert>                                          
                 </p:layoutUnit>
+                
             </p:layout>        
         </h:form>    
 </f:view>

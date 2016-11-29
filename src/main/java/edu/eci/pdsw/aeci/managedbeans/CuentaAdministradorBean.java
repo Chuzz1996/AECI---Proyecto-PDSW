@@ -59,16 +59,9 @@ public class CuentaAdministradorBean implements Serializable{
     
     //Menu
     private List<Request> solicitudesPendientes;
-    private String url = "SolicitudesAfilPendientes";
 
-      
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUrl() {
-        return url;
-    }
+    private int solicitudActual;  
+   
     
         
     public CuentaAdministradorBean() {
@@ -155,9 +148,8 @@ public class CuentaAdministradorBean implements Serializable{
             System.out.println("EN CUENTA ADMINISTRADOR"+ex.getMessage());
         }        
     }
+        
     
-    
-    private int solicitudActual;
     
     
     /**
@@ -178,7 +170,7 @@ public class CuentaAdministradorBean implements Serializable{
     /**
      * Consultar usuario
      */
-    public void checkUsuario(){    
+    public String checkUsuario(){    
         System.out.println("Entro al check");
         try{
             for(Request x:solicitudesPendientes){
@@ -187,10 +179,11 @@ public class CuentaAdministradorBean implements Serializable{
                     break;
                 }
             }
-        }catch(Exception ex){
+                    }catch(Exception ex){
             System.out.println("No existe un usuario con ese id");
         }
-        url ="DatosUsuario";
+        return ("/Administrador/SolicitudesPendientesUsuarios.xhtml?faces-redirect=true");
+        
     }
     
     /**

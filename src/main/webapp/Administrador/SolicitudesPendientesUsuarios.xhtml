@@ -19,8 +19,8 @@
         </ui:insert>
         <p:spacer height="80" />
         
-        <h:form id="form">
-            <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
+        <h:form>
+            <p:layout  id="layoutUsuarios" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
                 <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
                     <h:outputText value="(#{cuentaAdministrador.rol}ADMIN)" style="font-family: Segoe UI,Arial,sans-serif"/>
                     <div></div>
@@ -32,12 +32,10 @@
                     </ui:insert> 
                 </p:layoutUnit>
 
-                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
-                    <p:panel id="panel1">  
-                        <ui:insert name="opcion1">
-                            <ui:include src="Menu/DatosUsuario.xhtml"/>      
-                        </ui:insert> 
-                    </p:panel>
+                <p:layoutUnit id='centroUsuariosAfil' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">                     
+                    <ui:insert name="DatosUsuario">
+                        <ui:include src="Menu/DatosUsuario.xhtml"/>      
+                    </ui:insert>                     
                 </p:layoutUnit>
             </p:layout>        
         </h:form>    
