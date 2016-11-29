@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <title>ADMIN</title>
+    <title>ADMIN-SOLICITUDES</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
@@ -18,7 +18,7 @@
             <ui:include src="Menu/Header.xhtml"/>
         </ui:insert>
         <p:spacer height="80" />
-        <f:view>
+        
         <h:form id="form">
             <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
                 <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
@@ -32,21 +32,19 @@
                     </ui:insert> 
                 </p:layoutUnit>
 
-                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">                    
-                        <h:form id="panel1">                              
-                            <ui:insert name="opcion1">
-                                <ui:include src="Menu/#{cuentaAdministrador.url}.xhtml"/>      
-                            </ui:insert> 
-
-                        </h:form>
-                    
+                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
+                    <p:panel id="panel1">  
+                        <ui:insert name="opcion1">
+                            <ui:include src="Menu/DatosUsuario.xhtml"/>      
+                        </ui:insert> 
+                    </p:panel>
                 </p:layoutUnit>
             </p:layout>        
         </h:form>    
-</f:view>
+
         <!-- Contactarnos -->        
         <ui:insert name="footer">
             <ui:include src="/Templates/Footer.xhtml"/>      
         </ui:insert> 
     </h:body>
-</html>
+    </html>

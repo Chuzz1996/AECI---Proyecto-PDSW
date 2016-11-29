@@ -25,7 +25,7 @@ and open the template in the editor.
                     <f:ajax render=":form:panel1">
                         <p:menuitem value="Principal" url="Administrador.xhtml" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
                     <p:submenu label="Solicitudes de afiliacion" style="border-radius: 0px; background-color: white">
-                        <p:menuitem update=":form:panel1" value="Pendientes" action="#{cuentaAdministrador.urlMenuLateral('solicitudesAfilAprobadas')}" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>                            
+                        <p:menuitem value="Pendientes" url="/Administrador/SolicitudesAfilPendientes.xhtml"  style="color: white; font-family: Segoe UI,Arial,sans-serif"/>                            
                         <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>          
                         <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
                     </p:submenu>

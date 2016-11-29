@@ -41,12 +41,11 @@ import org.primefaces.event.UnselectEvent;
 
 /**
  *
- * @author 
+ * @author Aeci-Team
  */
 @ManagedBean(name = "cuentaAdministrador")
 @SessionScoped
 public class CuentaAdministradorBean implements Serializable{
-
    
     public ServiciosAeci  rp;
     private String nombre;
@@ -56,10 +55,20 @@ public class CuentaAdministradorBean implements Serializable{
     //Process requests
     private Request request;    
     private String currentCommentary, currentState;       
+    private int solicitud;
     
     //Menu
     private List<Request> solicitudesPendientes;
+    private String url = "SolicitudesAfilPendientes";
+
       
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
     
         
     public CuentaAdministradorBean() {
@@ -77,7 +86,7 @@ public class CuentaAdministradorBean implements Serializable{
     
     /***
      * Procesa la solicitud. 
-     * @throws ExcepcionServiciosAeci 
+     * @throws ExcepcionServiciosAeci Si ocurre algun error actualizando el request
      */
     public void processRequest() throws ExcepcionServiciosAeci{
         rp.updateRequest(getRequest(), currentCommentary, currentState);
@@ -137,14 +146,14 @@ public class CuentaAdministradorBean implements Serializable{
     }
 
     /**
-     * @param solicitudesPendientes the solicitudesPendientes to set
+     * 
      */
     public void setSolicitudesPendientes() {
         try{
             this.solicitudesPendientes = rp.getPendingRequests();
         }catch(ExcepcionServiciosAeci ex){
             System.out.println("EN CUENTA ADMINISTRADOR"+ex.getMessage());
-        }
+        }        
     }
     
     
@@ -169,7 +178,8 @@ public class CuentaAdministradorBean implements Serializable{
     /**
      * Consultar usuario
      */
-    public void checkUsuario(){
+    public void checkUsuario(){    
+        System.out.println("Entro al check");
         try{
             for(Request x:solicitudesPendientes){
                 if(x.getId()==solicitudActual){
@@ -180,6 +190,7 @@ public class CuentaAdministradorBean implements Serializable{
         }catch(Exception ex){
             System.out.println("No existe un usuario con ese id");
         }
+        url ="DatosUsuario";
     }
     
     /**
@@ -194,5 +205,19 @@ public class CuentaAdministradorBean implements Serializable{
      */
     public void setRequest(Request request) {
         this.request = request;
+    }
+    
+    /**
+     * @return the solicitud
+     */
+    public int isSolicitud() {
+        return solicitud;
+    }
+
+    /**
+     * @param solicitud the solicitud to set
+     */
+    public void setSolicitud(int solicitud) {
+        this.solicitud = solicitud;
     }
 }
