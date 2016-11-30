@@ -107,7 +107,7 @@
     </select>
     -->
     
-    -->
+    
     <!-- Trae estudiante o usuario 
     StudentResult
     <resultMap type='Student' id='StudentResult'>
