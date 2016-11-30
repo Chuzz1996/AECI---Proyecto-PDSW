@@ -8,6 +8,7 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoAccount;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
+import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
@@ -25,8 +26,33 @@ public class MyBatisDAOAccount implements DaoAccount{
     }
 
     @Override
-    public Account getDAccount() throws PersistenceException {
+    public Account getDaccount() throws PersistenceException {
         return currentSession.getMapper(Account.class).getDetails();
+    }
+
+    @Override
+    public void addAccount(User user, int salt) throws PersistenceException {
+        currentSession.getMapper(AccountMapper.class).addAccount(user, salt);
+    }
+
+    @Override
+    public void updatePassword(String password, int id) throws PersistenceException {
+        currentSession.getMapper(AccountMapper.class).updatePassword(password, id);
+    }
+
+    @Override
+    public void disableAccount(int id) throws PersistenceException {
+        currentSession.getMapper(AccountMapper.class).disableAccount(id);
+    }
+
+    @Override
+    public void enableAccount(int id) throws PersistenceException {
+        currentSession.getMapper(AccountMapper.class).enableAccount(id);
+    }
+
+    @Override
+    public Account getAccount(int id) throws PersistenceException {
+        return currentSession.getMapper(AccountMapper.class).getAccount(id);
     }
     
 

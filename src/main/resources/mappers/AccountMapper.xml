@@ -5,8 +5,7 @@
   
 <mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper">
     
-    <!-- detalles sin estudiante o usuario 
-    
+    <!--
     <resultMap type='Rol' id='RolResult'>
         <id property='id' column='Id'/>
         <result property='name' column='Name'/>
@@ -17,7 +16,7 @@
         <result property='duration' column='Duration'/>
         <result property='name' column='Name'/>
     </resultMap>
-    
+
     <resultMap type='User' id='UserResult'>
         <id property='id' column='Id'/>
         <result property='phone' column='Phone'/>
@@ -39,6 +38,35 @@
         <association property = 'id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
     </resultMap>
     
+    <insert type="addAccount" parameterType="map">
+        INSERT INTO Account(Id,Password,Salt) values(#{user.id},#{user.id},#{salt})
+    </insert>
+
+    <update type="updatePassword" parameterType="map">
+        UPDATE Account 
+        SET Password=#{password}
+        where Id=#{id}
+    </update>
+    
+    <update type="disableAccount" parameterType="map">
+        UPDATE Account
+        SET Active = false
+        where Id=#{id}
+    </update>
+    
+    <update type="enableAccount" parameterType="map">
+        UPDATE Account
+        SET Active = true
+        where Id=#{id}
+    </update>
+    
+    <select type="getAccount" parameterMap="AccountResult">
+        SELECT Id, Password, Active, Salt
+        from Account
+        where Id={#id}
+    </select>
+            
+    
     <resultMap type='Rate' id='RateResult'>
         <id property='id' column='Id'/>
         <result property='year' column='Year'/>
@@ -54,9 +82,10 @@
         <result property='playmentNumber' column='Phone'/>
         <association property = 'account' javaType ='Account' columnPrefix='a_' resultMap='AccountResult'></association>
         <association property = 'rate' javaType ='Rate' columnPrefix='p_' resultMap='RateResult'></association>
-        
     </resultMap>
     
+    -->
+    <!--
     <select id="getDetailsStudent" resultMap="UserResult">
     
         select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
@@ -76,6 +105,8 @@
                 And {#ActualDay}<=Membership.End_Date And {#ActualDay}>=Membership.Start_Date
         
     </select>
+    -->
+    
     -->
     <!-- Trae estudiante o usuario 
     StudentResult
