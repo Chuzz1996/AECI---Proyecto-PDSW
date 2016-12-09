@@ -102,13 +102,12 @@
 	
         From 	User, Rol,Graduate,Account,Program,Membership,Rate
 
-        Where 	User.Id=Rol.Id  And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
-                SYSDATE &lt;=Membership.End_Date And SYSDATE &gt;=Membership.Start_Date
+        Where 	User.id=#{id} And
+                User.Id=Rol.Id  And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
+                And NOW() &lt;=Membership.End_Date And NOW() &gt;=Membership.Start_Date
         
     </select>
-   
-    <!--- 
-    
+      
     <resultMap type='Student' id='StudentResult'>
         
         <id property='id' column='Id'/>
@@ -151,17 +150,10 @@
                 User.BirthDate as u_BirthDate,User.Period as u_Period,
                 Rol.Id as r_Id,Rol.name as r_name,
                 Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration
-        From User,Graduate,Rol,Program
-        Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id And Graduate.Id={#Grad}
-        SYSDATE &lt;=Membership.End_Date And SYSDATE &gt;=Membership.Start_Date
-    </select>
-    
-    
-    
-    <insert id="saveAccount" parameterType="map">
-        insert into Account(Id,Password,Active,Salt) values(#{IdAccount},#{PasswordAccount},#{ActiveAccount},#{SaltAccount})
-    </insert>
-    
-    -->
-  
+        From    User,Graduate,Rol,Program
+        Where   User.Id=#{id} And
+                Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id And Graduate.Id={#Grad} And
+                NOW() &lt;=Membership.End_Date And NOW() &gt;=Membership.Start_Date
+    </select>   
+
 </mapper>

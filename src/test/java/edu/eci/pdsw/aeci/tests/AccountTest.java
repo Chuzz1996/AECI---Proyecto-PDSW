@@ -58,6 +58,7 @@ public class AccountTest {
                 user.addUser(pruUser);
                 account.addAccount(pruUser, 12);
                 Account revision = account.getAccount(pruUser.getId());
+                /**account.getStudent(210409); **/
                 assertEquals("Cuenta con creacion exitosa",revision.getId().getId(), pruUser.getId());
                 assertTrue("Cuenta con creacion activa inmediata",revision.isActive());
             }catch(PersistenceException ex){

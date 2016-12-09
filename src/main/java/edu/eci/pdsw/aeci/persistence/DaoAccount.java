@@ -6,6 +6,7 @@
 package edu.eci.pdsw.aeci.persistence;
 
 import edu.eci.pdsw.aeci.entities.*;
+import org.apache.ibatis.annotations.Param;
 
 /**
  *
@@ -26,6 +27,12 @@ public interface DaoAccount {
      * @throws PersistenceException 
      */
     public void addAccount(User user,int salt)throws PersistenceException;
+    
+    public User getDetails( int id);
+    
+    public User getStudent( int id);
+    
+    public User getGraduate( int id);
     
     /**
      * Cambia la contrasena de la cuenta

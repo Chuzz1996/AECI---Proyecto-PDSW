@@ -15,11 +15,11 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface AccountMapper {
     
-    public User getDetails(@Param("ActualDay") Date ActualDay);
+    public User getDetails(@Param("id")int id);
     
-    public User getStudent(@Param("est") int est);
+    public User getStudent(@Param("id")int id);
     
-    public User getGraduate(@Param("Grad") int Grad);
+    public User getGraduate(@Param("id")int id);
     
     public void addAccount(@Param("user") User user,@Param("salt") int salt,@Param("password") String password);
     

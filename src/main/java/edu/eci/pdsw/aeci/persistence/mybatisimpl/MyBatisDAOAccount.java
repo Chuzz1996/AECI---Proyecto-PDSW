@@ -56,6 +56,21 @@ public class MyBatisDAOAccount implements DaoAccount{
     public Account getAccount(int id) throws PersistenceException {
         return currentSession.getMapper(AccountMapper.class).getAccount(id);
     }
+
+    @Override
+    public User getDetails(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public User getStudent(int id) {
+        return currentSession.getMapper(AccountMapper.class).getStudent(id);
+    }
+
+    @Override
+    public User getGraduate(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
     
