@@ -4,8 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper">
+     
+    <resultMap type='Account' id='AccountResult'>
+        <result property='password' column='Password'/>
+        <result property='active' column='Active'/>
+        <result property='salt' column='Salt'/>
+        <association property = 'id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+    </resultMap>
     
-    <!--
     <resultMap type='Rol' id='RolResult'>
         <id property='id' column='Id'/>
         <result property='name' column='Name'/>
@@ -31,43 +37,39 @@
         <association property = 'role' javaType ='Rol' columnPrefix='r_' resultMap='RolResult'></association>
     </resultMap>
     
-    <resultMap type='Account' id='AccountResult'>
-        <result property='password' column='Password'/>
-        <result property='active' column='Active'/>
-        <result property='salt' column='Salt'/>
-        <association property = 'id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
-    </resultMap>
     
-    <insert type="addAccount" parameterType="map">
-        INSERT INTO Account(Id,Password,Salt) values(#{user.id},#{user.id},#{salt})
+    
+    <insert id="addAccount" parameterType="map">
+        INSERT INTO Account(Id,Password,Salt,Active) values(#{user.id},#{user.id},#{salt},true)
     </insert>
-
-    <update type="updatePassword" parameterType="map">
+    
+    <select id="getAccount" parameterType="map" resultMap="AccountResult">
+        SELECT Account.Id, Account.Password, Account.Active, Account.Salt, User.id as u_id
+        from Account, User
+        where Account.Id=#{id} and User.Id=#{id}
+    </select>
+    <!--
+    
+    <update id="updatePassword" parameterType="map">
         UPDATE Account 
         SET Password=#{password}
         where Id=#{id}
     </update>
     
-    <update type="disableAccount" parameterType="map">
+    <update id="disableAccount" parameterType="map">
         UPDATE Account
         SET Active = false
         where Id=#{id}
     </update>
     
-    <update type="enableAccount" parameterType="map">
+    <update id="enableAccount" parameterType="map">
         UPDATE Account
         SET Active = true
         where Id=#{id}
     </update>
-    
-    <select type="getAccount" parameterMap="AccountResult">
-        SELECT Id, Password, Active, Salt
-        from Account
-        where Id={#id}
-    </select>
             
     
-    <resultMap type='Rate' id='RateResult'>
+    <resultMap id='Rate' id='RateResult'>
         <id property='id' column='Id'/>
         <result property='year' column='Year'/>
         <result property='value' column='Value'/>
@@ -84,8 +86,7 @@
         <association property = 'rate' javaType ='Rate' columnPrefix='p_' resultMap='RateResult'></association>
     </resultMap>
     
-    -->
-    <!--
+    
     <select id="getDetailsStudent" resultMap="UserResult">
     
         select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
@@ -105,11 +106,10 @@
                 And {#ActualDay}<=Membership.End_Date And {#ActualDay}>=Membership.Start_Date
         
     </select>
-    -->
     
     
-    <!-- Trae estudiante o usuario 
-    StudentResult
+    
+    
     <resultMap type='Student' id='StudentResult'>
         
         <id property='id' column='Id'/>
@@ -156,12 +156,13 @@
         Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id And Graduate.Id={#Grad}
         
     </select>
-    -->
-    <!-- Trae estudiante o usuario 
+    
+    
     
     <insert id="saveAccount" parameterType="map">
         insert into Account(Id,Password,Active,Salt) values(#{IdAccount},#{PasswordAccount},#{ActiveAccount},#{SaltAccount})
     </insert>
+    
     -->
   
 </mapper>

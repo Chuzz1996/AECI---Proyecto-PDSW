@@ -44,7 +44,7 @@ public class AccountTest {
      * Creacion de una cuenta
      * Falla: No
      */
-    /*@Test
+    @Test
     public void creacionDeCuenta(){
         try{
             DaoFactory dao = getDataPru();
@@ -58,7 +58,7 @@ public class AccountTest {
                 user.addUser(pruUser);
                 account.addAccount(pruUser, 12);
                 Account revision = account.getAccount(pruUser.getId());
-                assertEquals("Cuenta con creacion exitosa",revision.getId(), pruUser.getId());
+                assertEquals("Cuenta con creacion exitosa",revision.getId().getId(), pruUser.getId());
                 assertTrue("Cuenta con creacion activa inmediata",revision.isActive());
             }catch(PersistenceException ex){
                 fail("Fallo en inicio dao");
@@ -74,5 +74,5 @@ public class AccountTest {
         }catch(IOException ex){
             fail("Fallo ingreso base de datos de prueba");
         }
-    }*/
+    }
 }
