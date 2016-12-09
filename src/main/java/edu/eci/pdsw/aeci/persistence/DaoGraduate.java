@@ -13,4 +13,11 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoGraduate {
     
+    /**
+     * 
+     * @param graduate
+     * @throws PersistenceException 
+     */
+    public void addGraduate(Graduate graduate)throws PersistenceException;
+    
 }

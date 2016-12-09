@@ -13,4 +13,11 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoStudent {
     
+    /**
+     * 
+     * @param student
+     * @throws PersistenceException 
+     */
+    public void addStudent(Student student)throws PersistenceException;
+    
 }

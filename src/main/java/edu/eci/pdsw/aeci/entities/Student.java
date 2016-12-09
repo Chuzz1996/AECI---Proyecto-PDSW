@@ -12,6 +12,8 @@ import java.sql.Date;
  * @author 2095498
  */
 public class Student {
+
+
     
     private int id;
     private User user_id;
@@ -20,36 +22,52 @@ public class Student {
     public Student() {
     }
     
-    public Student(int Id,User User_id, int Semester) {
-        this.id=Id;
+    public Student(User User_id, int Semester) {
         this.user_id=User_id;
         this.semester=Semester;
     }
-        
+
+    /**
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * @return the user_id
+     */
     public User getUser_id() {
         return user_id;
     }
 
+    /**
+     * @param user_id the user_id to set
+     */
     public void setUser_id(User user_id) {
         this.user_id = user_id;
     }
 
+    /**
+     * @return the semester
+     */
     public int getSemester() {
         return semester;
     }
 
+    /**
+     * @param semester the semester to set
+     */
     public void setSemester(int semester) {
         this.semester = semester;
     }
-
     
 
 }

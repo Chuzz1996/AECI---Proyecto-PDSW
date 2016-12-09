@@ -6,11 +6,14 @@
 package edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers;
 
 import edu.eci.pdsw.aeci.entities.*;
+import org.apache.ibatis.annotations.Param;
 
 /**
  *
  * @author 2095498
  */
 public interface GraduateMapper {
+    
+    public void addGraduate(@Param ("graduate") Graduate graduate);
     
 }

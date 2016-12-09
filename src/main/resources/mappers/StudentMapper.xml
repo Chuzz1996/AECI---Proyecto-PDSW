@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper">
+    <!--
+    <resultMap type='User' id='UserResult'>
+        <id property='id' column='Id'/>
+        <result property='phone' column='Phone'/>
+        <result property='yearGraduate' column='YearGraduate'/>
+        <result property='period' column='Period'/>
+        <result property='firstName' column='FirstName'/>
+        <result property='lastName' column='LastName'/>
+        <result property='email' column='Email'/>
+        <result property='cellphone' column='CellPhone'/>
+        <result property='birthDate' column='BirthDate'/>
+        <association property = 'program' javaType ='Program' columnPrefix='pr_' resultMap='ProgramResult'></association>
+        <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
+    </resultMap>
+    
+    <resultMap type='Student' id='StudentResult'>
+        <id property='id' column = 'Id'/>
+        <result property='semester' column='Semester'/>
+        <result property='photo' column='Photo'/>
+        <association property='user' javaType='User' columnPrefix='us_' resultMap='UserResult'></association>
+    </resultMap>
+    
+    <insert id="addStudent" parameterType="map">
+        INSERT INTO Student(Semester,us_User)VALUES(#{student.semester},#{student.user_id})
+    </insert>
+    -->
+</mapper> 

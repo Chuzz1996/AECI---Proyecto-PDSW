@@ -7,11 +7,28 @@ package edu.eci.pdsw.aeci.persistence.mybatisimpl;
 
 import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoGraduate;
+import edu.eci.pdsw.aeci.persistence.PersistenceException;
+import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.GraduateMapper;
+import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.StudentMapper;
+import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
+import org.apache.ibatis.session.SqlSession;
 
 /**
  *
  * @author 2095498
  */
 public class MyBatisDAOGraduate implements DaoGraduate {
+    
+    private SqlSession currentSession=null;
+    
+    public MyBatisDAOGraduate(SqlSession session){
+        this.currentSession=session;
+    }
+
+    @Override
+    public void addGraduate(Graduate graduate) throws PersistenceException {
+        currentSession.getMapper(GraduateMapper.class).addGraduate(graduate);
+    }
+    
     
 }

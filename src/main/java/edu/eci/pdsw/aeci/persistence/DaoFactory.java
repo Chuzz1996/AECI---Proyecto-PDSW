@@ -104,6 +104,10 @@ public abstract class DaoFactory {
     
     public abstract DaoAccount getDaoAccount();
     
+    public abstract DaoStudent getDaoStudent();
+    
+    public abstract DaoGraduate getDaoGraduate();
+    
     public abstract void commitTransaction() throws PersistenceException;
 
     public abstract void rollbackTransaction() throws PersistenceException;
