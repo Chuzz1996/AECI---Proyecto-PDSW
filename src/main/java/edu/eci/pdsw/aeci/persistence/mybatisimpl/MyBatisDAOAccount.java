@@ -10,6 +10,7 @@ import edu.eci.pdsw.aeci.persistence.DaoAccount;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.AccountMapper;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
+import edu.eci.pdsw.aeci.seguridad.ShiroLoginBean;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
@@ -32,7 +33,8 @@ public class MyBatisDAOAccount implements DaoAccount{
 
     @Override
     public void addAccount(User user, int salt) throws PersistenceException {
-        currentSession.getMapper(AccountMapper.class).addAccount(user, salt);
+        String password = ShiroLoginBean.generateHash(user.getId()+"");
+        currentSession.getMapper(AccountMapper.class).addAccount(user, salt,password);
     }
 
     @Override

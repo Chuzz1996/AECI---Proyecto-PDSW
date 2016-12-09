@@ -40,7 +40,7 @@
     
     
     <insert id="addAccount" parameterType="map">
-        INSERT INTO Account(Id,Password,Salt,Active) values(#{user.id},#{user.id},#{salt},true)
+        INSERT INTO Account(Id,Password,Salt,Active) values(#{user.id},#{password},#{salt},true)
     </insert>
     
     <select id="getAccount" parameterType="map" resultMap="AccountResult">
@@ -48,8 +48,8 @@
         from Account, User
         where Account.Id=#{id} and User.Id=#{id}
     </select>
-    <!--
     
+    <!--
     <update id="updatePassword" parameterType="map">
         UPDATE Account 
         SET Password=#{password}

@@ -12,18 +12,13 @@ package edu.eci.pdsw.aeci.entities;
 
 
 public class Account {
+    
     private User id;
-    private int password;
+    private String password;
     private boolean active;
     private int salt;
 
-    public int getSalt() {
-        return salt;
-    }
-
-    public void setSalt(int Salt) {
-        this.salt = Salt;
-    }
+    
     
     public Account() {
     }
@@ -32,32 +27,66 @@ public class Account {
         
     }
     
+    
+
+    public Account getDetails() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the id
+     */
     public User getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(User id) {
         this.id = id;
     }
 
-    public int getPassword() {
+    /**
+     * @return the password
+     */
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * @return the active
+     */
     public boolean isActive() {
         return active;
     }
 
+    /**
+     * @param active the active to set
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    public Account getDetails() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * @return the salt
+     */
+    public int getSalt() {
+        return salt;
+    }
+
+    /**
+     * @param salt the salt to set
+     */
+    public void setSalt(int salt) {
+        this.salt = salt;
     }
 
 }

@@ -2,7 +2,7 @@
 --Table: Account
 CREATE TABLE Account (
     Id int NOT NULL,
-    Password int NOT NULL,
+    Password varchar(200) NOT NULL,
     Active bool NOT NULL,
     Salt int NOT NULL,
     role varchar(1) NOT NULL
