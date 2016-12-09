@@ -49,13 +49,13 @@
         where Account.Id=#{id} and User.Id=#{id}
     </select>
     
-    <!--
     <update id="updatePassword" parameterType="map">
         UPDATE Account 
         SET Password=#{password}
         where Id=#{id}
     </update>
     
+   
     <update id="disableAccount" parameterType="map">
         UPDATE Account
         SET Active = false
@@ -68,8 +68,8 @@
         where Id=#{id}
     </update>
             
-    
-    <resultMap id='Rate' id='RateResult'>
+     
+    <resultMap type='Rate' id='RateResult'>
         <id property='id' column='Id'/>
         <result property='year' column='Year'/>
         <result property='value' column='Value'/>
@@ -87,7 +87,7 @@
     </resultMap>
     
     
-    <select id="getDetailsStudent" resultMap="UserResult">
+    <select id="getDetailsStudent" parameterType="map" resultMap="UserResult">
     
         select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
                 User.Email as u_Email,User.Phone as u_Phone,
@@ -103,12 +103,11 @@
         From 	User, Rol,Graduate,Account,Program,Membership,Rate
 
         Where 	User.Id=Rol.Id  And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
-                And {#ActualDay}<=Membership.End_Date And {#ActualDay}>=Membership.Start_Date
+                SYSDATE &lt;=Membership.End_Date And SYSDATE &gt;=Membership.Start_Date
         
     </select>
-    
-    
-    
+   
+    <!--- 
     
     <resultMap type='Student' id='StudentResult'>
         
@@ -154,7 +153,7 @@
                 Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration
         From User,Graduate,Rol,Program
         Where Rol.Id=1 And Rol.id=User.Rol_Id And User.Id=Graduate.User_Id And Program.Id=User.Program_Id And Graduate.Id={#Grad}
-        
+        SYSDATE &lt;=Membership.End_Date And SYSDATE &gt;=Membership.Start_Date
     </select>
     
     
