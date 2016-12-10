@@ -21,8 +21,11 @@ importar aca las clases que necesiten
 import edu.eci.pdsw.samples.aeci.;
 
 ***/
+import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.persistence.DaoAccount;
+import edu.eci.pdsw.aeci.seguridad.ShiroLoginBean;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
@@ -190,7 +193,7 @@ public class CuentaAdministradorBean implements Serializable{
                     break;
                 }
             }
-                    }catch(Exception ex){
+        }catch(Exception ex){
             System.out.println("No existe un usuario con ese id");
         }
         return ("SolicitudesPendientesUsuarios.xhtml?faces-redirect=true");
@@ -234,8 +237,9 @@ public class CuentaAdministradorBean implements Serializable{
             rp.updateUser(solicitud, request.getUser());
             if(solicitud==0){
                 rp.updateRequest(request,request.getCommentary(), "A");
+                Account account = new Account(usuarioActual,500000);
+                rp.addAccount(account);
                 sc.aprobado(request.getUser(), request);
-                
             }else if(solicitud==1){
                 rp.updateRequest(request,request.getCommentary(), "R");
                 sc.rechazado(request.getUser(), request);

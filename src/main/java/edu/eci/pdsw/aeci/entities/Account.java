@@ -23,8 +23,9 @@ public class Account {
     public Account() {
     }
     
-    public Account(int Id,int password,boolean active){
-        
+    public Account(User id, int salt){
+        this.id = id;
+        this.salt = salt;
     }
     
     

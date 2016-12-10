@@ -49,36 +49,7 @@ public class LoginTest {
      */
     /*@Test
     public void Login(){
-        try{
-            DaoFactory dao = getDataPru();
-            try{
-                dao.beginSession();
-                DaoAccount account = dao.getDaoAccount();
-                DaoUser user = dao.getDaoUser();
-                Program carreraPrimerSolicitante = dao.getDaoProgram().getProgram(2);
-                Rol rolePersona = dao.getDaoRol().getDAORol(1);
-                User pruUser = new User(210409, "Pepo", "Gomez", "pepo.gomez@hotmail.com", "2697490", "+573158207964", carreraPrimerSolicitante, 2012, 1, new java.sql.Date(1990, 7, 20),rolePersona);
-                user.addUser(pruUser);
-                account.addAccount(pruUser, 12);
-                ShiroLoginBean login = new ShiroLoginBean();
-                Account revision = account.getAccount(pruUser.getId());
-                login.setPassword(revision.getPassword());
-                login.setUsername(revision.getId().getId()+"");
-                login.doLogin();
-            }catch(PersistenceException ex){
-                fail("Fallo en inicio dao");
-            }catch(ExcepcionServiciosAeci zz){
-                fail("Lanzo exception ServiciosAeci, revision en base de datos");
-            }finally{
-                try{
-                    dao.endSession();
-                }catch(PersistenceException e){
-                    fail("Fallo cerrar dao");
-                }
-            }
-        }catch(IOException ex){
-            fail("Fallo ingreso base de datos de prueba");
-        }
+        System.out.println(ShiroLoginBean.generateHash("HOOLA"));
     }*/
     
 }

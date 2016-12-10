@@ -106,7 +106,7 @@
             </p:outputPanel>
             <p:commandButton value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
             <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
-                <h:outputText value="Su solicitud fue enviar, la respuesta se le hara llegar al correo" />
+                <h:outputText value="#{solicitudAfiliacion.respuesta}" />
             </p:dialog>            
         </h:form>
         

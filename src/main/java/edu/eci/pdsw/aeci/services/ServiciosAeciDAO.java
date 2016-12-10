@@ -7,6 +7,7 @@ package edu.eci.pdsw.aeci.services;
 
 
 
+import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
@@ -282,6 +283,24 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try{
             daof.beginSession();
             daof.getDaoGraduate().addGraduate(graduate);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void addAccount(Account account) throws ExcepcionServiciosAeci {
+        try{
+            daof.beginSession();
+            daof.getDaoAccount().addAccount(account.getId(), account.getSalt());
         }catch(PersistenceException ex){
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());
