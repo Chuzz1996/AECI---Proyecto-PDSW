@@ -69,14 +69,16 @@
                 <h:selectOneMenu id="period" value="#{solicitudAfiliacion.periodo}">                    
                     <f:selectItem itemLabel="1" itemValue="1"/>
                     <f:selectItem itemLabel="2" itemValue="2"/>
-                </h:selectOneMenu>             
-                <p:selectManyCheckbox id="Terminos" required="true" >
-                    <f:selectItem itemLabel="Acepto Terminos y condiciones"/>
-                </p:selectManyCheckbox>
-                <p:commandButton value="Descargar" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% ">
-                    <!--<p:fileDownload value="#{fileDownloadView.file}" />-->
-                </p:commandButton>
-            </h:panelGrid> 
+                </h:selectOneMenu> 
+            </h:panelGrid>     
+            <p:spacer width="20"/>
+            <p:selectBooleanCheckbox id="Terminos" required="true" />
+            <p:spacer width="10"/>
+            <p:commandLink onclick="PrimeFaces.monitorDownload(start, stop);">
+                <h:outputText value="Acepto los terminos y condiciones   "/>
+                <p:fileDownload value="#{fileDownloadView.file}" />
+            </p:commandLink>                    
+            
             <h:panelGrid columns="3" cellpadding="10" cellspacing="12">
                 <h:outputLabel value = "Tipo de solicitante:" />
                 <p:commandButton value="Estudiante" immediate="true" update=":information:toUpdate" actionListener="#{solicitudAfiliacion.setRole(2)}" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>

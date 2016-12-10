@@ -23,17 +23,11 @@ and open the template in the editor.
             <h:form id="form1" style="padding: 7px ">                         
                 <p:menu id='menuSolicitudes' widgetVar="menu1" style="border-radius: 0px; padding: 10px; width: 90%;  background: black; color: white; border: none">
                     <f:ajax render=":form:panel1">
-                        <p:menuitem value="Principal" url="Administrador.xhtml" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
-                    <p:submenu label="Solicitudes de afiliacion" style="border-radius: 0px; background-color: white">
-                        <p:menuitem value="Pendientes" url="/Administrador/SolicitudesAfilPendientes.xhtml"  style="color: white; font-family: Segoe UI,Arial,sans-serif"/>                            
-                        <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>          
-                        <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
-                    </p:submenu>
-                    <p:submenu label="Solicitudes de renovacion" style="border-radius: 0px; background-color: white">
-                        <p:menuitem value="Pendientes" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
-                        <p:menuitem value="Aprobadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif" />
-                        <p:menuitem value="Rechazadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/>
-                    </p:submenu>
+                        <p:menuitem value="Principal" url="/Administrador/index.xhtml" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>
+                        <p:submenu label="Afiliaciones" style="border-radius: 0px; background-color: white">
+                            <p:menuitem value="Por vencerse" url="/Administrador/Reportes/ReportePorVencerse.xhtml" style="color: white; font-family: Segoe UI,Arial,sans-serif"/>                            
+                            <p:menuitem value="Venciadas" style="color: white;  font-family: Segoe UI,Arial,sans-serif"/> 
+                        </p:submenu>                                                                
                     </f:ajax>
                 </p:menu>                   
             </h:form>     

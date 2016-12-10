@@ -15,7 +15,7 @@
     </h:head>    
     <h:body>
         <ui:insert name="Header">
-            <ui:include src="Menu/Header.xhtml"/>
+            <ui:include src="/Administrador/Menu/Header.xhtml"/>
         </ui:insert>
         <p:spacer height="80" />
         
@@ -28,13 +28,13 @@
                     <h:outputText value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
                     <p:separator/>                    
                     <ui:insert name="menuPrincipal">
-                        <ui:include src="Menu/SolicitudesPrincipal.xhtml"/>
+                        <ui:include src="SolicitudesPrincipal.xhtml"/>
                     </ui:insert> 
                 </p:layoutUnit>
 
                 <p:layoutUnit id='centroUsuariosAfil' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">                     
                     <ui:insert name="DatosUsuario">
-                        <ui:include src="Menu/DatosUsuario.xhtml"/>      
+                        <ui:include src="DatosUsuario.xhtml"/>      
                     </ui:insert>                     
                 </p:layoutUnit>
             </p:layout>        

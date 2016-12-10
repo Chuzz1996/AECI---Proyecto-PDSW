@@ -54,12 +54,31 @@ public class CuentaAdministradorBean implements Serializable{
 
     private int solicitudActual;  
    
+    //Reportes
+    private List<User> usuariosPorVencer;
+    private User usuarioActual;
     
         
     public CuentaAdministradorBean() {
         rp = ServiciosAeci.getInstance();
         this.setSolicitudesPendientes();
     }
+    
+    public void setUsuariosPorVencer(List<User> usuariosPorVencer) {
+        this.usuariosPorVencer = usuariosPorVencer;
+    }
+
+    public void setUsuarioActual(User usuarioActual) {
+        this.usuarioActual = usuarioActual;
+    }
+
+    public List<User> getUsuariosPorVencer() {
+        return usuariosPorVencer;
+    }
+
+    public User getUsuarioActual() {
+        return usuarioActual;
+    }  
     
     /**
      * Retorna el usuario que hizo la solicitud.
@@ -161,6 +180,7 @@ public class CuentaAdministradorBean implements Serializable{
     
     /**
      * Consultar usuario
+     * @return 
      */
     public String checkUsuario(){    
         try{
@@ -173,8 +193,8 @@ public class CuentaAdministradorBean implements Serializable{
                     }catch(Exception ex){
             System.out.println("No existe un usuario con ese id");
         }
-        return ("/Administrador/SolicitudesPendientesUsuarios.xhtml?faces-redirect=true");
-        
+        return ("SolicitudesPendientesUsuarios.xhtml?faces-redirect=true");
+       
     }
     
     /**
