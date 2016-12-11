@@ -86,24 +86,21 @@ public class ShiroLoginBean implements Serializable{
      * Try and authenticate the user
      */
     public void doLogin() {
-        System.out.println("-----LOL----");
         Subject subject = SecurityUtils.getSubject();
-        System.out.println("FUE");
+        
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe()); 
-        System.out.println("PASO");
         try {
             subject.login(token);
-            System.out.println(subject.getSession().toString());
             if (subject.hasRole("Administrador")) {
-                subject.hasRole("Lol - admin");
+                System.out.println("Lol - admin");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador/index.xhtml");
             }
             else if( subject.hasRole("Estudiante") || subject.hasRole("Graduado") ){
-                subject.hasRole("Lol - est o grad");
+                System.out.println("Lol - est o grad");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Usuario/index.xhtml");
             }
             else {
-                subject.hasRole("Lol - otra cosa");
+                System.out.println("Lol - otra cosa");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("open/index.xhtml");
             }
         }
@@ -128,7 +125,6 @@ public class ShiroLoginBean implements Serializable{
             log.error(ex.getMessage(), ex);
         }
         finally {
-            System.out.println("LooooL");
             token.clear();
         }
     }
