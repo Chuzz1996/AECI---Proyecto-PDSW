@@ -54,6 +54,32 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             throw new ExcepcionServiciosAeci(ex.getMessage());
         }
     }
+    
+    @Override
+    public void addStudent(Student student) throws ExcepcionServiciosAeci {
+        try {
+            daof.beginSession();
+            daof.getDaoStudent().addStudent(student);
+            daof.commitTransaction();
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+    
+    @Override
+    public void addGraduate(Graduate graduate) throws ExcepcionServiciosAeci {
+        try {
+            daof.beginSession();
+            daof.getDaoGraduate().addGraduate(graduate);
+            daof.commitTransaction();
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
 
     @Override
     public void addRequest(Request request) throws ExcepcionServiciosAeci {
@@ -258,41 +284,4 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             throw new ExcepcionServiciosAeci(ex.getMessage());
         }
     }
-
-    @Override
-    public void addStudent(Student student) throws ExcepcionServiciosAeci {
-        try{
-            daof.beginSession();
-            daof.getDaoStudent().addStudent(student);
-        }catch(PersistenceException ex){
-            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExcepcionServiciosAeci(ex.getMessage());
-        }finally{
-            try{
-                daof.endSession();
-            }catch(PersistenceException e){
-                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
-               throw new ExcepcionServiciosAeci(e.getMessage());
-            }
-        }
-    }
-
-    @Override
-    public void addGraduate(Graduate graduate) throws ExcepcionServiciosAeci {
-        try{
-            daof.beginSession();
-            daof.getDaoGraduate().addGraduate(graduate);
-        }catch(PersistenceException ex){
-            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ExcepcionServiciosAeci(ex.getMessage());
-        }finally{
-            try{
-                daof.endSession();
-            }catch(PersistenceException e){
-                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
-               throw new ExcepcionServiciosAeci(e.getMessage());
-            }
-        }
-    }
-
 }

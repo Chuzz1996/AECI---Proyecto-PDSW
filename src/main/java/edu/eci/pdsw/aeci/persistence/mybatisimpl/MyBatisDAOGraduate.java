@@ -11,6 +11,7 @@ import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.GraduateMapper;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.StudentMapper;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -28,6 +29,11 @@ public class MyBatisDAOGraduate implements DaoGraduate {
     @Override
     public void addGraduate(Graduate graduate) throws PersistenceException {
         currentSession.getMapper(GraduateMapper.class).addGraduate(graduate);
+    }
+
+    @Override
+    public List<Graduate> getGraduates() throws PersistenceException {
+        return currentSession.getMapper(GraduateMapper.class).getGraduates();
     }
     
     

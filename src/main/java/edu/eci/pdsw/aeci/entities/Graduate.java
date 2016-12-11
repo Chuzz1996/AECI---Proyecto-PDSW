@@ -11,23 +11,22 @@ package edu.eci.pdsw.aeci.entities;
  */
 public class Graduate {
 
-
     private int id;
     private String charge;
     private String employer;
     private String office_address;
     private String office_phone;
-    private User user_id;
+    private User user;
 
     public Graduate() {
     }
    
-    public Graduate(String Charge,String Employer,String address,String phone,User User_id){
-         this.charge=Charge;
-         this.employer=Employer;
-         this.office_address=address;
-         this.office_phone=phone;
-         this.user_id=User_id;
+    public Graduate(String Charge,String Employer,String address,String phone,User user){
+         this.charge = Charge;
+         this.employer = Employer;
+         this.office_address = address;
+         this.office_phone = phone;
+         this.user = user;
     }
 
     /**
@@ -101,17 +100,17 @@ public class Graduate {
     }
 
     /**
-     * @return the user_id
+     * @return the user
      */
-    public User getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * @param user_id the user_id to set
+     * @param user the user_id to set
      */
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
     
 }

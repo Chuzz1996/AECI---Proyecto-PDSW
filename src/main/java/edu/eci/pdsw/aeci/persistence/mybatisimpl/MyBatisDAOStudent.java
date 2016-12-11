@@ -9,7 +9,7 @@ import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoStudent;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.StudentMapper;
-import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -28,7 +28,9 @@ public class MyBatisDAOStudent implements DaoStudent {
     public void addStudent(Student student) throws PersistenceException {
         currentSession.getMapper(StudentMapper.class).addStudent(student);      
     }
-    
-    
-    
+
+    @Override
+    public List<Student> getStudents() throws PersistenceException {
+        return currentSession.getMapper(StudentMapper.class).getStudents();
+    }
 }

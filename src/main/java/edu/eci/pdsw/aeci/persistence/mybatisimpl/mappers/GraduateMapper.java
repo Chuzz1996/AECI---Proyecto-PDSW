@@ -6,6 +6,7 @@
 package edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers;
 
 import edu.eci.pdsw.aeci.entities.*;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -15,5 +16,7 @@ import org.apache.ibatis.annotations.Param;
 public interface GraduateMapper {
     
     public void addGraduate(@Param ("graduate") Graduate graduate);
+    
+    public List<Graduate> getGraduates();
     
 }

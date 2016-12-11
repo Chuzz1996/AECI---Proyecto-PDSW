@@ -6,6 +6,7 @@
 package edu.eci.pdsw.aeci.persistence;
 
 import edu.eci.pdsw.aeci.entities.*;
+import java.util.List;
 
 /**
  *
@@ -14,10 +15,17 @@ import edu.eci.pdsw.aeci.entities.*;
 public interface DaoStudent {
     
     /**
-     * 
-     * @param student
+     * Add a new student.
+     * @param student the new student.
      * @throws PersistenceException 
      */
-    public void addStudent(Student student)throws PersistenceException;
+    public void addStudent(Student student) throws PersistenceException;
+    
+    /**
+     * A list of all the current students.
+     * @return All the current students.
+     * @throws PersistenceException 
+     */
+    public List<Student> getStudents() throws PersistenceException;
     
 }

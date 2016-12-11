@@ -2,9 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper">
-    <!--
+  
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.GraduateMapper">
+    
+    <resultMap type='Graduate' id='GraduateResult'>
+        <id property='id' column='Id'/>
+        <result property='charge' column='Charge'/>
+        <result property='employer' column='Employer'/>
+        <result property='office_address' column='Office_Address'/>
+        <result property='office_phone' column='Office_Phone'/>
+        <association property = 'user' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+    </resultMap>
+    
     <resultMap type='User' id='UserResult'>
         <id property='id' column='Id'/>
         <result property='phone' column='Phone'/>
@@ -19,16 +28,29 @@
         <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
     </resultMap>
     
-    <resultMap type='Graduate' id='GraduateResult'>
-        <result property='charge' column='Charge'/>
-        <result property='employer' column='Employer'/>
-        <result property='office_address' column='Office_Address'/>
-        <result property='office_phone' column='Office_phone'/>
-        <association property='user' javaType='User' columnPrefix="use_" resultMap="UserResult"></association>
+    <resultMap type='Rol' id='RolResult'>
+        <id property='id' column='Id'/>
+        <result property='name' column='Name'/>
     </resultMap>
     
+    <resultMap type='Program' id='ProgramResult'>
+        <id property='id' column='Id'/>
+        <result property='duration' column='Duration'/>
+        <result property='name' column='Name'/>
+    </resultMap>
+    
+    <select id="getGraduates" resultMap="GraduateResult">
+        Select Graduate.Id, Graduate.Charge, Graduate.Employer, Graduate.Office_Address, Graduate.Office_Phone,
+               User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
+               Rol.Id as u_rl_Id, Rol.Name as u_rl_Name,
+               Program.Id as u_pr_Id, Program.Duration as u_pr_Duration, Program.Name as u_pr_Name
+        From User, Request, Rol, Program, Student
+        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And Student.User_id = User.Id;
+    </select>
+
     <insert id="addGraduate" parameterType="map">
-        INSERT INTO GRADUATE(Charge,Employer,Office_Address,Office_phone,use_User)
-        VALUES(#{graduate.charge},#{graduate.employer},#{graduate.office_address},#{graduate.office_phone},#{graduate.user_id.id})
-    </insert>-->
+        INSERT INTO Student (Id, Charge, Employer, Office_Address, Office_Phone, User_id)
+        VALUES (#{graduate.id}, #{graduate.charge}, #{graduate.employer}, #{graduate.office_Address}, #{graduate.office_Phone}, #{graduate.user.id});
+    </insert>
+  	
 </mapper>

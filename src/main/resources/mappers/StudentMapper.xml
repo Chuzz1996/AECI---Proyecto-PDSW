@@ -3,8 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper">
-    <!--
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.StudentMapper">
+    
+    <resultMap type='Student' id='StudentResult'>
+        <id property='id' column='Id'/>
+        <result property='semester' column='Semester'/>
+        <association property = 'user' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+    </resultMap>
+    
     <resultMap type='User' id='UserResult'>
         <id property='id' column='Id'/>
         <result property='phone' column='Phone'/>
@@ -19,15 +25,29 @@
         <association property = 'role' javaType ='Rol' columnPrefix='rl_' resultMap='RolResult'></association>
     </resultMap>
     
-    <resultMap type='Student' id='StudentResult'>
-        <id property='id' column = 'Id'/>
-        <result property='semester' column='Semester'/>
-        <result property='photo' column='Photo'/>
-        <association property='user' javaType='User' columnPrefix='us_' resultMap='UserResult'></association>
+    <resultMap type='Rol' id='RolResult'>
+        <id property='id' column='Id'/>
+        <result property='name' column='Name'/>
     </resultMap>
     
+    <resultMap type='Program' id='ProgramResult'>
+        <id property='id' column='Id'/>
+        <result property='duration' column='Duration'/>
+        <result property='name' column='Name'/>
+    </resultMap>
+    
+    <select id="getStudents" resultMap="StudentResult">
+        Select Student.Id, Student.Semester,
+               User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
+               Rol.Id as u_rl_Id, Rol.Name as u_rl_Name,
+               Program.Id as u_pr_Id, Program.Duration as u_pr_Duration, Program.Name as u_pr_Name
+        From User, Request, Rol, Program, Student
+        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And Student.User_id = User.Id;
+    </select>
+
     <insert id="addStudent" parameterType="map">
-        INSERT INTO Student(Semester,us_User)VALUES(#{student.semester},#{student.user_id})
+        INSERT INTO Student (Id, User_Id, Semester)
+        VALUES (#{student.id}, #{student.use.id}, #{student.semester});
     </insert>
-    -->
-</mapper> 
+  	
+</mapper>
