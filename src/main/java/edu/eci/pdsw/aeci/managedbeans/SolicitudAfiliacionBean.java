@@ -10,9 +10,11 @@ importar aca las clases que necesiten
 import edu.eci.pdsw.samples.aeci.;
 
 ***/
+import edu.eci.pdsw.aeci.entities.Graduate;
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
+import edu.eci.pdsw.aeci.entities.Student;
 import edu.eci.pdsw.aeci.entities.User;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
@@ -58,11 +60,11 @@ public class SolicitudAfiliacionBean implements Serializable{
     private java.sql.Date fechaNacimiento;
     public static ServiciosAeci  Rp = ServiciosAeci.getInstance();
     
-    private String semestre;
+    private int semestre;
     private String NombreEmpresa;
-    private String Cargo;
-    private String DireccionEmpresa;
-    private String TelefonoEmpresa;
+    private String cargo;
+    private String direccionEmpresa;
+    private String telefonoEmpresa;
     private java.lang.Long role;
     private String respuesta;
     
@@ -87,6 +89,14 @@ public class SolicitudAfiliacionBean implements Serializable{
                 User newUser = new User(id, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
                 Rp.addUser(newUser);
                 Request request = new Request(newUser, 2);
+                if((int)(long)role == 1){
+                    System.out.println("cargo: "+cargo);
+                    Graduate graduate = new Graduate(cargo,NombreEmpresa,direccionEmpresa,telefonoEmpresa,newUser);
+                    Rp.addGraduate(graduate);
+                }else if((int)(long)role == 2){
+                    Student student = new Student(newUser,semestre);
+                    Rp.addStudent(student);
+                }
                 Rp.addRequest(request);
                 ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
                 sp.EnvioDeSolicitud();
@@ -97,6 +107,7 @@ public class SolicitudAfiliacionBean implements Serializable{
         }catch(NumberFormatException ex){
             setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
             System.out.println("Dato Agregado no es numerico");
+            ex.printStackTrace();
         }
         
     }
@@ -262,14 +273,14 @@ public class SolicitudAfiliacionBean implements Serializable{
     /**
      * @return the semestre
      */
-    public String getSemestre() {
+    public int getSemestre() {
         return semestre;
     }
 
     /**
      * @param semestre the semestre to set
      */
-    public void setSemestre(String semestre) {
+    public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
 
@@ -288,45 +299,47 @@ public class SolicitudAfiliacionBean implements Serializable{
     }
 
     /**
-     * @return the Cargo
+     * @return the cargo
      */
     public String getCargo() {
-        return Cargo;
+        System.out.println("get");
+        return cargo;
     }
 
     /**
-     * @param Cargo the Cargo to set
+     * @param cargo the Cargo to set
      */
-    public void setCargo(String Cargo) {
-        this.Cargo = Cargo;
+    public void setCargo(String cargo) {
+        System.out.println("CargoSet: "+cargo);
+        this.cargo = cargo;
     }
 
     /**
-     * @return the DireccionEmpresa
+     * @return the direccionEmpresa
      */
     public String getDireccionEmpresa() {
-        return DireccionEmpresa;
+        return direccionEmpresa;
     }
 
     /**
-     * @param DireccionEmpresa the DireccionEmpresa to set
+     * @param direccionEmpresa the DireccionEmpresa to set
      */
-    public void setDireccionEmpresa(String DireccionEmpresa) {
-        this.DireccionEmpresa = DireccionEmpresa;
+    public void setDireccionEmpresa(String direccionEmpresa) {
+        this.direccionEmpresa = direccionEmpresa;
     }
 
     /**
-     * @return the TelefonoEmpresa
+     * @return the telefonoEmpresa
      */
     public String getTelefonoEmpresa() {
-        return TelefonoEmpresa;
+        return telefonoEmpresa;
     }
 
     /**
-     * @param TelefonoEmpresa the TelefonoEmpresa to set
+     * @param telefonoEmpresa the TelefonoEmpresa to set
      */
-    public void setTelefonoEmpresa(String TelefonoEmpresa) {
-        this.TelefonoEmpresa = TelefonoEmpresa;
+    public void setTelefonoEmpresa(String telefonoEmpresa) {
+        this.telefonoEmpresa = telefonoEmpresa;
     }
 
     /**

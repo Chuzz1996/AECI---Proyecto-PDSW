@@ -21,11 +21,11 @@ public class Graduate {
     public Graduate() {
     }
    
-    public Graduate(String Charge,String Employer,String address,String phone,User user){
-         this.charge = Charge;
-         this.employer = Employer;
-         this.office_address = address;
-         this.office_phone = phone;
+    public Graduate(String charge,String employer,String office_address,String office_phone,User user){
+         this.charge = charge;
+         this.employer = employer;
+         this.office_address = office_address;
+         this.office_phone = office_phone;
          this.user = user;
     }
 

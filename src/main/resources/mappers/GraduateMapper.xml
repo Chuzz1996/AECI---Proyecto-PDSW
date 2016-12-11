@@ -49,8 +49,8 @@
     </select>
 
     <insert id="addGraduate" parameterType="map">
-        INSERT INTO Student (Id, Charge, Employer, Office_Address, Office_Phone, User_id)
-        VALUES (#{graduate.id}, #{graduate.charge}, #{graduate.employer}, #{graduate.office_Address}, #{graduate.office_Phone}, #{graduate.user.id});
+        INSERT INTO Graduate (Id, Charge, Employer, Office_Address, Office_Phone, User_id)
+        VALUES (#{graduate.id}, #{graduate.charge}, #{graduate.employer}, #{graduate.office_address}, #{graduate.office_phone}, #{graduate.user.id});
     </insert>
   	
 </mapper>

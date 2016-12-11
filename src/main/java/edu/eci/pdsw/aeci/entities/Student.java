@@ -15,6 +15,9 @@ public class Student {
     private User user;
     private int semester;
     
+    public Student() {        
+    }
+    
     public Student(User user, int semester) {
         this.user = user;
         this.semester = semester;
