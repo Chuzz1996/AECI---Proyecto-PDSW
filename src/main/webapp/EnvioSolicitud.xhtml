@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3c.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
@@ -32,26 +32,27 @@
         </h:form>
         <p:spacer height="80" />
         
-        <h:form id="information" class="w3-container w3-card-4 w3-padding-large w3-white" style="margin: auto; width: 60%; padding: 10px">  
+        <h:form id="information" class="w3-container w3-card-4 w3-padding-large w3-white" style="margin: auto; width: 60%; padding: 10px"> 
+            <p:growl id="growlFormulario" sticky="false" />
             <h:outputText value="Ingreso de Datos"/>
 
             <h:panelGrid columns="4" cellpadding="10" cellspacing="12">
-                <h:outputLabel value = "Cedula*:"/>
-                <h:inputText id="id" value="#{solicitudAfiliacion.cedula}" required="true"/>
+                <h:outputLabel value = "Cédula*:"/>
+                <h:inputText id="Identificacion" value="#{solicitudAfiliacion.cedula}" required="true"/>
                 <h:outputLabel value = "Nombre(s)*:"/>
-                <h:inputText id="name" value="#{solicitudAfiliacion.nombre}" required="true"/>
+                <h:inputText id="Nombre" value="#{solicitudAfiliacion.nombre}" required="true"/>
                 <h:outputLabel value = "Apellido(s)*:"/>
-                <h:inputText  id="name2" value="#{solicitudAfiliacion.apellido}" required="true"/>                
+                <h:inputText  id="Apellido" value="#{solicitudAfiliacion.apellido}" required="true"/>                
                 <h:outputLabel value = "Celular*:"/>
-                <h:inputText id="celular" value="#{solicitudAfiliacion.celular}" required="true"/>
-                <h:outputLabel value = "Telefono Fijo:"/>
+                <h:inputText id="Celular" value="#{solicitudAfiliacion.celular}" required="true"/>
+                <h:outputLabel value = "Teléfono:"/>
                 <h:inputText id="phone" value="#{solicitudAfiliacion.telefonoFijo}"/>
                 <p:outputLabel value="Fecha de Nacimiento*:" />
-                <p:calendar  id="birthdate" value="#{solicitudAfiliacion.fechaNacimiento}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" required="true" yearRange="c-90:c+0"/>
+                <p:calendar  id="Nacimiento" value="#{solicitudAfiliacion.fechaNacimiento}" navigator="true" pattern="dd-MM-yyyy"  placeholder="DD MM YYYY" mask="true" required="true" yearRange="c-90:c+0"/>
                 <h:outputLabel value = "Correo*:"/>
-                <h:inputText id="email" value="#{solicitudAfiliacion.correo}" required="true"/>                   
+                <h:inputText id="Email" value="#{solicitudAfiliacion.correo}" required="true"/>                   
                 <h:outputLabel value = "Carrera*:"/>                         
-                <h:selectOneMenu id="career" value="#{solicitudAfiliacion.carrera}" required="true">                        
+                <h:selectOneMenu id="Carrera" value="#{solicitudAfiliacion.carrera}" required="true">                        
                     <f:selectItem itemLabel="Ingeniería Civil" itemValue="1"/>
                     <f:selectItem itemLabel="Ingeniería Electrónica" itemValue="2"/>
                     <f:selectItem itemLabel="Ingeniería Eléctrica" itemValue="3"/>
@@ -70,14 +71,7 @@
                     <f:selectItem itemLabel="1" itemValue="1"/>
                     <f:selectItem itemLabel="2" itemValue="2"/>
                 </h:selectOneMenu> 
-            </h:panelGrid>     
-            <p:spacer width="20"/>
-            <p:selectBooleanCheckbox id="Terminos" required="true" />
-            <p:spacer width="10"/>
-            <p:commandLink onclick="PrimeFaces.monitorDownload(start, stop);">
-                <h:outputText value="Acepto los terminos y condiciones   "/>
-                <p:fileDownload value="#{fileDownloadView.file}" />
-            </p:commandLink>                    
+            </h:panelGrid>             
             
             <h:panelGrid columns="3" cellpadding="10" cellspacing="12">
                 <h:outputLabel value = "Tipo de solicitante:" />
@@ -104,8 +98,17 @@
                     </h:panelGrid>
                 </h:form>
             </p:outputPanel>
-            <p:commandButton value = "Enviar solicitud" resetValues="true"  actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
-            <p:dialog class="w3-btn w3-hover-light-grey" header="Solicitud Enviada" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
+            <p:spacer width="20"/>
+            <h:outputText value="Al enviar la solicutud usted "/>
+            <p:commandLink onclick="PrimeFaces.monitorDownload(start, stop);">
+                <h:outputText value="acepta los terminos y condiciones   "/>
+                <p:fileDownload value="#{fileDownloadView.file}" />
+            </p:commandLink>  
+            <p:commandButton value = "Enviar solicitud" resetValues="true" update="growlFormulario" 
+                             actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" 
+                             style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
+                      
+            <p:dialog class="w3-btn w3-hover-light-grey" header="Estado de la solicitud" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
                 <h:outputText value="#{solicitudAfiliacion.respuesta}" />
             </p:dialog>            
         </h:form>

@@ -31,8 +31,10 @@ import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -61,6 +63,7 @@ public class CuentaAdministradorBean implements Serializable{
     private List<User> usuariosPorVencer;
     private User usuarioActual;
     
+    public String error;
         
     public CuentaAdministradorBean() {
         this.setSolicitudesPendientes();
@@ -88,6 +91,11 @@ public class CuentaAdministradorBean implements Serializable{
      */
     public User getDetailsRequest() {
         return getRequest().getUser();        
+    }
+    
+    public void ShowError(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Error!", error));
     }
     
     /***
@@ -158,7 +166,8 @@ public class CuentaAdministradorBean implements Serializable{
         try{
             this.solicitudesPendientes = rp.getPendingRequests();
         }catch(ExcepcionServiciosAeci ex){
-            System.out.println("EN CUENTA ADMINISTRADOR"+ex.getMessage());
+            error = ex.getMessage();
+            ShowError();
         }        
     }
         
@@ -184,18 +193,25 @@ public class CuentaAdministradorBean implements Serializable{
      * Consultar usuario
      * @return 
      */
-    public String checkUsuario(){    
+    public String checkUsuario(){ 
+        String url = null;
         try{
             for(Request x:solicitudesPendientes){
                 if(x.getId()==solicitudActual){
                     this.setRequest(x);
+                    url = "SolicitudesPendientesUsuarios.xhtml?faces-redirect=true";
                     break;
                 }
+                else {
+                    throw new ExcepcionServiciosAeci("No se ha encontrado el usuario con ese id");
+                }
+                    
             }
-        }catch(Exception ex){
-            System.out.println("No existe un usuario con ese id");
+        }catch(ExcepcionServiciosAeci ex){
+            error = ex.getMessage();
+            ShowError();
         }
-        return ("SolicitudesPendientesUsuarios.xhtml?faces-redirect=true");
+        return (url);
        
     }
     
@@ -245,7 +261,8 @@ public class CuentaAdministradorBean implements Serializable{
                 sc.rechazado(request.getUser(), request);
             }
         }catch(ExcepcionServiciosAeci ex){
-            
+            error = ex.getMessage();
+            ShowError();
         }
         
     }
