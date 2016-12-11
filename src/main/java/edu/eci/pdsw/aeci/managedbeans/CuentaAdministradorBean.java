@@ -42,7 +42,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CuentaAdministradorBean implements Serializable{
    
-    public ServiciosAeci  rp;
+    public static ServiciosAeci  rp = ServiciosAeci.getInstance();
     private String nombre;
     private String apellido;
     private String rol;
@@ -63,7 +63,6 @@ public class CuentaAdministradorBean implements Serializable{
     
         
     public CuentaAdministradorBean() {
-        rp = ServiciosAeci.getInstance();
         this.setSolicitudesPendientes();
     }
     
@@ -234,10 +233,11 @@ public class CuentaAdministradorBean implements Serializable{
     public void changeRequest(){
         try{
             ServicioEnvioCorreos sc = new ServicioEnvioCorreos();
-            rp.updateUser(solicitud, request.getUser());
+            System.out.println(request.getUser().getFirstName() + "  -  "+ request.getUser().getLastName());
+            rp.updateUser(request.getUser().getId(), request.getUser());
             if(solicitud==0){
                 rp.updateRequest(request,request.getCommentary(), "A");
-                Account account = new Account(usuarioActual,500000);
+                Account account = new Account(request.getUser(),500000);
                 rp.addAccount(account);
                 sc.aprobado(request.getUser(), request);
             }else if(solicitud==1){

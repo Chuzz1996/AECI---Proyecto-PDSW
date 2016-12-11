@@ -100,6 +100,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoRequest().updateRequest(request, state, commentary);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -146,6 +147,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUser(idUser, user);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -171,6 +173,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserFirstName(idUser, firstName);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -183,6 +186,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserLastName(idUser, lastName);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,6 +199,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserEmail(idUser, email);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -207,6 +212,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserPhone(idUser, phone);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -219,6 +225,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserCellphone(idUser, cellphone);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -231,6 +238,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserProgram_Id(idUser, program_Id);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -243,6 +251,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserYearGraduate(idUser, yearGraduate);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -255,6 +264,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserBirthDate(idUser, birthDate);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -267,6 +277,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserPeriod(idUser, period);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -279,6 +290,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try {
             daof.beginSession();
             daof.getDaoUser().updateUserRol_Id(idUser, rol_Id);
+            daof.commitTransaction();
             daof.endSession();
         } catch (PersistenceException ex) {
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -291,6 +303,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try{
             daof.beginSession();
             daof.getDaoAccount().addAccount(account.getId(), account.getSalt());
+            daof.commitTransaction();
         }catch(PersistenceException ex){
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());

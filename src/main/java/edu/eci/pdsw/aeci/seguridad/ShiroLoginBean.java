@@ -86,40 +86,49 @@ public class ShiroLoginBean implements Serializable{
      * Try and authenticate the user
      */
     public void doLogin() {
+        System.out.println("-----LOL----");
         Subject subject = SecurityUtils.getSubject();
         System.out.println("FUE");
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe()); 
         System.out.println("PASO");
         try {
             subject.login(token);
-
-            if (subject.hasRole("Graduado")) {
+            System.out.println(subject.getSession().toString());
+            if (subject.hasRole("Administrador")) {
+                subject.hasRole("Lol - admin");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador/index.xhtml");
             }
-            else if(subject.hasRole("Estudiante")){
+            else if( subject.hasRole("Estudiante") || subject.hasRole("Graduado") ){
+                subject.hasRole("Lol - est o grad");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Usuario/index.xhtml");
             }
             else {
+                subject.hasRole("Lol - otra cosa");
                 FacesContext.getCurrentInstance().getExternalContext().redirect("open/index.xhtml");
             }
         }
         catch (UnknownAccountException ex) {
+            System.out.println("Error - 1");
             facesError("El usuario no se encuentra registrado. Por favor, verifique los datos");
             log.error(ex.getMessage(), ex);
         }
         catch (IncorrectCredentialsException ex) {
+            System.out.println("Error - 2");
             facesError("Datos erróneos. Por favor, inténtelo otra vez.");
             log.error(ex.getMessage(), ex);
         }
         catch (LockedAccountException ex) {
+            System.out.println("Error - 3");
             facesError("Su cuenta ha sido bloqueada. Por favor, inténtelo más tarde");
             log.error(ex.getMessage(), ex);
         }
         catch (AuthenticationException | IOException ex) {
+            System.out.println("Error - 4");
             facesError("Error inesperado: " + ex.getMessage());
             log.error(ex.getMessage(), ex);
         }
         finally {
+            System.out.println("LooooL");
             token.clear();
         }
     }
