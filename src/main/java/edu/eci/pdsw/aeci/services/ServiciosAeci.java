@@ -20,6 +20,7 @@ package edu.eci.pdsw.aeci.services;
 /**
 import edu.eci.pdsw.aeci.entities.Usuario;
 **/
+import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
@@ -45,6 +46,8 @@ public abstract class ServiciosAeci implements Serializable{
     }
     
     public abstract void addUser(User user) throws ExcepcionServiciosAeci;
+    
+    public abstract void addAccount(Account account)throws ExcepcionServiciosAeci;
     
     public abstract void updateUser(int idUser, User user) throws ExcepcionServiciosAeci;
 

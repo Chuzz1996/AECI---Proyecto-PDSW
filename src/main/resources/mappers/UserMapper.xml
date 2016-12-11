@@ -105,7 +105,7 @@
     <update id="updateUser" parameterType="map">
         UPDATE User
         SET FirstName= #{user.firstName}, LastName = #{user.lastName}, Email = #{user.email}, Phone = #{user.phone}, 
-        CellPhone = {user.cellphone}, Program_Id = #{user.program.id}, YearGraduate = #{user.yearGraduate}, BirthDate = {user.birthDate},
+        CellPhone = #{user.cellphone}, Program_Id = #{user.program.id}, YearGraduate = #{user.yearGraduate}, BirthDate = #{user.birthDate},
         Period = #{user.period}, Rol_Id = #{user.role.id}
         WHERE Id = #{id};
     </update>

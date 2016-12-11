@@ -64,6 +64,12 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String DireccionEmpresa;
     private String TelefonoEmpresa;
     private java.lang.Long role;
+    private String respuesta;
+    
+    public SolicitudAfiliacionBean(){
+        this.respuesta = "No se ha enviado la solicitud, hace falta llenar algun dato obligatorio";
+        
+    }
 
        
     /**
@@ -84,19 +90,31 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Rp.addRequest(request);
                 ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
                 sp.EnvioDeSolicitud();
+                setRespuesta("Su solicitud fue enviar, la respuesta se le hara llegar al correo");
             }catch(ExcepcionServiciosAeci ex){
+                setRespuesta("No se ha enviado la solicitud, algun error en sus datos ingresados");
                 ex.printStackTrace();
             }
         }catch(NumberFormatException ex){
+            setRespuesta("No se ha enviado la solicitud, algun error en sus datos ingresados");
             System.out.println("Dato Agregado no es numerico");
         }
         
     }
     
+    /**
+     * 
+     * @param idRole
+     * @throws ExcepcionServiciosAeci 
+     */
     public void setRole(java.lang.Long idRole) throws ExcepcionServiciosAeci {       
         this.role = idRole;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Long getRole() {
         return role;
     }
@@ -310,6 +328,20 @@ public class SolicitudAfiliacionBean implements Serializable{
      */
     public void setTelefonoEmpresa(String TelefonoEmpresa) {
         this.TelefonoEmpresa = TelefonoEmpresa;
+    }
+
+    /**
+     * @return the respuesta
+     */
+    public String getRespuesta() {
+        return respuesta;
+    }
+
+    /**
+     * @param respuesta the respuesta to set
+     */
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
     }
 
 }

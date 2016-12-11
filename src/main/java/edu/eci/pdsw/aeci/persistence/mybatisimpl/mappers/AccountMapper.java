@@ -21,7 +21,7 @@ public interface AccountMapper {
     
     public User getGraduate(@Param("id")int id);
     
-    public void addAccount(@Param("user") User user,@Param("salt") int salt,@Param("password") String password);
+    public void addAccount(@Param("user") User user,@Param("salt") int salt,@Param("password")String password);
     
     public void updatePassword(@Param("password")String password, @Param("id")int id);
     
