@@ -92,11 +92,10 @@ public class SolicitudAfiliacionBean implements Serializable{
                 sp.EnvioDeSolicitud();
                 setRespuesta("Su solicitud fue enviar, la respuesta se le hara llegar al correo");
             }catch(ExcepcionServiciosAeci ex){
-                setRespuesta("No se ha enviado la solicitud, algun error en sus datos ingresados");
-                ex.printStackTrace();
+                setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");                
             }
         }catch(NumberFormatException ex){
-            setRespuesta("No se ha enviado la solicitud, algun error en sus datos ingresados");
+            setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
             System.out.println("Dato Agregado no es numerico");
         }
         

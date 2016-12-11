@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3c.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <title>ADMIN</title>
+    <title>ADMIN-SOLICITUDES</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
@@ -19,6 +19,7 @@
         </ui:insert>
         <p:spacer height="80" />        
         <h:form id="formPendientes">
+            <p:growl id="growlPendientes"  showDetail="true" sticky="true" />
             <p:layout  id="layoutAfilPendientes" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
                 <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
                     <h:outputText value="(#{cuentaAdministrador.rol} ADMIN)" style="font-family: Segoe UI,Arial,sans-serif"/>
@@ -36,7 +37,7 @@
                     <h:panelGrid columns="2" cellpadding="6" >
                         <h:outputText value="Ingresar numero de solicitud a revisar:"/>                        
                         <p:inputText value="#{cuentaAdministrador.solicitudActual}"/> 
-                        <p:commandButton value = "Consultar solicitud" action="#{cuentaAdministrador.checkUsuario()}" resetValues="true" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
+                        <p:commandButton value = "Consultar solicitud" update="growlPendientes" action="#{cuentaAdministrador.checkUsuario()}" resetValues="true" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
                         <p:commandButton value = "Actualizar" actionListener="#{cuentaAdministrador.setSolicitudesPendientes()}" update="TablaUsuariosPendientes" resetValues="true" onclick="PF('dlg1').show();" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
                     </h:panelGrid>
                     <h:form id="TablaUsuariosPendientes">
@@ -44,13 +45,13 @@
                             <f:facet name="header">
                                 Solicitudes Pendientes
                             </f:facet>  
-                            <p:column class="w3-light-grey" headerText="Numero de solicitud">
+                            <p:column class="w3-light-grey" headerText="Número de solicitud">
                                 <h:outputText value="#{solicitudesPendientes.id}"/>
                             </p:column>
                             <p:column class="w3-light-grey" headerText="Nombre del solicitante">
                                 <h:outputText value="#{solicitudesPendientes.user.firstName} #{solicitudesPendientes.user.lastName}"/>
                             </p:column>
-                            <p:column class="w3-light-grey" headerText="Día de envio solicitud">
+                            <p:column class="w3-light-grey" headerText="Fecha de envio">
                                 <h:outputText value="#{solicitudesPendientes.date}"/>
                             </p:column>
                             <p:column class="w3-light-grey" headerText="Rol del solicitante">
