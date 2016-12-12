@@ -23,4 +23,4 @@ INSERT INTO Program (Id, Name, Duration)
 INSERT INTO Program (Id, Name, Duration)
   VALUES (9,'Ingenieria Mecanica',10);
 INSERT INTO Program (Id, Name, Duration)
-  VALUES (10,'Ingenieria Biomedica',10);
+VALUES (10,'Ingenieria Biomedica',10);

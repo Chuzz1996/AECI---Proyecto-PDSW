@@ -16,6 +16,9 @@ public class Student {
     private int semester;
     private String photo;
     
+    public Student() {        
+    }
+    
     public Student(User user, int semester) {
         this.user = user;
         this.semester = semester;

@@ -47,7 +47,7 @@
 
     <insert id="addStudent" parameterType="map">
         INSERT INTO Student (Id, User_Id, Semester)
-        VALUES (#{student.id}, #{student.use.id}, #{student.semester});
+        VALUES (#{student.id}, #{student.user.id}, #{student.semester});
     </insert>
     
     <update id="addCarnet" parameterType="map">
