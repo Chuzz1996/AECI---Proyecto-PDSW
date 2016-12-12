@@ -24,15 +24,15 @@ public interface DaoUser {
     /**
      * 
      * @param id
-     * @return
-     * @throws PersistenceException 
+     * @return the user needed
+     * @throws PersistenceException if id is null
      */
     public User getUser(int id) throws PersistenceException;
     
     /**
      * 
      * @param user identification to be add
-     * @throws PersistenceException 
+     * @throws PersistenceException if occurs any error
      */
     public void addUser(User user) throws PersistenceException;
     

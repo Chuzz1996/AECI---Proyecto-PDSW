@@ -34,8 +34,8 @@ public class ServicioEnvioCorreos {
     */
     /**
      * 
-     * @param destinatario
-     * @param solicitud 
+     * @param destinatario The email of destiny
+     * @param solicitud the approved request
      */
     public void aprobado(User destinatario, Request solicitud){
         String comentario="Su solicitud ha sido aprobada.\n"+solicitud.getCommentary()+" \nAtentamente AECI.";
@@ -44,8 +44,8 @@ public class ServicioEnvioCorreos {
     
     /**
      * 
-     * @param destinarario
-     * @param solicitud 
+     * @param destinarario The email of destiny
+     * @param solicitud the rejected request
      */
     public void rechazado(User destinarario, Request solicitud){
         String comentario="Su solicitud ha sido rechazada por:\n"+solicitud.getCommentary()+"\nEsperamos el envío de su solicitud en una próxima ocasión";
@@ -63,9 +63,9 @@ public class ServicioEnvioCorreos {
     
     /**
      * 
-     * @param nombre
-     * @param correo
-     * @param comentario 
+     * @param nombre The name of the addressee
+     * @param correo The email
+     * @param comentario The commentary of the email
      */
     public void EnviarCorreo(String nombre,String correo, String comentario){
         

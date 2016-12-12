@@ -17,14 +17,14 @@ public interface DaoGraduate {
     /**
      * Adds a new graduate.
      * @param graduate the new graduate
-     * @throws PersistenceException 
+     * @throws PersistenceException if occurs any error
      */
     public void addGraduate(Graduate graduate)throws PersistenceException;
     
     /**
      * A list of all the current graduates.
      * @return All the current graduates.
-     * @throws PersistenceException 
+     * @throws PersistenceException if occurs any error
      */
     public List<Graduate> getGraduates() throws PersistenceException;
     

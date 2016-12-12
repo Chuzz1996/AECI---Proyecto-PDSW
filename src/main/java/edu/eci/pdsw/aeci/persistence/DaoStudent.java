@@ -17,21 +17,21 @@ public interface DaoStudent {
     /**
      * Add a new student.
      * @param student the new student.
-     * @throws PersistenceException 
+     * @throws PersistenceException if occurs any error
      */
     public void addStudent(Student student) throws PersistenceException;
     
     /**
      * A list of all the current students.
      * @return All the current students.
-     * @throws PersistenceException 
+     * @throws PersistenceException if occurs any error
      */
     public List<Student> getStudents() throws PersistenceException;
     
     /**
-     * 
-     * @param student
-     * @throws PersistenceException 
+     * sets the new photo in the database
+     * @param student the student with the new photo
+     * @throws PersistenceException if occurs any error
      */
     public void addCarnet(Student student)throws PersistenceException;
     

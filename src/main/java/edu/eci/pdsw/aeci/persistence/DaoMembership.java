@@ -15,15 +15,15 @@ public interface DaoMembership {
     
     /**
      * 
-     * @param membership
-     * @throws PersistenceException 
+     * @param membership the membership to be added
+     * @throws PersistenceException if occurs any error
      */
     public void addMembership(Membership membership)throws PersistenceException;
     
     /**
      * 
-     * @param membership
-     * @throws PersistenceException 
+     * @param membership the membership to be updated
+     * @throws PersistenceException if occurs any error
      */
     public void updatePayment(Membership membership)throws PersistenceException;
     
