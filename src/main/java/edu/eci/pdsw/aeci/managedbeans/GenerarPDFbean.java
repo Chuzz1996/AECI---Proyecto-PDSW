@@ -10,8 +10,9 @@ package edu.eci.pdsw.aeci.managedbeans;
  *
  * @author 2105409
  */
-
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.ByteArrayInputStream;
@@ -54,12 +55,32 @@ public class GenerarPDFbean{
         try {
         //----------------------------------
             Document doc = new Document();
-
+            Paragraph parrafo,parrafo2;
+            Image imagen = Image.getInstance("Logo.jpeg"); 
             OutputStream out = new ByteArrayOutputStream();
             PdfWriter writer = PdfWriter.getInstance(doc, out);
-
+            
             doc.open();
-            doc.add(new Paragraph("Hello World. ok........"));
+            doc.add(imagen);
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            parrafo = new Paragraph("CERTIFICADO DE AFILIACIÓN AECI");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            parrafo2 = new Paragraph("La Asociación de Egresados de la Escuela Colombiana de Ingeniería Julio Garavito AECI,con "
+                    + "               Nit. 830.031.137- 4, certifica que el Ingeniero Industrial Graduado en el perido 2009-2,"
+                    + "               JOEL FERNANDO JARAMILLO GARCÍA, identificado con la cédula de Ciudadanía Nº80.851.912,"
+                    + "               está afiliado a esta Asociación y se encuentra al día con su aporte, "
+                    + "               el cual fue realizado a través de la consignación 234535 y"
+                    + "               la factura de venta Nº 4668 del veintinueve (29) de Noviembre de 2016.");
+            parrafo2.setAlignment(Element.ALIGN_JUSTIFIED);
+            doc.add(parrafo2);
             doc.close(); 
             out.close();
 
