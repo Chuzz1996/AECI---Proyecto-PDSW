@@ -17,7 +17,9 @@ public interface UserMapper {
     
     public List<User> getUsers();
     
-    public void addUser(@Param("user") User user);
+    public User getUser(@Param("id")int id);
+    
+    public void addUser(@Param("user")User user);
     
     public void updateUser(@Param("id") int userId, @Param("user") User user);
     

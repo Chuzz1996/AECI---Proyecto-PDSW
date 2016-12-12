@@ -28,4 +28,11 @@ public interface DaoStudent {
      */
     public List<Student> getStudents() throws PersistenceException;
     
+    /**
+     * 
+     * @param student
+     * @throws PersistenceException 
+     */
+    public void addCarnet(Student student)throws PersistenceException;
+    
 }

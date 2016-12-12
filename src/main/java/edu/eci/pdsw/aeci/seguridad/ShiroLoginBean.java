@@ -5,6 +5,9 @@
  */
 package edu.eci.pdsw.aeci.seguridad;
 
+import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -16,6 +19,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.apache.shiro.authc.credential.DefaultPasswordService;
@@ -36,17 +40,11 @@ import javax.faces.bean.SessionScoped;
 public class ShiroLoginBean implements Serializable{
 
     private static final Logger log = LoggerFactory.getLogger(ShiroLoginBean.class);
-    
+    private static ServiciosAeci rp = ServiciosAeci.getInstance();
     private String username;
     private String password;
     private Boolean rememberMe;
-    
-    /**
-     * 
-     */
-    public ShiroLoginBean(){
-    
-    }
+    private User personaLog;
     
     /**
      * 
@@ -93,10 +91,12 @@ public class ShiroLoginBean implements Serializable{
             subject.login(token);
             if (subject.hasRole("Administrador")) {
                 System.out.println("Lol - admin");
+                PersonaActual();
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador/index.xhtml");
             }
             else if( subject.hasRole("Estudiante") || subject.hasRole("Graduado") ){
                 System.out.println("Lol - est o grad");
+                PersonaActual();
                 FacesContext.getCurrentInstance().getExternalContext().redirect("Usuario/index.xhtml");
             }
             else {
@@ -170,5 +170,29 @@ public class ShiroLoginBean implements Serializable{
     public void setRememberMe(Boolean rememberMe) {
         this.rememberMe = rememberMe;
     }
+
+    /**
+     * @return the personaLog
+     */
+    public User getPersonaLog() {
+        return personaLog;
+    }
+
+    /**
+     * @param personaLog the personaLog to set
+     */
+    public void setPersonaLog(User personaLog) {
+        this.personaLog = personaLog;
+    }
     
+    /**
+     * 
+     */
+    public void PersonaActual(){
+        try{
+            personaLog = rp.getUser(Integer.parseInt(username));
+        }catch(ExcepcionServiciosAeci ex){
+            System.out.println("QUE PUTAS");
+        }
+    }
 }

@@ -5,10 +5,12 @@
  */
 package edu.eci.pdsw.aeci.managedbeans;
 
+import edu.eci.pdsw.aeci.seguridad.ShiroLoginBean;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -17,45 +19,140 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "cuentaUsuario")
 @SessionScoped
 public class CuentaUsuarioBean implements Serializable {
-    
-    public ServiciosAeci rp;
+
+    private static ServiciosAeci rp = ServiciosAeci.getInstance();
     private String nombre;
     private String apellido;
     private String rol;
+    private String paymentNumber;
+    private UploadedFile receipt;
     
     private String urlMenuPrincipal;
     private String urlMenuLateral= "Default";
     
-    public String getUrlMenuPrincipal() {
-        return urlMenuPrincipal;
+    public CuentaUsuarioBean(){
+        
     }
-
-    public String getUrlMenuLateral() {
-        return urlMenuLateral;
-    }
-
-    public void setUrlMenuPrincipal(String urlMenuPrincipal) {
-        this.urlMenuPrincipal = urlMenuPrincipal;
-    }
-
-    public void setUrlMenuLateral(String urlMenuLateral) {
-        this.urlMenuLateral = urlMenuLateral;
-    }
-
+    
+    /**
+     * @return the rp
+     */
     public ServiciosAeci getRp() {
         return rp;
     }
 
+    /**
+     * @param rp the rp to set
+     */
+    public void setRp(ServiciosAeci rp) {
+        this.rp = rp;
+    }
+
+    /**
+     * @return the nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * @return the apellido
+     */
     public String getApellido() {
         return apellido;
     }
 
+    /**
+     * @param apellido the apellido to set
+     */
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    /**
+     * @return the rol
+     */
     public String getRol() {
         return rol;
     }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    /**
+     * @return the urlMenuPrincipal
+     */
+    public String getUrlMenuPrincipal() {
+        return urlMenuPrincipal;
+    }
+
+    /**
+     * @param urlMenuPrincipal the urlMenuPrincipal to set
+     */
+    public void setUrlMenuPrincipal(String urlMenuPrincipal) {
+        this.urlMenuPrincipal = urlMenuPrincipal;
+    }
+
+    /**
+     * @return the urlMenuLateral
+     */
+    public String getUrlMenuLateral() {
+        return urlMenuLateral;
+    }
+
+    /**
+     * @param urlMenuLateral the urlMenuLateral to set
+     */
+    public void setUrlMenuLateral(String urlMenuLateral) {
+        this.urlMenuLateral = urlMenuLateral;
+    }
     
+    /**
+     * @return the paymentNumber
+     */
+    public String getPaymentNumber() {
+        return paymentNumber;
+    }
+
+    /**
+     * @param paymentNumber the paymentNumber to set
+     */
+    public void setPaymentNumber(String paymentNumber) {
+        this.paymentNumber = paymentNumber;
+    }
+    
+    /**
+     * @return the Receipt
+     */
+    public UploadedFile getReceipt() {
+        return receipt;
+    }
+
+    /**
+     * @param Receipt the Receipt to set
+     */
+    public void setReceipt(UploadedFile Receipt) {
+        this.receipt = Receipt;
+    }
+    
+    /**
+     * Sube y registra el pago de la afiliacion
+     */
+    public void RegistrarPago(){
+        if(receipt!=null){
+            
+        }
+    }
+     
 }
