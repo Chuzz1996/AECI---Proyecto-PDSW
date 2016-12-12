@@ -19,44 +19,18 @@ and open the template in the editor.
 
     </h:head>    
     <h:body>
-        <h:form class="w3-top">        
-            <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Salir" class="w3-left w3-btn w3-black"/>  
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Convenios" class="w3-left w3-btn w3-black"/>  
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Solicitudes" class="w3-left w3-btn w3-black"/>  
-                </li>
-                <li class="w3-right w3-hide-small">
-                    <h:link value="Afiliación" class="w3-left w3-btn w3-black"/>
-                </li>
-                <li>
-                    <h:commandLink class="w3-margin-left w3-btn w3-black" value='AECI' action="/index.xhtml?faces-redirect=true" />                                                      
-                </li>                      
-                
-            </ul>
-        </h:form>
-        <p:spacer height="80" />     
-        
+        <ui:include src="/Usuario/Menu/Header.xhtml"/>
+        <p:spacer height="80" />            
         <p:layout  id="layout" style=";min-width:400px;min-height:800px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
             <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
-                <h:outputLabel value="#{loginBean.personaLog.role.name} (Estado de la afiliacion)"/>   
-                <div></div>
-                <h:outputLabel style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="Nombre del usuario"/>
-                <h:outputLabel value="#{loginBean.personaLog.firstName} #{loginBean.personaLog.lastName}"/>
-                <p:separator/>                    
+                                  
                 <ui:insert name="menuPrincipal">
-                    <ui:include src="Menu/Afiliacion.xhtml"/>
+                    <ui:include src="/Usuario/Menu/Afiliacion.xhtml"/>
                 </ui:insert>                     
             </p:layoutUnit>
             <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
                 <ui:include src="Menu/subirArchivo.xhtml"/>   
             </p:layoutUnit>
-
-            
         </p:layout>        
         <!-- Contactarnos -->
         <h:form id="contacto">              
