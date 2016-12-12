@@ -10,6 +10,7 @@ import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import org.primefaces.model.UploadedFile;
 
 /**
@@ -20,6 +21,10 @@ import org.primefaces.model.UploadedFile;
 @SessionScoped
 public class CuentaUsuarioBean implements Serializable {
 
+    
+    
+    
+    
     private static ServiciosAeci rp = ServiciosAeci.getInstance();
     private String nombre;
     private String apellido;

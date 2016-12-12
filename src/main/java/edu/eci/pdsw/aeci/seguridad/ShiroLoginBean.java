@@ -44,6 +44,14 @@ public class ShiroLoginBean implements Serializable{
     private String password;
     private Boolean rememberMe;
     private User personaLog;
+
+    public static ServiciosAeci getRp() {
+        return rp;
+    }
+
+    public static void setRp(ServiciosAeci rp) {
+        ShiroLoginBean.rp = rp;
+    }
     
     /**
      * 
