@@ -52,7 +52,7 @@ public class GenerarPDFbean implements Serializable {
     private String text;
     private String Carrera=" fail ";
     private int periodo= 0 ;
-    private String nombre;
+    private String nombre= "  a  ";
 
     
     private int Cedula= 0 ;
@@ -89,10 +89,13 @@ public class GenerarPDFbean implements Serializable {
         
         try {
         //----------------------------------
-            
+           // nombre=login.getPersonaLog().getFirstName()+" "+ login.getPersonaLog().getLastName();
+           
             Carrera=login.getPersonaLog().getProgram().getName();
+            periodo=login.getPersonaLog().getPeriod();
+            String pe=login.getPersonaLog().getYearGraduate()+" - "+periodo;
+            Cedula=login.getPersonaLog().getId();
             
-        
             Document doc = new Document();
             Paragraph parrafo,parrafo2,parrafo3,parrafo4;
             Image imagenLogo = Image.getInstance("Logo.jpeg");
@@ -115,7 +118,7 @@ public class GenerarPDFbean implements Serializable {
             doc.add(new Paragraph("\n"));
             doc.add(new Paragraph("\n"));
             parrafo2 = new Paragraph("La Asociación de  Egresados de la  Escuela Colombiana de Ingeniería Julio Garavito AECI, con "
-                    + "Nit. 830.031.137- 4, certifica que el Ingeniero(a) egresado de la carrera "+ Carrera +" Graduado en el perido "+ periodo+","
+                    + "Nit. 830.031.137- 4, certifica que el Ingeniero(a) egresado de la carrera "+ Carrera +" Graduado en el periodo "+ pe +","
                     + " "+nombre+", identificado con la cédula de Ciudadanía Nº"+Cedula +","
                     + " está afiliado a esta Asociación y se encuentra al día con su aporte, "
                     + " el cual fue realizado a través de la consignación "+ Consignacion + " y"
