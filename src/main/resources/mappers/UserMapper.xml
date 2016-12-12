@@ -37,6 +37,14 @@
         Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id;
     </select>
     
+    <select id="getUser" resultMap="UserResult">
+        Select User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
+               Rol.Id as rl_Id, Rol.Name as rl_Name,
+               Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
+        From User, Request, Rol, Program
+        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id And User.Id = #{id};
+    </select>
+    
     <insert id="addUser" parameterType="map">
         INSERT INTO User (Id, FirstName, LastName, Email, Phone, CellPhone, Program_Id, YearGraduate, BirthDate, Period, Rol_Id) 
         VALUES (#{user.id}, #{user.firstName}, #{user.lastName}, #{user.email},#{user.phone},#{user.cellphone}, #{user.program.id},#{user.yearGraduate},#{user.birthDate},#{user.period},#{user.role.id})

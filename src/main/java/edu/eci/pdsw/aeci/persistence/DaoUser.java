@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface DaoUser {
     
+    public User getUser(int id) throws PersistenceException;
+    
     /**
      * Get the users
      * @return a list with all the users.

@@ -29,8 +29,6 @@ import edu.eci.pdsw.aeci.entities.Student;
 import edu.eci.pdsw.aeci.entities.User;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
-import org.apache.ibatis.annotations.Param;
 
 
 /**
@@ -84,4 +82,6 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract void addStudent(Student student) throws ExcepcionServiciosAeci;
     
     public abstract void addGraduate(Graduate graduate) throws ExcepcionServiciosAeci;
+    
+    public abstract User getUser(int id) throws ExcepcionServiciosAeci;
 }

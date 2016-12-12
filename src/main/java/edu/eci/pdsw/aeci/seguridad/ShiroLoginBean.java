@@ -5,6 +5,9 @@
  */
 package edu.eci.pdsw.aeci.seguridad;
 
+import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
+import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -53,6 +56,11 @@ public class ShiroLoginBean implements Serializable{
      */
     public Subject getSubject(){
         return SecurityUtils.getSubject();
+    }
+    
+    public User getLoggedUser() throws ExcepcionServiciosAeci{
+        
+        return null;
     }
     
     /**

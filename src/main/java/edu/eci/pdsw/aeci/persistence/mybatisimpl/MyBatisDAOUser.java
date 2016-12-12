@@ -89,5 +89,10 @@ public class MyBatisDAOUser implements DaoUser {
     public void updateUser(int userId, User user) throws PersistenceException {
         currentSession.getMapper(UserMapper.class).updateUser(userId, user);
     }
+
+    @Override
+    public User getUser(int id) throws PersistenceException {
+        return currentSession.getMapper(UserMapper.class).getUser(id);
+    }
     
 }
