@@ -41,7 +41,14 @@ public class GenerarPDFbean{
 
 
     private String text;
-
+    private String Carrera=" Carrera ";
+    private String periodo=" 2013 -1 ";
+    private String nombre=" JOEL FERNANDO JARAMILLO GARCÍA ";
+    private String Cedula= "80.851.912 ";
+    private String Consignacion="234535";
+    private String factura="44882";
+     private String fechaActual = "hoy";
+    
     public String getText() {
         return text;
     }
@@ -55,13 +62,15 @@ public class GenerarPDFbean{
         try {
         //----------------------------------
             Document doc = new Document();
-            Paragraph parrafo,parrafo2;
-            Image imagen = Image.getInstance("Logo.jpeg"); 
+            Paragraph parrafo,parrafo2,parrafo3,parrafo4;
+            Image imagenLogo = Image.getInstance("Logo.jpeg");
+            Image imagenFirma = Image.getInstance("firmaDigital.jpeg"); 
             OutputStream out = new ByteArrayOutputStream();
             PdfWriter writer = PdfWriter.getInstance(doc, out);
             
             doc.open();
-            doc.add(imagen);
+            imagenLogo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(imagenLogo);
             doc.add(new Paragraph("\n"));
             doc.add(new Paragraph("\n"));
             doc.add(new Paragraph("\n"));
@@ -73,14 +82,45 @@ public class GenerarPDFbean{
             doc.add(new Paragraph("\n"));
             doc.add(new Paragraph("\n"));
             doc.add(new Paragraph("\n"));
-            parrafo2 = new Paragraph("La Asociación de Egresados de la Escuela Colombiana de Ingeniería Julio Garavito AECI,con "
-                    + "               Nit. 830.031.137- 4, certifica que el Ingeniero Industrial Graduado en el perido 2009-2,"
-                    + "               JOEL FERNANDO JARAMILLO GARCÍA, identificado con la cédula de Ciudadanía Nº80.851.912,"
-                    + "               está afiliado a esta Asociación y se encuentra al día con su aporte, "
-                    + "               el cual fue realizado a través de la consignación 234535 y"
-                    + "               la factura de venta Nº 4668 del veintinueve (29) de Noviembre de 2016.");
+            parrafo2 = new Paragraph("La Asociación de  Egresados de la  Escuela Colombiana de Ingeniería Julio Garavito AECI, con "
+                    + "Nit. 830.031.137- 4, certifica que el Ingeniero"+ Carrera+" Graduado en el perido "+ periodo+","
+                    + " "+nombre+", identificado con la cédula de Ciudadanía Nº"+Cedula +","
+                    + " está afiliado a esta Asociación y se encuentra al día con su aporte, "
+                    + " el cual fue realizado a través de la consignación "+ Consignacion + " y"
+                    + " la factura de venta Nº "+factura+" del "+fechaActual);
             parrafo2.setAlignment(Element.ALIGN_JUSTIFIED);
             doc.add(parrafo2);
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            /** add **/
+            parrafo = new Paragraph("Coordialmente");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            
+            imagenFirma.setAlignment(Element.ALIGN_CENTER);
+            doc.add(imagenFirma);
+            parrafo = new Paragraph("JUAN CARLOS ROMERO ORDÓÑEZ");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            parrafo = new Paragraph("Director");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            parrafo = new Paragraph("Asociacion de Egresados Escuela Colombiana de Ingeniería Julio Garavito");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            doc.add(new Paragraph("\n"));
+            doc.add(new Paragraph("\n"));
+            parrafo = new Paragraph("AK 45 no 205-59 * Bloque A -piso 2 * Teléfonos 6683600 ext 323-Móvil 3124570612 *");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            parrafo = new Paragraph("Correo electronico aeci@escuelaing.edu.co * Facebook Twitter AECI/escuelaing www.aeci.org.co");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
+            parrafo = new Paragraph("Bogotá-Colombia");
+            parrafo.setAlignment(Element.ALIGN_CENTER);
+            doc.add(parrafo);
             doc.close(); 
             out.close();
 
