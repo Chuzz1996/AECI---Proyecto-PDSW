@@ -22,6 +22,7 @@ import edu.eci.pdsw.aeci.entities.Usuario;
 **/
 import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
+import edu.eci.pdsw.aeci.entities.Membership;
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
@@ -57,6 +58,8 @@ public abstract class ServiciosAeci implements Serializable{
 
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
     
+    public abstract User getUser(int id)throws ExcepcionServiciosAeci;
+    
     public abstract Rol getRol(int id)throws ExcepcionServiciosAeci;
     
     public abstract void updateUserFirstName(int idUser, String firstName) throws ExcepcionServiciosAeci;
@@ -81,7 +84,11 @@ public abstract class ServiciosAeci implements Serializable{
        
     public abstract void addStudent(Student student) throws ExcepcionServiciosAeci;
     
+    public abstract void addCarnet(Student student)throws ExcepcionServiciosAeci;
+    
     public abstract void addGraduate(Graduate graduate) throws ExcepcionServiciosAeci;
     
-    public abstract User getUser(int id) throws ExcepcionServiciosAeci;
+    public abstract void addMembership(Membership membership)throws ExcepcionServiciosAeci;
+    
+    public abstract void updatePayment(Membership membership)throws ExcepcionServiciosAeci;
 }

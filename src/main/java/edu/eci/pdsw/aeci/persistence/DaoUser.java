@@ -14,8 +14,6 @@ import java.util.List;
  */
 public interface DaoUser {
     
-    public User getUser(int id) throws PersistenceException;
-    
     /**
      * Get the users
      * @return a list with all the users.
@@ -24,9 +22,17 @@ public interface DaoUser {
     public List<User> getUsers() throws PersistenceException;
     
     /**
-     * Add new user to Data Base
-     * @param user User to be added
-     * @throws PersistenceException if User_id is null
+     * 
+     * @param id
+     * @return
+     * @throws PersistenceException 
+     */
+    public User getUser(int id) throws PersistenceException;
+    
+    /**
+     * 
+     * @param user identification to be add
+     * @throws PersistenceException 
      */
     public void addUser(User user) throws PersistenceException;
     

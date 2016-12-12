@@ -33,4 +33,9 @@ public class MyBatisDAOStudent implements DaoStudent {
     public List<Student> getStudents() throws PersistenceException {
         return currentSession.getMapper(StudentMapper.class).getStudents();
     }
+
+    @Override
+    public void addCarnet(Student student) throws PersistenceException {
+        currentSession.getMapper(StudentMapper.class).addCarnet(student);
+    }
 }

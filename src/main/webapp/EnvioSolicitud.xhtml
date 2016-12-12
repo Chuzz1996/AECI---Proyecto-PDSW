@@ -79,13 +79,13 @@
                 <p:commandButton value="Egresado" immediate="true" update=":information:toUpdate" actionListener="#{solicitudAfiliacion.setRole(1)}" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;" />
             </h:panelGrid>
             <p:outputPanel id="toUpdate">                 
-                <h:form id="Estudiantes" rendered="#{solicitudAfiliacion.role == 2}">
+                <p:panel id="Estudiantes" rendered="#{solicitudAfiliacion.role == 2}">
                     <h:panelGrid columns="2" cellpadding="10" cellspacing="12">
                         <h:outputLabel value = "Semestre actual:"/>
                         <h:inputText  value="#{solicitudAfiliacion.semestre}"/>
                     </h:panelGrid>
-                </h:form>
-                <h:form id="Graduados" rendered="#{solicitudAfiliacion.role == 1}">
+                </p:panel>
+                <p:panel id="Graduados" rendered="#{solicitudAfiliacion.role == 1}">
                     <h:panelGrid columns="2" cellpadding="10" cellspacing="12">
                         <h:outputLabel value = "Empresa donde trabaja:"/>
                         <h:inputText value="#{solicitudAfiliacion.nombreEmpresa}"/>
@@ -96,7 +96,7 @@
                         <h:outputLabel value = "Telefono empresa:"/>
                         <h:inputText value="#{solicitudAfiliacion.telefonoEmpresa}"/>
                     </h:panelGrid>
-                </h:form>
+                </p:panel>
             </p:outputPanel>
             <p:spacer width="20"/>
             <h:outputText value="Al enviar la solicutud usted "/>
@@ -123,12 +123,16 @@
             <p:dialog id="login" widgetVar="dlg" header="Ingresar" resizable="false">
                 <h:panelGrid columns="2" cellpadding="20">
                     <h:outputText value="Usuario"/>
-                    <h:inputText id="userId" value="" required="true"/>
+                    <h:inputText id="userId" value="#{loginBean.username}" required="true"/>
+                    
                     <h:outputText value="Contraseña"/>
-                    <p:password id="userPs" value="" required="true"/>
+                    <p:password id="userPs" value="#{loginBean.password}" required="true"/>
+                    
+                    <h:outputText value="Recuerdame:"/>
+                    <p:selectBooleanCheckbox id ="rememberMe" value="#{loginBean.rememberMe}"/>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" oncomplete="PF('dlg').hide()"/>
+                        <p:commandButton value="Ingresar" action = "#{loginBean.doLogin()}" oncomplete="PF('dlg').hide()"/>
                     </f:facet>
                 </h:panelGrid>
             </p:dialog>

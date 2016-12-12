@@ -47,10 +47,9 @@ and open the template in the editor.
         <h:form id="form">
             <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
                 <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
-                    <h:outputLabel value="(#{cuentaUsuario.rol}Estado de la afiliacion)"/>   
+                    <h:outputLabel value="#{loginBean.personaLog.role.name} (Estado de la afiliacion)"/>   
                     <div></div>
-                    <h:outputLabel style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="Nombre del usuario"/>
-                    <h:outputLabel value="#{cuentaUsuario.nombre} #{cuentaUsuario.apellido}"/>
+                    <h:outputLabel style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="#{loginBean.personaLog.firstName} #{loginBean.personaLog.lastName}"/>
                     <p:separator/>                    
                     <ui:insert name="menuPrincipal">
                         <ui:include src="Menu/Afiliacion.xhtml"/>
