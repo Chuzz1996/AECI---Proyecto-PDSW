@@ -14,7 +14,6 @@ import java.io.IOException;
 
 /**
  * Allows access if current user has at least one role of the specified list.
- * <br/>
  * Basically, it's the same as {@link RolesAuthorizationFilter} but using {@literal OR} instead
  * of {@literal AND} on the specified roles.
  *

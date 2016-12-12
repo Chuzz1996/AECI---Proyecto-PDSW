@@ -121,6 +121,7 @@ public class UsuarioTest {
                 User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.sql.Date(1990, 7, 20),rolePersona);
                 usuarioAgregar.addUser(Solicitante);
                 User revision = usuarioAgregar.getUser(Solicitante.getId());
+                System.out.println(Solicitante.getId() + " " + revision.getId());
                 assertEquals("Usuario no consultado correctamente ",revision.getId(),Solicitante.getId());
         }catch(PersistenceException e){
                 fail("Fallo inicio dao");

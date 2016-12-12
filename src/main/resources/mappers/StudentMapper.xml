@@ -46,8 +46,8 @@
     </select>
 
     <insert id="addStudent" parameterType="map">
-        INSERT INTO Student (Id, User_Id, Semester)
-        VALUES (#{student.id}, #{student.user.id}, #{student.semester});
+        INSERT INTO Student (Id, User_Id, Semester, Photo)
+        VALUES (#{student.id}, #{student.user.id}, #{student.semester}, NULL);
     </insert>
     
     <update id="addCarnet" parameterType="map">

@@ -33,8 +33,8 @@
         Select User.Id, User.Phone, User.YearGraduate, User.Period, User.FirstName, User.LastName, User.Email, User.CellPhone, User.BirthDate,
                Rol.Id as rl_Id, Rol.Name as rl_Name,
                Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
-        From User, Request, Rol, Program
-        Where Request.User_Id = User.Id And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id;
+        From User, Rol, Program
+        Where User.Program_Id = Program.Id And User.Rol_Id = Rol.Id;
     </select>
     
     <select id="getUser" resultMap="UserResult">

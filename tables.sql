@@ -83,7 +83,8 @@ CREATE TABLE Rol (
 CREATE TABLE Student (
     Id int NOT NULL,
     User_id int NOT NULL,
-    Semester int NOT NULL
+    Semester int NOT NULL,
+    Photo blob
 ) ENGINE=InnoDB ;
 
 -- Table: User

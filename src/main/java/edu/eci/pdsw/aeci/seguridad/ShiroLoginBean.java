@@ -19,7 +19,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.apache.shiro.authc.credential.DefaultPasswordService;
@@ -48,13 +47,21 @@ public class ShiroLoginBean implements Serializable{
     
     /**
      * 
+     * @return return the subject
      */
     public Subject getSubject(){
         return SecurityUtils.getSubject();
     }
     
+    public User getLoggedUser() throws ExcepcionServiciosAeci{
+        
+        return null;
+    }
+    
     /**
      * 
+     * @param password The password to encrypt
+     * @return the password encrypted
      */
     public static String generateHash(String password){
         DefaultHashService hashService = new DefaultHashService();

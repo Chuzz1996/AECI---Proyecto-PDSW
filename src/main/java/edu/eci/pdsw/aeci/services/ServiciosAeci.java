@@ -30,8 +30,6 @@ import edu.eci.pdsw.aeci.entities.Student;
 import edu.eci.pdsw.aeci.entities.User;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
-import org.apache.ibatis.annotations.Param;
 
 
 /**

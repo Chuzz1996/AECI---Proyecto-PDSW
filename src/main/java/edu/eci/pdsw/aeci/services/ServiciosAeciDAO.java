@@ -313,7 +313,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
                 daof.endSession();
             }catch(PersistenceException e){
                 Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
-               throw new ExcepcionServiciosAeci(e.getMessage());
+                throw new ExcepcionServiciosAeci(e.getMessage());
             }
         }
     }
@@ -378,16 +378,10 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try{
             daof.beginSession();
             user = daof.getDaoUser().getUser(id);
-        }catch(PersistenceException ex){
+            daof.endSession();
+        } catch(PersistenceException ex){
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());
-        }finally{
-            try{
-                daof.endSession();
-            }catch(PersistenceException e){
-                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
-               throw new ExcepcionServiciosAeci(e.getMessage());
-            }
-        }return user;
+        } return user;
     }
 }

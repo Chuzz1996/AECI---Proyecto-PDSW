@@ -191,7 +191,7 @@ public class CuentaAdministradorBean implements Serializable{
     
     /**
      * Consultar usuario
-     * @return 
+     * @return the url
      */
     public String checkUsuario(){ 
         String url = null;

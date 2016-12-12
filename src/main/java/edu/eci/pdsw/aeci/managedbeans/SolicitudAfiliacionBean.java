@@ -82,8 +82,9 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Program programa = Rp.getProgram(Carrera);
                 Rol rol = Rp.getRol((int)(long)role);
                 User newUser = new User(id, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
-                Rp.addUser(newUser);
+                Rp.addUser(newUser);                
                 Request request = new Request(newUser, 2);
+                Rp.addRequest(request);
                 if((int)(long)role == 1){
                     Graduate graduate = new Graduate(cargo,NombreEmpresa,direccionEmpresa,telefonoEmpresa,newUser);
                     Rp.addGraduate(graduate);
@@ -91,10 +92,9 @@ public class SolicitudAfiliacionBean implements Serializable{
                     Student student = new Student(newUser,semestre);
                     Rp.addStudent(student);
                 }
-                Rp.addRequest(request);
                 ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
                 sp.EnvioDeSolicitud();
-                setRespuesta("Su solicitud fue enviar, la respuesta se le hara llegar al correo");
+                setRespuesta("Su solicitud fue enviada, la respuesta se le hara llegar al correo");
             }catch(ExcepcionServiciosAeci ex){
                 setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");                
             }
@@ -107,8 +107,8 @@ public class SolicitudAfiliacionBean implements Serializable{
     
     /**
      * 
-     * @param idRole
-     * @throws ExcepcionServiciosAeci 
+     * @param idRole it's the roll id
+     * @throws ExcepcionServiciosAeci if occurs any error
      */
     public void setRole(java.lang.Long idRole) throws ExcepcionServiciosAeci {       
         this.role = idRole;
@@ -116,7 +116,7 @@ public class SolicitudAfiliacionBean implements Serializable{
 
     /**
      * 
-     * @return 
+     * @return return the role
      */
     public Long getRole() {
         return role;
