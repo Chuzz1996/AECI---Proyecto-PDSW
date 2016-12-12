@@ -22,6 +22,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.util.Date;
+
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -32,7 +34,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-
+import java.util.Date;
+;
 /**
   @Inject
     private ShiroLoginBean loginBean;
@@ -58,7 +61,8 @@ public class GenerarPDFbean implements Serializable {
     private int Cedula= 0 ;
     private String Consignacion="234535";
     private String factura="44882";
-    private String fechaActual = "hoy";
+    private String fechaActual = "14/12/2016";
+
      
     /**
         Inicio injection 
@@ -89,7 +93,7 @@ public class GenerarPDFbean implements Serializable {
         
         try {
         //----------------------------------
-           // nombre=login.getPersonaLog().getFirstName()+" "+ login.getPersonaLog().getLastName();
+            nombre=login.getPersonaLog().getFirstName()+" "+ login.getPersonaLog().getLastName();
            
             Carrera=login.getPersonaLog().getProgram().getName();
             periodo=login.getPersonaLog().getPeriod();
@@ -122,7 +126,7 @@ public class GenerarPDFbean implements Serializable {
                     + " "+nombre+", identificado con la cédula de Ciudadanía Nº"+Cedula +","
                     + " está afiliado a esta Asociación y se encuentra al día con su aporte, "
                     + " el cual fue realizado a través de la consignación "+ Consignacion + " y"
-                    + " la factura de venta Nº "+factura+" del "+fechaActual);
+                    + " la factura de venta Nº "+factura+" del dia "+fechaActual);
             parrafo2.setAlignment(Element.ALIGN_JUSTIFIED);
             doc.add(parrafo2);
             doc.add(new Paragraph("\n"));
