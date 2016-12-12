@@ -90,7 +90,6 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Rp.addUser(newUser);
                 Request request = new Request(newUser, 2);
                 if((int)(long)role == 1){
-                    System.out.println("cargo: "+cargo);
                     Graduate graduate = new Graduate(cargo,NombreEmpresa,direccionEmpresa,telefonoEmpresa,newUser);
                     Rp.addGraduate(graduate);
                 }else if((int)(long)role == 2){
@@ -108,8 +107,7 @@ public class SolicitudAfiliacionBean implements Serializable{
             setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
             System.out.println("Dato Agregado no es numerico");
             ex.printStackTrace();
-        }
-        
+        }        
     }
     
     /**
@@ -302,7 +300,6 @@ public class SolicitudAfiliacionBean implements Serializable{
      * @return the cargo
      */
     public String getCargo() {
-        System.out.println("get");
         return cargo;
     }
 
