@@ -64,8 +64,7 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String respuesta;
     
     public SolicitudAfiliacionBean(){
-        this.respuesta = "No se ha enviado la solicitud, hace falta llenar algun dato obligatorio";
-        
+        respuesta = "No se ha enviado la solicitud, hace falta llenar algun dato obligatorio";
     }
 
        
@@ -94,7 +93,7 @@ public class SolicitudAfiliacionBean implements Serializable{
                 }
                 ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
                 sp.EnvioDeSolicitud();
-                setRespuesta("Su solicitud fue enviada, la respuesta se le hara llegar al correo");
+                respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
             }catch(ExcepcionServiciosAeci ex){
                 setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");                
             }

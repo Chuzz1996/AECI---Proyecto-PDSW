@@ -5,14 +5,20 @@
   
 <mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.MembershipMapper">
     
+    <resultMap type='Rate' id='RateResult'>
+        <id property='id' column='Id'/>
+        <result property='year' column='Year'/>
+        <result property='value' column='Value'/>
+    </resultMap>
+    
     <resultMap type='Membership' id='MembershipResult'>
         <id property='id' column='Id'/>
-        <result property='start_Date' column='Start_Date'/>
-        <result property='receipt' column='Receipt'/>
-        <result property='paymentNumber' column='PaymentNumber'/>
-        <result property='end_Date' column='End_Date'/>
-        <!--<association property='Account_id' javatype='Account' columnPrefix='Ac_' resultMap='AccountResult'></association>-->
-        <!--<association property='Rate_id' javatype='Rate' columnPrefix='Ra_' resultMap='RateResult'></association>-->
+        <result property='start_Date' column='Phone'/>
+        <result property='end_Date' column='Phone'/>
+        <result property='receipt' column='Phone' javaType='_byte[]' jdbcType='BLOB'/>
+        <result property='playmentNumber' column='Phone'/>
+        <association property = 'account' javaType ='Account' columnPrefix='a_' resultMap='AccountResult'></association>
+        <association property = 'rate' javaType ='Rate' columnPrefix='p_' resultMap='RateResult'></association>
     </resultMap>
     
     <resultMap type='Account' id='AccountResult'>
@@ -21,17 +27,10 @@
         <result property='salt' column='Salt'/>
         <association property = 'id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
     </resultMap>
-   
-    <resultMap type='Rate' id='RateResult'>
-        <id property='id' column='Id'/>
-        <result property='year' column='Year'/>
-        <result property='value' column='value'/>
-    </resultMap>
     
     <insert id='addMembership' parameterType="map">
-        INSERT INTO Membreship(Id,Start_Date,Receipt,PaymentNumber,Account_Id,Rate_Id)
-        VALUES (#{membership.id},#{membership.star_Date},#{membership.receipt},
-        #{membership.paymentNumber},#{membership.account_Id},#{membership.rate_Id})
+        INSERT INTO Membership(Id,Start_Date,Account_Id,Rate_Id)
+        VALUES (#{membership.id},#{membership.star_Date},#{membership.account_Id},#{membership.rate_Id})
     </insert>
     
     <update id='updatePayment' parameterType="map">
@@ -39,4 +38,21 @@
         WHERE Id=#{membership.id}
     </update>
     
+    <select id="getSolicitudesPorVencerse" resultMap="MembershipResult">
+        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
+                User.Email as u_Email,User.Phone as u_Phone,
+                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
+                User.BirthDate as u_BirthDate,User.Period as u_Period,
+                Rol.Id as r_Id,Rol.name as r_name,
+                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
+                Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
+                Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
+                Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
+                Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
+	
+        From 	User LEFT JOIN Rol ON(User.Rol_Id=Rol.Id) LEFT JOIN Account ON(User.Id=Account.Id) LEFT JOIN Program ON(Program.Id=User.Program_Id)
+		LEFT JOIN Membership ON(Membership.Account_Id=Account.Id) LEFT JOIN Rate ON(Membership.Rate_id=Rate.Id)
+	Where 	DAY(Membership.End_Date)-DAY(NOW())&lt;=30 AND YEAR(Membership.End_Date)-YEAR(NOW())=0 AND MONTH(Membership.End_Date)-MONTH(NOW())=0
+    </select>
+   
 </mapper>

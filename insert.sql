@@ -24,3 +24,7 @@ INSERT INTO Program (Id, Name, Duration)
   VALUES (9,'Ingenieria Mecanica',10);
 INSERT INTO Program (Id, Name, Duration)
 VALUES (10,'Ingenieria Biomedica',10);
+INSERT INTO Rate(Id,Year,Value) 
+  VALUES(1,'2016-01-01',115000);
+INSERT INTO Rate(Id,Year,Value) 
+  VALUES(2,'2017-01-01',120000);

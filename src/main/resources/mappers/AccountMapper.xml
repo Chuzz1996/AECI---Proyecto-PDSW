@@ -88,7 +88,6 @@
     
     
     <select id="getDetailsStudent" parameterType="map" resultMap="UserResult">
-    
         select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
                 User.Email as u_Email,User.Phone as u_Phone,
                 User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
@@ -100,11 +99,10 @@
                 Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
                 Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
 	
-        From 	User, Rol,Graduate,Account,Program,Membership,Rate
+        From 	User LEFT JOIN Rol ON(User.Rol_Id=Rol.Id) LEFT JOIN Account ON(User.Id=Account.Id) LEFT JOIN Program ON(Program.Id=User.Program_Id)
+		LEFT JOIN Membership ON(Membership.Account_Id=Account.Id) LEFT JOIN Rate ON(Membership.Rate_id=Rate.Id)
 
-        Where 	User.id=#{id} And
-                User.Id=Rol.Id  And User.Id=Account.Id And Program.Id=User.Program_Id And Membership.Id=Account.Id And Membership.Rate_id=Rate.Id
-                And NOW() &lt;=Membership.End_Date And NOW() &gt;=Membership.Start_Date
+        Where 	User.id=#{id} And NOW() &lt;=Membership.End_Date And NOW() &gt;=Membership.Start_Date
         
     </select>
       

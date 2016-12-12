@@ -9,9 +9,12 @@ import edu.eci.pdsw.aeci.seguridad.ShiroLoginBean;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.faces.bean.ManagedProperty;
 import org.primefaces.model.UploadedFile;
+import java.sql.Blob;
 
 /**
  *
@@ -30,7 +33,7 @@ public class CuentaUsuarioBean implements Serializable {
     private String apellido;
     private String rol;
     private String paymentNumber;
-    private UploadedFile receipt;
+    private byte[] receipt;
     
     private String urlMenuPrincipal;
     private String urlMenuLateral= "Default";
@@ -38,6 +41,19 @@ public class CuentaUsuarioBean implements Serializable {
     public CuentaUsuarioBean(){
         
     }
+    /**
+    *Inicio injection 
+    **/
+    @ManagedProperty(value="#{loginBean}")
+    private ShiroLoginBean login;
+    /**
+     * 
+     * @param messageBean 
+     */ 
+    public void setLogin(ShiroLoginBean messageBean) {
+	this.login = messageBean;
+    }
+    
     
     /**
      * @return the rp
@@ -140,14 +156,14 @@ public class CuentaUsuarioBean implements Serializable {
     /**
      * @return the Receipt
      */
-    public UploadedFile getReceipt() {
+    public byte[] getReceipt() {
         return receipt;
     }
 
     /**
      * @param Receipt the Receipt to set
      */
-    public void setReceipt(UploadedFile Receipt) {
+    public void setReceipt(byte[] Receipt) {
         this.receipt = Receipt;
     }
     

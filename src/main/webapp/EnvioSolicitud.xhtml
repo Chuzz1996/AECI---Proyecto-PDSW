@@ -109,7 +109,7 @@
                              actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" 
                              style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
                       
-            <p:dialog class="w3-btn w3-hover-light-grey" header="Estado de la solicitud" widgetVar="dlg1" minHeight="40" resizable="false" draggable="false">
+            <p:dialog class="w3-btn w3-hover-light-grey" header="Estado de la solicitud" widgetVar="dlg1" minHeight="40" >
                 <h:outputText value="#{solicitudAfiliacion.respuesta}" />
             </p:dialog>            
         </h:form>

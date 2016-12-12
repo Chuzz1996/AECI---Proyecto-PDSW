@@ -4,7 +4,7 @@ CREATE TABLE Account (
     Id int NOT NULL,
     Password varchar(200) NOT NULL,
     Active bool NOT NULL,
-    Salt int NOT NULL,
+    Salt int,
     role varchar(1) NOT NULL
 ) ENGINE=InnoDB  ;
 
@@ -31,10 +31,10 @@ CREATE TABLE Benefit (
 -- Table: Graduate
 CREATE TABLE Graduate (
     Id int NOT NULL,
-    Charge varchar(200) NOT NULL,
-    Employer varchar(500) NOT NULL,
-    Office_Address varchar(200) NOT NULL,
-    Office_Phone int NOT NULL,
+    Charge varchar(200),
+    Employer varchar(500),
+    Office_Address varchar(200),
+    Office_Phone int,
     User_id int NOT NULL
 ) ENGINE=InnoDB ;
 
@@ -42,11 +42,11 @@ CREATE TABLE Graduate (
 CREATE TABLE Membership (
     Id int NOT NULL,
     Start_Date date NOT NULL,
-    Receipt blob NOT NULL,
-    PaymentNumber int NOT NULL,
+    Receipt blob,
+    PaymentNumber int,
     Account_Id int NOT NULL,
     Rate_id int NOT NULL,
-    End_Date date NOT NULL
+    End_Date date,
 ) ENGINE=InnoDB ;
 
 -- Table: Program
@@ -93,10 +93,10 @@ CREATE TABLE User (
     FirstName varchar(200) NOT NULL,
     LastName varchar(200) NOT NULL,
     Email varchar(200) NULL,
-    Phone varchar(20) NOT NULL,
+    Phone varchar(20),
     Cellphone varchar(20) NULL,
     Program_Id int NOT NULL,
-    YearGraduate int NOT NULL,
+    YearGraduate int,
     BirthDate date NOT NULL,
     Period int NOT NULL,
     Rol_Id int NOT NULL

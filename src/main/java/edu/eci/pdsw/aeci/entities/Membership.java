@@ -16,7 +16,7 @@ public class Membership {
     private int id;
     private Date start_Date;
     private Date end_Date;
-    private String receipt;
+    private byte[] receipt;
     private int playmentNumber;
     private Account account;
     private Rate rate;
@@ -24,11 +24,9 @@ public class Membership {
     public Membership() {
     }
 
-    public Membership(int Id,Date Start_Date,Date End_Date,String Receipt,int PlaymentNumber,Account Account_id,Rate Rate_id){        
+    public Membership(int Id,Date Start_Date,Date End_Date,Account Account_id,Rate Rate_id){        
         this.id=Id;
         this.start_Date=Start_Date;
-        this.receipt=Receipt;
-        this.playmentNumber=PlaymentNumber;
         this.account=Account_id;
         this.rate=Rate_id;
     }
@@ -78,14 +76,14 @@ public class Membership {
     /**
      * @return the receipt
      */
-    public String getReceipt() {
+    public byte[] getReceipt() {
         return receipt;
     }
 
     /**
      * @param receipt the receipt to set
      */
-    public void setReceipt(String receipt) {
+    public void setReceipt(byte[] receipt) {
         this.receipt = receipt;
     }
 
@@ -129,5 +127,13 @@ public class Membership {
      */
     public void setRate(Rate rate) {
         this.rate = rate;
+    }
+    
+    /**
+     * 
+     */
+    @Override
+    public String toString(){
+        return "Image{"+"img="+receipt+", name="+id+"}";
     }
 }
