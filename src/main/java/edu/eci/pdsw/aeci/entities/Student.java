@@ -14,6 +14,7 @@ public class Student {
     private int id;
     private User user;
     private int semester;
+    private String photo;
     
     public Student(User user, int semester) {
         this.user = user;
@@ -60,5 +61,19 @@ public class Student {
      */
     public void setSemester(int semester) {
         this.semester = semester;
+    }
+    
+    /**
+     * @return the photo
+     */
+    public String getPhoto() {
+        return photo;
+    }
+
+    /**
+     * @param photo the photo to set
+     */
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

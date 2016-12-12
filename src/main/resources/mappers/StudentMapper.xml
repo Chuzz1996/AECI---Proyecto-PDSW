@@ -49,5 +49,10 @@
         INSERT INTO Student (Id, User_Id, Semester)
         VALUES (#{student.id}, #{student.use.id}, #{student.semester});
     </insert>
+    
+    <update id="addCarnet" parameterType="map">
+        UPDATE Student SET Photo=#{student.photo}
+        WHERE Id=#{student.id}
+    </update>
   	
 </mapper>

@@ -24,6 +24,7 @@ import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.persistence.DaoAccount;
 import edu.eci.pdsw.aeci.persistence.DaoFactory;
 import edu.eci.pdsw.aeci.persistence.DaoGraduate;
+import edu.eci.pdsw.aeci.persistence.DaoMembership;
 import edu.eci.pdsw.aeci.persistence.DaoProgram;
 import edu.eci.pdsw.aeci.persistence.DaoRequest;
 import edu.eci.pdsw.aeci.persistence.DaoRol;
@@ -139,6 +140,11 @@ public class MyBatisDaoFactory extends DaoFactory {
     @Override
     public DaoGraduate getDaoGraduate() {
         return new MyBatisDAOGraduate(currentSession);
+    }
+
+    @Override
+    public DaoMembership getDaoMembership() {
+        return new MyBatisDAOMembership(currentSession);
     }
 
     

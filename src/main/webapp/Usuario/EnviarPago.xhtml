@@ -45,14 +45,15 @@ and open the template in the editor.
             <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
                 <h:outputLabel value="#{loginBean.personaLog.role.name} (Estado de la afiliacion)"/>   
                 <div></div>
-                <h:outputLabel style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="#{loginBean.personaLog.firstName} #{loginBean.personaLog.lastName}"/>
+                <h:outputLabel style="padding: 7px; font-family: Segoe UI,Arial,sans-serif" value="Nombre del usuario"/>
+                <h:outputLabel value="#{loginBean.personaLog.firstName} #{loginBean.personaLog.lastName}"/>
                 <p:separator/>                    
                 <ui:insert name="menuPrincipal">
                     <ui:include src="Menu/Afiliacion.xhtml"/>
                 </ui:insert>                     
             </p:layoutUnit>
             <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">
-                <ui:include src="Menu/PDF.xhtml"/>   
+                <ui:include src="Menu/subirArchivo.xhtml"/>   
             </p:layoutUnit>
 
             

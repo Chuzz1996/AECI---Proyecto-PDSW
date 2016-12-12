@@ -19,4 +19,6 @@ public interface StudentMapper {
     
     public List<Student> getStudents();
     
+    public void addCarnet(@Param ("student")Student student);
+    
 }
