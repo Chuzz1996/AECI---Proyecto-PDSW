@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.eci.pdsw.aeci.managedbeans;
 
 /***
@@ -78,7 +73,7 @@ public class SolicitudAfiliacionBean implements Serializable{
      * Agrega la solicitud de las personas
      */
     public void enviarSolicitud(){
-       /** try{
+       try{
             int yearGraduate = Integer.parseInt(AnoGraduacion);
             int id = Integer.parseInt(Cedula);
             try{
@@ -90,7 +85,6 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Rp.addUser(newUser);
                 Request request = new Request(newUser, 2);
                 if((int)(long)role == 1){
-                    System.out.println("cargo: "+cargo);
                     Graduate graduate = new Graduate(cargo,NombreEmpresa,direccionEmpresa,telefonoEmpresa,newUser);
                     Rp.addGraduate(graduate);
                 }else if((int)(long)role == 2){
@@ -108,21 +102,7 @@ public class SolicitudAfiliacionBean implements Serializable{
             setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
             System.out.println("Dato Agregado no es numerico");
             ex.printStackTrace();
-        }*/
-        System.out.println(Nombre);
-        System.out.println(Apellido);
-        System.out.println(Cedula);
-        System.out.println(telefonoFijo);
-        System.out.println(correo);
-        System.out.println(Carrera);
-        System.out.println(AnoGraduacion);   
-        System.out.println(semestre);
-        System.out.println(NombreEmpresa);
-        System.out.println(cargo);
-        System.out.println(direccionEmpresa);
-        System.out.println(telefonoEmpresa);
-        System.out.println(role);
-        System.out.println(respuesta);
+        }
     }
     
     /**
@@ -315,7 +295,6 @@ public class SolicitudAfiliacionBean implements Serializable{
      * @return the cargo
      */
     public String getCargo() {
-        System.out.println("get");
         return cargo;
     }
 

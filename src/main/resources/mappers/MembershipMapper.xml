@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.MembershipMapper">
+    
+    <resultMap type='Membership' id='MembershipResult'>
+        <id property='id' column='Id'/>
+        <result property='start_Date' column='Start_Date'/>
+        <result property='receipt' column='Receipt'/>
+        <result property='paymentNumber' column='PaymentNumber'/>
+        <result property='end_Date' column='End_Date'/>
+        <!--<association property='Account_id' javatype='Account' columnPrefix='Ac_' resultMap='AccountResult'></association>-->
+        <!--<association property='Rate_id' javatype='Rate' columnPrefix='Ra_' resultMap='RateResult'></association>-->
+    </resultMap>
+    
+    <resultMap type='Account' id='AccountResult'>
+        <result property='password' column='Password'/>
+        <result property='active' column='Active'/>
+        <result property='salt' column='Salt'/>
+        <association property = 'id' javaType ='User' columnPrefix='u_' resultMap='UserResult'></association>
+    </resultMap>
+   
+    <resultMap type='Rate' id='RateResult'>
+        <id property='id' column='Id'/>
+        <result property='year' column='Year'/>
+        <result property='value' column='value'/>
+    </resultMap>
+    
+    <insert id='addMembership' parameterType="map">
+        INSERT INTO Membreship(Id,Start_Date,Receipt,PaymentNumber,Account_Id,Rate_Id)
+        VALUES (#{membership.id},#{membership.star_Date},#{membership.receipt},
+        #{membership.paymentNumber},#{membership.account_Id},#{membership.rate_Id})
+    </insert>
+    
+    <update id='updatePayment' parameterType="map">
+        UPDATE Membership SET Receipt=#{membership.receipt}, PaymentNumber=#{membership.receipt}
+        WHERE Id=#{membership.id}
+    </update>
+    
+</mapper>

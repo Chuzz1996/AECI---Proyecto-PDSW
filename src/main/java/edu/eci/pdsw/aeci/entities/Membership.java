@@ -25,69 +25,109 @@ public class Membership {
     }
 
     public Membership(int Id,Date Start_Date,Date End_Date,String Receipt,int PlaymentNumber,Account Account_id,Rate Rate_id){        
-        id=Id;
-        start_Date=Start_Date;
-        end_Date=End_Date;
-        receipt=Receipt;
-        playmentNumber=PlaymentNumber;
-        account=Account_id;
-        rate=Rate_id;
+        this.id=Id;
+        this.start_Date=Start_Date;
+        this.receipt=Receipt;
+        this.playmentNumber=PlaymentNumber;
+        this.account=Account_id;
+        this.rate=Rate_id;
     }
     
+    /**
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * @return the start_Date
+     */
     public Date getStart_Date() {
         return start_Date;
     }
 
+    /**
+     * @param start_Date the start_Date to set
+     */
     public void setStart_Date(Date start_Date) {
         this.start_Date = start_Date;
     }
 
+    /**
+     * @return the end_Date
+     */
     public Date getEnd_Date() {
         return end_Date;
     }
 
+    /**
+     * @param end_Date the end_Date to set
+     */
     public void setEnd_Date(Date end_Date) {
         this.end_Date = end_Date;
     }
 
+    /**
+     * @return the receipt
+     */
     public String getReceipt() {
         return receipt;
     }
 
+    /**
+     * @param receipt the receipt to set
+     */
     public void setReceipt(String receipt) {
         this.receipt = receipt;
     }
 
+    /**
+     * @return the playmentNumber
+     */
     public int getPlaymentNumber() {
         return playmentNumber;
     }
 
+    /**
+     * @param playmentNumber the playmentNumber to set
+     */
     public void setPlaymentNumber(int playmentNumber) {
         this.playmentNumber = playmentNumber;
     }
 
-    public Account getAccount_id() {
+    /**
+     * @return the account
+     */
+    public Account getAccount() {
         return account;
     }
 
-    public void setAccount_id(Account account_id) {
-        this.account = account_id;
+    /**
+     * @param account the account to set
+     */
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public Rate getRate_id() {
+    /**
+     * @return the rate
+     */
+    public Rate getRate() {
         return rate;
     }
 
-    public void setRate_id(Rate rate_id) {
-        this.rate = rate_id;
+    /**
+     * @param rate the rate to set
+     */
+    public void setRate(Rate rate) {
+        this.rate = rate;
     }
-    
 }

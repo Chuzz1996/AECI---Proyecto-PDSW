@@ -6,11 +6,16 @@
 package edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers;
 
 import edu.eci.pdsw.aeci.entities.*;
+import org.apache.ibatis.annotations.Param;
 
 /**
  *
- * @author 2095498
+ * @author PDSW GRUPO 1
  */
 public interface MembershipMapper {
+    
+    public void addMembership(@Param("membership")Membership membership);
+    
+    public void updatePayment(@Param("membership")Membership membership);
     
 }

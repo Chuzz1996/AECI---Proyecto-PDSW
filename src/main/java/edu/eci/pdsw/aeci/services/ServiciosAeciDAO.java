@@ -9,6 +9,7 @@ package edu.eci.pdsw.aeci.services;
 
 import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
+import edu.eci.pdsw.aeci.entities.Membership;
 import edu.eci.pdsw.aeci.entities.Program;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
@@ -315,5 +316,78 @@ public class ServiciosAeciDAO extends ServiciosAeci{
                throw new ExcepcionServiciosAeci(e.getMessage());
             }
         }
+    }
+
+    @Override
+    public void addMembership(Membership membership) throws ExcepcionServiciosAeci {
+        try{
+            daof.beginSession();
+            daof.getDaoMembership().addMembership(membership);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void updatePayment(Membership membership) throws ExcepcionServiciosAeci {
+        try{
+            daof.beginSession();
+            daof.getDaoMembership().updatePayment(membership);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void addCarnet(Student student) throws ExcepcionServiciosAeci {
+        try{
+            daof.beginSession();
+            daof.getDaoStudent().addCarnet(student);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public User getUser(int id) throws ExcepcionServiciosAeci {
+        User user = null;
+        try{
+            daof.beginSession();
+            user = daof.getDaoUser().getUser(id);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }return user;
     }
 }

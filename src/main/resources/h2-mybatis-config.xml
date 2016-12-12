@@ -41,6 +41,7 @@
         <mapper resource="mappers/RolMapper.xml"></mapper>
 	<mapper resource="mappers/StudentMapper.xml"></mapper>
 	<mapper resource="mappers/GraduateMapper.xml"></mapper>
+	<mapper resource="mappers/MembershipMapper.xml"></mapper>
     </mappers> 
         
 </configuration>

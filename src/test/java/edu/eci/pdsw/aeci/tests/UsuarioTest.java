@@ -89,6 +89,9 @@ public class UsuarioTest {
         }
     }
     
+    /**
+     * 
+     */
     @Test
     public void EnvioDeAprobado() {
         try{
@@ -102,6 +105,38 @@ public class UsuarioTest {
         
         }
     }
+    
+    /**
+     * 
+     */
+    @Test
+    public void consultarUsuario(){
+        try{
+            DaoFactory dao = getDataPru();
+            try{
+                dao.beginSession();
+                DaoUser usuarioAgregar = dao.getDaoUser();
+                Program carrera = dao.getDaoProgram().getProgram(1);
+                Rol rolePersona = dao.getDaoRol().getDAORol(1);
+                User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.sql.Date(1990, 7, 20),rolePersona);
+                usuarioAgregar.addUser(Solicitante);
+                User revision = usuarioAgregar.getUser(Solicitante.getId());
+                assertEquals("Usuario no consultado correctamente ",revision.getId(),Solicitante.getId());
+        }catch(PersistenceException e){
+                fail("Fallo inicio dao");
+            }catch(ExcepcionServiciosAeci ex){
+                fail("Lanzo exception ServiciosAeci, revision en base de datos");
+            }finally{
+                try{
+                    dao.endSession();
+                }catch(PersistenceException ww){
+                    fail("Fallo cerrar dao ");
+                }
+            }
+        }catch(IOException x){
+            fail("Fallo ingreso base de datos de prueba");
+        } 
+    }  
     
    /**
      * Actualizar Datos de usuario

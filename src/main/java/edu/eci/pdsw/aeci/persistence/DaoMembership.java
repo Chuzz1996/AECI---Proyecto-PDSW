@@ -13,4 +13,18 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoMembership {
     
+    /**
+     * 
+     * @param membership
+     * @throws PersistenceException 
+     */
+    public void addMembership(Membership membership)throws PersistenceException;
+    
+    /**
+     * 
+     * @param membership
+     * @throws PersistenceException 
+     */
+    public void updatePayment(Membership membership)throws PersistenceException;
+    
 }
