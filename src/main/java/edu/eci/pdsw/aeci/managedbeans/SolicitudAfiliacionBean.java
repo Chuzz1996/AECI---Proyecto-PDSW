@@ -78,7 +78,7 @@ public class SolicitudAfiliacionBean implements Serializable{
      * Agrega la solicitud de las personas
      */
     public void enviarSolicitud(){
-        try{
+       /** try{
             int yearGraduate = Integer.parseInt(AnoGraduacion);
             int id = Integer.parseInt(Cedula);
             try{
@@ -108,8 +108,21 @@ public class SolicitudAfiliacionBean implements Serializable{
             setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
             System.out.println("Dato Agregado no es numerico");
             ex.printStackTrace();
-        }
-        
+        }*/
+        System.out.println(Nombre);
+        System.out.println(Apellido);
+        System.out.println(Cedula);
+        System.out.println(telefonoFijo);
+        System.out.println(correo);
+        System.out.println(Carrera);
+        System.out.println(AnoGraduacion);   
+        System.out.println(semestre);
+        System.out.println(NombreEmpresa);
+        System.out.println(cargo);
+        System.out.println(direccionEmpresa);
+        System.out.println(telefonoEmpresa);
+        System.out.println(role);
+        System.out.println(respuesta);
     }
     
     /**
