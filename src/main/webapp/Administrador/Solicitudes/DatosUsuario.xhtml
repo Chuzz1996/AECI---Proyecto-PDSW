@@ -75,7 +75,7 @@ and open the template in the editor.
         <p>Comentario</p>
         <p:inputTextarea rows="10" cols="50" value="#{cuentaAdministrador.request.commentary}" queryDelay="750" minQueryLength="4" />
         <br/>        
-        <p:commandButton value = "Finalizar revision" resetValues="true" actionListener="#{cuentaAdministrador.changeRequest}"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
-        
+        <p:commandButton value = "Finalizar revision" resetValues="true" action="#{cuentaAdministrador.changeRequest()}"  style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
+        <p:commandButton value="Regresar" action="/Administrador/Solicitudes/SolicitudesAfilPendientes?faces-redirect=true" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
     </h:body>    
 </html>

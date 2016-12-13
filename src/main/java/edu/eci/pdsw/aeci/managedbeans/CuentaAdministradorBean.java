@@ -59,10 +59,12 @@ public class CuentaAdministradorBean implements Serializable{
 
     private int solicitudActual;  
    
-    //Reportes
+    //Reportes por vencer
     private List<User> usuariosPorVencer;
     private User usuarioActual;
     
+    //Pagos pendientes
+ 
     public String error;
         
     public CuentaAdministradorBean() {
@@ -203,7 +205,7 @@ public class CuentaAdministradorBean implements Serializable{
                     break;
                 }
                 else {
-                    throw new ExcepcionServiciosAeci("No se ha encontrado el usuario con ese id");
+                    throw new ExcepcionServiciosAeci("No se ha encontrado la solicitud");
                 }
                     
             }
@@ -246,7 +248,7 @@ public class CuentaAdministradorBean implements Serializable{
     /**
      * Cambia estado de solicitud 
      */
-    public void changeRequest(){
+    public String changeRequest(){
         try{
             ServicioEnvioCorreos sc = new ServicioEnvioCorreos();
             System.out.println(request.getUser().getFirstName() + "  -  "+ request.getUser().getLastName());
@@ -264,7 +266,7 @@ public class CuentaAdministradorBean implements Serializable{
             error = ex.getMessage();
             ShowError();
         }
-        
+        return ("/Administrador/Solicitudes/SolicitudesAfilPendientes?faces-redirect=true");
     }
     
     

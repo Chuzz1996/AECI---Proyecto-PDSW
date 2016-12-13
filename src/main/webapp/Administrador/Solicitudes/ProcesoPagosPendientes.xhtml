@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <title>ADMIN-SOLICITUDES</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"></link>
+    <h:head>
+
+    </h:head> 
+    <h:body>
+        <ui:include src="/Administrador/Menu/Header.xhtml"/>
+        <p:spacer height="80" />
+        <h:form id="form">
+            
+            <p:layout  id="layout" style=";min-width:400px;min-height:500px; margin-left: 8%; margin-right: 8%; margin-bottom: 5% ">
+                <p:layoutUnit position="west" size="300" collapsible="true" gutter="15" class=" w3-container w3-card-4 w3-padding-large w3-white" >    
+                    <h:outputText value="(#{cuentaAdministrador.rol}ADMIN)" style="font-family: Segoe UI,Arial,sans-serif"/>
+                    <div></div>
+                    <h:outputText style="font-family: Segoe UI,Arial,sans-serif" value="Nombre del administrador"/>
+                    <h:outputText value="#{cuentaAdministrador.nombre} #{cuentaAdministrador.apellido}"/>
+                    <p:separator/>                    
+                    <ui:insert name="menuPrincipal">
+                        <ui:include src="/Administrador/Solicitudes/SolicitudesPrincipal.xhtml"/>
+                    </ui:insert> 
+                </p:layoutUnit>
+
+                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">   
+                    <h3>Procesar pago Pendiente</h3>
+                    <p:graphicImage url="/images/prueba.jpg" alt="recibopago" width="700" height="300"/>
+                    <p:outputLabel value="Código de la transacción: "/>
+                    <p:inputText />
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <p:outputLabel value="Pago:" />
+                        <p:selectOneRadio id="Solicitud" value="">
+                            <f:selectItem itemLabel="Aprobado" itemValue="0" />
+                            <f:selectItem itemLabel="Rechazado" itemValue="1" />
+                        </p:selectOneRadio>
+                    </h:panelGrid>
+                                   
+                    </p:layoutUnit>
+            </p:layout>        
+        </h:form>   
+        <ui:include src="/Templates/Footer.xhtml"/> 
+        
+    </h:body>
+</html>
