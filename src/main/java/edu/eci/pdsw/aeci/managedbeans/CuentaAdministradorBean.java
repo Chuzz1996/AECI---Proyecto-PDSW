@@ -57,7 +57,7 @@ public class CuentaAdministradorBean implements Serializable{
     //Menu
     private List<Request> solicitudesPendientes;
 
-    private int solicitudActual;  
+    private String solicitudActual;  
    
     //Reportes por vencer
     private List<User> usuariosPorVencer;
@@ -214,14 +214,14 @@ public class CuentaAdministradorBean implements Serializable{
     /**
      * @return the solicitudActual
      */
-    public int getSolicitudActual() {
+    public String getSolicitudActual() {
         return solicitudActual;
     }
 
     /**
      * @param solicitudActual the solicitudActual to set
      */
-    public void setSolicitudActual(int solicitudActual) {
+    public void setSolicitudActual(String solicitudActual) {
         this.solicitudActual = solicitudActual;
     }
     
@@ -233,22 +233,26 @@ public class CuentaAdministradorBean implements Serializable{
     public String checkUsuario(){ 
         String url = null;
         try{
+            int revision = Integer.parseInt(solicitudActual);
+            boolean bandera = false;
             for(Request x:solicitudesPendientes){
-                if(x.getId()==solicitudActual){
+                if(x.getId()==revision){
                     this.setRequest(x);
                     url = "SolicitudesPendientesUsuarios.xhtml?faces-redirect=true";
+                    bandera = true;
                     break;
                 }
-                else {
-                    throw new ExcepcionServiciosAeci("No se ha encontrado la solicitud");
-                }
-                    
             }
+            if(!bandera){
+                throw new ExcepcionServiciosAeci("No se ha encontrado la solicitud");
+            }        
         }catch(ExcepcionServiciosAeci ex){
             error = ex.getMessage();
             ShowError();
-        }
-        return (url);
+        }catch(NumberFormatException w){
+            error = w.getMessage();
+            ShowError();
+        }return (url);
        
     }
     
