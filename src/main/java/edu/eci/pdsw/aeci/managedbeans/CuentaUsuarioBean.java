@@ -48,7 +48,7 @@ public class CuentaUsuarioBean implements Serializable {
     private ShiroLoginBean login;
     /**
      * 
-     * @param messageBean 
+     * @param messageBean Sets the login bean where there is the user
      */ 
     public void setLogin(ShiroLoginBean messageBean) {
 	this.login = messageBean;

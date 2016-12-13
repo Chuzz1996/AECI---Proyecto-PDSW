@@ -64,12 +64,12 @@
     </update>
     
     <select id="getSolicitudesPorVencerse" resultMap="MembershipResult">
-        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
-                User.Email as u_Email,User.Phone as u_Phone,
-                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
-                User.BirthDate as u_BirthDate,User.Period as u_Period,
-                Rol.Id as r_Id,Rol.name as r_name,
-                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
+        select 	User.Id as a_u_Id,User.FirstName as a_u_FirstName,User.LastName as a_u_LastName,
+                User.Email as a_u_Email,User.Phone as a_u_Phone,
+                User.Cellphone as a_u_Cellphone,User.Program_Id as a_u_Program_Id,User.YearGraduate as a_u_YearGraduate ,
+                User.BirthDate as a_u_BirthDate,User.Period as a_u_Period,
+                Rol.Id as a_u_r_Id,Rol.name as a_u_r_Name,
+                Program.Id as a_u_p_Id,Program.Name as a_u_p_Name,Program.Duration as a_u_p_Duration,	
                 Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
                 Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
                 Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
@@ -81,12 +81,12 @@
     </select>
    
     <select id="getAfiliacionesVencidas" resultMap="MembershipResult">
-        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
-                User.Email as u_Email,User.Phone as u_Phone,
-                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
-                User.BirthDate as u_BirthDate,User.Period as u_Period,
-                Rol.Id as r_Id,Rol.name as r_name,
-                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
+        select 	User.Id as a_u_Id,User.FirstName as a_u_FirstName,User.LastName as a_u_LastName,
+                User.Email as a_u_Email,User.Phone as a_u_Phone,
+                User.Cellphone as a_u_Cellphone,User.Program_Id as a_u_Program_Id,User.YearGraduate as a_u_YearGraduate ,
+                User.BirthDate as a_u_BirthDate,User.Period as a_u_Period,
+                Rol.Id as a_u_r_Id,Rol.name as a_u_r_Name,
+                Program.Id as a_u_p_Id,Program.Name as a_u_p_Name,Program.Duration as a_u_p_Duration,	
                 Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
                 Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
                 Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
