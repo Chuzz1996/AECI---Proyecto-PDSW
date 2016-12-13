@@ -109,7 +109,7 @@ public class UsuarioTest {
     /**
      * 
      */
-    @Test
+    /*@Test
     public void consultarUsuario(){
         try{
             DaoFactory dao = getDataPru();
@@ -137,7 +137,7 @@ public class UsuarioTest {
         }catch(IOException x){
             fail("Fallo ingreso base de datos de prueba");
         } 
-    }  
+    }  */
     
    /**
      * Actualizar Datos de usuario
