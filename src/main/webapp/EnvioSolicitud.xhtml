@@ -91,7 +91,7 @@
                         <h:outputLabel value = "Empresa donde trabaja:"/>
                         <h:inputText value="#{solicitudAfiliacion.nombreEmpresa}" />
                         <h:outputLabel value = "Cargo:"/>
-                        <h:inputText value="#{solicitudAfiliacion.cargo}" required="true"/>
+                        <h:inputText value="#{solicitudAfiliacion.cargo}"/>
                         <h:outputLabel value = "Dirección empresa:"/>
                         <h:inputText value="#{solicitudAfiliacion.direccionEmpresa}"/>
                         <h:outputLabel value = "Telefono empresa:"/>
@@ -109,7 +109,7 @@
                              actionListener="#{solicitudAfiliacion.enviarSolicitud()}" onclick="PF('dlg1').show();" 
                              style="border-radius: 0px; background: black; color: white; border: none; padding: 7px; margin-left: 40% "/>
                       
-            <p:dialog class="w3-btn w3-hover-light-grey" header="Estado de la solicitud" widgetVar="dlg1" minHeight="40" >
+            <p:dialog class="w3-btn w3-hover-light-grey" header="Estado de la solicitud" resizable="false" widgetVar="dlg1" minHeight="40" >
                 <h:outputText value="#{solicitudAfiliacion.respuesta}" />
             </p:dialog>            
         </h:form>

@@ -89,15 +89,18 @@ public class SolicitudAfiliacionBean implements Serializable{
                     Student student = new Student(newUser,semestre);
                     Rp.addStudentUser(newUser, student, request);
                 }
-                ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
-                sp.EnvioDeSolicitud();
                 respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
+                //ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
+                //sp.EnvioDeSolicitud();                
             }catch(ExcepcionServiciosAeci ex){
                 setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");                
             }
         }catch(NumberFormatException ex){
             setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
             System.out.println("Dato Agregado no es numerico");
+            ex.printStackTrace();
+        }catch(Exception ex ) {
+            respuesta="Error inseperado, solicitud enviada";
             ex.printStackTrace();
         }
     }
