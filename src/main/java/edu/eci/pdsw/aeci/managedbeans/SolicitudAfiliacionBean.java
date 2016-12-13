@@ -93,6 +93,7 @@ public class SolicitudAfiliacionBean implements Serializable{
                         throw new ExcepcionServiciosAeci("No se permite estudiantes que no se encuentren en los tres ultimos semestres de su carrera");
                     }
                 }
+
                 //ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
                 //sp.EnvioDeSolicitud();
                 respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
@@ -101,6 +102,7 @@ public class SolicitudAfiliacionBean implements Serializable{
             }
         }catch(NumberFormatException ex){
             setRespuesta("Dato Agregado no es numerico");
+
         }
     }
     
