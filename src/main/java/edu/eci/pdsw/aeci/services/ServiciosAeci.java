@@ -91,4 +91,8 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract void addMembership(Membership membership)throws ExcepcionServiciosAeci;
     
     public abstract void updatePayment(Membership membership)throws ExcepcionServiciosAeci;
+    
+    public abstract List<Membership> getSolicitudesPorVencerse()throws ExcepcionServiciosAeci;
+    
+    public abstract List<Membership> getAfiliacionesVencidas()throws ExcepcionServiciosAeci;
 }

@@ -44,6 +44,15 @@ public class ServicioEnvioCorreos {
     
     /**
      * 
+     * @param destinatario 
+     */
+    public void recordatorio(User destinatario){
+        String comentario="Se le informa que su solicitud esta por vencerse proximamente";
+        this.EnviarCorreo(destinatario.getFirstName()+" "+destinatario.getLastName(), destinatario.getEmail(), comentario);
+    }
+    
+    /**
+     * 
      * @param destinarario The email of destiny
      * @param solicitud the rejected request
      */

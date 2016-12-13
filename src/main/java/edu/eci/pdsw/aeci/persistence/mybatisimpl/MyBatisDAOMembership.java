@@ -9,6 +9,7 @@ import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoMembership;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.MembershipMapper;
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -31,6 +32,16 @@ public class MyBatisDAOMembership implements DaoMembership {
     @Override
     public void updatePayment(Membership membership) throws PersistenceException {
         currentSession.getMapper(MembershipMapper.class).updatePayment(membership);
+    }
+
+    @Override
+    public List<Membership> getSolicitudesPorVencerse() throws PersistenceException {
+        return currentSession.getMapper(MembershipMapper.class).getSolicitudesPorVencerse();
+    }
+
+    @Override
+    public List<Membership> getAfiliacionesVencidas() throws PersistenceException {
+        return currentSession.getMapper(MembershipMapper.class).getAfiliacionesVencidas();
     }
     
 }
