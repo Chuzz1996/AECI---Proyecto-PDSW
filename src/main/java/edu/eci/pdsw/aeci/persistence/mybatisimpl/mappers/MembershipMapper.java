@@ -6,6 +6,7 @@
 package edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers;
 
 import edu.eci.pdsw.aeci.entities.*;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -17,5 +18,9 @@ public interface MembershipMapper {
     public void addMembership(@Param("membership")Membership membership);
     
     public void updatePayment(@Param("membership")Membership membership);
+    
+    public List<Membership> getSolicitudesPorVencerse();
+    
+    public List<Membership> getAfiliacionesVencidas();
     
 }

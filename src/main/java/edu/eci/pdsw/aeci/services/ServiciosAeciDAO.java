@@ -384,4 +384,42 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             throw new ExcepcionServiciosAeci(ex.getMessage());
         } return user;
     }
+
+    @Override
+    public List<Membership> getSolicitudesPorVencerse() throws ExcepcionServiciosAeci {
+        List<Membership> res = null;
+        try{
+            daof.beginSession();
+            res = daof.getDaoMembership().getSolicitudesPorVencerse();
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }return res;
+    }
+
+    @Override
+    public List<Membership> getAfiliacionesVencidas() throws ExcepcionServiciosAeci {
+        List<Membership> res = null;
+        try{
+            daof.beginSession();
+            res = daof.getDaoMembership().getAfiliacionesVencidas();
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }return res;
+    }
 }

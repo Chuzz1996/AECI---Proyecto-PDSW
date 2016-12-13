@@ -38,7 +38,7 @@ public interface DaoAccount {
      * Cambia la contrasena de la cuenta
      * @param password The new password
      * @param id The user's id
-     * @throws PersistenceException 
+     * @throws PersistenceException if occurs any error
      */
     public void updatePassword(String password,int id)throws PersistenceException;
     

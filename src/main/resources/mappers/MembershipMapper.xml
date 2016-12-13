@@ -11,6 +11,20 @@
         <result property='value' column='Value'/>
     </resultMap>
     
+    <resultMap type='User' id='UserResult'>
+        <id property='id' column='Id'/>
+        <result property='phone' column='Phone'/>
+        <result property='yearGraduate' column='YearGraduate'/>
+        <result property='period' column='Period'/>
+        <result property='firstName' column='FirstName'/>
+        <result property='lastName' column='LastName'/>
+        <result property='email' column='Email'/>
+        <result property='cellphone' column='CellPhone'/>
+        <result property='birthDate' column='BirthDate'/>
+        <association property = 'program' javaType ='Program' columnPrefix='p_' resultMap='ProgramResult'></association>
+        <association property = 'role' javaType ='Rol' columnPrefix='r_' resultMap='RolResult'></association>
+    </resultMap>
+    
     <resultMap type='Membership' id='MembershipResult'>
         <id property='id' column='Id'/>
         <result property='start_Date' column='Phone'/>
@@ -19,6 +33,17 @@
         <result property='playmentNumber' column='Phone'/>
         <association property = 'account' javaType ='Account' columnPrefix='a_' resultMap='AccountResult'></association>
         <association property = 'rate' javaType ='Rate' columnPrefix='p_' resultMap='RateResult'></association>
+    </resultMap>
+    
+    <resultMap type='Rol' id='RolResult'>
+        <id property='id' column='Id'/>
+        <result property='name' column='Name'/>
+    </resultMap>
+    
+    <resultMap type='Program' id='ProgramResult'>
+        <id property='id' column='Id'/>
+        <result property='duration' column='Duration'/>
+        <result property='name' column='Name'/>
     </resultMap>
     
     <resultMap type='Account' id='AccountResult'>
@@ -39,12 +64,12 @@
     </update>
     
     <select id="getSolicitudesPorVencerse" resultMap="MembershipResult">
-        select 	User.Id as u_Id,User.FirstName as u_FirstName,User.LastName as u_LastName,
-                User.Email as u_Email,User.Phone as u_Phone,
-                User.Cellphone as u_Cellphone,User.Program_Id as u_Program_Id,User.YearGraduate as u_YearGraduate ,
-                User.BirthDate as u_BirthDate,User.Period as u_Period,
-                Rol.Id as r_Id,Rol.name as r_name,
-                Program.Id as p_Id,Program.Name as p_Name,Program.Duration as p_Duration,	
+        select 	User.Id as a_u_Id,User.FirstName as a_u_FirstName,User.LastName as a_u_LastName,
+                User.Email as a_u_Email,User.Phone as a_u_Phone,
+                User.Cellphone as a_u_Cellphone,User.Program_Id as a_u_Program_Id,User.YearGraduate as a_u_YearGraduate ,
+                User.BirthDate as a_u_BirthDate,User.Period as a_u_Period,
+                Rol.Id as a_u_r_Id,Rol.name as a_u_r_Name,
+                Program.Id as a_u_p_Id,Program.Name as a_u_p_Name,Program.Duration as a_u_p_Duration,	
                 Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
                 Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
                 Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
@@ -53,6 +78,23 @@
         From 	User LEFT JOIN Rol ON(User.Rol_Id=Rol.Id) LEFT JOIN Account ON(User.Id=Account.Id) LEFT JOIN Program ON(Program.Id=User.Program_Id)
 		LEFT JOIN Membership ON(Membership.Account_Id=Account.Id) LEFT JOIN Rate ON(Membership.Rate_id=Rate.Id)
 	Where 	DAY(Membership.End_Date)-DAY(NOW())&lt;=30 AND YEAR(Membership.End_Date)-YEAR(NOW())=0 AND MONTH(Membership.End_Date)-MONTH(NOW())=0
+    </select>
+   
+    <select id="getAfiliacionesVencidas" resultMap="MembershipResult">
+        select 	User.Id as a_u_Id,User.FirstName as a_u_FirstName,User.LastName as a_u_LastName,
+                User.Email as a_u_Email,User.Phone as a_u_Phone,
+                User.Cellphone as a_u_Cellphone,User.Program_Id as a_u_Program_Id,User.YearGraduate as a_u_YearGraduate ,
+                User.BirthDate as a_u_BirthDate,User.Period as a_u_Period,
+                Rol.Id as a_u_r_Id,Rol.name as a_u_r_Name,
+                Program.Id as a_u_p_Id,Program.Name as a_u_p_Name,Program.Duration as a_u_p_Duration,	
+                Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
+                Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
+                Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
+                Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
+	
+        From 	User LEFT JOIN Rol ON(User.Rol_Id=Rol.Id) LEFT JOIN Account ON(User.Id=Account.Id) LEFT JOIN Program ON(Program.Id=User.Program_Id)
+		LEFT JOIN Membership ON(Membership.Account_Id=Account.Id) LEFT JOIN Rate ON(Membership.Rate_id=Rate.Id)
+	Where 	Membership.End_Date &lt;= NOW();
     </select>
    
 </mapper>

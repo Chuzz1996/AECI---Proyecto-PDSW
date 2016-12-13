@@ -37,7 +37,6 @@ import org.primefaces.model.StreamedContent;
 import java.util.Date;
 ;
 /**
-  @Inject
     private ShiroLoginBean loginBean;
  * @author alfa
  */
@@ -76,7 +75,8 @@ public class GenerarPDFbean implements Serializable {
     }
     
     /**
-        fin injection  
+     * fin injection  
+     * @return the text
     **/
     
     public String getText() {

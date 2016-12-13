@@ -301,7 +301,6 @@ public class SolicitudAfiliacionBean implements Serializable{
      * @param cargo the Cargo to set
      */
     public void setCargo(String cargo) {
-        System.out.println("CargoSet: "+cargo);
         this.cargo = cargo;
     }
 

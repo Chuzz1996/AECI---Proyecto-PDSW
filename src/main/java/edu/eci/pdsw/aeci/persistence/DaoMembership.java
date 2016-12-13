@@ -6,6 +6,7 @@
 package edu.eci.pdsw.aeci.persistence;
 
 import edu.eci.pdsw.aeci.entities.*;
+import java.util.List;
 
 /**
  *
@@ -27,4 +28,17 @@ public interface DaoMembership {
      */
     public void updatePayment(Membership membership)throws PersistenceException;
     
+    /**
+     * 
+     * @return
+     * @throws PersistenceException 
+     */
+    public List<Membership> getSolicitudesPorVencerse()throws PersistenceException;
+    
+    /**
+     * 
+     * @return
+     * @throws PersistenceException 
+     */
+    public List<Membership> getAfiliacionesVencidas()throws PersistenceException;
 }
