@@ -190,7 +190,7 @@ ALTER TABLE User ADD CONSTRAINT FK_Program_User FOREIGN KEY (Program_Id)
 
 -- Reference: Request_User (table: Request)
 ALTER TABLE Request ADD CONSTRAINT FK_Request_User FOREIGN KEY (User_Id)
-    REFERENCES User (Id);
+    REFERENCES User (Id) ON DELETE CASCADE;
 
 -- Reference: Tarifa_Afiliacion (table: Membership)
 ALTER TABLE Membership ADD CONSTRAINT FK_Tarifa_Afiliacion FOREIGN KEY (Rate_id)
