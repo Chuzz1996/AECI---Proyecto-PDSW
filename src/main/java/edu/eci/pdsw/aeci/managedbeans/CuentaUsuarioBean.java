@@ -169,6 +169,7 @@ public class CuentaUsuarioBean implements Serializable {
      * @param Receipt the Receipt to set
      */
     public void setReceipt(byte[] Receipt) {
+        System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
         this.receipt = Receipt;
     }
     

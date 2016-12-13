@@ -96,5 +96,22 @@
 		LEFT JOIN Membership ON(Membership.Account_Id=Account.Id) LEFT JOIN Rate ON(Membership.Rate_id=Rate.Id)
 	Where 	Membership.End_Date &lt;= NOW();
     </select>
+    
+    <select id="getAfiliacionesSinAprobar" resultMap="MembershipResult">
+        select 	User.Id as a_u_Id,User.FirstName as a_u_FirstName,User.LastName as a_u_LastName,
+                User.Email as a_u_Email,User.Phone as a_u_Phone,
+                User.Cellphone as a_u_Cellphone,User.Program_Id as a_u_Program_Id,User.YearGraduate as a_u_YearGraduate ,
+                User.BirthDate as a_u_BirthDate,User.Period as a_u_Period,
+                Rol.Id as a_u_r_Id,Rol.name as a_u_r_Name,
+                Program.Id as a_u_p_Id,Program.Name as a_u_p_Name,Program.Duration as a_u_p_Duration,	
+                Account.Id as a_Id,Account.Password as a_Password,Account.Active as a_Active,Account.Salt as a_Salt,
+                Membership.Id ,Membership.Start_Date ,Membership.Receipt ,Membership.PaymentNumber ,
+                Membership.Account_Id ,Membership.Rate_id ,Membership.End_Date , 
+                Rate.Id as r_Id,Rate.Year as r_Year,Rate.Value as r_Value
+	
+        From 	User LEFT JOIN Rol ON(User.Rol_Id=Rol.Id) LEFT JOIN Account ON(User.Id=Account.Id) LEFT JOIN Program ON(Program.Id=User.Program_Id)
+		LEFT JOIN Membership ON(Membership.Account_Id=Account.Id) LEFT JOIN Rate ON(Membership.Rate_id=Rate.Id)
+	Where 	DAY(Membership.End_Date)=0 AND YEAR(Membership.End_Date)=0 AND MONTH(Membership.End_Date)=0;
+    </select>
    
 </mapper>

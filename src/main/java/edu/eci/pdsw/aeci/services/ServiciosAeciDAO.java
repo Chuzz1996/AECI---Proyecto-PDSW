@@ -508,4 +508,9 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         }return res;
     }
 
+    @Override
+    public List<Request> getRequestsSinAprobar() throws ExcepcionServiciosAeci {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

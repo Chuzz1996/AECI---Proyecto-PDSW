@@ -63,6 +63,8 @@ public abstract class ServiciosAeci implements Serializable{
 
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
     
+    public abstract List<Request> getRequestsSinAprobar() throws ExcepcionServiciosAeci;
+    
     public abstract User getUser(int id)throws ExcepcionServiciosAeci;
     
     public abstract Rol getRol(int id)throws ExcepcionServiciosAeci;
