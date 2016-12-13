@@ -35,7 +35,7 @@ import java.util.List;
 
 /**
  *
- * @author hcadavid
+ * @author 2118677
  */
 public abstract class ServiciosAeci implements Serializable{
     
@@ -44,6 +44,8 @@ public abstract class ServiciosAeci implements Serializable{
     public static ServiciosAeciDAO getInstance() throws RuntimeException{        
         return instance;
     }
+    
+    public abstract boolean verifySemester(int programId, int semester)throws ExcepcionServiciosAeci;
     
     public abstract void addStudentUser(User user, Student student, Request request) throws ExcepcionServiciosAeci;
     

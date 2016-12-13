@@ -64,7 +64,7 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String respuesta;
     
     public SolicitudAfiliacionBean(){
-        respuesta = "No se ha enviado la solicitud, hace falta llenar algun dato obligatorio";
+        respuesta = "No se ha enviado la solicitud";
     }
 
        
@@ -86,19 +86,21 @@ public class SolicitudAfiliacionBean implements Serializable{
                     Graduate graduate = new Graduate(cargo,NombreEmpresa,direccionEmpresa,telefonoEmpresa,newUser);
                     Rp.addGraduateUser(newUser, graduate, request);
                 }else if((int)(long)role == 2){
-                    Student student = new Student(newUser,semestre);
-                    Rp.addStudentUser(newUser, student, request);
+                    if(Rp.verifySemester(Carrera, semestre)){
+                        Student student = new Student(newUser,semestre);
+                        Rp.addStudentUser(newUser, student, request);
+                    }else{
+                        throw new ExcepcionServiciosAeci("No se permite estudiantes que no se encuentren en los tres ultimos semestres de su carrera");
+                    }
                 }
-                ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
-                sp.EnvioDeSolicitud();
+                //ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
+                //sp.EnvioDeSolicitud();
                 respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
-            }catch(ExcepcionServiciosAeci ex){
-                setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");                
+            }catch(ExcepcionServiciosAeci e){
+                setRespuesta(e.getMessage());
             }
         }catch(NumberFormatException ex){
-            setRespuesta("No se ha enviado la solicitud, existe algun error en los datos ingresados");
-            System.out.println("Dato Agregado no es numerico");
-            ex.printStackTrace();
+            setRespuesta("Dato Agregado no es numerico");
         }
     }
     

@@ -83,8 +83,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
                 daof.rollbackTransaction();
                 daof.endSession();
             }catch(PersistenceException e){
-                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("murio el rollback");
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
                 throw new ExcepcionServiciosAeci(e.getMessage());                
             }            
             throw new ExcepcionServiciosAeci(ex.getMessage());
@@ -513,4 +512,16 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public boolean verifySemester(int programId, int semester) throws ExcepcionServiciosAeci {
+        boolean isCorrect = false;
+        try{
+            Program program = getProgram(programId);
+            int duration = program.getDuration();
+            if(duration>=semester && semester>duration-3) isCorrect = true;
+        }catch(ExcepcionServiciosAeci e){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+            throw new ExcepcionServiciosAeci(e.getMessage());
+        }return isCorrect;
+    }
 }
