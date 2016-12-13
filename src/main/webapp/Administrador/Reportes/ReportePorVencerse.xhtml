@@ -33,25 +33,28 @@
                     </ui:insert> 
                 </p:layoutUnit>
 
-                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white">                     
-                    <p:dataTable var ="user" class="w3-table w3-bordered" value="#{cuentaAdministrador.usuariosPorVencer}" 
-                                 selection="#{cuentaAdministrador.usuarioActual}" rowKey="#{user.id}">
+                <p:layoutUnit id='centro' position="center" class="w3-container w3-card-4 w3-padding-large w3-white"> 
+                    <h3>Afiliaciones por vencerse</h3>
+                    <p:dataTable var ="vencido" class="w3-table w3-bordered" value="#{cuentaAdministrador.usuariosPorVencerse}" 
+                                 selection="#{cuentaAdministrador.userVencido}" rowKey="#{vencido.id}">
                         <f:facet name="header">
                             Reporte de afiliaciones por vencerse
                         </f:facet>  
                         <p:column selectionMode="multiple" style="width:50px; text-align:center"/>
                         <p:column class="w3-light-grey" headerText="Número de cédula">
-                                <h:outputText value="#{user.id}"/>
+                            <h:outputText value="#{vencido.account.id.id}"/>
                             </p:column>
                             <p:column class="w3-light-grey" headerText="Nombre del solicitante">
-                                <h:outputText value="#{user.firstName} #{user.lastName}"/>
+                                <h:outputText value="#{vencido.account.id.firstName} #{vencido.account.id.lastName}"/>
                             </p:column>
                             <p:column class="w3-light-grey" headerText="Email">
-                                <h:outputText value="#{user.email}"/>
-                            </p:column>                           
-                        </p:dataTable>                       
+                                <h:outputText value="#{vencido.account.id.email}"/>
+                            </p:column>                       
+                        </p:dataTable>  
+                    
                     <p:commandButton value="Enviar correo(s) de recordatorio" style="border-radius: 0px; background: black; color: white; border: none; padding: 7px;"/>
-                </p:layoutUnit>
+                
+                    </p:layoutUnit>
             </p:layout>        
         </h:form>    
 

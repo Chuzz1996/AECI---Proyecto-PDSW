@@ -21,9 +21,7 @@ importar aca las clases que necesiten
 import edu.eci.pdsw.samples.aeci.;
 
 ***/
-import edu.eci.pdsw.aeci.entities.Account;
-import edu.eci.pdsw.aeci.entities.Request;
-import edu.eci.pdsw.aeci.entities.User;
+import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoAccount;
 import edu.eci.pdsw.aeci.seguridad.ShiroLoginBean;
 import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
@@ -31,6 +29,8 @@ import edu.eci.pdsw.aeci.services.ServicioEnvioCorreos;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -62,10 +62,45 @@ public class CuentaAdministradorBean implements Serializable{
     //Reportes por vencer
     private List<User> usuariosPorVencer;
     private User usuarioActual;
-    
+
+        
     //Pagos pendientes
+    private List<User> userVencidos;
+    
+    private User userVencido;
  
     public String error;
+    
+    //Por vencerse
+    
+    public List<Membership> getUsuariosPorVencerse(){
+        List<Membership> membership = null;
+        try {  
+            membership = rp.getSolicitudesPorVencerse();
+        } catch (ExcepcionServiciosAeci ex) {
+            error = ex.getMessage();
+            ShowError();
+        }
+        return (membership);
+    }
+    
+    public void setUserVencidos(List<User> userVencidos) {
+        this.userVencidos = userVencidos;
+    }
+
+    public void setUserVencido(User userVencido) {
+        this.userVencido = userVencido;
+    }
+    
+    public List<User> getUserVencidos() {
+        return userVencidos;
+    }
+
+    public User getUserVencido() {
+        return userVencido;
+    }
+    
+    
         
     public CuentaAdministradorBean() {
         this.setSolicitudesPendientes();
