@@ -54,12 +54,12 @@
     </resultMap>
     
     <insert id='addMembership' parameterType="map">
-        INSERT INTO Membership(Id,Start_Date,Account_Id,Rate_Id)
-        VALUES (#{membership.id},#{membership.star_Date},#{membership.account_Id},#{membership.rate_Id})
+        INSERT INTO Membership(Start_Date,Account_Id,Rate_Id,Receipt,PaymentNumber)
+        VALUES (#{membership.star_Date},#{membership.account_Id},#{membership.rate_Id},#{membership.receipt},#{membership.paymentNumber})
     </insert>
     
     <update id='updatePayment' parameterType="map">
-        UPDATE Membership SET Receipt=#{membership.receipt}, PaymentNumber=#{membership.receipt}
+        UPDATE Membership SET Receipt=#{membership.receipt}, PaymentNumber=#{membership.paymentNumber}
         WHERE Id=#{membership.id}
     </update>
     

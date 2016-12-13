@@ -5,7 +5,10 @@
  */
 package edu.eci.pdsw.aeci.managedbeans;
 
+import edu.eci.pdsw.aeci.entities.Membership;
+import edu.eci.pdsw.aeci.entities.Rate;
 import edu.eci.pdsw.aeci.seguridad.ShiroLoginBean;
+import edu.eci.pdsw.aeci.services.ExcepcionServiciosAeci;
 import edu.eci.pdsw.aeci.services.ServiciosAeci;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +18,8 @@ import javax.inject.Inject;
 import javax.faces.bean.ManagedProperty;
 import org.primefaces.model.UploadedFile;
 import java.sql.Blob;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -172,7 +177,14 @@ public class CuentaUsuarioBean implements Serializable {
      */
     public void RegistrarPago(){
         if(receipt!=null){
-            
+            Calendar fecha = new GregorianCalendar();
+            java.util.Date fechaDeEnvio  = fecha.getTime();
+            try{
+                Rate rate=rp.getRate(1);
+                Membership membership = new Membership(fechaDeEnvio, rp.getAccount(login.getPersonaLog().getId()),rate);
+                rp.addMembership(membership);
+            }catch(ExcepcionServiciosAeci ex){
+            }
         }
     }
      

@@ -24,6 +24,7 @@ import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
 import edu.eci.pdsw.aeci.entities.Membership;
 import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Rate;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.Student;
@@ -99,4 +100,8 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract List<Membership> getSolicitudesPorVencerse()throws ExcepcionServiciosAeci;
     
     public abstract List<Membership> getAfiliacionesVencidas()throws ExcepcionServiciosAeci;
+    
+    public abstract Rate getRate(int id)throws ExcepcionServiciosAeci;
+    
+    public abstract Account getAccount(int id)throws ExcepcionServiciosAeci;
 }

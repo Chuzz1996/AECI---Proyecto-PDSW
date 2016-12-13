@@ -42,6 +42,7 @@
 	<mapper resource="mappers/StudentMapper.xml"></mapper>
 	<mapper resource="mappers/GraduateMapper.xml"></mapper>
 	<mapper resource="mappers/MembershipMapper.xml"></mapper>
+	<mapper resource="mappers/RateMapper.xml"></mapper>
     </mappers> 
         
 </configuration>

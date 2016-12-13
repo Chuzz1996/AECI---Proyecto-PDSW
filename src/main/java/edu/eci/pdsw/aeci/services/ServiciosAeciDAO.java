@@ -11,6 +11,7 @@ import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
 import edu.eci.pdsw.aeci.entities.Membership;
 import edu.eci.pdsw.aeci.entities.Program;
+import edu.eci.pdsw.aeci.entities.Rate;
 import edu.eci.pdsw.aeci.entities.Request;
 import edu.eci.pdsw.aeci.entities.Rol;
 import edu.eci.pdsw.aeci.entities.Student;
@@ -456,6 +457,44 @@ public class ServiciosAeciDAO extends ServiciosAeci{
         try{
             daof.beginSession();
             res = daof.getDaoMembership().getAfiliacionesVencidas();
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }return res;
+    }
+
+    @Override
+    public Rate getRate(int id) throws ExcepcionServiciosAeci {
+        Rate res = null;
+        try{
+            daof.beginSession();
+            res = daof.getDaoRate().getRate(id);
+        }catch(PersistenceException ex){
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }finally{
+            try{
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, e);
+               throw new ExcepcionServiciosAeci(e.getMessage());
+            }
+        }return res;
+    }
+
+    @Override
+    public Account getAccount(int id) throws ExcepcionServiciosAeci {
+        Account res = null;
+        try{
+            daof.beginSession();
+            res = daof.getDaoAccount().getAccount(id);
         }catch(PersistenceException ex){
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcepcionServiciosAeci(ex.getMessage());

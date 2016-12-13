@@ -13,4 +13,11 @@ import edu.eci.pdsw.aeci.entities.*;
  */
 public interface DaoRate {
     
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public Rate getRate(int id);
+    
 }

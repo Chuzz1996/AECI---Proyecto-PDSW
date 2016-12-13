@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.aeci.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -24,8 +24,7 @@ public class Membership {
     public Membership() {
     }
 
-    public Membership(int Id,Date Start_Date,Date End_Date,Account Account_id,Rate Rate_id){        
-        this.id=Id;
+    public Membership(Date Start_Date,Account Account_id,Rate Rate_id){        
         this.start_Date=Start_Date;
         this.account=Account_id;
         this.rate=Rate_id;

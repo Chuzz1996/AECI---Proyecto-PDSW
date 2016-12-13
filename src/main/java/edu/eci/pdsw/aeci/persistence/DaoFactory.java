@@ -110,6 +110,8 @@ public abstract class DaoFactory {
     
     public abstract DaoMembership getDaoMembership();
     
+    public abstract DaoRate getDaoRate();
+    
     public abstract void commitTransaction() throws PersistenceException;
 
     public abstract void rollbackTransaction() throws PersistenceException;
