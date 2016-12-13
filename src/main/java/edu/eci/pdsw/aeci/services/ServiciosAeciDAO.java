@@ -43,6 +43,52 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    @Override
+    public void addStudentUser(User user, Student student, Request request) throws ExcepcionServiciosAeci {
+        try {
+            daof.beginSession();
+            daof.getDaoUser().addUser(user);
+            daof.getDaoStudent().addStudent(student);
+            daof.getDaoRequest().addRequest(request);
+            daof.commitTransaction();
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            try{
+                daof.rollbackTransaction();
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+                throw new ExcepcionServiciosAeci(e.getMessage());
+            }            
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void addGraduateUser(User user, Graduate graduate, Request request) throws ExcepcionServiciosAeci {
+        try {
+            daof.beginSession();
+            daof.getDaoUser().addUser(user);
+            daof.getDaoGraduate().addGraduate(graduate);
+            daof.getDaoRequest().addRequest(request);
+            daof.commitTransaction();
+            daof.endSession();
+        }catch (PersistenceException ex) {
+            Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+            try{
+                daof.rollbackTransaction();
+                daof.endSession();
+            }catch(PersistenceException e){
+                Logger.getLogger(ServiciosAeciDAO.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("murio el rollback");
+                throw new ExcepcionServiciosAeci(e.getMessage());                
+            }            
+            throw new ExcepcionServiciosAeci(ex.getMessage());
+        }
+    }
 
     @Override
     public void addUser(User user) throws ExcepcionServiciosAeci {
@@ -422,4 +468,5 @@ public class ServiciosAeciDAO extends ServiciosAeci{
             }
         }return res;
     }
+
 }

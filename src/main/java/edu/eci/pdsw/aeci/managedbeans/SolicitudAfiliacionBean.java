@@ -81,15 +81,13 @@ public class SolicitudAfiliacionBean implements Serializable{
                 Program programa = Rp.getProgram(Carrera);
                 Rol rol = Rp.getRol((int)(long)role);
                 User newUser = new User(id, Nombre, Apellido, correo, telefonoFijo, Celular, programa, yearGraduate, Periodo, fechaNacimiento,rol);
-                Rp.addUser(newUser);                
                 Request request = new Request(newUser, 2);
-                Rp.addRequest(request);
                 if((int)(long)role == 1){
                     Graduate graduate = new Graduate(cargo,NombreEmpresa,direccionEmpresa,telefonoEmpresa,newUser);
-                    Rp.addGraduate(graduate);
+                    Rp.addGraduateUser(newUser, graduate, request);
                 }else if((int)(long)role == 2){
                     Student student = new Student(newUser,semestre);
-                    Rp.addStudent(student);
+                    Rp.addStudentUser(newUser, student, request);
                 }
                 ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
                 sp.EnvioDeSolicitud();

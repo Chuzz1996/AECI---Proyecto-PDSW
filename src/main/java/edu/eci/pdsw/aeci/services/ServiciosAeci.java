@@ -44,6 +44,10 @@ public abstract class ServiciosAeci implements Serializable{
         return instance;
     }
     
+    public abstract void addStudentUser(User user, Student student, Request request) throws ExcepcionServiciosAeci;
+    
+    public abstract void addGraduateUser(User user, Graduate graduate, Request request) throws ExcepcionServiciosAeci;
+    
     public abstract void addUser(User user) throws ExcepcionServiciosAeci;
     
     public abstract void addAccount(Account account)throws ExcepcionServiciosAeci;
