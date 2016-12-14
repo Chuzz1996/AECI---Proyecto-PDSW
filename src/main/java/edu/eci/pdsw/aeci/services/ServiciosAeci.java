@@ -87,7 +87,11 @@ public abstract class ServiciosAeci implements Serializable{
     /**
      * Gives a list with all the pending requests in the database.
      * @return a list with all the pending requests.
+<<<<<<< HEAD
      * @throws ExcepcionServiciosAeci if occurs any error
+=======
+     * @throws ExcepcionServiciosAeci if somethins wents wrong
+>>>>>>> d04c936f1e6903ec43c8d5be33e949e4d6588b1f
      */
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
     
@@ -130,14 +134,22 @@ public abstract class ServiciosAeci implements Serializable{
     /**
      * Gives a list with all the memberships nearly to expire.
      * @return a list with all the memberships nearly to expire.
+<<<<<<< HEAD
      * @throws ExcepcionServiciosAeci if occurs any error
+=======
+     * @throws ExcepcionServiciosAeci if went something wrong
+>>>>>>> d04c936f1e6903ec43c8d5be33e949e4d6588b1f
      */
     public abstract List<Membership> getSolicitudesPorVencerse()throws ExcepcionServiciosAeci;
     
     /**
      * Gives a list with all the memberships that'r expire.
      * @return a list with all the memberships that'r expire.
+<<<<<<< HEAD
      * @throws ExcepcionServiciosAeci if occurs any error
+=======
+     * @throws ExcepcionServiciosAeci if something wrong happend
+>>>>>>> d04c936f1e6903ec43c8d5be33e949e4d6588b1f
      */
     public abstract List<Membership> getAfiliacionesVencidas()throws ExcepcionServiciosAeci;
     

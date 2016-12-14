@@ -32,6 +32,7 @@ public class ServicioEnvioCorreos {
     Correo = pruebapdsw@gmail.com 
     passwordCorreo = holamundo;
     */
+    
     /**
      * 
      * @param destinatario The email of destiny
@@ -71,6 +72,7 @@ public class ServicioEnvioCorreos {
     }
     
     /**
+     * 
      * Informa que ha llegado una nueva solicitud
      * @param usuario The user who sent the request
      * @param date the date that was sent the request
