@@ -286,6 +286,7 @@ public class CuentaAdministradorBean implements Serializable{
     
     /**
      * Cambia estado de solicitud 
+     * @return 
      */
     public String changeRequest(){
         try{

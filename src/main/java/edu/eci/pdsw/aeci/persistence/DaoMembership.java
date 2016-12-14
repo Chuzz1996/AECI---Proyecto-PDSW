@@ -30,15 +30,15 @@ public interface DaoMembership {
     
     /**
      * 
-     * @return
-     * @throws PersistenceException 
+     * @return lista de solicitudes por vencerse
+     * @throws PersistenceException if occurs any error
      */
     public List<Membership> getSolicitudesPorVencerse()throws PersistenceException;
     
     /**
      * 
-     * @return
-     * @throws PersistenceException 
+     * @return lista de afiliaciones vencidas
+     * @throws PersistenceException if occurs any error
      */
     public List<Membership> getAfiliacionesVencidas()throws PersistenceException;
 }

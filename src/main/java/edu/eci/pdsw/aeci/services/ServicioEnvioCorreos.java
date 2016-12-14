@@ -32,6 +32,7 @@ public class ServicioEnvioCorreos {
     Correo = pruebapdsw@gmail.com 
     passwordCorreo = holamundo;
     */
+    
     /**
      * 
      * @param destinatario The email of destiny
@@ -47,7 +48,7 @@ public class ServicioEnvioCorreos {
     
     /**
      * 
-     * @param destinatario 
+     * @param destinatario to send a email
      */
     public void recordatorio(User destinatario){
         String comentario="Buenas tardes Ingeniero(a) "+destinatario.getFirstName()+" "+destinatario.getLastName()+"\n";
@@ -71,7 +72,10 @@ public class ServicioEnvioCorreos {
     }
     
     /**
+     * 
      * Informa que ha llegado una nueva solicitud
+     * @param usuario that send a request
+     * @param date to do a request
      */
     public void EnvioDeSolicitud(User usuario,Date date){
         String comentario="Buenas tardes Administrador \n";

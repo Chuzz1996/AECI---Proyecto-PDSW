@@ -23,7 +23,7 @@ public interface DaoUser {
     
     /**
      * 
-     * @param id
+     * @param id a consultar
      * @return the user needed
      * @throws PersistenceException if id is null
      */
