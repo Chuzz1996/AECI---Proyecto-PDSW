@@ -142,24 +142,20 @@ public class RequestTest {
     /**
      * Rectificar ingreso de base de datos
      */
-    /*@Test
+    @Test
     public void insertarSolicitudNoValidad(){
         try{
             DaoFactory dao = getDataPru();
             try{
                 dao.beginSession();
-                DaoUser usuarioAAgregar = dao.getDaoUser();
                 Program carreraSolicitante = dao.getDaoProgram().getProgram(1);
                 Rol rolePersona = dao.getDaoRol().getDAORol(1);
-                User primerSolicitante = new User(2032483872, "Harry", "Potter", "Potter.sinpapas@magia.com", "1348954", "+17868182661", carreraSolicitante, 2001, 1, new java.util.Date(1980, 1, 1),rolePersona);
-                Request solicitudAEnviar = new Request(primerSolicitante);
+                User primerSolicitante = new User(2032483872, "Harry", "Potter", "Potter.sinpapas@magia.com", "1348954", "+17868182661", carreraSolicitante, 2001, 1, new java.sql.Date(1980, 1, 1),rolePersona);
+                Request solicitudAEnviar = new Request(primerSolicitante, 0);
                 try{
-                    dao.
-                    Rp.addRequest(solicitudAEnviar);
+                    dao.getDaoRequest().addRequest(solicitudAEnviar);
                     fail("Fallo en llaves foraneas en la base de datos");
-                }catch(ExcepcionServiciosAeci tt){
-                    assertTrue("",true);
-                }
+                } catch (PersistenceException x ){}
             }catch(PersistenceException e){
                 fail("fallo inicio dao");
             }catch(ExcepcionServiciosAeci w){
@@ -174,6 +170,6 @@ public class RequestTest {
         }catch(IOException x){
             fail("Fallo ingreso base de datos de prueba");
         }
-    }*/
+    }
     
 }
