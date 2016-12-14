@@ -15,11 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package edu.eci.pdsw.aeci.services;
-
-
-/**
-import edu.eci.pdsw.aeci.entities.Usuario;
-**/
 import edu.eci.pdsw.aeci.entities.Account;
 import edu.eci.pdsw.aeci.entities.Graduate;
 import edu.eci.pdsw.aeci.entities.Membership;
@@ -32,23 +27,49 @@ import edu.eci.pdsw.aeci.entities.User;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  *
  * @author 2118677
  */
 public abstract class ServiciosAeci implements Serializable{
     
-    private static ServiciosAeciDAO instance=new ServiciosAeciDAO();
+    private static final ServiciosAeciDAO instance=new ServiciosAeciDAO();
     
+    /**
+     * Gives a instance for ServiciosAeci.
+     * @return insteance for ServiciosAeci.
+     * @throws RuntimeException if something wents wrong.
+     */
     public static ServiciosAeciDAO getInstance() throws RuntimeException{        
         return instance;
     }
     
+    /**
+     * verifies if given a program id and a semester is valid, a semester is valid
+     * if is on the last three semesters of a program.
+     * @param programId the id of the program
+     * @param semester the current semester to evaluate
+     * @return
+     * @throws ExcepcionServiciosAeci if something wents wrong.
+     */
     public abstract boolean verifySemester(int programId, int semester)throws ExcepcionServiciosAeci;
     
+    /**
+     * adds the respective user, request and student to de database.
+     * @param user the user to add.
+     * @param student the student to add.
+     * @param request the request to add.
+     * @throws ExcepcionServiciosAeci if something wents wrong.
+     */
     public abstract void addStudentUser(User user, Student student, Request request) throws ExcepcionServiciosAeci;
     
+    /**
+     * adds the respective user, request and graduate to de database.
+     * @param user the user to add.
+     * @param graduate the graduate to add.
+     * @param request the request to add.
+     * @throws ExcepcionServiciosAeci if something wents wrong.
+     */
     public abstract void addGraduateUser(User user, Graduate graduate, Request request) throws ExcepcionServiciosAeci;
     
     public abstract void addUser(User user) throws ExcepcionServiciosAeci;
@@ -62,7 +83,12 @@ public abstract class ServiciosAeci implements Serializable{
     public abstract void updateRequest(Request request, String commentary, String state) throws ExcepcionServiciosAeci;
     
     public abstract Program getProgram(int id)throws ExcepcionServiciosAeci;
-
+    
+    /**
+     * Gives a list with all the pending requests in the database.
+     * @return a list with all the pending requests.
+     * @throws ExcepcionServiciosAeci 
+     */
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
     
     public abstract List<Request> getRequestsSinAprobar() throws ExcepcionServiciosAeci;
@@ -101,8 +127,18 @@ public abstract class ServiciosAeci implements Serializable{
     
     public abstract void updatePayment(Membership membership)throws ExcepcionServiciosAeci;
     
+    /**
+     * Gives a list with all the memberships nearly to expire.
+     * @return a list with all the memberships nearly to expire.
+     * @throws ExcepcionServiciosAeci 
+     */
     public abstract List<Membership> getSolicitudesPorVencerse()throws ExcepcionServiciosAeci;
     
+    /**
+     * Gives a list with all the memberships that'r expire.
+     * @return a list with all the memberships that'r expire.
+     * @throws ExcepcionServiciosAeci 
+     */
     public abstract List<Membership> getAfiliacionesVencidas()throws ExcepcionServiciosAeci;
     
     public abstract Rate getRate(int id)throws ExcepcionServiciosAeci;
