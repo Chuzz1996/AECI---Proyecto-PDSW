@@ -38,7 +38,10 @@ public class ServicioEnvioCorreos {
      * @param solicitud the approved request
      */
     public void aprobado(User destinatario, Request solicitud){
-        String comentario="Su solicitud ha sido aprobada.\n"+solicitud.getCommentary()+" \nAtentamente AECI.";
+        String comentario="Buenas tardes Ingeniero(a) "+destinatario.getFirstName()+" "+destinatario.getLastName()+"\n";
+        comentario+="\n Se le informa que su solicitud a la asociacion de egresado de la Escuela Colombiana de Ingenieria ha sido aprobada";
+        comentario+="\n"+solicitud.getCommentary()+"\n Se le informa que para ingresa su usuario y contraseña actual son su numero de cedula. \n";
+        comentario+=" \nAtentamente AECI.";
         this.EnviarCorreo(destinatario.getFirstName()+" "+destinatario.getLastName(), destinatario.getEmail(), comentario);
     }
     
@@ -47,7 +50,10 @@ public class ServicioEnvioCorreos {
      * @param destinatario 
      */
     public void recordatorio(User destinatario){
-        String comentario="Se le informa que su solicitud esta por vencerse proximamente";
+        String comentario="Buenas tardes Ingeniero(a) "+destinatario.getFirstName()+" "+destinatario.getLastName()+"\n";
+        comentario="\n Se le informa que su solicitud esta por vencerse proximamente";
+        comentario+=" por lo cual le aconsejamos renovarla proximamente, para más información de como renovarla puede consultar nuestra página.";
+        comentario+="\n \nAtentamente AECI.";
         this.EnviarCorreo(destinatario.getFirstName()+" "+destinatario.getLastName(), destinatario.getEmail(), comentario);
     }
     
@@ -56,17 +62,23 @@ public class ServicioEnvioCorreos {
      * @param destinarario The email of destiny
      * @param solicitud the rejected request
      */
-    public void rechazado(User destinarario, Request solicitud){
-        String comentario="Su solicitud ha sido rechazada por:\n"+solicitud.getCommentary()+"\nEsperamos el envío de su solicitud en una próxima ocasión";
+    public void rechazado(User destinatario, Request solicitud){
+        String comentario="Buenas tardes Ingeniero(a) "+destinatario.getFirstName()+" "+destinatario.getLastName()+"\n";
+        comentario+="\n Se le informa que su solicitud a la asociacion de egresado de la Escuela Colombiana de Ingenieria ha sido rechazada";
+        comentario="por:\n"+solicitud.getCommentary()+"\nEsperamos el envío de su solicitud en una próxima ocasión";
         comentario+="\nAtentamente AECI";
-        this.EnviarCorreo(destinarario.getFirstName()+" "+destinarario.getLastName(), destinarario.getEmail(), comentario);
+        this.EnviarCorreo(destinatario.getFirstName()+" "+destinatario.getLastName(), destinatario.getEmail(), comentario);
     }
     
     /**
      * Informa que ha llegado una nueva solicitud
      */
-    public void EnvioDeSolicitud(){
-        String comentario="Se le informa que una nueva persona ha hecho un envio de solicitud el dia";
+    public void EnvioDeSolicitud(User usuario,Date date){
+        String comentario="Buenas tardes Administrador \n";
+        comentario="Se le informa que la persona "+usuario.getFirstName()+" "+usuario.getLastName()+" ha hecho una solicitud ";
+        comentario+= "para el ingreso a la asociacion el dia "+date+", te recomendamos revisarla directamente en la página";
+        comentario+=" de la asociacion. \n\n";
+        comentario+="Atentamente los Desarrolladores de la aplicacion =).";
         this.EnviarCorreo("ADMINISTRADOR", CorreoFuente, comentario);
     }
     

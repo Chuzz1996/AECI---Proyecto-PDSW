@@ -64,7 +64,7 @@ public class SolicitudAfiliacionBean implements Serializable{
     private String respuesta;
     
     public SolicitudAfiliacionBean(){
-        respuesta = "No se ha enviado la solicitud";
+        respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
     }
 
        
@@ -72,6 +72,7 @@ public class SolicitudAfiliacionBean implements Serializable{
      * Agrega la solicitud de las personas
      */
     public void enviarSolicitud(){
+       respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
        try{
             int yearGraduate = Integer.parseInt(AnoGraduacion);
             int id = Integer.parseInt(Cedula);
@@ -93,8 +94,8 @@ public class SolicitudAfiliacionBean implements Serializable{
                         throw new ExcepcionServiciosAeci("No se permite estudiantes que no se encuentren en los tres ultimos semestres de su carrera");
                     }
                 }
-                //ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
-                //sp.EnvioDeSolicitud();
+                ServicioEnvioCorreos sp = new ServicioEnvioCorreos();
+                sp.EnvioDeSolicitud(newUser,fechaDeEnvio);
                 respuesta = "Su solicitud fue enviada, la respuesta se le hara llegar al correo";
             }catch(ExcepcionServiciosAeci e){
                 setRespuesta(e.getMessage());
