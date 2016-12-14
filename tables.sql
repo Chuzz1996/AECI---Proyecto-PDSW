@@ -92,7 +92,7 @@ CREATE TABLE User (
     Id int NOT NULL,
     FirstName varchar(200) NOT NULL,
     LastName varchar(200) NOT NULL,
-    Email varchar(200) NULL,
+    Email varchar(200) NOT NULL,
     Phone varchar(20),
     Cellphone varchar(20) NULL,
     Program_Id int NOT NULL,

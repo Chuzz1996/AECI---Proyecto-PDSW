@@ -47,7 +47,7 @@ public class ServicioEnvioCorreos {
     
     /**
      * 
-     * @param destinatario 
+     * @param destinatario the person who receives the email
      */
     public void recordatorio(User destinatario){
         String comentario="Buenas tardes Ingeniero(a) "+destinatario.getFirstName()+" "+destinatario.getLastName()+"\n";
@@ -59,7 +59,7 @@ public class ServicioEnvioCorreos {
     
     /**
      * 
-     * @param destinarario The email of destiny
+     * @param destinatario the person who receives the email
      * @param solicitud the rejected request
      */
     public void rechazado(User destinatario, Request solicitud){
@@ -72,6 +72,8 @@ public class ServicioEnvioCorreos {
     
     /**
      * Informa que ha llegado una nueva solicitud
+     * @param usuario The user who sent the request
+     * @param date the date that was sent the request
      */
     public void EnvioDeSolicitud(User usuario,Date date){
         String comentario="Buenas tardes Administrador \n";

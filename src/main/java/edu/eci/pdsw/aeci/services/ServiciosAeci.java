@@ -49,7 +49,7 @@ public abstract class ServiciosAeci implements Serializable{
      * if is on the last three semesters of a program.
      * @param programId the id of the program
      * @param semester the current semester to evaluate
-     * @return
+     * @return True or False depending if the semester is valid
      * @throws ExcepcionServiciosAeci if something wents wrong.
      */
     public abstract boolean verifySemester(int programId, int semester)throws ExcepcionServiciosAeci;
@@ -87,7 +87,7 @@ public abstract class ServiciosAeci implements Serializable{
     /**
      * Gives a list with all the pending requests in the database.
      * @return a list with all the pending requests.
-     * @throws ExcepcionServiciosAeci 
+     * @throws ExcepcionServiciosAeci if occurs any error
      */
     public abstract List<Request> getPendingRequests() throws ExcepcionServiciosAeci;
     
@@ -130,14 +130,14 @@ public abstract class ServiciosAeci implements Serializable{
     /**
      * Gives a list with all the memberships nearly to expire.
      * @return a list with all the memberships nearly to expire.
-     * @throws ExcepcionServiciosAeci 
+     * @throws ExcepcionServiciosAeci if occurs any error
      */
     public abstract List<Membership> getSolicitudesPorVencerse()throws ExcepcionServiciosAeci;
     
     /**
      * Gives a list with all the memberships that'r expire.
      * @return a list with all the memberships that'r expire.
-     * @throws ExcepcionServiciosAeci 
+     * @throws ExcepcionServiciosAeci if occurs any error
      */
     public abstract List<Membership> getAfiliacionesVencidas()throws ExcepcionServiciosAeci;
     

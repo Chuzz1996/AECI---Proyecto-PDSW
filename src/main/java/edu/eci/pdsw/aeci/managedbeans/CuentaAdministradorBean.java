@@ -286,6 +286,7 @@ public class CuentaAdministradorBean implements Serializable{
     
     /**
      * Cambia estado de solicitud 
+     * @return Returns the new direction of the page
      */
     public String changeRequest(){
         try{

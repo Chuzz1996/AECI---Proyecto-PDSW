@@ -9,6 +9,7 @@ import edu.eci.pdsw.aeci.entities.*;
 import edu.eci.pdsw.aeci.persistence.DaoUser;
 import edu.eci.pdsw.aeci.persistence.PersistenceException;
 import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.UserMapper;
+import edu.eci.pdsw.aeci.persistence.mybatisimpl.mappers.ProgramMapper;
 import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
@@ -57,6 +58,9 @@ public class MyBatisDAOUser implements DaoUser {
 
     @Override
     public void updateUserProgram_Id(int idUser, int program_Id) throws PersistenceException {
+        if (currentSession.getMapper(ProgramMapper.class).getProgram(program_Id) == null){
+            throw new PersistenceException("Programa inexistente.");
+        }
         currentSession.getMapper(UserMapper.class).updateUserProgram_Id(idUser, program_Id);
     }
 

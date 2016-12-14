@@ -15,8 +15,8 @@ public interface DaoRate {
     
     /**
      * 
-     * @param id
-     * @return 
+     * @param id Obtains the rate given the id
+     * @return Returns the rate
      */
     public Rate getRate(int id);
     

@@ -58,7 +58,7 @@ import static org.junit.Assert.*;
 public class UsuarioTest {
     
     public DaoFactory getDataPru() throws IOException{
-        InputStream input = getClass().getClassLoader().getResource("applicationconfig.properties").openStream();
+        InputStream input = getClass().getClassLoader().getResource("h2-applicationconfig.properties").openStream();
         Properties properties=new Properties();
         properties.load(input);
         return DaoFactory.getInstance(properties);
@@ -97,9 +97,9 @@ public class UsuarioTest {
         try{
             List<Request> solicitudesPendientes =  ServiciosAeci.getInstance().getPendingRequests();
             for (Request x : solicitudesPendientes){
-                System.out.println(x.getUser());
-                System.out.println(x.getUser().getRole());
-                System.out.println(x.getUser().getProgram());
+                if (x.getUser() == null || x.getUser().getRole() == null || x.getUser().getProgram() == null){
+                    fail("No se estan construyendo bien los objetos en la base de datos");
+                }
             }
         } catch(ExcepcionServiciosAeci e){
         
@@ -109,7 +109,7 @@ public class UsuarioTest {
     /**
      * 
      */
-    /*@Test
+    @Test
     public void consultarUsuario(){
         try{
             DaoFactory dao = getDataPru();
@@ -121,7 +121,6 @@ public class UsuarioTest {
                 User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.sql.Date(1990, 7, 20),rolePersona);
                 usuarioAgregar.addUser(Solicitante);
                 User revision = usuarioAgregar.getUser(Solicitante.getId());
-                System.out.println(Solicitante.getId() + " " + revision.getId());
                 assertEquals("Usuario no consultado correctamente ",revision.getId(),Solicitante.getId());
         }catch(PersistenceException e){
                 fail("Fallo inicio dao");
@@ -137,12 +136,12 @@ public class UsuarioTest {
         }catch(IOException x){
             fail("Fallo ingreso base de datos de prueba");
         } 
-    }  */
+    }
     
    /**
      * Actualizar Datos de usuario
      */
-    /*@Test
+    @Test
     public void actualizarDatosUsuario(){
         try{
             DaoFactory dao = getDataPru();
@@ -151,7 +150,7 @@ public class UsuarioTest {
                 DaoUser usuarioAgregar = dao.getDaoUser();
                 Program carrera = dao.getDaoProgram().getProgram(1);
                 Rol rolePersona = dao.getDaoRol().getDAORol(1);
-                User Solicitante = new User(666, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.sql.Date(1990, 7, 20),rolePersona);
+                User Solicitante = new User(845, "Ricky", "Ricon", "JustMoney@mail.escuelaing.edu.co", "", "904827364", carrera, 2011, 2, new java.sql.Date(1990, 7, 20),rolePersona);
                 usuarioAgregar.addUser(Solicitante);
                 String firstName = "Negro";
                 String lastName = "Confundido";
@@ -168,18 +167,16 @@ public class UsuarioTest {
                 usuarioAgregar.updateUserCellphone(Solicitante.getId(), cellphone);
                 usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
                 usuarioAgregar.updateUserPeriod(Solicitante.getId(), period);
-                usuarioAgregar.updateUserYearGraduate(Solicitante.getId(), yearGraduate);
-                List<User> revision = usuarioAgregar.getUsers();
-                for(User x:revision){
-                    assertTrue("Cambio de nombre",x.getFirstName().equals(firstName));
-                    assertTrue("Cambio de apellido",x.getLastName().equals(lastName));
-                    assertTrue("Cambio de correo",x.getEmail().equals(email));
-                    assertTrue("Cambio de telefono fijo",x.getPhone().equals(phone));
-                    assertTrue("Cambio de celular",x.getCellphone().equals(cellphone));
-                    assertEquals("Cambio de año de graduacion",x.getYearGraduate(),yearGraduate);
-                    assertEquals("Cambio de periodo de graduacion",period, x.getPeriod());
-                    assertTrue("Cambio de cumpleaños",x.getBirthDate().equals(birthDate));
-                }
+                usuarioAgregar.updateUserBirthDate(Solicitante.getId(), birthDate);
+                User x = usuarioAgregar.getUser(Solicitante.getId());
+                assertTrue("Cambio de nombre",x.getFirstName().equals(firstName));
+                assertTrue("Cambio de apellido",x.getLastName().equals(lastName));
+                assertTrue("Cambio de correo",x.getEmail().equals(email));
+                assertTrue("Cambio de telefono fijo",x.getPhone().equals(phone));
+                assertTrue("Cambio de celular",x.getCellphone().equals(cellphone));
+                assertEquals("Cambio de año de graduacion",x.getYearGraduate(),yearGraduate);
+                assertEquals("Cambio de periodo de graduacion",period, x.getPeriod());
+                assertTrue("Cambio de cumpleaños",x.getBirthDate().equals(birthDate));
             }catch(PersistenceException e){
                 fail("Fallo inicio dao");
             }catch(ExcepcionServiciosAeci ex){
@@ -194,12 +191,12 @@ public class UsuarioTest {
         }catch(IOException x){
             fail("Fallo ingreso base de datos de prueba");
         }    
-    }*/
+    }
     
     /**
      * No es posible agregar un programa no valido 
      */
-    /*@Test
+    @Test
     public void programaNoExistente(){
         try{
             DaoFactory dao = getDataPru();
@@ -229,7 +226,7 @@ public class UsuarioTest {
         }catch(IOException x){
             fail("Fallo ingreso base de datos de prueba");
         }   
-    }*/
+    }
     
     /**
      * No es un correo el indicado

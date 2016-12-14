@@ -34,7 +34,7 @@ public class AccountTest {
      * @throws IOException 
      */
     public DaoFactory getDataPru() throws IOException{
-        InputStream input = getClass().getClassLoader().getResource("applicationconfig.properties").openStream();
+        InputStream input = getClass().getClassLoader().getResource("h2-applicationconfig.properties").openStream();
         Properties properties=new Properties();
         properties.load(input);
         return DaoFactory.getInstance(properties);

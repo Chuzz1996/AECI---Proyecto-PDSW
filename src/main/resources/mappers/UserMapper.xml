@@ -42,7 +42,7 @@
 		 User.Email, User.CellPhone, User.BirthDate,
                Rol.Id as rl_Id, Rol.Name as rl_Name,
                Program.Id as pr_Id, Program.Duration as pr_Duration, Program.Name as pr_Name
-        From User, Request, Rol, Program
+        From User, Rol, Program
         Where User.Id=#{id} And User.Program_Id = Program.Id And User.Rol_Id = Rol.Id;
     </select>
     
