@@ -34,7 +34,7 @@ public class ServiciosAeciDAO extends ServiciosAeci{
     
     private DaoFactory daof;
     
-    public ServiciosAeciDAO() {
+    public ServiciosAeciDAO(){
         try{
             InputStream input = getClass().getClassLoader().getResource("applicationconfig.properties").openStream();
             Properties properties=new Properties();

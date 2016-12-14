@@ -9,10 +9,11 @@ Este proyecto se realiza en la carrera Ingeniería de Sistemas de la Escuela Col
 #Descripción del problema
 La Asociación no cuenta con un sistema de información que le ayude a administrar sus procesos, ni a guardar la información de sus usuarios, convenios, y servicios, no es sencillo para la administración generar certificados de afiliación, informar sobre convenios, ni recibir pagos, con este proyecto se busca dar una solución a este problema a través de una página web dinámica.
 #Artefactos utilizados
-El proyecto se realiza en el lenguaje Java, SQL, XML y HTML, se usa PrimeFaces como frameWork, myBatis.
+El proyecto se realiza en el lenguaje Java, SQL, XML y HTML, se usa PrimeFaces, myBatis, entre otros como frameWorks.
 #Base de datos
 ![](BasedeDatos.png)
 #Diagrama de clases
+![](model.png)
 
 Url Circleci
 https://circleci.com/gh/Chuzz1996/AECI---Proyecto-PDSW
